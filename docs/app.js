@@ -250,12 +250,12 @@ function renderResults() {
 
   elements.markdownLink.href =
     state.mode === "222"
-      ? "../output/fully_enhanced_222_teams.md"
-      : "../output/all_fully_enhanced_teams.md";
+      ? "data/fully_enhanced_222_teams.md"
+      : "data/all_fully_enhanced_teams.md";
   elements.jsonLink.href =
     state.mode === "222"
-      ? "../output/fully_enhanced_222_teams.json"
-      : "../output/all_fully_enhanced_teams.json";
+      ? "data/fully_enhanced_222_teams.json"
+      : "data/all_fully_enhanced_teams.json";
 
   elements.teamList.replaceChildren();
   if (!teams.length) {
@@ -329,4 +329,3 @@ async function init() {
 }
 
 init();
-

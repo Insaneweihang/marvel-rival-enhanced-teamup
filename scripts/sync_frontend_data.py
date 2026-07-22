@@ -10,7 +10,9 @@ FRONTEND_DATA_DIR = ROOT / "docs" / "data"
 FILES = [
     "summary.json",
     "all_fully_enhanced_teams.json",
+    "all_fully_enhanced_teams.md",
     "fully_enhanced_222_teams.json",
+    "fully_enhanced_222_teams.md",
 ]
 
 
@@ -27,4 +29,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
