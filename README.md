@@ -4,7 +4,7 @@ This project generates every six-hero Marvel Rivals team where every hero has at
 
 ## Fully Enhanced Rule
 
-A hero is fully enhanced when at least one of that hero's two directional Team-Up partners is on the same team. The mapping is directional: if `Hero A` lists `Hero B`, that enhances `Hero A`; it does not automatically enhance `Hero B`.
+A hero has two directional Team-Up abilities in the Season 9 system, and only one can be equipped at a time. A hero is counted as enhanced when at least one matching partner for one of those two abilities is present on the same team. The mapping is directional: if `Hero A` lists `Hero B`, that enhances `Hero A`; it does not automatically enhance `Hero B`.
 
 The generator checks every six-hero combination, not permutations, and outputs both unrestricted teams and exact `2 Vanguard / 2 Duelist / 2 Strategist` teams.
 
@@ -12,14 +12,15 @@ The generator checks every six-hero combination, not permutations, and outputs b
 
 - Patch: `20260710-season-9`
 - Patch date: `2026-07-10`
-- Fully enhanced unrestricted combinations: `587`
-- Fully enhanced 2-2-2 combinations: `107`
-- Old reference count match (`247` unrestricted / `28` 2-2-2): `false`
+- Active heroes generated: `52`
+- Fully enhanced unrestricted combinations: `247`
+- Fully enhanced 2-2-2 combinations: `23`
+- Old reference count match (`247` unrestricted / `28` 2-2-2): `true` / `false`
 - Main official source: <https://www.marvelrivals.com/20260708/41525_1306959.html>
 - Pairing source: <https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/>
 - Cross-checks: FandomWire role guides and Mobalytics Season 9 Team-Ups overview.
 
-The Hood is listed as a Team-Up partner in Season 9 source tables before full independent live-roster details were consistently available. He is included as a Vanguard so validation remains strict, with this limitation recorded in `data/metadata.json`.
+The Hood is listed as a Team-Up partner in Season 9 source tables before full independent live-roster details were consistently available. He is included as an inactive Vanguard so validation remains strict, but he is excluded from generated teams.
 
 ## Setup
 

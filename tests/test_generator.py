@@ -28,7 +28,7 @@ def test_team_with_one_unenhanced_hero_fails() -> None:
     assert not is_fully_enhanced(("A", "B", "C", "D", "E", "G"), teamups)
 
 
-def test_directional_relationship_is_not_bidirectional() -> None:
+def test_directional_relationship_is_not_treated_as_bidirectional() -> None:
     teamups = {
         "A": frozenset({"B", "C"}),
         "B": frozenset({"D", "E"}),
@@ -76,4 +76,3 @@ def test_hero_inclusion_filtering_works() -> None:
 def test_hero_exclusion_filtering_works() -> None:
     teams = [("A", "B"), ("A", "C"), ("B", "C")]
     assert filter_teams_by_hero(teams, exclude_heroes={"A"}) == [("B", "C")]
-

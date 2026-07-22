@@ -32,8 +32,8 @@
   ],
   "notes": [
     "The Season 9 sources expose The Hood as a Team-Up partner before full independent live-roster details were consistently published.",
-    "The Hood is included as a Vanguard to keep partner validation strict; his directional partners are manually inferred from visible Season 9 pairings and should be rechecked when the official hero page is live.",
+    "The Hood is included as an inactive Vanguard to keep partner validation strict; his directional partners are manually inferred from visible Season 9 pairings and should be rechecked when the official hero page is live.",
+    "Inactive heroes are valid Team-Up partners but are excluded from generated six-hero teams.",
     "This project does not hardcode generated team results; counts are derived from heroes.json and teamups.json."
   ]
 }
-

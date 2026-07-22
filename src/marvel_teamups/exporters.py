@@ -33,6 +33,7 @@ def _heroes_json(
         {
             "name": hero,
             "role": heroes_by_name[hero].role.value,
+            "active": heroes_by_name[hero].active,
             "active_partners": details[hero],
         }
         for hero in sorted(team)
@@ -134,4 +135,3 @@ def export_222(
 def export_summary(payload: dict[str, object], output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "summary.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
-

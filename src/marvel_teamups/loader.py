@@ -45,7 +45,10 @@ def load_heroes(path: Path) -> tuple[str, list[Hero]]:
             role = Role(role_value)
         except ValueError as exc:
             raise DataLoadError(f"Unknown role for hero {name!r}: {role_value!r}") from exc
-        heroes.append(Hero(name=name, role=role))
+        active = item.get("active", True)
+        if not isinstance(active, bool):
+            raise DataLoadError(f"Hero entry #{index} in {path} has a non-boolean active value")
+        heroes.append(Hero(name=name, role=role, active=active))
     return patch_version, heroes
 
 
@@ -85,4 +88,3 @@ def load_data(data_dir: Path) -> LoadedData:
         heroes_by_name={hero.name: hero for hero in heroes},
         teamup_partners=teamups,
     )
-

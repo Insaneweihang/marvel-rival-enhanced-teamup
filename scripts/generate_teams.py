@@ -56,7 +56,9 @@ def main() -> int:
         print(f"Unknown hero filter(s): {', '.join(sorted(unknown_filters))}", file=sys.stderr)
         return 1
 
-    hero_names = sorted(loaded.heroes_by_name)
+    hero_names = sorted(
+        name for name, hero in loaded.heroes_by_name.items() if hero.active
+    )
     all_teams = generate_fully_enhanced_teams(hero_names, loaded.teamup_partners, args.team_size)
     all_teams = filter_teams_by_hero(all_teams, set(args.hero), set(args.exclude_hero))
     teams_222 = [
@@ -75,6 +77,7 @@ def main() -> int:
     summary = {
         "patch_version": loaded.patch_version,
         "hero_count": len(hero_names),
+        "total_heroes_loaded": len(loaded.heroes_by_name),
         "team_size": args.team_size,
         "total_combinations_checked": total_combinations,
         "fully_enhanced_unrestricted_count": len(all_teams),
@@ -111,4 +114,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

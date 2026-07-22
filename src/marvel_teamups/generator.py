@@ -57,4 +57,3 @@ def filter_teams_by_hero(
         for team in teams
         if include_heroes.issubset(team) and not (set(team) & exclude_heroes)
     ]
-

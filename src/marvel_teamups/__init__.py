@@ -16,4 +16,3 @@ __all__ = [
     "has_role_distribution",
     "is_fully_enhanced",
 ]
-

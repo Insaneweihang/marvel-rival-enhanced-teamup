@@ -11,7 +11,7 @@
     {"name": "Magneto", "role": "Vanguard"},
     {"name": "Peni Parker", "role": "Vanguard"},
     {"name": "Rogue", "role": "Vanguard"},
-    {"name": "The Hood", "role": "Vanguard"},
+    {"name": "The Hood", "role": "Vanguard", "active": false},
     {"name": "The Thing", "role": "Vanguard"},
     {"name": "Thor", "role": "Vanguard"},
     {"name": "Venom", "role": "Vanguard"},
@@ -56,4 +56,3 @@
     {"name": "White Fox", "role": "Strategist"}
   ]
 }
-

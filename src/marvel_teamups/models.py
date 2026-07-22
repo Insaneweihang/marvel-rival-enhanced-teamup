@@ -14,6 +14,7 @@ class Role(str, Enum):
 class Hero:
     name: str
     role: Role
+    active: bool = True
 
 
 @dataclass(frozen=True)
