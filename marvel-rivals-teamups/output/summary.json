@@ -1,0 +1,20 @@
+{
+  "patch_version": "20260710-season-9",
+  "hero_count": 53,
+  "team_size": 6,
+  "total_combinations_checked": 22957480,
+  "fully_enhanced_unrestricted_count": 587,
+  "fully_enhanced_222_count": 107,
+  "expected_counts": {
+    "unrestricted": 247,
+    "222": 28
+  },
+  "count_match": {
+    "unrestricted": false,
+    "222": false
+  },
+  "filters": {
+    "hero": [],
+    "exclude_hero": []
+  }
+}

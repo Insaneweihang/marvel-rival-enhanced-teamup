@@ -1,0 +1,13 @@
+{
+  "patch_version": "fixture",
+  "heroes": [
+    {"name": "A", "role": "Vanguard"},
+    {"name": "B", "role": "Vanguard"},
+    {"name": "C", "role": "Duelist"},
+    {"name": "D", "role": "Duelist"},
+    {"name": "E", "role": "Strategist"},
+    {"name": "F", "role": "Strategist"},
+    {"name": "G", "role": "Duelist"}
+  ]
+}
+

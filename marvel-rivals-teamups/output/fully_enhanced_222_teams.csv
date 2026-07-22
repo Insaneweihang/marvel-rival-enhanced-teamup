@@ -1,0 +1,108 @@
+team_number,vanguard_1,vanguard_2,duelist_1,duelist_2,strategist_1,strategist_2,enhancement_details
+1,Angela,Thor,Iron Man,Star-Lord,Adam Warlock,Ultron,Adam Warlock <- Ultron; Angela <- Star-Lord; Iron Man <- Thor; Star-Lord <- Adam Warlock; Thor <- Angela; Ultron <- Iron Man
+2,Angela,Thor,Star-Lord,Storm,Adam Warlock,Luna Snow,Adam Warlock <- Storm; Angela <- Star-Lord; Luna Snow <- Adam Warlock; Star-Lord <- Adam Warlock; Storm <- Thor; Thor <- Angela
+3,Angela,Thor,Star-Lord,Storm,Adam Warlock,Mantis,"Adam Warlock <- Storm; Angela <- Star-Lord; Mantis <- Adam Warlock, Star-Lord; Star-Lord <- Adam Warlock; Storm <- Thor; Thor <- Angela"
+4,Peni Parker,The Hood,Black Panther,Magik,Adam Warlock,Ultron,Adam Warlock <- Ultron; Black Panther <- Magik; Magik <- The Hood; Peni Parker <- Black Panther; The Hood <- Magik; Ultron <- Peni Parker
+5,Angela,Groot,Mister Fantastic,Star-Lord,Mantis,Rocket Raccoon,Angela <- Star-Lord; Groot <- Mantis; Mantis <- Star-Lord; Mister Fantastic <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot
+6,Angela,Groot,Star-Lord,The Punisher,Mantis,Rocket Raccoon,Angela <- Star-Lord; Groot <- Mantis; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot; The Punisher <- Rocket Raccoon
+7,Angela,Venom,Hela,Phoenix,Jeff the Land Shark,Loki,Angela <- Loki; Hela <- Venom; Jeff the Land Shark <- Venom; Loki <- Hela; Phoenix <- Hela; Venom <- Phoenix
+8,Peni Parker,The Hood,Black Panther,Magik,Cloak & Dagger,Jubilee,"Black Panther <- Magik; Cloak & Dagger <- The Hood; Jubilee <- The Hood; Magik <- The Hood; Peni Parker <- Black Panther; The Hood <- Jubilee, Magik"
+9,Peni Parker,The Hood,Black Panther,Magik,Cloak & Dagger,Ultron,Black Panther <- Magik; Cloak & Dagger <- The Hood; Magik <- The Hood; Peni Parker <- Black Panther; The Hood <- Magik; Ultron <- Peni Parker
+10,Peni Parker,The Hood,Black Panther,Magik,Gambit,Jubilee,"Black Panther <- Magik; Gambit <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; Peni Parker <- Black Panther; The Hood <- Jubilee, Magik"
+11,Rogue,The Hood,Black Panther,Magik,Gambit,Jubilee,"Black Panther <- Magik; Gambit <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; Rogue <- Gambit; The Hood <- Jubilee, Magik"
+12,Peni Parker,The Hood,Black Panther,Magik,Jubilee,Ultron,"Black Panther <- Magik; Jubilee <- The Hood; Magik <- The Hood; Peni Parker <- Black Panther; The Hood <- Jubilee, Magik; Ultron <- Peni Parker"
+13,Rogue,The Hood,Black Widow,Phoenix,Gambit,Jubilee,Black Widow <- Phoenix; Gambit <- Jubilee; Jubilee <- The Hood; Phoenix <- Rogue; Rogue <- Gambit; The Hood <- Jubilee
+14,The Hood,Venom,Blade,Moon Knight,Cloak & Dagger,Jubilee,"Blade <- Moon Knight; Cloak & Dagger <- The Hood; Jubilee <- Blade, The Hood; Moon Knight <- Cloak & Dagger; The Hood <- Jubilee; Venom <- Blade"
+15,Groot,The Hood,Magik,Star-Lord,Cloak & Dagger,Mantis,Cloak & Dagger <- The Hood; Groot <- Mantis; Magik <- The Hood; Mantis <- Star-Lord; Star-Lord <- Groot; The Hood <- Magik
+16,The Hood,The Thing,Hawkeye,Human Torch,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Hawkeye <- Cloak & Dagger; Human Torch <- Jubilee; Jubilee <- The Hood; The Hood <- Jubilee; The Thing <- Human Torch
+17,Magneto,The Hood,Hawkeye,Scarlet Witch,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Hawkeye <- Cloak & Dagger; Jubilee <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+18,The Hood,Venom,Hela,Phoenix,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Hela <- Venom; Jubilee <- The Hood; Phoenix <- Hela; The Hood <- Jubilee; Venom <- Phoenix
+19,The Hood,The Thing,Human Torch,Iron Fist,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Human Torch <- Jubilee; Iron Fist <- The Thing; Jubilee <- The Hood; The Hood <- Jubilee; The Thing <- Human Torch
+20,The Hood,The Thing,Human Torch,Magik,Cloak & Dagger,Jubilee,"Cloak & Dagger <- The Hood; Human Torch <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; The Hood <- Jubilee, Magik; The Thing <- Human Torch"
+21,Magneto,The Hood,Human Torch,Scarlet Witch,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Human Torch <- Jubilee; Jubilee <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+22,The Hood,The Thing,Human Torch,Mister Fantastic,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Human Torch <- Jubilee; Jubilee <- The Hood; Mister Fantastic <- The Thing; The Hood <- Jubilee; The Thing <- Human Torch
+23,The Hood,The Thing,Human Torch,Moon Knight,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Human Torch <- Jubilee; Jubilee <- The Hood; Moon Knight <- Cloak & Dagger; The Hood <- Jubilee; The Thing <- Human Torch
+24,The Hood,The Thing,Human Torch,Psylocke,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Human Torch <- Jubilee; Jubilee <- The Hood; Psylocke <- Cloak & Dagger; The Hood <- Jubilee; The Thing <- Human Torch
+25,The Hood,The Thing,Human Torch,Scarlet Witch,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Human Torch <- Jubilee; Jubilee <- The Hood; Scarlet Witch <- Jubilee; The Hood <- Jubilee; The Thing <- Human Torch
+26,The Hood,The Thing,Magik,Mister Fantastic,Cloak & Dagger,Invisible Woman,Cloak & Dagger <- The Hood; Invisible Woman <- Mister Fantastic; Magik <- The Hood; Mister Fantastic <- The Thing; The Hood <- Magik; The Thing <- Invisible Woman
+27,Magneto,The Hood,Magik,Scarlet Witch,Cloak & Dagger,Jubilee,"Cloak & Dagger <- The Hood; Jubilee <- The Hood; Magik <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee, Magik"
+28,Magneto,The Hood,Moon Knight,Scarlet Witch,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Jubilee <- The Hood; Magneto <- Scarlet Witch; Moon Knight <- Cloak & Dagger; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+29,Magneto,The Hood,Psylocke,Scarlet Witch,Cloak & Dagger,Jubilee,Cloak & Dagger <- The Hood; Jubilee <- The Hood; Magneto <- Scarlet Witch; Psylocke <- Cloak & Dagger; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+30,Rogue,The Hood,Cyclops,Deadpool,Gambit,Jubilee,Cyclops <- Gambit; Deadpool <- Gambit; Gambit <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee
+31,Hulk,The Hood,Cyclops,Wolverine,Gambit,Jubilee,"Cyclops <- Gambit; Gambit <- Jubilee; Hulk <- Wolverine; Jubilee <- The Hood; The Hood <- Jubilee; Wolverine <- Cyclops, Gambit"
+32,Rogue,The Hood,Cyclops,Human Torch,Gambit,Jubilee,Cyclops <- Gambit; Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee
+33,The Hood,The Thing,Cyclops,Human Torch,Gambit,Jubilee,Cyclops <- Gambit; Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; The Hood <- Jubilee; The Thing <- Human Torch
+34,Rogue,The Hood,Cyclops,Magik,Gambit,Jubilee,"Cyclops <- Gambit; Gambit <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; Rogue <- Gambit; The Hood <- Jubilee, Magik"
+35,Magneto,The Hood,Cyclops,Scarlet Witch,Gambit,Jubilee,"Cyclops <- Gambit; Gambit <- Jubilee, Magneto; Jubilee <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee"
+36,Rogue,The Hood,Cyclops,Phoenix,Gambit,Jubilee,"Cyclops <- Gambit, Phoenix; Gambit <- Jubilee; Jubilee <- The Hood; Phoenix <- Rogue; Rogue <- Gambit; The Hood <- Jubilee"
+37,Rogue,The Hood,Cyclops,Scarlet Witch,Gambit,Jubilee,Cyclops <- Gambit; Gambit <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+38,Rogue,The Hood,Cyclops,Wolverine,Gambit,Jubilee,"Cyclops <- Gambit; Gambit <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee; Wolverine <- Cyclops, Gambit"
+39,Rogue,The Hood,Deadpool,Elsa Bloodstone,Gambit,Jubilee,Deadpool <- Gambit; Elsa Bloodstone <- Deadpool; Gambit <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee
+40,Hulk,The Hood,Deadpool,Wolverine,Gambit,Jubilee,Deadpool <- Gambit; Gambit <- Jubilee; Hulk <- Wolverine; Jubilee <- The Hood; The Hood <- Jubilee; Wolverine <- Gambit
+41,Rogue,The Hood,Deadpool,Human Torch,Gambit,Jubilee,Deadpool <- Gambit; Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee
+42,The Hood,The Thing,Deadpool,Human Torch,Gambit,Jubilee,Deadpool <- Gambit; Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; The Hood <- Jubilee; The Thing <- Human Torch
+43,Rogue,The Hood,Deadpool,Magik,Gambit,Jubilee,"Deadpool <- Gambit; Gambit <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; Rogue <- Gambit; The Hood <- Jubilee, Magik"
+44,Magneto,The Hood,Deadpool,Scarlet Witch,Gambit,Jubilee,"Deadpool <- Gambit; Gambit <- Jubilee, Magneto; Jubilee <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee"
+45,Rogue,The Hood,Deadpool,Phoenix,Gambit,Jubilee,Deadpool <- Gambit; Gambit <- Jubilee; Jubilee <- The Hood; Phoenix <- Rogue; Rogue <- Gambit; The Hood <- Jubilee
+46,Rogue,The Hood,Deadpool,Scarlet Witch,Gambit,Jubilee,Deadpool <- Gambit; Gambit <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+47,Rogue,The Hood,Deadpool,Wolverine,Gambit,Jubilee,Deadpool <- Gambit; Gambit <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee; Wolverine <- Gambit
+48,Devil Dinosaur,Groot,Star-Lord,The Punisher,Mantis,Rocket Raccoon,Devil Dinosaur <- The Punisher; Groot <- Mantis; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot; The Punisher <- Rocket Raccoon
+49,Devil Dinosaur,Venom,Hela,Phoenix,Jeff the Land Shark,Loki,Devil Dinosaur <- Jeff the Land Shark; Hela <- Venom; Jeff the Land Shark <- Venom; Loki <- Hela; Phoenix <- Hela; Venom <- Phoenix
+50,Doctor Strange,The Hood,Human Torch,Magik,Invisible Woman,Jubilee,"Doctor Strange <- Invisible Woman; Human Torch <- Jubilee; Invisible Woman <- Human Torch; Jubilee <- The Hood; Magik <- Doctor Strange, The Hood; The Hood <- Jubilee, Magik"
+51,Doctor Strange,The Hood,Human Torch,Scarlet Witch,Invisible Woman,Jubilee,"Doctor Strange <- Invisible Woman; Human Torch <- Jubilee; Invisible Woman <- Human Torch; Jubilee <- The Hood; Scarlet Witch <- Doctor Strange, Jubilee; The Hood <- Jubilee"
+52,Emma Frost,Groot,Psylocke,Star-Lord,Loki,Mantis,Emma Frost <- Mantis; Groot <- Mantis; Loki <- Mantis; Mantis <- Star-Lord; Psylocke <- Emma Frost; Star-Lord <- Groot
+53,Emma Frost,Groot,Mister Fantastic,Star-Lord,Mantis,Rocket Raccoon,Emma Frost <- Mantis; Groot <- Mantis; Mantis <- Star-Lord; Mister Fantastic <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot
+54,Emma Frost,Groot,Psylocke,Star-Lord,Mantis,Rocket Raccoon,Emma Frost <- Mantis; Groot <- Mantis; Mantis <- Star-Lord; Psylocke <- Emma Frost; Rocket Raccoon <- Groot; Star-Lord <- Groot
+55,Emma Frost,Groot,Psylocke,Star-Lord,Mantis,White Fox,Emma Frost <- Mantis; Groot <- Mantis; Mantis <- Star-Lord; Psylocke <- Emma Frost; Star-Lord <- Groot; White Fox <- Psylocke
+56,Emma Frost,Groot,Star-Lord,The Punisher,Mantis,Rocket Raccoon,Emma Frost <- Mantis; Groot <- Mantis; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot; The Punisher <- Rocket Raccoon
+57,Emma Frost,Magneto,Hawkeye,Psylocke,Luna Snow,White Fox,Emma Frost <- Luna Snow; Hawkeye <- Psylocke; Luna Snow <- White Fox; Magneto <- Emma Frost; Psylocke <- Emma Frost; White Fox <- Psylocke
+58,Emma Frost,Magneto,Iron Fist,Psylocke,Luna Snow,White Fox,Emma Frost <- Luna Snow; Iron Fist <- White Fox; Luna Snow <- White Fox; Magneto <- Emma Frost; Psylocke <- Emma Frost; White Fox <- Psylocke
+59,Emma Frost,The Hood,Magik,Psylocke,Luna Snow,White Fox,Emma Frost <- Luna Snow; Luna Snow <- White Fox; Magik <- The Hood; Psylocke <- Emma Frost; The Hood <- Magik; White Fox <- Psylocke
+60,Emma Frost,Magneto,Namor,Psylocke,Luna Snow,White Fox,Emma Frost <- Luna Snow; Luna Snow <- White Fox; Magneto <- Emma Frost; Namor <- Luna Snow; Psylocke <- Emma Frost; White Fox <- Psylocke
+61,The Hood,Venom,Hela,Phoenix,Gambit,Jubilee,Gambit <- Jubilee; Hela <- Venom; Jubilee <- The Hood; Phoenix <- Hela; The Hood <- Jubilee; Venom <- Phoenix
+62,Hulk,The Hood,Human Torch,Wolverine,Gambit,Jubilee,Gambit <- Jubilee; Hulk <- Wolverine; Human Torch <- Jubilee; Jubilee <- The Hood; The Hood <- Jubilee; Wolverine <- Gambit
+63,Hulk,The Hood,Iron Man,Wolverine,Gambit,Jubilee,Gambit <- Jubilee; Hulk <- Wolverine; Iron Man <- Hulk; Jubilee <- The Hood; The Hood <- Jubilee; Wolverine <- Gambit
+64,Hulk,The Hood,Magik,Wolverine,Gambit,Jubilee,"Gambit <- Jubilee; Hulk <- Wolverine; Jubilee <- The Hood; Magik <- The Hood; The Hood <- Jubilee, Magik; Wolverine <- Gambit"
+65,Hulk,The Hood,Namor,Wolverine,Gambit,Jubilee,Gambit <- Jubilee; Hulk <- Wolverine; Jubilee <- The Hood; Namor <- Hulk; The Hood <- Jubilee; Wolverine <- Gambit
+66,Hulk,The Hood,Scarlet Witch,Wolverine,Gambit,Jubilee,Gambit <- Jubilee; Hulk <- Wolverine; Jubilee <- The Hood; Scarlet Witch <- Jubilee; The Hood <- Jubilee; Wolverine <- Gambit
+67,The Hood,The Thing,Human Torch,Iron Fist,Gambit,Jubilee,Gambit <- Jubilee; Human Torch <- Jubilee; Iron Fist <- The Thing; Jubilee <- The Hood; The Hood <- Jubilee; The Thing <- Human Torch
+68,Rogue,The Hood,Human Torch,Magik,Gambit,Jubilee,"Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; Rogue <- Gambit; The Hood <- Jubilee, Magik"
+69,The Hood,The Thing,Human Torch,Magik,Gambit,Jubilee,"Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; The Hood <- Jubilee, Magik; The Thing <- Human Torch"
+70,Magneto,The Hood,Human Torch,Scarlet Witch,Gambit,Jubilee,"Gambit <- Jubilee, Magneto; Human Torch <- Jubilee; Jubilee <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee"
+71,The Hood,The Thing,Human Torch,Mister Fantastic,Gambit,Jubilee,Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Mister Fantastic <- The Thing; The Hood <- Jubilee; The Thing <- Human Torch
+72,Rogue,The Hood,Human Torch,Phoenix,Gambit,Jubilee,Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Phoenix <- Rogue; Rogue <- Gambit; The Hood <- Jubilee
+73,Rogue,The Hood,Human Torch,Scarlet Witch,Gambit,Jubilee,Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+74,Rogue,The Hood,Human Torch,Wolverine,Gambit,Jubilee,Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee; Wolverine <- Gambit
+75,The Hood,The Thing,Human Torch,Scarlet Witch,Gambit,Jubilee,Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Scarlet Witch <- Jubilee; The Hood <- Jubilee; The Thing <- Human Torch
+76,The Hood,The Thing,Human Torch,Wolverine,Gambit,Jubilee,Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; The Hood <- Jubilee; The Thing <- Human Torch; Wolverine <- Gambit
+77,Magneto,The Hood,Magik,Scarlet Witch,Gambit,Jubilee,"Gambit <- Jubilee, Magneto; Jubilee <- The Hood; Magik <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee, Magik"
+78,Rogue,The Hood,Magik,Phoenix,Gambit,Jubilee,"Gambit <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; Phoenix <- Rogue; Rogue <- Gambit; The Hood <- Jubilee, Magik"
+79,Rogue,The Hood,Magik,Scarlet Witch,Gambit,Jubilee,"Gambit <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; Rogue <- Gambit; Scarlet Witch <- Jubilee; The Hood <- Jubilee, Magik"
+80,Rogue,The Hood,Magik,Wolverine,Gambit,Jubilee,"Gambit <- Jubilee; Jubilee <- The Hood; Magik <- The Hood; Rogue <- Gambit; The Hood <- Jubilee, Magik; Wolverine <- Gambit"
+81,Magneto,The Hood,Scarlet Witch,Wolverine,Gambit,Jubilee,"Gambit <- Jubilee, Magneto; Jubilee <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee; Wolverine <- Gambit"
+82,Rogue,The Hood,Phoenix,Scarlet Witch,Gambit,Jubilee,Gambit <- Jubilee; Jubilee <- The Hood; Phoenix <- Rogue; Rogue <- Gambit; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+83,Rogue,The Hood,Phoenix,Wolverine,Gambit,Jubilee,Gambit <- Jubilee; Jubilee <- The Hood; Phoenix <- Rogue; Rogue <- Gambit; The Hood <- Jubilee; Wolverine <- Gambit
+84,Rogue,The Hood,Scarlet Witch,Wolverine,Gambit,Jubilee,Gambit <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; Scarlet Witch <- Jubilee; The Hood <- Jubilee; Wolverine <- Gambit
+85,Groot,Venom,Hela,Phoenix,Jeff the Land Shark,Loki,Groot <- Jeff the Land Shark; Hela <- Venom; Jeff the Land Shark <- Venom; Loki <- Hela; Phoenix <- Hela; Venom <- Phoenix
+86,Groot,Venom,Hela,Phoenix,Jeff the Land Shark,Rocket Raccoon,Groot <- Jeff the Land Shark; Hela <- Venom; Jeff the Land Shark <- Venom; Phoenix <- Hela; Rocket Raccoon <- Groot; Venom <- Phoenix
+87,Groot,The Hood,Human Torch,Star-Lord,Jubilee,Mantis,Groot <- Mantis; Human Torch <- Jubilee; Jubilee <- The Hood; Mantis <- Star-Lord; Star-Lord <- Groot; The Hood <- Jubilee
+88,Groot,The Thing,Mister Fantastic,Star-Lord,Invisible Woman,Mantis,Groot <- Mantis; Invisible Woman <- Mister Fantastic; Mantis <- Star-Lord; Mister Fantastic <- The Thing; Star-Lord <- Groot; The Thing <- Invisible Woman
+89,Groot,The Hood,Magik,Star-Lord,Jubilee,Mantis,"Groot <- Mantis; Jubilee <- The Hood; Magik <- The Hood; Mantis <- Star-Lord; Star-Lord <- Groot; The Hood <- Jubilee, Magik"
+90,Groot,The Hood,Scarlet Witch,Star-Lord,Jubilee,Mantis,Groot <- Mantis; Jubilee <- The Hood; Mantis <- Star-Lord; Scarlet Witch <- Jubilee; Star-Lord <- Groot; The Hood <- Jubilee
+91,Groot,The Hood,Magik,Star-Lord,Loki,Mantis,Groot <- Mantis; Loki <- Mantis; Magik <- The Hood; Mantis <- Star-Lord; Star-Lord <- Groot; The Hood <- Magik
+92,Groot,The Hood,Magik,Star-Lord,Mantis,Rocket Raccoon,Groot <- Mantis; Magik <- The Hood; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot; The Hood <- Magik
+93,Groot,Peni Parker,Mister Fantastic,Star-Lord,Mantis,Rocket Raccoon,Groot <- Mantis; Mantis <- Star-Lord; Mister Fantastic <- Rocket Raccoon; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot
+94,Groot,Peni Parker,Spider-Man,Star-Lord,Mantis,Rocket Raccoon,Groot <- Mantis; Mantis <- Star-Lord; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Groot; Spider-Man <- Peni Parker; Star-Lord <- Groot
+95,Groot,Peni Parker,Star-Lord,The Punisher,Mantis,Rocket Raccoon,Groot <- Mantis; Mantis <- Star-Lord; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot; The Punisher <- Rocket Raccoon
+96,The Hood,Venom,Hela,Phoenix,Jeff the Land Shark,Jubilee,Hela <- Venom; Jeff the Land Shark <- Venom; Jubilee <- The Hood; Phoenix <- Hela; The Hood <- Jubilee; Venom <- Phoenix
+97,Thor,Venom,Hela,Phoenix,Jeff the Land Shark,Loki,Hela <- Venom; Jeff the Land Shark <- Venom; Loki <- Hela; Phoenix <- Hela; Thor <- Hela; Venom <- Phoenix
+98,The Hood,Venom,Hela,Phoenix,Jubilee,Loki,Hela <- Venom; Jubilee <- The Hood; Loki <- Hela; Phoenix <- Hela; The Hood <- Jubilee; Venom <- Phoenix
+99,The Hood,The Thing,Human Torch,Iron Fist,Invisible Woman,Jubilee,"Human Torch <- Jubilee; Invisible Woman <- Human Torch; Iron Fist <- The Thing; Jubilee <- The Hood; The Hood <- Jubilee; The Thing <- Human Torch, Invisible Woman"
+100,The Hood,The Thing,Human Torch,Magik,Invisible Woman,Jubilee,"Human Torch <- Jubilee; Invisible Woman <- Human Torch; Jubilee <- The Hood; Magik <- The Hood; The Hood <- Jubilee, Magik; The Thing <- Human Torch, Invisible Woman"
+101,Magneto,The Hood,Human Torch,Scarlet Witch,Invisible Woman,Jubilee,Human Torch <- Jubilee; Invisible Woman <- Human Torch; Jubilee <- The Hood; Magneto <- Scarlet Witch; Scarlet Witch <- Jubilee; The Hood <- Jubilee
+102,The Hood,The Thing,Human Torch,Mister Fantastic,Invisible Woman,Jubilee,"Human Torch <- Jubilee; Invisible Woman <- Human Torch, Mister Fantastic; Jubilee <- The Hood; Mister Fantastic <- The Thing; The Hood <- Jubilee; The Thing <- Human Torch, Invisible Woman"
+103,The Hood,The Thing,Human Torch,Scarlet Witch,Invisible Woman,Jubilee,"Human Torch <- Jubilee; Invisible Woman <- Human Torch; Jubilee <- The Hood; Scarlet Witch <- Jubilee; The Hood <- Jubilee; The Thing <- Human Torch, Invisible Woman"
+104,The Hood,The Thing,Iron Fist,Mister Fantastic,Invisible Woman,Jubilee,Invisible Woman <- Mister Fantastic; Iron Fist <- The Thing; Jubilee <- The Hood; Mister Fantastic <- The Thing; The Hood <- Jubilee; The Thing <- Invisible Woman
+105,The Hood,The Thing,Magik,Mister Fantastic,Invisible Woman,Jubilee,"Invisible Woman <- Mister Fantastic; Jubilee <- The Hood; Magik <- The Hood; Mister Fantastic <- The Thing; The Hood <- Jubilee, Magik; The Thing <- Invisible Woman"
+106,The Hood,The Thing,Mister Fantastic,Scarlet Witch,Invisible Woman,Jubilee,Invisible Woman <- Mister Fantastic; Jubilee <- The Hood; Mister Fantastic <- The Thing; Scarlet Witch <- Jubilee; The Hood <- Jubilee; The Thing <- Invisible Woman
+107,Peni Parker,The Hood,Spider-Man,Squirrel Girl,Jubilee,Rocket Raccoon,Jubilee <- The Hood; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Squirrel Girl; Spider-Man <- Peni Parker; Squirrel Girl <- Spider-Man; The Hood <- Jubilee

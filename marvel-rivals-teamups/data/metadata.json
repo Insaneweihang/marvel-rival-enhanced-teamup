@@ -1,0 +1,39 @@
+{
+  "game": "Marvel Rivals",
+  "patch_version": "20260710-season-9",
+  "patch_date": "2026-07-10",
+  "data_retrieved_at": "2026-07-23T00:00:00+08:00",
+  "sources": [
+    {
+      "name": "Marvel Rivals Version 20260710 Patch Notes - Season 9 Arrives",
+      "url": "https://www.marvelrivals.com/20260708/41525_1306959.html",
+      "purpose": "Official patch date, Season 9 launch context, and Team-Up system overhaul confirmation."
+    },
+    {
+      "name": "AllThings.How - Marvel Rivals Season 9 Team-Up System",
+      "url": "https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/",
+      "purpose": "Cross-role Season 9 Team-Up pairing table used for directional partner data."
+    },
+    {
+      "name": "FandomWire - Every Vanguard Team-Up Ability in Marvel Rivals Season 9",
+      "url": "https://fandomwire.com/every-vanguard-team-up-ability-marvel-rivals/",
+      "purpose": "Secondary cross-check for Vanguard partner pairings."
+    },
+    {
+      "name": "FandomWire - Every Duelist Team-Up Ability in Marvel Rivals Season 9",
+      "url": "https://fandomwire.com/every-duelist-team-up-ability-marvel-rivals/",
+      "purpose": "Secondary cross-check for Duelist partner pairings."
+    },
+    {
+      "name": "Mobalytics - Season 9 Team-Ups Explained",
+      "url": "https://mobalytics.gg/marvel-rivals/guides/season-9-team-ups-explained",
+      "purpose": "Mechanics confirmation that each hero has two Team-Up loadouts and partners enhance effects."
+    }
+  ],
+  "notes": [
+    "The Season 9 sources expose The Hood as a Team-Up partner before full independent live-roster details were consistently published.",
+    "The Hood is included as a Vanguard to keep partner validation strict; his directional partners are manually inferred from visible Season 9 pairings and should be rechecked when the official hero page is live.",
+    "This project does not hardcode generated team results; counts are derived from heroes.json and teamups.json."
+  ]
+}
+
