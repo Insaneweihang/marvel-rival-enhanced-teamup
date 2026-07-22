@@ -66,6 +66,12 @@ Patch: 20260710-season-9
 python scripts/generate_teams.py --role-format both --format all --show-details
 ```
 
+Refresh the static frontend data after regenerating outputs:
+
+```bash
+python scripts/sync_frontend_data.py
+```
+
 Optional count regression comparison:
 
 ```bash
@@ -76,11 +82,29 @@ Outputs are written to `output/`:
 
 - `all_fully_enhanced_teams.csv`
 - `all_fully_enhanced_teams.json`
-- `all_fully_enhanced_teams.md`
+- [all_fully_enhanced_teams.md](output/all_fully_enhanced_teams.md)
 - `fully_enhanced_222_teams.csv`
 - `fully_enhanced_222_teams.json`
-- `fully_enhanced_222_teams.md`
+- [fully_enhanced_222_teams.md](output/fully_enhanced_222_teams.md)
 - `summary.json`
+
+## Frontend
+
+The static browser lives in [docs/index.html](docs/index.html). It loads committed JSON from `docs/data/`, displays the current patch and generated counts, and lets users include or exclude selected heroes from unrestricted or `2-2-2` teams.
+
+Local preview:
+
+```bash
+python -m http.server 8000
+```
+
+Then open:
+
+```text
+http://localhost:8000/docs/
+```
+
+For GitHub Pages, set the Pages source to the repository branch and `/docs` folder.
 
 ## Compare Patches
 

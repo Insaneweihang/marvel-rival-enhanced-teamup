@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Marvel Rivals Fully Enhanced Teams</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Marvel Rivals Team-Up Generator</p>
+        <h1>Fully Enhanced Team Browser</h1>
+      </div>
+      <dl class="summary-grid" aria-label="Dataset summary">
+        <div>
+          <dt>Patch</dt>
+          <dd id="patch-version">Loading</dd>
+        </div>
+        <div>
+          <dt>All Teams</dt>
+          <dd id="all-count">0</dd>
+        </div>
+        <div>
+          <dt>2-2-2 Teams</dt>
+          <dd id="balanced-count">0</dd>
+        </div>
+        <div>
+          <dt>Checked</dt>
+          <dd id="checked-count">0</dd>
+        </div>
+      </dl>
+    </header>
+
+    <main class="layout">
+      <aside class="filters" aria-label="Team filters">
+        <section class="control-group">
+          <h2>Team Set</h2>
+          <div class="segmented" role="tablist" aria-label="Team set">
+            <button class="segment active" type="button" data-mode="all">All Teams</button>
+            <button class="segment" type="button" data-mode="222">2-2-2 Only</button>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <h2>Filter Mode</h2>
+          <div class="segmented" role="tablist" aria-label="Filter mode">
+            <button class="segment active" type="button" data-filter-mode="include">Include</button>
+            <button class="segment" type="button" data-filter-mode="exclude">Exclude</button>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <div class="search-row">
+            <label for="hero-search">Hero</label>
+            <button id="clear-filters" class="icon-button" type="button" title="Clear filters" aria-label="Clear filters">
+              x
+            </button>
+          </div>
+          <input id="hero-search" type="search" placeholder="Search heroes" autocomplete="off" />
+          <div id="selected-heroes" class="selected-heroes" aria-live="polite"></div>
+        </section>
+
+        <section class="control-group hero-picker">
+          <h2>Heroes</h2>
+          <div id="hero-groups" class="hero-groups"></div>
+        </section>
+      </aside>
+
+      <section class="results" aria-label="Filtered teams">
+        <div class="results-toolbar">
+          <div>
+            <p class="eyebrow">Results</p>
+            <h2 id="results-title">Loading teams</h2>
+          </div>
+          <div class="result-actions">
+            <a id="markdown-link" href="../output/all_fully_enhanced_teams.md">Markdown</a>
+            <a id="json-link" href="../output/all_fully_enhanced_teams.json">JSON</a>
+          </div>
+        </div>
+        <div id="status-message" class="status-message">Loading generated team data.</div>
+        <div id="team-list" class="team-list"></div>
+      </section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
+

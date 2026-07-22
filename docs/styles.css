@@ -1,0 +1,406 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7f4;
+  --panel: #ffffff;
+  --ink: #19201d;
+  --muted: #68736e;
+  --line: #d8ddd7;
+  --accent: #b92035;
+  --accent-ink: #ffffff;
+  --vanguard: #3f6f9f;
+  --duelist: #a33a3a;
+  --strategist: #3c7b5a;
+  --focus: #1d5fd1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.site-header {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(320px, 720px);
+  gap: 24px;
+  align-items: end;
+  padding: 32px clamp(16px, 4vw, 56px) 24px;
+  border-bottom: 1px solid var(--line);
+  background: #ffffff;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(30px, 4vw, 54px);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.summary-grid div {
+  min-width: 0;
+  padding: 14px;
+  background: #fbfcfa;
+}
+
+dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+dd {
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  min-height: calc(100vh - 142px);
+}
+
+.filters {
+  border-right: 1px solid var(--line);
+  background: #fbfcfa;
+  padding: 20px;
+}
+
+.control-group + .control-group {
+  margin-top: 22px;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #eef1ee;
+}
+
+.segment,
+.hero-button,
+.clear-chip,
+.icon-button {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.segment {
+  min-height: 36px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.segment.active {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+label {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.icon-button {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-color: var(--line);
+  color: var(--muted);
+  font-weight: 900;
+}
+
+input[type="search"] {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--ink);
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.selected-heroes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 32px;
+  margin-top: 12px;
+}
+
+.clear-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 3px 8px;
+  background: #ffffff;
+  border-color: var(--line);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.hero-groups {
+  display: grid;
+  gap: 18px;
+}
+
+.role-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hero-button {
+  min-height: 32px;
+  padding: 5px 9px;
+  background: #ffffff;
+  border-color: var(--line);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.hero-button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.results {
+  min-width: 0;
+  padding: 20px clamp(16px, 3vw, 40px) 40px;
+}
+
+.results-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.results-toolbar h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.result-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.status-message {
+  padding: 14px 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.team-list {
+  display: grid;
+  gap: 10px;
+}
+
+.team-row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.team-number {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.team-content {
+  min-width: 0;
+}
+
+.hero-line,
+.paths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.role-group {
+  margin-bottom: 8px;
+}
+
+.role-group-label {
+  display: inline-block;
+  min-width: 82px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hero-chip,
+.path-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  max-width: 100%;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 850;
+  overflow-wrap: anywhere;
+}
+
+.path-chip {
+  background: #eef1ee;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.Vanguard {
+  background: var(--vanguard);
+}
+
+.Duelist {
+  background: var(--duelist);
+}
+
+.Strategist {
+  background: var(--strategist);
+}
+
+.paths {
+  margin-top: 10px;
+}
+
+@media (max-width: 920px) {
+  .site-header,
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    padding-top: 24px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .team-row {
+    grid-template-columns: 1fr;
+  }
+}
+
