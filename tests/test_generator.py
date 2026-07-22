@@ -5,6 +5,7 @@ from marvel_teamups.generator import (
     generate_fully_enhanced_teams,
     has_role_distribution,
     is_fully_enhanced,
+    role_assignment,
 )
 from marvel_teamups.models import Hero, Role
 
@@ -66,6 +67,25 @@ def test_222_filter_works() -> None:
         heroes,
         {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
     )
+
+
+def test_222_filter_supports_multi_role_heroes() -> None:
+    heroes = {
+        "A": Hero("A", Role.VANGUARD),
+        "B": Hero("B", Role.VANGUARD),
+        "C": Hero("C", Role.DUELIST),
+        "D": Hero("D", Role.DUELIST, roles=frozenset({Role.DUELIST, Role.STRATEGIST})),
+        "E": Hero("E", Role.STRATEGIST),
+        "F": Hero("F", Role.DUELIST),
+    }
+    team = ("A", "B", "C", "D", "E", "F")
+    assignment = role_assignment(
+        team,
+        heroes,
+        {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
+    )
+    assert assignment is not None
+    assert assignment["D"] == Role.STRATEGIST
 
 
 def test_hero_inclusion_filtering_works() -> None:

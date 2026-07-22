@@ -5,14 +5,14 @@
   "team_size": 6,
   "total_combinations_checked": 20358520,
   "fully_enhanced_unrestricted_count": 247,
-  "fully_enhanced_222_count": 23,
+  "fully_enhanced_222_count": 28,
   "expected_counts": {
     "unrestricted": 247,
     "222": 28
   },
   "count_match": {
     "unrestricted": true,
-    "222": false
+    "222": true
   },
   "filters": {
     "hero": [],

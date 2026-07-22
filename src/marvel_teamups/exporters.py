@@ -4,7 +4,7 @@ import csv
 import json
 from pathlib import Path
 
-from .generator import active_partners
+from .generator import active_partners, role_assignment
 from .models import Hero, Role
 
 
@@ -27,12 +27,15 @@ def _heroes_json(
     team: tuple[str, ...],
     heroes_by_name: dict[str, Hero],
     teamup_partners: dict[str, frozenset[str]],
+    assigned_roles: dict[str, Role] | None = None,
 ) -> list[dict[str, object]]:
     details = enhancement_details(team, teamup_partners)
     return [
         {
             "name": hero,
-            "role": heroes_by_name[hero].role.value,
+            "role": (assigned_roles or {}).get(hero, heroes_by_name[hero].role).value,
+            "primary_role": heroes_by_name[hero].role.value,
+            "eligible_roles": sorted(role.value for role in heroes_by_name[hero].eligible_roles),
             "active": heroes_by_name[hero].active,
             "active_partners": details[hero],
         }
@@ -79,8 +82,13 @@ def export_unrestricted(
         (output_dir / "all_fully_enhanced_teams.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
 
 
-def _role_names(team: tuple[str, ...], heroes_by_name: dict[str, Hero], role: Role) -> list[str]:
-    return sorted(hero for hero in team if heroes_by_name[hero].role == role)
+def _role_names(
+    team: tuple[str, ...],
+    heroes_by_name: dict[str, Hero],
+    role: Role,
+    assigned_roles: dict[str, Role],
+) -> list[str]:
+    return sorted(hero for hero in team if assigned_roles[hero] == role)
 
 
 def export_222(
@@ -97,11 +105,18 @@ def export_222(
             writer = csv.writer(f)
             writer.writerow(["team_number", "vanguard_1", "vanguard_2", "duelist_1", "duelist_2", "strategist_1", "strategist_2", "enhancement_details"])
             for index, team in enumerate(teams, start=1):
+                assigned_roles = role_assignment(
+                    team,
+                    heroes_by_name,
+                    {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
+                )
+                if assigned_roles is None:
+                    raise ValueError(f"2-2-2 team has no valid role assignment: {team}")
                 row = (
                     [index]
-                    + _role_names(team, heroes_by_name, Role.VANGUARD)
-                    + _role_names(team, heroes_by_name, Role.DUELIST)
-                    + _role_names(team, heroes_by_name, Role.STRATEGIST)
+                    + _role_names(team, heroes_by_name, Role.VANGUARD, assigned_roles)
+                    + _role_names(team, heroes_by_name, Role.DUELIST, assigned_roles)
+                    + _role_names(team, heroes_by_name, Role.STRATEGIST, assigned_roles)
                     + [details_text(team, teamup_partners)]
                 )
                 writer.writerow(row)
@@ -112,7 +127,16 @@ def export_222(
             "teams": [
                 {
                     "team_number": index,
-                    "heroes": _heroes_json(team, heroes_by_name, teamup_partners),
+                    "heroes": _heroes_json(
+                        team,
+                        heroes_by_name,
+                        teamup_partners,
+                        role_assignment(
+                            team,
+                            heroes_by_name,
+                            {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
+                        ),
+                    ),
                 }
                 for index, team in enumerate(teams, start=1)
             ],
@@ -123,10 +147,17 @@ def export_222(
     if "md" in formats:
         rows = ["| # | Vanguards | Duelists | Strategists | Enhancement paths |", "|---:|---|---|---|---|"]
         for index, team in enumerate(teams, start=1):
+            assigned_roles = role_assignment(
+                team,
+                heroes_by_name,
+                {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
+            )
+            if assigned_roles is None:
+                raise ValueError(f"2-2-2 team has no valid role assignment: {team}")
             rows.append(
-                f"| {index} | {', '.join(_role_names(team, heroes_by_name, Role.VANGUARD))} | "
-                f"{', '.join(_role_names(team, heroes_by_name, Role.DUELIST))} | "
-                f"{', '.join(_role_names(team, heroes_by_name, Role.STRATEGIST))} | "
+                f"| {index} | {', '.join(_role_names(team, heroes_by_name, Role.VANGUARD, assigned_roles))} | "
+                f"{', '.join(_role_names(team, heroes_by_name, Role.DUELIST, assigned_roles))} | "
+                f"{', '.join(_role_names(team, heroes_by_name, Role.STRATEGIST, assigned_roles))} | "
                 f"{details_text(team, teamup_partners)} |"
             )
         (output_dir / "fully_enhanced_222_teams.md").write_text("\n".join(rows) + "\n", encoding="utf-8")

@@ -14,13 +14,13 @@ The generator checks every six-hero combination, not permutations, and outputs b
 - Patch date: `2026-07-10`
 - Active heroes generated: `52`
 - Fully enhanced unrestricted combinations: `247`
-- Fully enhanced 2-2-2 combinations: `23`
-- Old reference count match (`247` unrestricted / `28` 2-2-2): `true` / `false`
+- Fully enhanced 2-2-2 combinations: `28`
+- Old reference count match (`247` unrestricted / `28` 2-2-2): `true` / `true`
 - Main official source: <https://www.marvelrivals.com/20260708/41525_1306959.html>
 - Pairing source: <https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/>
 - Cross-checks: FandomWire role guides and Mobalytics Season 9 Team-Ups overview.
 
-The Hood is listed as a Team-Up partner in Season 9 source tables before full independent live-roster details were consistently available. He is included as an inactive Vanguard so validation remains strict, but he is excluded from generated teams.
+The Hood is listed as a Team-Up partner in Season 9 source tables before full independent live-roster details were consistently available. He is included as an inactive Vanguard so validation remains strict, but he is excluded from generated teams. Deadpool is listed with Duelist as his primary role and Strategist as an eligible 2-2-2 flex role.
 
 ## Setup
 

@@ -1,6 +1,6 @@
 {
   "patch_version": "20260710-season-9",
-  "team_count": 23,
+  "team_count": 28,
   "teams": [
     {
       "team_number": 1,
@@ -8,6 +8,10 @@
         {
           "name": "Adam Warlock",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Ultron"
@@ -16,6 +20,10 @@
         {
           "name": "Angela",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Star-Lord"
@@ -24,6 +32,10 @@
         {
           "name": "Iron Man",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Thor"
@@ -32,6 +44,10 @@
         {
           "name": "Star-Lord",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Adam Warlock"
@@ -40,6 +56,10 @@
         {
           "name": "Thor",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Angela"
@@ -48,6 +68,10 @@
         {
           "name": "Ultron",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Iron Man"
@@ -61,6 +85,10 @@
         {
           "name": "Adam Warlock",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Storm"
@@ -69,6 +97,10 @@
         {
           "name": "Angela",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Star-Lord"
@@ -77,6 +109,10 @@
         {
           "name": "Luna Snow",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Adam Warlock"
@@ -85,6 +121,10 @@
         {
           "name": "Star-Lord",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Adam Warlock"
@@ -93,6 +133,10 @@
         {
           "name": "Storm",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Thor"
@@ -101,6 +145,10 @@
         {
           "name": "Thor",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Angela"
@@ -114,6 +162,10 @@
         {
           "name": "Adam Warlock",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Storm"
@@ -122,6 +174,10 @@
         {
           "name": "Angela",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Star-Lord"
@@ -130,6 +186,10 @@
         {
           "name": "Mantis",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Adam Warlock",
@@ -139,6 +199,10 @@
         {
           "name": "Star-Lord",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Adam Warlock"
@@ -147,6 +211,10 @@
         {
           "name": "Storm",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Thor"
@@ -155,6 +223,10 @@
         {
           "name": "Thor",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Angela"
@@ -168,49 +240,74 @@
         {
           "name": "Angela",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Star-Lord"
+            "Loki"
           ]
         },
         {
-          "name": "Groot",
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Hela",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Loki",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Phoenix",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Venom",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Mantis",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Mister Fantastic",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Rocket Raccoon"
-          ]
-        },
-        {
-          "name": "Rocket Raccoon",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Groot"
-          ]
-        },
-        {
-          "name": "Star-Lord",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Groot"
+            "Phoenix"
           ]
         }
       ]
@@ -221,6 +318,10 @@
         {
           "name": "Angela",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Star-Lord"
@@ -229,6 +330,10 @@
         {
           "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Mantis"
@@ -237,14 +342,34 @@
         {
           "name": "Mantis",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Star-Lord"
           ]
         },
         {
+          "name": "Mister Fantastic",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
           "name": "Rocket Raccoon",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Groot"
@@ -253,17 +378,13 @@
         {
           "name": "Star-Lord",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Groot"
-          ]
-        },
-        {
-          "name": "The Punisher",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Rocket Raccoon"
           ]
         }
       ]
@@ -274,67 +395,22 @@
         {
           "name": "Angela",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Loki"
-          ]
-        },
-        {
-          "name": "Hela",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Venom"
-          ]
-        },
-        {
-          "name": "Jeff the Land Shark",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Venom"
-          ]
-        },
-        {
-          "name": "Loki",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Hela"
-          ]
-        },
-        {
-          "name": "Phoenix",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Hela"
-          ]
-        },
-        {
-          "name": "Venom",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "Phoenix"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 7,
-      "heroes": [
-        {
-          "name": "Devil Dinosaur",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "The Punisher"
+            "Star-Lord"
           ]
         },
         {
           "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Mantis"
@@ -343,6 +419,10 @@
         {
           "name": "Mantis",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Star-Lord"
@@ -351,6 +431,10 @@
         {
           "name": "Rocket Raccoon",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Groot"
@@ -359,6 +443,10 @@
         {
           "name": "Star-Lord",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Groot"
@@ -367,6 +455,10 @@
         {
           "name": "The Punisher",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Rocket Raccoon"
@@ -375,19 +467,27 @@
       ]
     },
     {
-      "team_number": 8,
+      "team_number": 7,
       "heroes": [
         {
-          "name": "Devil Dinosaur",
+          "name": "Angela",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Jeff the Land Shark"
+            "Loki"
           ]
         },
         {
           "name": "Hela",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Venom"
@@ -396,6 +496,10 @@
         {
           "name": "Jeff the Land Shark",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Venom"
@@ -404,6 +508,10 @@
         {
           "name": "Loki",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Hela"
@@ -412,6 +520,10 @@
         {
           "name": "Phoenix",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Hela"
@@ -420,6 +532,89 @@
         {
           "name": "Venom",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Phoenix"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 8,
+      "heroes": [
+        {
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Devil Dinosaur",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jeff the Land Shark"
+          ]
+        },
+        {
+          "name": "Hela",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Jeff the Land Shark",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Deadpool",
+            "Venom"
+          ]
+        },
+        {
+          "name": "Phoenix",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Venom",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Phoenix"
@@ -431,51 +626,77 @@
       "team_number": 9,
       "heroes": [
         {
-          "name": "Emma Frost",
-          "role": "Vanguard",
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Mantis"
+            "Hela"
           ]
         },
         {
           "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Mantis"
+            "Jeff the Land Shark"
           ]
         },
         {
-          "name": "Loki",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Mantis",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Psylocke",
+          "name": "Hela",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Emma Frost"
+            "Venom"
           ]
         },
         {
-          "name": "Star-Lord",
-          "role": "Duelist",
+          "name": "Jeff the Land Shark",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Groot"
+            "Deadpool",
+            "Venom"
+          ]
+        },
+        {
+          "name": "Phoenix",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Venom",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Phoenix"
           ]
         }
       ]
@@ -484,51 +705,77 @@
       "team_number": 10,
       "heroes": [
         {
-          "name": "Emma Frost",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Groot",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Mantis",
+          "name": "Deadpool",
           "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Star-Lord"
+            "Hela"
           ]
         },
         {
-          "name": "Mister Fantastic",
+          "name": "Hela",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Rocket Raccoon"
+            "Venom"
           ]
         },
         {
-          "name": "Rocket Raccoon",
+          "name": "Jeff the Land Shark",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Groot"
+            "Deadpool",
+            "Venom"
           ]
         },
         {
-          "name": "Star-Lord",
+          "name": "Phoenix",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Groot"
+            "Hela"
+          ]
+        },
+        {
+          "name": "Thor",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Venom",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Phoenix"
           ]
         }
       ]
@@ -537,51 +784,76 @@
       "team_number": 11,
       "heroes": [
         {
-          "name": "Emma Frost",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Groot",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Mantis",
+          "name": "Deadpool",
           "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Star-Lord"
+            "Hela"
           ]
         },
         {
-          "name": "Psylocke",
+          "name": "Hela",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Emma Frost"
+            "Venom"
           ]
         },
         {
-          "name": "Rocket Raccoon",
+          "name": "Loki",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Groot"
+            "Hela"
           ]
         },
         {
-          "name": "Star-Lord",
+          "name": "Phoenix",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Groot"
+            "Hela"
+          ]
+        },
+        {
+          "name": "Thor",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Venom",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Phoenix"
           ]
         }
       ]
@@ -590,16 +862,24 @@
       "team_number": 12,
       "heroes": [
         {
-          "name": "Emma Frost",
+          "name": "Devil Dinosaur",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Mantis"
+            "The Punisher"
           ]
         },
         {
           "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Mantis"
@@ -608,59 +888,10 @@
         {
           "name": "Mantis",
           "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Psylocke",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Emma Frost"
-          ]
-        },
-        {
-          "name": "Star-Lord",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Groot"
-          ]
-        },
-        {
-          "name": "White Fox",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Psylocke"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 13,
-      "heroes": [
-        {
-          "name": "Emma Frost",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Groot",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Mantis",
-          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Star-Lord"
@@ -669,6 +900,10 @@
         {
           "name": "Rocket Raccoon",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Groot"
@@ -677,6 +912,10 @@
         {
           "name": "Star-Lord",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Groot"
@@ -685,9 +924,90 @@
         {
           "name": "The Punisher",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Rocket Raccoon"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 13,
+      "heroes": [
+        {
+          "name": "Devil Dinosaur",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jeff the Land Shark"
+          ]
+        },
+        {
+          "name": "Hela",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Jeff the Land Shark",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Loki",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Phoenix",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Venom",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Phoenix"
           ]
         }
       ]
@@ -698,49 +1018,73 @@
         {
           "name": "Emma Frost",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Luna Snow"
+            "Mantis"
           ]
         },
         {
-          "name": "Hawkeye",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Psylocke"
-          ]
-        },
-        {
-          "name": "Luna Snow",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "White Fox"
-          ]
-        },
-        {
-          "name": "Magneto",
+          "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Emma Frost"
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Loki",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Star-Lord"
           ]
         },
         {
           "name": "Psylocke",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Emma Frost"
           ]
         },
         {
-          "name": "White Fox",
-          "role": "Strategist",
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Psylocke"
+            "Groot"
           ]
         }
       ]
@@ -751,49 +1095,73 @@
         {
           "name": "Emma Frost",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Luna Snow"
+            "Mantis"
           ]
         },
         {
-          "name": "Iron Fist",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "White Fox"
-          ]
-        },
-        {
-          "name": "Luna Snow",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "White Fox"
-          ]
-        },
-        {
-          "name": "Magneto",
+          "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Emma Frost"
+            "Mantis"
           ]
         },
         {
-          "name": "Psylocke",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Emma Frost"
-          ]
-        },
-        {
-          "name": "White Fox",
+          "name": "Mantis",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Psylocke"
+            "Star-Lord"
+          ]
+        },
+        {
+          "name": "Mister Fantastic",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
           ]
         }
       ]
@@ -804,49 +1172,73 @@
         {
           "name": "Emma Frost",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Luna Snow"
+            "Mantis"
           ]
         },
         {
-          "name": "Luna Snow",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "White Fox"
-          ]
-        },
-        {
-          "name": "Magneto",
+          "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Emma Frost"
+            "Mantis"
           ]
         },
         {
-          "name": "Namor",
-          "role": "Duelist",
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Luna Snow"
+            "Star-Lord"
           ]
         },
         {
           "name": "Psylocke",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Emma Frost"
           ]
         },
         {
-          "name": "White Fox",
+          "name": "Rocket Raccoon",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Psylocke"
+            "Groot"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
           ]
         }
       ]
@@ -855,51 +1247,75 @@
       "team_number": 17,
       "heroes": [
         {
+          "name": "Emma Frost",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
           "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Jeff the Land Shark"
+            "Mantis"
           ]
         },
         {
-          "name": "Hela",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Venom"
-          ]
-        },
-        {
-          "name": "Jeff the Land Shark",
+          "name": "Mantis",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Venom"
+            "Star-Lord"
           ]
         },
         {
-          "name": "Loki",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Hela"
-          ]
-        },
-        {
-          "name": "Phoenix",
+          "name": "Psylocke",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Hela"
+            "Emma Frost"
           ]
         },
         {
-          "name": "Venom",
-          "role": "Vanguard",
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Phoenix"
+            "Groot"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
           ]
         }
       ]
@@ -908,51 +1324,75 @@
       "team_number": 18,
       "heroes": [
         {
+          "name": "Emma Frost",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
           "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Jeff the Land Shark"
+            "Mantis"
           ]
         },
         {
-          "name": "Hela",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Venom"
-          ]
-        },
-        {
-          "name": "Jeff the Land Shark",
+          "name": "Mantis",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Venom"
-          ]
-        },
-        {
-          "name": "Phoenix",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Hela"
+            "Star-Lord"
           ]
         },
         {
           "name": "Rocket Raccoon",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Groot"
           ]
         },
         {
-          "name": "Venom",
-          "role": "Vanguard",
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Phoenix"
+            "Groot"
+          ]
+        },
+        {
+          "name": "The Punisher",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
           ]
         }
       ]
@@ -961,51 +1401,75 @@
       "team_number": 19,
       "heroes": [
         {
-          "name": "Groot",
+          "name": "Emma Frost",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Mantis"
+            "Luna Snow"
           ]
         },
         {
-          "name": "Invisible Woman",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Mister Fantastic"
-          ]
-        },
-        {
-          "name": "Mantis",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Mister Fantastic",
+          "name": "Hawkeye",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "The Thing"
+            "Psylocke"
           ]
         },
         {
-          "name": "Star-Lord",
-          "role": "Duelist",
+          "name": "Luna Snow",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Groot"
+            "White Fox"
           ]
         },
         {
-          "name": "The Thing",
+          "name": "Magneto",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Invisible Woman"
+            "Emma Frost"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Emma Frost"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
           ]
         }
       ]
@@ -1014,51 +1478,75 @@
       "team_number": 20,
       "heroes": [
         {
-          "name": "Groot",
+          "name": "Emma Frost",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Mantis"
+            "Luna Snow"
           ]
         },
         {
-          "name": "Mantis",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Mister Fantastic",
+          "name": "Iron Fist",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Rocket Raccoon"
+            "White Fox"
           ]
         },
         {
-          "name": "Peni Parker",
+          "name": "Luna Snow",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "White Fox"
+          ]
+        },
+        {
+          "name": "Magneto",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Rocket Raccoon"
+            "Emma Frost"
           ]
         },
         {
-          "name": "Rocket Raccoon",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Groot"
-          ]
-        },
-        {
-          "name": "Star-Lord",
+          "name": "Psylocke",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
-            "Groot"
+            "Emma Frost"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
           ]
         }
       ]
@@ -1067,51 +1555,75 @@
       "team_number": 21,
       "heroes": [
         {
-          "name": "Groot",
+          "name": "Emma Frost",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Mantis"
+            "Luna Snow"
           ]
         },
         {
-          "name": "Mantis",
+          "name": "Luna Snow",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Star-Lord"
+            "White Fox"
           ]
         },
         {
-          "name": "Peni Parker",
+          "name": "Magneto",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Rocket Raccoon"
+            "Emma Frost"
           ]
         },
         {
-          "name": "Rocket Raccoon",
+          "name": "Namor",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Emma Frost"
+          ]
+        },
+        {
+          "name": "White Fox",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
-            "Groot"
-          ]
-        },
-        {
-          "name": "Spider-Man",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Peni Parker"
-          ]
-        },
-        {
-          "name": "Star-Lord",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Groot"
+            "Psylocke"
           ]
         }
       ]
@@ -1122,59 +1634,22 @@
         {
           "name": "Groot",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
-            "Mantis"
+            "Jeff the Land Shark"
           ]
         },
-        {
-          "name": "Mantis",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Peni Parker",
-          "role": "Vanguard",
-          "active": true,
-          "active_partners": [
-            "Rocket Raccoon"
-          ]
-        },
-        {
-          "name": "Rocket Raccoon",
-          "role": "Strategist",
-          "active": true,
-          "active_partners": [
-            "Groot"
-          ]
-        },
-        {
-          "name": "Star-Lord",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Groot"
-          ]
-        },
-        {
-          "name": "The Punisher",
-          "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Rocket Raccoon"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 23,
-      "heroes": [
         {
           "name": "Hela",
           "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Venom"
@@ -1183,6 +1658,10 @@
         {
           "name": "Jeff the Land Shark",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Venom"
@@ -1191,6 +1670,10 @@
         {
           "name": "Loki",
           "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
           "active": true,
           "active_partners": [
             "Hela"
@@ -1199,14 +1682,10 @@
         {
           "name": "Phoenix",
           "role": "Duelist",
-          "active": true,
-          "active_partners": [
-            "Hela"
-          ]
-        },
-        {
-          "name": "Thor",
-          "role": "Vanguard",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
           "active": true,
           "active_partners": [
             "Hela"
@@ -1215,6 +1694,472 @@
         {
           "name": "Venom",
           "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Phoenix"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 23,
+      "heroes": [
+        {
+          "name": "Groot",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jeff the Land Shark"
+          ]
+        },
+        {
+          "name": "Hela",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Jeff the Land Shark",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Phoenix",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "Venom",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Phoenix"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 24,
+      "heroes": [
+        {
+          "name": "Groot",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Invisible Woman",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mister Fantastic"
+          ]
+        },
+        {
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Star-Lord"
+          ]
+        },
+        {
+          "name": "Mister Fantastic",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Thing"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "The Thing",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Invisible Woman"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 25,
+      "heroes": [
+        {
+          "name": "Groot",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Star-Lord"
+          ]
+        },
+        {
+          "name": "Mister Fantastic",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
+          "name": "Peni Parker",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 26,
+      "heroes": [
+        {
+          "name": "Groot",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Star-Lord"
+          ]
+        },
+        {
+          "name": "Peni Parker",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "Spider-Man",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Peni Parker"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 27,
+      "heroes": [
+        {
+          "name": "Groot",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Star-Lord"
+          ]
+        },
+        {
+          "name": "Peni Parker",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "The Punisher",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 28,
+      "heroes": [
+        {
+          "name": "Hela",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Jeff the Land Shark",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Loki",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Phoenix",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Thor",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Venom",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
           "active": true,
           "active_partners": [
             "Phoenix"

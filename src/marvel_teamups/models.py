@@ -15,6 +15,11 @@ class Hero:
     name: str
     role: Role
     active: bool = True
+    roles: frozenset[Role] | None = None
+
+    @property
+    def eligible_roles(self) -> frozenset[Role]:
+        return self.roles or frozenset({self.role})
 
 
 @dataclass(frozen=True)

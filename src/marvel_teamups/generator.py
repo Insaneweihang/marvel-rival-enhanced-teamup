@@ -39,10 +39,37 @@ def has_role_distribution(
     heroes_by_name: dict[str, Hero],
     required: dict[Role, int],
 ) -> bool:
-    counts = Counter(heroes_by_name[name].role for name in team)
-    return all(counts[role] == expected for role, expected in required.items()) and sum(
-        counts.values()
-    ) == sum(required.values())
+    return role_assignment(team, heroes_by_name, required) is not None
+
+
+def role_assignment(
+    team: tuple[str, ...],
+    heroes_by_name: dict[str, Hero],
+    required: dict[Role, int],
+) -> dict[str, Role] | None:
+    remaining = Counter(required)
+    assignment: dict[str, Role] = {}
+    ordered_team = sorted(
+        team,
+        key=lambda name: (len(heroes_by_name[name].eligible_roles), name),
+    )
+
+    def assign(index: int) -> bool:
+        if index == len(ordered_team):
+            return all(count == 0 for count in remaining.values())
+        hero_name = ordered_team[index]
+        for role in sorted(heroes_by_name[hero_name].eligible_roles, key=lambda item: item.value):
+            if remaining[role] <= 0:
+                continue
+            assignment[hero_name] = role
+            remaining[role] -= 1
+            if assign(index + 1):
+                return True
+            remaining[role] += 1
+            del assignment[hero_name]
+        return False
+
+    return assignment if assign(0) else None
 
 
 def filter_teams_by_hero(

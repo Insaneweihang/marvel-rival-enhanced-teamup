@@ -5,6 +5,7 @@ from .generator import (
     generate_fully_enhanced_teams,
     has_role_distribution,
     is_fully_enhanced,
+    role_assignment,
 )
 from .models import Hero, Role
 
@@ -15,4 +16,5 @@ __all__ = [
     "generate_fully_enhanced_teams",
     "has_role_distribution",
     "is_fully_enhanced",
+    "role_assignment",
 ]

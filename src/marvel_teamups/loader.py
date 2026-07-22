@@ -45,10 +45,26 @@ def load_heroes(path: Path) -> tuple[str, list[Hero]]:
             role = Role(role_value)
         except ValueError as exc:
             raise DataLoadError(f"Unknown role for hero {name!r}: {role_value!r}") from exc
+        raw_roles = item.get("roles")
+        roles: frozenset[Role] | None = None
+        if raw_roles is not None:
+            if not isinstance(raw_roles, list) or not raw_roles:
+                raise DataLoadError(f"Hero {name!r} has an invalid roles list")
+            parsed_roles: list[Role] = []
+            for raw_role in raw_roles:
+                try:
+                    parsed_roles.append(Role(raw_role))
+                except ValueError as exc:
+                    raise DataLoadError(
+                        f"Unknown eligible role for hero {name!r}: {raw_role!r}"
+                    ) from exc
+            roles = frozenset(parsed_roles)
+            if role not in roles:
+                raise DataLoadError(f"Hero {name!r} primary role must be included in roles")
         active = item.get("active", True)
         if not isinstance(active, bool):
             raise DataLoadError(f"Hero entry #{index} in {path} has a non-boolean active value")
-        heroes.append(Hero(name=name, role=role, active=active))
+        heroes.append(Hero(name=name, role=role, active=active, roles=roles))
     return patch_version, heroes
 
 

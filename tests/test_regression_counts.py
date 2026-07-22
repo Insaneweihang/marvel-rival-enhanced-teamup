@@ -26,7 +26,7 @@ def test_current_dataset_counts_are_recorded_not_forced() -> None:
         )
     ]
     assert len(teams) == 247
-    assert len(teams_222) >= 0
+    assert len(teams_222) == 28
     if loaded.patch_version == "season-9-reference-247-28":
         assert len(teams) == 247
         assert len(teams_222) == 28

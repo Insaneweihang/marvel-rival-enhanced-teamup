@@ -70,3 +70,25 @@ def test_non_boolean_active_is_rejected(tmp_path: Path) -> None:
     )
     with pytest.raises(DataLoadError, match="non-boolean active"):
         load_heroes(path)
+
+
+def test_multi_role_hero_loads_correctly(tmp_path: Path) -> None:
+    path = tmp_path / "heroes.json"
+    path.write_text(
+        json.dumps(
+            {
+                "patch_version": "x",
+                "heroes": [
+                    {
+                        "name": "Deadpool",
+                        "role": "Duelist",
+                        "roles": ["Duelist", "Strategist"],
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    _, heroes = load_heroes(path)
+    assert heroes[0].role.value == "Duelist"
+    assert {role.value for role in heroes[0].eligible_roles} == {"Duelist", "Strategist"}

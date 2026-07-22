@@ -21,7 +21,7 @@
     {"name": "Blade", "role": "Duelist"},
     {"name": "Cyclops", "role": "Duelist"},
     {"name": "Daredevil", "role": "Duelist"},
-    {"name": "Deadpool", "role": "Duelist"},
+    {"name": "Deadpool", "role": "Duelist", "roles": ["Duelist", "Strategist"]},
     {"name": "Elsa Bloodstone", "role": "Duelist"},
     {"name": "Hawkeye", "role": "Duelist"},
     {"name": "Hela", "role": "Duelist"},
