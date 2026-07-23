@@ -1,0 +1,262 @@
+{
+  "last_checked": "2026-07-23",
+  "sources": [
+    {
+      "label": "Marvel Rivals Wiki - Maps",
+      "url": "https://marvelrivals.fandom.com/wiki/Maps"
+    },
+    {
+      "label": "Marvel Rivals Wiki - Game Modes",
+      "url": "https://marvelrivals.fandom.com/wiki/Game_Modes"
+    },
+    {
+      "label": "Marvel Rivals Wiki.gg - Maps",
+      "url": "https://marvelrivals.wiki.gg/wiki/Maps"
+    }
+  ],
+  "objective_types": [
+    {
+      "name": "Convergence",
+      "summary": "Attackers capture a mission area, then escort a mission vehicle after the area is captured."
+    },
+    {
+      "name": "Convoy",
+      "summary": "Attackers escort a moving vehicle while defenders try to stop it before time expires."
+    },
+    {
+      "name": "Domination",
+      "summary": "Both teams fight to control a mission area and win rounds by reaching full progress."
+    },
+    {
+      "name": "Resource Rumble",
+      "summary": "Teams fight over mission areas to harvest resources. Listed as no longer available in the referenced map list."
+    },
+    {
+      "name": "Conquest",
+      "summary": "Arcade team mode focused on defeating enemies and collecting points."
+    },
+    {
+      "name": "Doom Match",
+      "summary": "Arcade free-for-all mode where players compete for final hits."
+    },
+    {
+      "name": "Annihilation",
+      "summary": "Arcade combat mode listed separately from the standard Quick Match and Competitive map pool."
+    },
+    {
+      "name": "Bounty Annihilation",
+      "summary": "Arcade combat mode listed separately from the standard Quick Match and Competitive map pool."
+    },
+    {
+      "name": "Event",
+      "summary": "Limited-time or event-specific map variants and arenas."
+    },
+    {
+      "name": "Social",
+      "summary": "Non-combat spaces centered on player interaction."
+    },
+    {
+      "name": "Training",
+      "summary": "Practice and tutorial spaces."
+    }
+  ],
+  "maps": [
+    {
+      "name": "Central Park",
+      "location": "Empire of Eternal Night",
+      "objective_type": "Convergence",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Hall of Djalia",
+      "location": "Intergalactic Empire of Wakanda",
+      "objective_type": "Convergence",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Symbiotic Surface",
+      "location": "Klyntar",
+      "objective_type": "Convergence",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Shin-Shibuya",
+      "location": "Tokyo 2099",
+      "objective_type": "Convergence",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Heart of Heaven",
+      "location": "K'un-Lun",
+      "objective_type": "Convergence",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Lower Manhattan",
+      "location": "Lower Manhattan",
+      "objective_type": "Convergence",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Midtown",
+      "location": "Empire of Eternal Night",
+      "objective_type": "Convoy",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Arakko",
+      "location": "Hellfire Gala",
+      "objective_type": "Convoy",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Spider-Islands",
+      "location": "Tokyo 2099",
+      "objective_type": "Convoy",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Yggdrasill Path",
+      "location": "Yggsgard",
+      "objective_type": "Convoy",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Museum of Contemplation",
+      "location": "Museum of Contemplation",
+      "objective_type": "Convoy",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"],
+      "release": "Season 6.0"
+    },
+    {
+      "name": "Birnin T'Challa",
+      "location": "Intergalactic Empire of Wakanda",
+      "objective_type": "Domination",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Celestial Husk",
+      "location": "Klyntar",
+      "objective_type": "Domination",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Hell's Heaven",
+      "location": "Hydra Charteris Base",
+      "objective_type": "Domination",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Krakoa",
+      "location": "Hellfire Gala",
+      "objective_type": "Domination",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Royal Palace",
+      "location": "Yggsgard",
+      "objective_type": "Domination",
+      "category": "Standard",
+      "availability": ["Quick Match", "Competitive"]
+    },
+    {
+      "name": "Throne of Knull",
+      "location": "Klyntar",
+      "objective_type": "Resource Rumble",
+      "category": "Unavailable",
+      "availability": ["No longer available"]
+    },
+    {
+      "name": "Ninomaru",
+      "location": "Tokyo 2099",
+      "objective_type": "Conquest",
+      "category": "Arcade",
+      "availability": ["Arcade"]
+    },
+    {
+      "name": "Sanctum Sanctorum",
+      "location": "Empire of Eternal Night",
+      "objective_type": "Doom Match",
+      "category": "Arcade",
+      "availability": ["Arcade"]
+    },
+    {
+      "name": "Grand Garden",
+      "location": "Grand Garden",
+      "objective_type": "Annihilation",
+      "category": "Arcade",
+      "availability": ["Arcade"]
+    },
+    {
+      "name": "Shenloong Arena",
+      "location": "K'un-Lun",
+      "objective_type": "Bounty Annihilation",
+      "category": "Arcade",
+      "availability": ["Arcade"]
+    },
+    {
+      "name": "Times Square",
+      "location": "Times Square",
+      "objective_type": "Social",
+      "category": "Social",
+      "availability": ["Social Hub"]
+    },
+    {
+      "name": "Hellfire Bay Beach",
+      "location": "Hellfire Bay Beach",
+      "objective_type": "Social",
+      "category": "Social",
+      "availability": ["Social Hub"]
+    },
+    {
+      "name": "Practice Range",
+      "location": "Intergalactic Empire of Wakanda",
+      "objective_type": "Training",
+      "category": "Training",
+      "availability": ["Practice Range"]
+    },
+    {
+      "name": "World Arena",
+      "location": "Intergalactic Empire of Wakanda",
+      "objective_type": "Event",
+      "category": "Event",
+      "availability": ["Fortune & Colors"]
+    },
+    {
+      "name": "Digital Duel Grounds",
+      "location": "Age of Ultron",
+      "objective_type": "Event",
+      "category": "Event",
+      "availability": ["Ultron's Battle Matrix Protocol"]
+    },
+    {
+      "name": "Jeffland",
+      "location": "Jeffland",
+      "objective_type": "Event",
+      "category": "Event",
+      "availability": ["Jeff's Winter Splash Festival"]
+    },
+    {
+      "name": "Blood-Night New York",
+      "location": "Blood-Night New York",
+      "objective_type": "Event",
+      "category": "Event",
+      "availability": ["Blood Hunt"]
+    }
+  ]
+}

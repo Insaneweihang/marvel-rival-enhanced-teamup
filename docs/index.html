@@ -14,6 +14,7 @@
         <nav class="view-tabs" aria-label="Application views">
           <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
           <button class="view-tab" type="button" data-view="builder">Team Builder</button>
+          <button class="view-tab" type="button" data-view="maps">Maps</button>
         </nav>
       </div>
       <dl class="summary-grid" aria-label="Dataset summary">
@@ -125,6 +126,50 @@
           <section class="builder-block">
             <h3>Matching Teams</h3>
             <div id="builder-matches" class="builder-matches"></div>
+          </section>
+        </section>
+      </section>
+
+      <section id="maps-view" class="app-view maps-view">
+        <section class="maps-panel" aria-label="Marvel Rivals maps">
+          <div class="maps-heading">
+            <div>
+              <p class="eyebrow">Maps</p>
+              <h2>Factual Map Reference</h2>
+            </div>
+            <div id="maps-source" class="maps-source"></div>
+          </div>
+
+          <div id="map-summary" class="map-summary" aria-label="Map summary"></div>
+
+          <section class="maps-controls" aria-label="Map filters">
+            <div class="control-group">
+              <label for="map-search">Map</label>
+              <input id="map-search" type="search" placeholder="Search maps or locations" autocomplete="off" />
+            </div>
+            <div class="control-group">
+              <h3>Objective</h3>
+              <div id="map-type-filters" class="map-filter-row"></div>
+            </div>
+            <div class="control-group">
+              <h3>Category</h3>
+              <div id="map-category-filters" class="map-filter-row"></div>
+            </div>
+          </section>
+
+          <section class="map-definitions" aria-label="Objective summaries">
+            <h3>Objective Types</h3>
+            <div id="map-definitions" class="map-definition-list"></div>
+          </section>
+
+          <section class="maps-results" aria-label="Map list">
+            <div class="results-toolbar">
+              <div>
+                <p class="eyebrow">Map List</p>
+                <h2 id="maps-title">Loading maps</h2>
+              </div>
+            </div>
+            <div id="maps-list" class="maps-list"></div>
           </section>
         </section>
       </section>

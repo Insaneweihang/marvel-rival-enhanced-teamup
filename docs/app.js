@@ -2,6 +2,7 @@
   summary: "data/summary.json",
   heroes: "data/heroes.json",
   teamups: "data/teamups.json",
+  maps: "data/maps.json",
   all: "data/all_fully_enhanced_teams.json",
   balanced: "data/fully_enhanced_222_teams.json",
 };
@@ -16,7 +17,11 @@ const state = {
   builderMode: "all",
   detailHero: null,
   search: "",
+  mapSearch: "",
+  selectedMapType: "All",
+  selectedMapCategory: "All",
   summary: null,
+  mapsData: null,
   heroesByName: new Map(),
   teamups: new Map(),
   teams: {
@@ -52,6 +57,14 @@ const elements = {
   markdownLink: document.querySelector("#markdown-link"),
   jsonLink: document.querySelector("#json-link"),
   heroDetail: document.querySelector("#hero-detail"),
+  mapSearch: document.querySelector("#map-search"),
+  mapSummary: document.querySelector("#map-summary"),
+  mapTypeFilters: document.querySelector("#map-type-filters"),
+  mapCategoryFilters: document.querySelector("#map-category-filters"),
+  mapDefinitions: document.querySelector("#map-definitions"),
+  mapsSource: document.querySelector("#maps-source"),
+  mapsTitle: document.querySelector("#maps-title"),
+  mapsList: document.querySelector("#maps-list"),
 };
 
 function formatNumber(value) {
@@ -74,13 +87,29 @@ function teamIncludesHero(team, heroName) {
   return team.heroes.some((hero) => hero.name === heroName);
 }
 
+function eligibleRoles(hero) {
+  if (hero?.roles?.length) {
+    return hero.roles;
+  }
+  if (hero?.eligible_roles?.length) {
+    return hero.eligible_roles;
+  }
+  return hero?.role ? [hero.role] : [];
+}
+
+function rolesText(hero) {
+  return eligibleRoles(hero).join(" / ");
+}
+
 function deriveHeroes() {
   const roles = new Map(ROLE_ORDER.map((role) => [role, new Set()]));
   for (const hero of state.heroesByName.values()) {
     if (hero.active === false) {
       continue;
     }
-    roles.get(hero.role).add(hero.name);
+    for (const role of eligibleRoles(hero)) {
+      roles.get(role).add(hero.name);
+    }
   }
   state.heroesByRole = new Map(
     ROLE_ORDER.map((role) => [role, [...roles.get(role)].sort((a, b) => a.localeCompare(b))]),
@@ -97,7 +126,7 @@ function readUrlState() {
   const builder = params.get("builder");
   const builderMode = params.get("builderMode");
 
-  if (view === "builder" || view === "browser") {
+  if (view === "builder" || view === "browser" || view === "maps") {
     state.activeView = view;
   }
   if (mode === "222") {
@@ -126,7 +155,7 @@ function readUrlState() {
 
 function writeUrlState() {
   const params = new URLSearchParams();
-  if (state.activeView === "builder" || state.builderHeroes.size) {
+  if (state.activeView !== "browser" || state.builderHeroes.size) {
     params.set("view", state.activeView);
   }
   if (state.mode === "222") {
@@ -175,6 +204,153 @@ function renderSummary() {
   elements.checkedCount.textContent = formatNumber(state.summary.total_combinations_checked);
 }
 
+function uniqueSorted(values) {
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b));
+}
+
+function renderMapSummary() {
+  elements.mapSummary.replaceChildren();
+  const maps = state.mapsData?.maps || [];
+  const standardCount = maps.filter((map) => map.category === "Standard").length;
+  const categories = uniqueSorted(maps.map((map) => map.category));
+
+  const stats = [
+    ["Total Maps", maps.length],
+    ["Standard", standardCount],
+    ["Categories", categories.length],
+    ["Last Checked", state.mapsData?.last_checked || "Unknown"],
+  ];
+
+  for (const [label, value] of stats) {
+    const item = document.createElement("div");
+    item.innerHTML = `<dt>${label}</dt><dd>${typeof value === "number" ? formatNumber(value) : value}</dd>`;
+    elements.mapSummary.append(item);
+  }
+}
+
+function makeMapFilterButton(label, active, onClick) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "map-filter";
+  button.classList.toggle("active", active);
+  button.textContent = label;
+  button.addEventListener("click", onClick);
+  return button;
+}
+
+function renderMapFilters() {
+  const maps = state.mapsData?.maps || [];
+  elements.mapTypeFilters.replaceChildren();
+  elements.mapCategoryFilters.replaceChildren();
+
+  const types = ["All", ...uniqueSorted(maps.map((map) => map.objective_type))];
+  const categories = ["All", ...uniqueSorted(maps.map((map) => map.category))];
+
+  for (const type of types) {
+    elements.mapTypeFilters.append(
+      makeMapFilterButton(type, state.selectedMapType === type, () => {
+        state.selectedMapType = type;
+        renderMaps();
+      }),
+    );
+  }
+
+  for (const category of categories) {
+    elements.mapCategoryFilters.append(
+      makeMapFilterButton(category, state.selectedMapCategory === category, () => {
+        state.selectedMapCategory = category;
+        renderMaps();
+      }),
+    );
+  }
+}
+
+function renderMapDefinitions() {
+  elements.mapDefinitions.replaceChildren();
+  for (const definition of state.mapsData?.objective_types || []) {
+    const item = document.createElement("article");
+    item.className = "map-definition";
+    item.innerHTML = `<h4>${definition.name}</h4><p>${definition.summary}</p>`;
+    elements.mapDefinitions.append(item);
+  }
+}
+
+function filteredMaps() {
+  const search = state.mapSearch.trim().toLowerCase();
+  return (state.mapsData?.maps || []).filter((map) => {
+    const matchesType = state.selectedMapType === "All" || map.objective_type === state.selectedMapType;
+    const matchesCategory = state.selectedMapCategory === "All" || map.category === state.selectedMapCategory;
+    const haystack = [
+      map.name,
+      map.location,
+      map.objective_type,
+      map.category,
+      ...(map.availability || []),
+      map.release || "",
+    ].join(" ").toLowerCase();
+    return matchesType && matchesCategory && (!search || haystack.includes(search));
+  });
+}
+
+function renderMapCard(map) {
+  const card = document.createElement("article");
+  card.className = "map-card";
+
+  const title = document.createElement("div");
+  title.className = "map-card-title";
+  title.innerHTML = `<h3>${map.name}</h3><span>${map.objective_type}</span>`;
+
+  const facts = document.createElement("dl");
+  facts.className = "map-facts";
+  facts.innerHTML = `
+    <div><dt>Location</dt><dd>${map.location}</dd></div>
+    <div><dt>Category</dt><dd>${map.category}</dd></div>
+    <div><dt>Availability</dt><dd>${(map.availability || ["Unknown"]).join(", ")}</dd></div>
+    <div><dt>Release</dt><dd>${map.release || "Not listed"}</dd></div>
+  `;
+
+  card.append(title, facts);
+  return card;
+}
+
+function renderMapsSource() {
+  elements.mapsSource.replaceChildren();
+  const source = state.mapsData?.sources?.[0];
+  if (!source) {
+    return;
+  }
+  const link = document.createElement("a");
+  link.href = source.url;
+  link.textContent = "Source";
+  link.target = "_blank";
+  link.rel = "noreferrer";
+  elements.mapsSource.append(link);
+}
+
+function renderMaps() {
+  if (!state.mapsData) {
+    return;
+  }
+  renderMapSummary();
+  renderMapFilters();
+  renderMapDefinitions();
+  renderMapsSource();
+
+  const maps = filteredMaps();
+  const total = state.mapsData.maps.length;
+  elements.mapsTitle.textContent = `${formatNumber(maps.length)} of ${formatNumber(total)} maps`;
+  elements.mapsList.replaceChildren();
+
+  if (!maps.length) {
+    elements.mapsList.append(makeChip("No maps match the current filters", "muted-chip"));
+    return;
+  }
+
+  for (const map of maps) {
+    elements.mapsList.append(renderMapCard(map));
+  }
+}
+
 function renderHeroFilters() {
   const search = state.search.trim().toLowerCase();
   elements.heroGroups.replaceChildren();
@@ -194,12 +370,13 @@ function renderHeroFilters() {
     buttons.className = "hero-buttons";
 
     for (const hero of heroes) {
+      const heroData = state.heroesByName.get(hero);
       const button = document.createElement("button");
       button.type = "button";
       button.className = "hero-button";
       button.textContent = hero;
       button.classList.toggle("active", state.selectedHeroes.has(hero));
-      button.title = `Open ${hero} detail`;
+      button.title = `Open ${hero} detail (${rolesText(heroData)})`;
       button.addEventListener("click", () => {
         state.detailHero = hero;
         update();
@@ -261,7 +438,11 @@ function renderBuilderCurrentStatus() {
     title.textContent = status.enhanced
       ? `${heroName} enhanced by ${status.activePartners.join(", ")}`
       : `${heroName} missing ${status.partners.join(" or ")}`;
-    row.append(title);
+    const details = document.createElement("small");
+    details.textContent = status.enhanced
+      ? `Missing options: ${status.missingPartners.join(" or ") || "none"}`
+      : "Add one listed partner to enhance this hero.";
+    row.append(title, details);
     elements.builderCurrentStatus.append(row);
   }
 }
@@ -282,10 +463,20 @@ function renderBuilderSuggestions() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "suggestion-row";
-    const helps = suggestion.immediateEnhancements.length
-      ? `helps ${suggestion.immediateEnhancements.join(", ")}`
-      : "completion candidate";
-    button.innerHTML = `<span>${suggestion.heroName}</span><small>${suggestion.role} - ${formatNumber(suggestion.count)} teams - ${helps}</small>`;
+    if (suggestion.immediateEnhancements.length) {
+      const enhancedHeroes = suggestion.immediateEnhancements.join(", ");
+      button.innerHTML = `
+        <span>Add ${suggestion.heroName}</span>
+        <strong>${suggestion.immediateEnhancements.length} gap${suggestion.immediateEnhancements.length === 1 ? "" : "s"} fixed</strong>
+        <small>${suggestion.roles} - enhances ${enhancedHeroes} - ${formatNumber(suggestion.count)} valid teams</small>
+      `;
+    } else {
+      button.innerHTML = `
+        <span>Add ${suggestion.heroName}</span>
+        <strong>Completion candidate</strong>
+        <small>${suggestion.roles} - appears in ${formatNumber(suggestion.count)} valid teams</small>
+      `;
+    }
     button.addEventListener("click", () => addHeroToBuilder(suggestion.heroName));
     elements.builderSuggestions.append(button);
   }
@@ -401,7 +592,10 @@ function selectedHeroStatus(heroName) {
 
 function immediateEnhancementsForCandidate(candidateName) {
   return [...state.builderHeroes]
-    .filter((heroName) => (state.teamups.get(heroName) || []).includes(candidateName))
+    .filter((heroName) => {
+      const status = selectedHeroStatus(heroName);
+      return !status.enhanced && status.missingPartners.includes(candidateName);
+    })
     .sort((a, b) => a.localeCompare(b));
 }
 
@@ -424,12 +618,12 @@ function builderSuggestions() {
       heroName,
       count,
       immediateEnhancements: immediateEnhancementsForCandidate(heroName),
-      role: state.heroesByName.get(heroName).role,
+      roles: rolesText(state.heroesByName.get(heroName)),
     }))
     .sort(
       (a, b) =>
-        b.count - a.count ||
         b.immediateEnhancements.length - a.immediateEnhancements.length ||
+        b.count - a.count ||
         a.heroName.localeCompare(b.heroName),
     )
     .slice(0, 12);
@@ -454,7 +648,8 @@ function heroChip(hero) {
   chip.type = "button";
   chip.className = `hero-chip ${hero.role}`;
   chip.textContent = hero.name;
-  chip.title = `Open ${hero.name} detail`;
+  const assignedRole = hero.primary_role && hero.primary_role !== hero.role ? `Assigned: ${hero.role}; ` : "";
+  chip.title = `Open ${hero.name} detail (${assignedRole}${rolesText(hero)})`;
   chip.addEventListener("click", () => {
     state.detailHero = hero.name;
     update();
@@ -568,7 +763,7 @@ function renderHeroDetail() {
   const roles = document.createElement("div");
   roles.className = "detail-chip-row";
   roles.append(makeChip(`Primary: ${hero.role}`, `hero-chip ${hero.role}`));
-  for (const role of hero.roles || [hero.role]) {
+  for (const role of eligibleRoles(hero).filter((role) => role !== hero.role)) {
     roles.append(makeChip(role, `hero-chip ${role}`));
   }
   if (hero.active === false) {
@@ -734,6 +929,7 @@ function update() {
   renderHeroFilters();
   renderSelectedHeroes();
   renderBuilder();
+  renderMaps();
   renderResults();
   renderHeroDetail();
   writeUrlState();
@@ -768,6 +964,10 @@ function bindEvents() {
     state.search = event.target.value;
     renderHeroFilters();
   });
+  elements.mapSearch.addEventListener("input", (event) => {
+    state.mapSearch = event.target.value;
+    renderMaps();
+  });
   elements.clearFilters.addEventListener("click", () => {
     state.selectedHeroes.clear();
     state.search = "";
@@ -784,14 +984,16 @@ async function init() {
   try {
     readUrlState();
     bindEvents();
-    const [summary, heroes, teamups, allTeams, balancedTeams] = await Promise.all([
+    const [summary, heroes, teamups, mapsData, allTeams, balancedTeams] = await Promise.all([
       loadJson(DATA_FILES.summary),
       loadJson(DATA_FILES.heroes),
       loadJson(DATA_FILES.teamups),
+      loadJson(DATA_FILES.maps),
       loadJson(DATA_FILES.all),
       loadJson(DATA_FILES.balanced),
     ]);
     state.summary = summary;
+    state.mapsData = mapsData;
     state.heroesByName = new Map(heroes.heroes.map((hero) => [hero.name, hero]));
     state.teamups = new Map(Object.entries(teamups.teamups));
     state.teams.all = allTeams.teams;
