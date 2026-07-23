@@ -11,6 +11,10 @@
       <div>
         <p class="eyebrow">Marvel Rivals Team-Up Generator</p>
         <h1>Fully Enhanced Team Browser</h1>
+        <nav class="view-tabs" aria-label="Application views">
+          <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
+          <button class="view-tab" type="button" data-view="builder">Team Builder</button>
+        </nav>
       </div>
       <dl class="summary-grid" aria-label="Dataset summary">
         <div>
@@ -32,56 +36,108 @@
       </dl>
     </header>
 
-    <main class="layout">
-      <aside class="filters" aria-label="Team filters">
-        <section class="control-group">
-          <h2>Team Set</h2>
-          <div class="segmented" role="tablist" aria-label="Team set">
-            <button class="segment active" type="button" data-mode="all">All Teams</button>
-            <button class="segment" type="button" data-mode="222">2-2-2 Only</button>
-          </div>
-        </section>
+    <main>
+      <section id="browser-view" class="app-view browser-view active">
+        <div class="layout">
+          <aside class="filters" aria-label="Team filters">
+            <section class="control-group">
+              <h2>Team Set</h2>
+              <div class="segmented" role="tablist" aria-label="Team set">
+                <button class="segment active" type="button" data-mode="all">All Teams</button>
+                <button class="segment" type="button" data-mode="222">2-2-2 Only</button>
+              </div>
+            </section>
 
-        <section class="control-group">
-          <h2>Filter Mode</h2>
-          <div class="segmented" role="tablist" aria-label="Filter mode">
-            <button class="segment active" type="button" data-filter-mode="include">Include</button>
-            <button class="segment" type="button" data-filter-mode="exclude">Exclude</button>
-          </div>
-        </section>
+            <section class="control-group">
+              <h2>Filter Mode</h2>
+              <div class="segmented" role="tablist" aria-label="Filter mode">
+                <button class="segment active" type="button" data-filter-mode="include">Include</button>
+                <button class="segment" type="button" data-filter-mode="exclude">Exclude</button>
+              </div>
+            </section>
 
-        <section class="control-group">
-          <div class="search-row">
-            <label for="hero-search">Hero</label>
-            <button id="clear-filters" class="icon-button" type="button" title="Clear filters" aria-label="Clear filters">
+            <section class="control-group">
+              <div class="search-row">
+                <label for="hero-search">Hero</label>
+                <button id="clear-filters" class="icon-button" type="button" title="Clear filters" aria-label="Clear filters">
+                  x
+                </button>
+              </div>
+              <input id="hero-search" type="search" placeholder="Search heroes" autocomplete="off" />
+              <div id="selected-heroes" class="selected-heroes" aria-live="polite"></div>
+            </section>
+
+            <section class="control-group hero-picker">
+              <h2>Heroes</h2>
+              <div id="hero-groups" class="hero-groups"></div>
+            </section>
+          </aside>
+
+          <section class="results" aria-label="Filtered teams">
+            <div class="results-toolbar">
+              <div>
+                <p class="eyebrow">Results</p>
+                <h2 id="results-title">Loading teams</h2>
+              </div>
+              <div class="result-actions">
+                <a id="markdown-link" href="data/all_fully_enhanced_teams.md">Markdown</a>
+                <a id="json-link" href="data/all_fully_enhanced_teams.json">JSON</a>
+              </div>
+            </div>
+            <div id="status-message" class="status-message">Loading generated team data.</div>
+            <div id="team-list" class="team-list"></div>
+          </section>
+
+          <aside id="hero-detail" class="hero-detail" aria-label="Hero detail">
+            <div class="detail-empty">
+              <p class="eyebrow">Hero Detail</p>
+              <h2>Select a hero</h2>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="builder-view" class="app-view builder-view">
+        <section class="team-builder" aria-label="Team builder">
+          <div class="builder-heading">
+            <div>
+              <p class="eyebrow">Team Builder</p>
+              <h2>Manual Draft</h2>
+            </div>
+            <button id="clear-builder" class="icon-button" type="button" title="Clear builder" aria-label="Clear builder">
               x
             </button>
           </div>
-          <input id="hero-search" type="search" placeholder="Search heroes" autocomplete="off" />
-          <div id="selected-heroes" class="selected-heroes" aria-live="polite"></div>
-        </section>
-
-        <section class="control-group hero-picker">
-          <h2>Heroes</h2>
-          <div id="hero-groups" class="hero-groups"></div>
-        </section>
-      </aside>
-
-      <section class="results" aria-label="Filtered teams">
-        <div class="results-toolbar">
-          <div>
-            <p class="eyebrow">Results</p>
-            <h2 id="results-title">Loading teams</h2>
+          <div class="segmented" role="tablist" aria-label="Builder mode">
+            <button class="segment active" type="button" data-builder-mode="all">All</button>
+            <button class="segment" type="button" data-builder-mode="222">2-2-2</button>
           </div>
-          <div class="result-actions">
-            <a id="markdown-link" href="data/all_fully_enhanced_teams.md">Markdown</a>
-            <a id="json-link" href="data/all_fully_enhanced_teams.json">JSON</a>
-          </div>
-        </div>
-        <div id="status-message" class="status-message">Loading generated team data.</div>
-        <div id="team-list" class="team-list"></div>
+          <div id="builder-selected" class="selected-heroes builder-selected" aria-live="polite"></div>
+          <div id="builder-status" class="builder-status">Pick 1-6 heroes.</div>
+          <section class="builder-block">
+            <h3>Current Status</h3>
+            <div id="builder-current-status" class="builder-current-status"></div>
+          </section>
+          <section class="builder-block">
+            <h3>Suggested Heroes</h3>
+            <div id="builder-suggestions" class="builder-suggestions"></div>
+          </section>
+          <section class="builder-block">
+            <h3>Matching Teams</h3>
+            <div id="builder-matches" class="builder-matches"></div>
+          </section>
+        </section>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <p>
+        Unofficial fan-made tool. Not affiliated with, endorsed by, sponsored by, or approved by
+        Marvel, NetEase, or Marvel Rivals. Names and related marks belong to their respective
+        owners. This site uses factual gameplay data and does not include official art, logos,
+        screenshots, video, audio, or copied source prose.
+      </p>
+    </footer>
 
     <script src="app.js" defer></script>
   </body>

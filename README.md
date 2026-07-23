@@ -2,6 +2,12 @@
 
 This project generates every six-hero Marvel Rivals team where every hero has at least one enhanced Team-Up partner present.
 
+## Unofficial Project Notice
+
+This is an unofficial fan-made tool and is not affiliated with, endorsed by, sponsored by, or approved by Marvel, NetEase, or Marvel Rivals. Marvel Rivals, Marvel, character names, and related marks belong to their respective owners.
+
+See [COPYRIGHT_RISK.md](COPYRIGHT_RISK.md) for the project copyright and trademark risk notes.
+
 ## Fully Enhanced Rule
 
 A hero has two directional Team-Up abilities in the Season 9 system, and only one can be equipped at a time. A hero is counted as enhanced when at least one matching partner for one of those two abilities is present on the same team. The mapping is directional: if `Hero A` lists `Hero B`, that enhances `Hero A`; it does not automatically enhance `Hero B`.
@@ -91,7 +97,13 @@ Outputs are written to `output/`:
 
 ## Frontend
 
-The static browser lives in [docs/index.html](docs/index.html). It loads committed JSON from `docs/data/`, displays the current patch and generated counts, and lets users include or exclude selected heroes from unrestricted or `2-2-2` teams.
+The static browser lives in [docs/index.html](docs/index.html). It loads committed JSON from `docs/data/`, displays the current patch and generated counts, lets users include or exclude selected heroes from unrestricted or `2-2-2` teams, and includes a hero detail panel with Team-Up partners, usage counts, best teammates, and sample teams. A header tab opens a separate Team Builder view for manually checking 1-6 selected heroes.
+
+Team Builder uses the generated output JSON as the source of truth. It shows whether a partial draft can become fully enhanced, which selected heroes are currently enhanced, which selected heroes are missing partners, suggested heroes to complete the draft, and matching full teams. Builder links can be shared with query parameters such as:
+
+```text
+http://localhost:8000/docs/?builder=Deadpool,Hela,Venom&builderMode=222
+```
 
 Local preview:
 
