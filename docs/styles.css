@@ -689,13 +689,13 @@ a:focus-visible {
 
 .hero-buttons {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 6px;
 }
 
 .hero-filter-control {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  grid-template-columns: 24px minmax(0, 1fr) 24px;
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -711,7 +711,7 @@ a:focus-visible {
   border-radius: 0;
   background: transparent;
   color: var(--ink);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 750;
   overflow-wrap: anywhere;
   text-align: left;
@@ -724,7 +724,7 @@ a:focus-visible {
   background: #f5f7f4;
   color: var(--muted);
   cursor: pointer;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 950;
 }
 
@@ -1209,7 +1209,7 @@ button.hero-chip {
   }
 
   .hero-filter-control {
-    grid-template-columns: 34px minmax(0, 1fr) 34px;
+    grid-template-columns: 28px minmax(0, 1fr) 28px;
   }
 
   .hero-button,
@@ -1247,6 +1247,7 @@ button.hero-chip {
 }
 
 @media (max-width: 380px) {
+  .hero-buttons,
   .builder-hero-buttons {
     grid-template-columns: 1fr;
   }
