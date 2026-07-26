@@ -1107,9 +1107,62 @@ button.hero-chip {
   }
 }
 
+@media (max-width: 700px) {
+  .site-header {
+    gap: 12px;
+    align-items: start;
+    padding: 12px clamp(12px, 4vw, 20px);
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .header-actions a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .social-logo {
+    width: 17px;
+    height: 17px;
+  }
+
+  .filters,
+  .results,
+  .hero-detail,
+  .builder-view,
+  .maps-view {
+    padding: 14px;
+  }
+
+  .builder-view .team-builder {
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .results-toolbar h2,
+  .maps-heading h2,
+  .detail-header h2 {
+    font-size: 22px;
+    line-height: 1.1;
+  }
+
+  .team-row {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .maps-controls {
+    gap: 14px;
+    padding: 12px;
+  }
+}
+
 @media (max-width: 560px) {
   .site-header {
-    padding-top: 12px;
+    position: static;
+    gap: 10px;
   }
 
   .summary-grid,
@@ -1124,14 +1177,54 @@ button.hero-chip {
   }
 
   .view-tabs {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
     width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .view-tab {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 1.05;
+  }
+
+  .eyebrow {
+    margin-bottom: 6px;
+    font-size: 11px;
+  }
+
+  .summary-grid div {
+    padding: 8px 10px;
+  }
+
+  .summary-grid dd {
+    font-size: 16px;
+  }
+
+  .hero-filter-control {
+    grid-template-columns: 34px minmax(0, 1fr) 34px;
+  }
+
+  .hero-button,
+  .hero-filter-action {
+    min-height: 38px;
+  }
+
+  .result-actions {
+    flex-wrap: wrap;
   }
 
   .results-toolbar {
     align-items: flex-start;
     flex-direction: column;
+    gap: 10px;
   }
 
   .maps-heading,
@@ -1150,5 +1243,20 @@ button.hero-chip {
 
   .detail-actions {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .builder-hero-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-social-group a {
+    width: 32px;
+    height: 32px;
   }
 }
