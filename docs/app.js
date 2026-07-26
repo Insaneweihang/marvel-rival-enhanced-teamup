@@ -11,12 +11,13 @@ const ROLE_ORDER = ["Vanguard", "Duelist", "Strategist"];
 const state = {
   activeView: "browser",
   mode: "all",
-  filterMode: "include",
-  selectedHeroes: new Set(),
+  includedHeroes: new Set(),
+  excludedHeroes: new Set(),
   builderHeroes: new Set(),
   builderMode: "all",
   detailHero: null,
   search: "",
+  builderSearch: "",
   mapSearch: "",
   selectedMapType: "All",
   selectedMapCategory: "All",
@@ -39,9 +40,10 @@ const elements = {
   viewButtons: document.querySelectorAll("[data-view]"),
   appViews: document.querySelectorAll(".app-view"),
   modeButtons: document.querySelectorAll("[data-mode]"),
-  filterModeButtons: document.querySelectorAll("[data-filter-mode]"),
   builderModeButtons: document.querySelectorAll("[data-builder-mode]"),
   clearBuilder: document.querySelector("#clear-builder"),
+  builderHeroSearch: document.querySelector("#builder-hero-search"),
+  builderHeroPicker: document.querySelector("#builder-hero-picker"),
   builderSelected: document.querySelector("#builder-selected"),
   builderStatus: document.querySelector("#builder-status"),
   builderCurrentStatus: document.querySelector("#builder-current-status"),
@@ -132,12 +134,14 @@ function readUrlState() {
   if (mode === "222") {
     state.mode = "222";
   }
+  if (include) {
+    state.includedHeroes = new Set(include.split(",").map(decodeURIComponent).filter(Boolean));
+  }
   if (exclude) {
-    state.filterMode = "exclude";
-    state.selectedHeroes = new Set(exclude.split(",").map(decodeURIComponent).filter(Boolean));
-  } else if (include) {
-    state.filterMode = "include";
-    state.selectedHeroes = new Set(include.split(",").map(decodeURIComponent).filter(Boolean));
+    state.excludedHeroes = new Set(exclude.split(",").map(decodeURIComponent).filter(Boolean));
+  }
+  for (const hero of state.includedHeroes) {
+    state.excludedHeroes.delete(hero);
   }
   if (detail) {
     state.detailHero = decodeURIComponent(detail);
@@ -161,9 +165,11 @@ function writeUrlState() {
   if (state.mode === "222") {
     params.set("mode", "222");
   }
-  if (state.selectedHeroes.size) {
-    const key = state.filterMode === "exclude" ? "exclude" : "include";
-    params.set(key, [...state.selectedHeroes].sort().join(","));
+  if (state.includedHeroes.size) {
+    params.set("include", [...state.includedHeroes].sort().join(","));
+  }
+  if (state.excludedHeroes.size) {
+    params.set("exclude", [...state.excludedHeroes].sort().join(","));
   }
   if (state.detailHero) {
     params.set("detail", state.detailHero);
@@ -188,9 +194,6 @@ function setActiveButtons() {
   }
   for (const button of elements.modeButtons) {
     button.classList.toggle("active", button.dataset.mode === state.mode);
-  }
-  for (const button of elements.filterModeButtons) {
-    button.classList.toggle("active", button.dataset.filterMode === state.filterMode);
   }
   for (const button of elements.builderModeButtons) {
     button.classList.toggle("active", button.dataset.builderMode === state.builderMode);
@@ -371,17 +374,40 @@ function renderHeroFilters() {
 
     for (const hero of heroes) {
       const heroData = state.heroesByName.get(hero);
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "hero-button";
-      button.textContent = hero;
-      button.classList.toggle("active", state.selectedHeroes.has(hero));
-      button.title = `Open ${hero} detail (${rolesText(heroData)})`;
-      button.addEventListener("click", () => {
+      const control = document.createElement("div");
+      control.className = "hero-filter-control";
+      control.classList.toggle("included", state.includedHeroes.has(hero));
+      control.classList.toggle("excluded", state.excludedHeroes.has(hero));
+      control.classList.toggle("detail-active", state.detailHero === hero);
+
+      const includeButton = document.createElement("button");
+      includeButton.type = "button";
+      includeButton.className = "hero-filter-action include-action";
+      includeButton.textContent = "+";
+      includeButton.title = state.includedHeroes.has(hero) ? `Remove ${hero} from included heroes` : `Include ${hero}`;
+      includeButton.setAttribute("aria-label", includeButton.title);
+      includeButton.addEventListener("click", () => toggleHeroFilter(hero, "include"));
+
+      const detailButton = document.createElement("button");
+      detailButton.type = "button";
+      detailButton.className = "hero-button";
+      detailButton.textContent = hero;
+      detailButton.title = `Open ${hero} detail (${rolesText(heroData)})`;
+      detailButton.addEventListener("click", () => {
         state.detailHero = hero;
         update();
       });
-      buttons.append(button);
+
+      const excludeButton = document.createElement("button");
+      excludeButton.type = "button";
+      excludeButton.className = "hero-filter-action exclude-action";
+      excludeButton.textContent = "-";
+      excludeButton.title = state.excludedHeroes.has(hero) ? `Remove ${hero} from excluded heroes` : `Exclude ${hero}`;
+      excludeButton.setAttribute("aria-label", excludeButton.title);
+      excludeButton.addEventListener("click", () => toggleHeroFilter(hero, "exclude"));
+
+      control.append(includeButton, detailButton, excludeButton);
+      buttons.append(control);
     }
 
     section.append(title, buttons);
@@ -391,17 +417,112 @@ function renderHeroFilters() {
 
 function renderSelectedHeroes() {
   elements.selectedHeroes.replaceChildren();
-  for (const hero of [...state.selectedHeroes].sort()) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "clear-chip";
-    button.textContent = `${hero} x`;
-    button.title = `Remove ${hero}`;
-    button.addEventListener("click", () => {
-      state.selectedHeroes.delete(hero);
-      update();
-    });
-    elements.selectedHeroes.append(button);
+
+  if (!state.includedHeroes.size && !state.excludedHeroes.size) {
+    elements.selectedHeroes.append(makeChip("No hero filters", "muted-chip"));
+    return;
+  }
+
+  const included = document.createElement("div");
+  included.className = "filter-chip-group";
+  const includedLabel = document.createElement("span");
+  includedLabel.className = "filter-chip-label";
+  includedLabel.textContent = "Included";
+  included.append(includedLabel);
+  if (state.includedHeroes.size) {
+    for (const hero of [...state.includedHeroes].sort()) {
+      included.append(makeFilterChip(hero, "include"));
+    }
+  } else {
+    included.append(makeChip("Any", "muted-chip"));
+  }
+
+  const excluded = document.createElement("div");
+  excluded.className = "filter-chip-group";
+  const excludedLabel = document.createElement("span");
+  excludedLabel.className = "filter-chip-label";
+  excludedLabel.textContent = "Excluded";
+  excluded.append(excludedLabel);
+  if (state.excludedHeroes.size) {
+    for (const hero of [...state.excludedHeroes].sort()) {
+      excluded.append(makeFilterChip(hero, "exclude"));
+    }
+  } else {
+    excluded.append(makeChip("None", "muted-chip"));
+  }
+
+  elements.selectedHeroes.append(included, excluded);
+}
+
+function makeFilterChip(hero, filterMode) {
+  const heroData = state.heroesByName.get(hero);
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = `clear-chip ${filterMode}-chip ${heroData?.role || ""}`;
+  button.textContent = `${hero} x`;
+  button.title = `Remove ${hero} from ${filterMode === "include" ? "included" : "excluded"} heroes`;
+  button.addEventListener("click", () => {
+    removeHeroFromFilter(hero, filterMode);
+  });
+  return button;
+}
+
+function removeHeroFromFilter(hero, filterMode) {
+  if (filterMode === "exclude") {
+    state.excludedHeroes.delete(hero);
+  } else {
+    state.includedHeroes.delete(hero);
+  }
+  update();
+}
+
+function renderBuilderHeroPicker() {
+  elements.builderHeroPicker.replaceChildren();
+
+  if (state.builderHeroes.size >= 6) {
+    elements.builderHeroPicker.append(makeChip("Team is full", "muted-chip"));
+    return;
+  }
+
+  const search = state.builderSearch.trim().toLowerCase();
+  let hasHeroes = false;
+
+  for (const role of ROLE_ORDER) {
+    const heroes = state.heroesByRole
+      .get(role)
+      .filter((name) => !state.builderHeroes.has(name))
+      .filter((name) => !search || name.toLowerCase().includes(search));
+
+    if (!heroes.length) {
+      continue;
+    }
+
+    hasHeroes = true;
+    const section = document.createElement("section");
+    const title = document.createElement("div");
+    title.className = "role-title";
+    title.innerHTML = `<span>${role}</span><span>${heroes.length}</span>`;
+
+    const buttons = document.createElement("div");
+    buttons.className = "builder-hero-buttons";
+
+    for (const heroName of heroes) {
+      const hero = state.heroesByName.get(heroName);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `builder-hero-button ${hero?.role || ""}`;
+      button.textContent = heroName;
+      button.title = `Add ${heroName} to builder (${rolesText(hero)})`;
+      button.addEventListener("click", () => addHeroToBuilder(heroName));
+      buttons.append(button);
+    }
+
+    section.append(title, buttons);
+    elements.builderHeroPicker.append(section);
+  }
+
+  if (!hasHeroes) {
+    elements.builderHeroPicker.append(makeChip("No heroes match the search", "muted-chip"));
   }
 }
 
@@ -509,15 +630,27 @@ function renderBuilderMatches() {
 }
 
 function renderBuilder() {
+  renderBuilderHeroPicker();
   renderBuilderSelected();
   renderBuilderCurrentStatus();
   renderBuilderSuggestions();
   renderBuilderMatches();
 }
 
-function addHeroToFilter(heroName, filterMode) {
-  state.filterMode = filterMode;
-  state.selectedHeroes.add(heroName);
+function toggleHeroFilter(heroName, filterMode) {
+  if (filterMode === "exclude") {
+    if (state.excludedHeroes.has(heroName)) {
+      state.excludedHeroes.delete(heroName);
+    } else {
+      state.excludedHeroes.add(heroName);
+      state.includedHeroes.delete(heroName);
+    }
+  } else if (state.includedHeroes.has(heroName)) {
+    state.includedHeroes.delete(heroName);
+  } else {
+    state.includedHeroes.add(heroName);
+    state.excludedHeroes.delete(heroName);
+  }
   update();
 }
 
@@ -631,15 +764,15 @@ function builderSuggestions() {
 
 function filteredTeams() {
   const source = state.mode === "222" ? state.teams.balanced : state.teams.all;
-  if (!state.selectedHeroes.size) {
+  if (!state.includedHeroes.size && !state.excludedHeroes.size) {
     return source;
   }
   return source.filter((team) => {
     const names = new Set(teamNames(team));
-    if (state.filterMode === "exclude") {
-      return [...state.selectedHeroes].every((hero) => !names.has(hero));
-    }
-    return [...state.selectedHeroes].every((hero) => names.has(hero));
+    return (
+      [...state.includedHeroes].every((hero) => names.has(hero)) &&
+      [...state.excludedHeroes].every((hero) => !names.has(hero))
+    );
   });
 }
 
@@ -792,8 +925,12 @@ function renderHeroDetail() {
     }));
   }
   actions.append(
-    makeDetailAction("Include hero", () => addHeroToFilter(hero.name, "include")),
-    makeDetailAction("Exclude hero", () => addHeroToFilter(hero.name, "exclude")),
+    makeDetailAction(state.includedHeroes.has(hero.name) ? "Remove include" : "Include", () =>
+      toggleHeroFilter(hero.name, "include"),
+    ),
+    makeDetailAction(state.excludedHeroes.has(hero.name) ? "Remove exclude" : "Exclude", () =>
+      toggleHeroFilter(hero.name, "exclude"),
+    ),
   );
 
   const teamupsSection = document.createElement("section");
@@ -913,8 +1050,15 @@ function renderResults() {
     return;
   }
 
-  elements.statusMessage.textContent = state.selectedHeroes.size
-    ? `${state.filterMode === "include" ? "Including" : "Excluding"} ${[...state.selectedHeroes].sort().join(", ")}.`
+  const filterSummary = [];
+  if (state.includedHeroes.size) {
+    filterSummary.push(`Including ${[...state.includedHeroes].sort().join(", ")}`);
+  }
+  if (state.excludedHeroes.size) {
+    filterSummary.push(`Excluding ${[...state.excludedHeroes].sort().join(", ")}`);
+  }
+  elements.statusMessage.textContent = filterSummary.length
+    ? `${filterSummary.join(". ")}.`
     : "Showing generated teams from committed output data.";
 
   const fragment = document.createDocumentFragment();
@@ -948,12 +1092,6 @@ function bindEvents() {
       update();
     });
   }
-  for (const button of elements.filterModeButtons) {
-    button.addEventListener("click", () => {
-      state.filterMode = button.dataset.filterMode;
-      update();
-    });
-  }
   for (const button of elements.builderModeButtons) {
     button.addEventListener("click", () => {
       state.builderMode = button.dataset.builderMode;
@@ -964,18 +1102,25 @@ function bindEvents() {
     state.search = event.target.value;
     renderHeroFilters();
   });
+  elements.builderHeroSearch.addEventListener("input", (event) => {
+    state.builderSearch = event.target.value;
+    renderBuilderHeroPicker();
+  });
   elements.mapSearch.addEventListener("input", (event) => {
     state.mapSearch = event.target.value;
     renderMaps();
   });
   elements.clearFilters.addEventListener("click", () => {
-    state.selectedHeroes.clear();
+    state.includedHeroes.clear();
+    state.excludedHeroes.clear();
     state.search = "";
     elements.heroSearch.value = "";
     update();
   });
   elements.clearBuilder.addEventListener("click", () => {
     state.builderHeroes.clear();
+    state.builderSearch = "";
+    elements.builderHeroSearch.value = "";
     update();
   });
 }

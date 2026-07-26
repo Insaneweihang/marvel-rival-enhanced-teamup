@@ -17,6 +17,14 @@
           <button class="view-tab" type="button" data-view="maps">Maps</button>
         </nav>
       </div>
+      <nav class="header-actions" aria-label="Creator support links">
+        <a class="primary-action" href="https://discord.gg/82V8xT8qRx" target="_blank" rel="noopener noreferrer" aria-label="Join Discord" title="Join Discord">
+          <img class="social-logo" src="https://cdn.simpleicons.org/discord/FFFFFF" alt="" />
+        </a>
+        <a class="support-action" href="https://ko-fi.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Support on Ko-fi" title="Support on Ko-fi">
+          <img class="social-logo" src="https://cdn.simpleicons.org/kofi/FF5E5B" alt="" />
+        </a>
+      </nav>
       <dl class="summary-grid" aria-label="Dataset summary">
         <div>
           <dt>Patch</dt>
@@ -50,14 +58,6 @@
             </section>
 
             <section class="control-group">
-              <h2>Filter Mode</h2>
-              <div class="segmented" role="tablist" aria-label="Filter mode">
-                <button class="segment active" type="button" data-filter-mode="include">Include</button>
-                <button class="segment" type="button" data-filter-mode="exclude">Exclude</button>
-              </div>
-            </section>
-
-            <section class="control-group">
               <div class="search-row">
                 <label for="hero-search">Hero</label>
                 <button id="clear-filters" class="icon-button" type="button" title="Clear filters" aria-label="Clear filters">
@@ -65,7 +65,7 @@
                 </button>
               </div>
               <input id="hero-search" type="search" placeholder="Search heroes" autocomplete="off" />
-              <div id="selected-heroes" class="selected-heroes" aria-live="polite"></div>
+              <div id="selected-heroes" class="selected-heroes filter-summary" aria-live="polite"></div>
             </section>
 
             <section class="control-group hero-picker">
@@ -113,6 +113,11 @@
             <button class="segment active" type="button" data-builder-mode="all">All</button>
             <button class="segment" type="button" data-builder-mode="222">2-2-2</button>
           </div>
+          <section class="builder-hero-search-panel" aria-label="Add heroes to team builder">
+            <label for="builder-hero-search">Add Hero</label>
+            <input id="builder-hero-search" type="search" placeholder="Search heroes to add" autocomplete="off" />
+            <div id="builder-hero-picker" class="builder-hero-picker"></div>
+          </section>
           <div id="builder-selected" class="selected-heroes builder-selected" aria-live="polite"></div>
           <div id="builder-status" class="builder-status">Pick 1-6 heroes.</div>
           <section class="builder-block">
@@ -179,9 +184,45 @@
       <p>
         Unofficial fan-made tool. Not affiliated with, endorsed by, sponsored by, or approved by
         Marvel, NetEase, or Marvel Rivals. Names and related marks belong to their respective
-        owners. This site uses factual gameplay data and does not include official art, logos,
-        screenshots, video, audio, or copied source prose.
+        owners.
       </p>
+      <nav class="footer-social-links" aria-label="Creator social links">
+        <p class="footer-social-title">Follow InsaneWeiHang</p>
+        <div class="footer-social-group primary-socials">
+          <a href="https://linktr.ee/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Linktree" title="Linktree">
+            <img class="social-logo" src="https://cdn.simpleicons.org/linktree/43E660" alt="" />
+          </a>
+          <a href="https://discord.gg/82V8xT8qRx" target="_blank" rel="noopener noreferrer" aria-label="Join Discord" title="Discord">
+            <img class="social-logo" src="https://cdn.simpleicons.org/discord/5865F2" alt="" />
+          </a>
+          <a href="https://ko-fi.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Support on Ko-fi" title="Ko-fi">
+            <img class="social-logo" src="https://cdn.simpleicons.org/kofi/FF5E5B" alt="" />
+          </a>
+        </div>
+        <div class="footer-social-group">
+          <a href="https://instagram.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram" title="Instagram">
+            <img class="social-logo" src="https://cdn.simpleicons.org/instagram/E4405F" alt="" />
+          </a>
+          <a href="https://tiktok.com/@insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open TikTok" title="TikTok">
+            <img class="social-logo" src="https://cdn.simpleicons.org/tiktok/000000" alt="" />
+          </a>
+          <a href="https://www.youtube.com/@InsaneWeihang" target="_blank" rel="noopener noreferrer" aria-label="Open YouTube" title="YouTube">
+            <img class="social-logo" src="https://cdn.simpleicons.org/youtube/FF0000" alt="" />
+          </a>
+          <a href="https://www.twitch.tv/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Twitch" title="Twitch">
+            <img class="social-logo" src="https://cdn.simpleicons.org/twitch/9146FF" alt="" />
+          </a>
+          <a href="https://x.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open X" title="X">
+            <img class="social-logo" src="https://cdn.simpleicons.org/x/000000" alt="" />
+          </a>
+          <a href="https://www.facebook.com/theinsaneapple" target="_blank" rel="noopener noreferrer" aria-label="Open Facebook" title="Facebook">
+            <img class="social-logo" src="https://cdn.simpleicons.org/facebook/0866FF" alt="" />
+          </a>
+          <a href="https://github.com/Insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub" title="GitHub">
+            <img class="social-logo" src="https://cdn.simpleicons.org/github/181717" alt="" />
+          </a>
+        </div>
+      </nav>
     </footer>
 
     <script src="app.js" defer></script>
