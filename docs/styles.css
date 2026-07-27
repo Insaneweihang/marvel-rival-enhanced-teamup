@@ -890,6 +890,11 @@ a:focus-visible {
   line-height: 1.35;
 }
 
+.builder-status-row .inline-teamup-effect {
+  padding-top: 4px;
+  border-top: 1px solid var(--line);
+}
+
 .builder-status-row.enhanced {
   border-left: 4px solid var(--strategist);
 }
@@ -1474,6 +1479,43 @@ button.hero-chip {
 .sample-list {
   display: grid;
   gap: 8px;
+}
+
+.teamup-effect-list {
+  display: grid;
+  gap: 8px;
+}
+
+.teamup-effect-card {
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.teamup-effect-card h4,
+.teamup-effect-card p {
+  margin: 0;
+}
+
+.teamup-effect-card h4 {
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.teamup-effect-card p,
+.teamup-effect-card small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.teamup-effect-ability {
+  color: var(--ink);
+  font-weight: 900;
 }
 
 .teammate-row {

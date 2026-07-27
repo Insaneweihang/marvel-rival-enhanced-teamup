@@ -28,6 +28,26 @@
       "name": "Mobalytics - Season 9 Team-Ups Explained",
       "url": "https://mobalytics.gg/marvel-rivals/guides/season-9-team-ups-explained",
       "purpose": "Mechanics confirmation that each hero has two Team-Up loadouts and partners enhance effects."
+    },
+    {
+      "name": "Mobalytics - The Best Marvel Rivals Team-Ups Ranked",
+      "url": "https://mobalytics.gg/marvel-rivals/guides/best-team-ups",
+      "purpose": "Secondary examples for selected Team-Up ability names and effect summaries."
+    },
+    {
+      "name": "MarvelRivals.gg - Team-Ups",
+      "url": "https://marvelrivals.gg/team-ups/",
+      "purpose": "Season 9 Team-Up ability-name list and active/inactive Team-Up guide index."
+    },
+    {
+      "name": "MarvelRivals.gg - Season 9 New Team-Up Abilities",
+      "url": "https://marvelrivals.gg/season-9-new-team-up/",
+      "purpose": "Season 9 base/enhanced Team-Up system explanation and role-grouped ability-name list."
+    },
+    {
+      "name": "FandomWire - Every Strategist Team-Up Ability in Marvel Rivals Season 9",
+      "url": "https://fandomwire.com/every-strategist-team-up-ability-marvel-rivals/",
+      "purpose": "Secondary cross-check for Strategist ability names, partners, base effects, and enhanced effects."
     }
   ],
   "notes": [
@@ -35,6 +55,7 @@
     "The Hood is included as an inactive Vanguard to keep partner validation strict; his directional partners are manually inferred from visible Season 9 pairings and should be rechecked when the official hero page is live.",
     "Inactive heroes are valid Team-Up partners but are excluded from generated six-hero teams.",
     "Deadpool uses Duelist as his primary role and Strategist as an eligible flex role for 2-2-2 assignment.",
+    "Team-Up effect summaries are stored separately in teamup_effects.json. Entries without verified effect details are kept as null and marked needs_verification instead of guessed.",
     "This project does not hardcode generated team results; counts are derived from heroes.json and teamups.json."
   ]
 }

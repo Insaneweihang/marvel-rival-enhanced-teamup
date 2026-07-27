@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from marvel_teamups.loader import DataLoadError, load_heroes, load_teamups
+from marvel_teamups.loader import DataLoadError, load_heroes, load_teamup_effects, load_teamups
 from marvel_teamups.validator import validate_dataset
 
 
@@ -19,11 +19,12 @@ def main() -> int:
     try:
         heroes_patch, heroes = load_heroes(args.data_dir / "heroes.json")
         teamups_patch, teamups = load_teamups(args.data_dir / "teamups.json")
+        effects_patch, effects = load_teamup_effects(args.data_dir / "teamup_effects.json")
     except DataLoadError as exc:
         print(f"Data validation failed:\n- {exc}", file=sys.stderr)
         return 1
 
-    result = validate_dataset(heroes, teamups, heroes_patch, teamups_patch)
+    result = validate_dataset(heroes, teamups, heroes_patch, teamups_patch, effects, effects_patch)
     if not result.ok:
         print("Data validation failed:", file=sys.stderr)
         for error in result.errors:
@@ -43,4 +44,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from .models import Hero, LoadedData, Role
+from .models import Hero, LoadedData, Role, TeamupEffect
 
 
 class DataLoadError(ValueError):
@@ -90,6 +90,53 @@ def load_teamups(path: Path) -> tuple[str, dict[str, frozenset[str]]]:
             parsed.append(partner)
         teamups[hero] = frozenset(parsed)
     return patch_version, teamups
+
+
+def _nullable_string(value: object, field: str, hero: str, partner: str) -> str | None:
+    if value is None:
+        return None
+    if not isinstance(value, str):
+        raise DataLoadError(f"{field} for {hero!r} / {partner!r} must be a string or null")
+    return value
+
+
+def load_teamup_effects(path: Path) -> tuple[str, dict[str, tuple[TeamupEffect, ...]]]:
+    data = _read_json(path)
+    patch_version = data.get("patch_version")
+    raw_effects = data.get("effects")
+    if not isinstance(patch_version, str) or not patch_version.strip():
+        raise DataLoadError(f"{path} must contain a non-empty patch_version")
+    if not isinstance(raw_effects, dict):
+        raise DataLoadError(f"{path} must contain an effects object")
+
+    effects: dict[str, tuple[TeamupEffect, ...]] = {}
+    for hero, entries in raw_effects.items():
+        if not isinstance(hero, str) or not hero.strip():
+            raise DataLoadError(f"{path} contains an empty Team-Up effect hero name")
+        if not isinstance(entries, list):
+            raise DataLoadError(f"Team-Up effects for {hero!r} must be a list")
+        parsed: list[TeamupEffect] = []
+        for index, entry in enumerate(entries, start=1):
+            if not isinstance(entry, dict):
+                raise DataLoadError(f"Effect entry #{index} for {hero!r} must be an object")
+            partner = entry.get("partner")
+            if not isinstance(partner, str) or not partner.strip():
+                raise DataLoadError(f"Effect entry #{index} for {hero!r} has an empty partner")
+            status = entry.get("verification_status")
+            if not isinstance(status, str) or not status.strip():
+                raise DataLoadError(f"Effect entry #{index} for {hero!r} has an empty verification_status")
+            parsed.append(
+                TeamupEffect(
+                    partner=partner,
+                    ability_name=_nullable_string(entry.get("ability_name"), "ability_name", hero, partner),
+                    base_effect=_nullable_string(entry.get("base_effect"), "base_effect", hero, partner),
+                    enhanced_effect=_nullable_string(entry.get("enhanced_effect"), "enhanced_effect", hero, partner),
+                    source_url=_nullable_string(entry.get("source_url"), "source_url", hero, partner),
+                    verification_status=status,
+                )
+            )
+        effects[hero] = tuple(parsed)
+    return patch_version, effects
 
 
 def load_data(data_dir: Path) -> LoadedData:

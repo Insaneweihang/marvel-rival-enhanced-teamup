@@ -2,6 +2,7 @@
   summary: "data/summary.json",
   heroes: "data/heroes.json",
   teamups: "data/teamups.json",
+  teamupEffects: "data/teamup_effects.json",
   maps: "data/maps.json",
   updates: "data/updates.json",
   all: "data/all_fully_enhanced_teams.json",
@@ -34,6 +35,7 @@ const state = {
   mapsData: null,
   heroesByName: new Map(),
   teamups: new Map(),
+  teamupEffects: new Map(),
   teams: {
     all: [],
     balanced: [],
@@ -121,6 +123,14 @@ function eligibleRoles(hero) {
 
 function rolesText(hero) {
   return eligibleRoles(hero).join(" / ");
+}
+
+function effectKey(heroName, partnerName) {
+  return `${heroName}\u0000${partnerName}`;
+}
+
+function teamupEffect(heroName, partnerName) {
+  return state.teamupEffects.get(effectKey(heroName, partnerName));
 }
 
 function createSavedCompId() {
@@ -705,8 +715,59 @@ function renderBuilderCurrentStatus() {
       ? `Missing options: ${status.missingPartners.join(" or ") || "none"}`
       : "Add one listed partner to enhance this hero.";
     row.append(title, details);
+    if (status.enhanced) {
+      for (const partner of status.activePartners) {
+        row.append(renderInlineEffect(heroName, partner));
+      }
+    }
     elements.builderCurrentStatus.append(row);
   }
+}
+
+function renderInlineEffect(heroName, partnerName) {
+  const effect = teamupEffect(heroName, partnerName);
+  const item = document.createElement("small");
+  item.className = "inline-teamup-effect";
+  if (!effect || effect.verification_status === "needs_verification") {
+    item.textContent = `${partnerName}: effect details need verification.`;
+    return item;
+  }
+  const label = effect.ability_name && effect.ability_name !== "Unverified name" ? `${effect.ability_name}: ` : "";
+  item.textContent = `${partnerName} - ${label}${effect.enhanced_effect || effect.base_effect}`;
+  return item;
+}
+
+function renderTeamupEffectCard(heroName, partnerName) {
+  const effect = teamupEffect(heroName, partnerName);
+  const card = document.createElement("article");
+  card.className = "teamup-effect-card";
+
+  const title = document.createElement("h4");
+  title.textContent = `${heroName} <- ${partnerName}`;
+
+  const ability = document.createElement("p");
+  ability.className = "teamup-effect-ability";
+  ability.textContent = effect?.ability_name && effect.ability_name !== "Unverified name"
+    ? effect.ability_name
+    : "Ability name needs verification";
+
+  const base = document.createElement("p");
+  const baseLabel = document.createElement("strong");
+  baseLabel.textContent = "Base: ";
+  base.append(baseLabel, effect?.base_effect || "Needs verification.");
+
+  const enhanced = document.createElement("p");
+  const enhancedLabel = document.createElement("strong");
+  enhancedLabel.textContent = "Enhanced: ";
+  enhanced.append(enhancedLabel, effect?.enhanced_effect || "Needs verification.");
+
+  const meta = document.createElement("small");
+  meta.textContent = effect?.verification_status === "needs_verification"
+    ? "Effect details need verification."
+    : "Verified from secondary source.";
+
+  card.append(title, ability, base, enhanced, meta);
+  return card;
 }
 
 function renderBuilderSuggestions() {
@@ -1242,10 +1303,10 @@ function renderHeroDetail() {
 
   const teamupsSection = document.createElement("section");
   teamupsSection.className = "detail-section";
-  teamupsSection.innerHTML = "<h3>Team-Up Partners</h3>";
+  teamupsSection.innerHTML = "<h3>Team-Up Effects</h3>";
   const partnerRow = document.createElement("div");
-  partnerRow.className = "detail-chip-row";
-  partners.forEach((partner) => partnerRow.append(makeChip(`${hero.name} <- ${partner}`)));
+  partnerRow.className = "teamup-effect-list";
+  partners.forEach((partner) => partnerRow.append(renderTeamupEffectCard(hero.name, partner)));
   teamupsSection.append(partnerRow);
 
   const teammatesSection = document.createElement("section");
@@ -1492,10 +1553,11 @@ async function init() {
   try {
     readUrlState();
     bindEvents();
-    const [summary, heroes, teamups, mapsData, updatesData, allTeams, balancedTeams] = await Promise.all([
+    const [summary, heroes, teamups, teamupEffects, mapsData, updatesData, allTeams, balancedTeams] = await Promise.all([
       loadJson(DATA_FILES.summary),
       loadJson(DATA_FILES.heroes),
       loadJson(DATA_FILES.teamups),
+      loadJson(DATA_FILES.teamupEffects),
       loadJson(DATA_FILES.maps),
       loadJson(DATA_FILES.updates),
       loadJson(DATA_FILES.all),
@@ -1506,6 +1568,11 @@ async function init() {
     state.updates = Array.isArray(updatesData.updates) ? updatesData.updates : [];
     state.heroesByName = new Map(heroes.heroes.map((hero) => [hero.name, hero]));
     state.teamups = new Map(Object.entries(teamups.teamups));
+    state.teamupEffects = new Map(
+      Object.entries(teamupEffects.effects || {}).flatMap(([heroName, effects]) =>
+        Array.isArray(effects) ? effects.map((effect) => [effectKey(heroName, effect.partner), effect]) : [],
+      ),
+    );
     state.teams.all = allTeams.teams;
     state.teams.balanced = balancedTeams.teams;
     state.savedComps = safeReadSavedComps();
