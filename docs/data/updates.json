@@ -1,0 +1,22 @@
+{
+  "updates": [
+    {
+      "date": "2026-07-28",
+      "type": "feature",
+      "title": "Saved Team Builder comps",
+      "summary": "Save local Team Builder comps, load them later, and copy share links."
+    },
+    {
+      "date": "2026-07-28",
+      "type": "ui",
+      "title": "Team Builder workspace layout",
+      "summary": "Team Builder now separates hero picking from draft review and completion analysis."
+    },
+    {
+      "date": "2026-07-28",
+      "type": "feature",
+      "title": "Feedback form added",
+      "summary": "Send ideas, bugs, and data issues directly from the site footer."
+    }
+  ]
+}

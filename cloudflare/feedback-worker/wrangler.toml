@@ -1,0 +1,8 @@
+name = "marvel-rivals-feedback"
+main = "worker.js"
+compatibility_date = "2026-07-27"
+
+[[d1_databases]]
+binding = "FEEDBACK_DB"
+database_name = "marvel-rivals-feedback"
+database_id = "13d5b8d9-8da0-42cb-a67c-ef7ed18a03fa"

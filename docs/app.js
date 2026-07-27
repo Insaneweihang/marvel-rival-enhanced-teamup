@@ -3,10 +3,14 @@
   heroes: "data/heroes.json",
   teamups: "data/teamups.json",
   maps: "data/maps.json",
+  updates: "data/updates.json",
   all: "data/all_fully_enhanced_teams.json",
   balanced: "data/fully_enhanced_222_teams.json",
 };
 
+const FEEDBACK_ENDPOINT = "https://marvel-rivals-feedback.insaneweihang.workers.dev/feedback";
+const SAVED_COMPS_KEY = "marvel-rivals:saved-comps:v1";
+const MAX_SAVED_COMPS = 20;
 const ROLE_ORDER = ["Vanguard", "Duelist", "Strategist"];
 const state = {
   activeView: "browser",
@@ -15,12 +19,17 @@ const state = {
   excludedHeroes: new Set(),
   builderHeroes: new Set(),
   builderMode: "all",
+  builderNotice: "",
   detailHero: null,
   search: "",
   builderSearch: "",
   mapSearch: "",
   selectedMapType: "All",
   selectedMapCategory: "All",
+  savedComps: [],
+  savedCompsStatus: "",
+  updates: [],
+  updatesOpen: false,
   summary: null,
   mapsData: null,
   heroesByName: new Map(),
@@ -46,9 +55,13 @@ const elements = {
   builderHeroPicker: document.querySelector("#builder-hero-picker"),
   builderSelected: document.querySelector("#builder-selected"),
   builderStatus: document.querySelector("#builder-status"),
+  resetBuilderTeam: document.querySelector("#reset-builder-team"),
   builderCurrentStatus: document.querySelector("#builder-current-status"),
   builderSuggestions: document.querySelector("#builder-suggestions"),
   builderMatches: document.querySelector("#builder-matches"),
+  saveBuilderComp: document.querySelector("#save-builder-comp"),
+  savedCompsStatus: document.querySelector("#saved-comps-status"),
+  savedCompsList: document.querySelector("#saved-comps-list"),
   heroSearch: document.querySelector("#hero-search"),
   clearFilters: document.querySelector("#clear-filters"),
   selectedHeroes: document.querySelector("#selected-heroes"),
@@ -67,6 +80,13 @@ const elements = {
   mapsSource: document.querySelector("#maps-source"),
   mapsTitle: document.querySelector("#maps-title"),
   mapsList: document.querySelector("#maps-list"),
+  updatesToggle: document.querySelector("#updates-toggle"),
+  updatesPanel: document.querySelector("#updates-panel"),
+  updatesClose: document.querySelector("#updates-close"),
+  updatesList: document.querySelector("#updates-list"),
+  feedbackForm: document.querySelector("#feedback-form"),
+  feedbackSubmit: document.querySelector("#feedback-submit"),
+  feedbackStatus: document.querySelector("#feedback-status"),
 };
 
 function formatNumber(value) {
@@ -101,6 +121,80 @@ function eligibleRoles(hero) {
 
 function rolesText(hero) {
   return eligibleRoles(hero).join(" / ");
+}
+
+function createSavedCompId() {
+  if (window.crypto?.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+  return `comp-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+function safeReadSavedComps() {
+  try {
+    const raw = window.localStorage.getItem(SAVED_COMPS_KEY);
+    if (!raw) {
+      return [];
+    }
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed
+      .filter((comp) => comp && Array.isArray(comp.heroes))
+      .map((comp) => ({
+        id: String(comp.id || createSavedCompId()),
+        name: String(comp.name || "Saved comp"),
+        heroes: comp.heroes.map(String).slice(0, 6),
+        mode: comp.mode === "222" ? "222" : "all",
+        createdAt: String(comp.createdAt || new Date().toISOString()),
+        updatedAt: String(comp.updatedAt || comp.createdAt || new Date().toISOString()),
+      }))
+      .slice(0, MAX_SAVED_COMPS);
+  } catch (error) {
+    state.savedCompsStatus = "Saved comps are unavailable in this browser.";
+    return [];
+  }
+}
+
+function safeWriteSavedComps() {
+  try {
+    window.localStorage.setItem(SAVED_COMPS_KEY, JSON.stringify(state.savedComps.slice(0, MAX_SAVED_COMPS)));
+    return true;
+  } catch (error) {
+    state.savedCompsStatus = "Could not save comp. Browser storage may be full or disabled.";
+    return false;
+  }
+}
+
+function savedCompKey(heroes, mode) {
+  return `${mode}:${[...heroes].sort().join("|")}`;
+}
+
+function currentBuilderCompName() {
+  return [...state.builderHeroes].sort().join(" / ") || "Untitled comp";
+}
+
+function normalizeSavedComps() {
+  const seen = new Set();
+  state.savedComps = state.savedComps
+    .map((comp) => ({
+      ...comp,
+      heroes: comp.heroes.filter((heroName) => canUseInBuilder(heroName)).slice(0, 6),
+      mode: comp.mode === "222" ? "222" : "all",
+    }))
+    .filter((comp) => {
+      if (!comp.heroes.length) {
+        return false;
+      }
+      const key = savedCompKey(comp.heroes, comp.mode);
+      if (seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return true;
+    })
+    .slice(0, MAX_SAVED_COMPS);
 }
 
 function deriveHeroes() {
@@ -205,6 +299,53 @@ function renderSummary() {
   elements.allCount.textContent = formatNumber(state.summary.fully_enhanced_unrestricted_count);
   elements.balancedCount.textContent = formatNumber(state.summary.fully_enhanced_222_count);
   elements.checkedCount.textContent = formatNumber(state.summary.total_combinations_checked);
+}
+
+function renderUpdates() {
+  elements.updatesList.replaceChildren();
+  const updates = state.updates.slice(0, 5);
+  elements.updatesToggle.hidden = !updates.length;
+  elements.updatesPanel.hidden = !updates.length || !state.updatesOpen;
+  elements.updatesToggle.setAttribute("aria-expanded", String(Boolean(updates.length && state.updatesOpen)));
+  if (!updates.length) {
+    return;
+  }
+
+  for (const update of updates) {
+    const item = document.createElement(update.link ? "a" : "article");
+    item.className = "update-item";
+    if (update.link) {
+      item.href = update.link;
+      item.target = "_blank";
+      item.rel = "noopener noreferrer";
+    }
+
+    const meta = document.createElement("div");
+    meta.className = "update-meta";
+
+    const type = document.createElement("span");
+    type.className = `update-type ${update.type || "notice"}`;
+    type.textContent = update.type || "notice";
+
+    const date = document.createElement("time");
+    date.dateTime = update.date || "";
+    date.textContent = update.date || "Undated";
+
+    const title = document.createElement("h3");
+    title.textContent = update.title || "Site update";
+
+    const summary = document.createElement("p");
+    summary.textContent = update.summary || "";
+
+    meta.append(type, date);
+    item.append(meta, title, summary);
+    elements.updatesList.append(item);
+  }
+}
+
+function setUpdatesOpen(isOpen) {
+  state.updatesOpen = isOpen && state.updates.length > 0;
+  renderUpdates();
 }
 
 function uniqueSorted(values) {
@@ -608,7 +749,7 @@ function renderBuilderMatches() {
   const completions = builderCompletionTeams();
   const selectedCount = state.builderHeroes.size;
   if (!selectedCount) {
-    elements.builderStatus.textContent = "Pick 1-6 heroes.";
+    elements.builderStatus.textContent = state.builderNotice || "Pick 1-6 heroes.";
     elements.builderMatches.append(makeChip("Matching teams appear after you select a hero", "muted-chip"));
     return;
   }
@@ -620,7 +761,7 @@ function renderBuilderMatches() {
   } else if (selectedCount > 0) {
     statusText = `${selectedCount} selected - Can be completed - ${formatNumber(completions.length)} valid completions`;
   }
-  elements.builderStatus.textContent = statusText;
+  elements.builderStatus.textContent = state.builderNotice ? `${state.builderNotice} ${statusText}` : statusText;
 
   if (!completions.length) {
     elements.builderMatches.append(makeChip("No matching generated teams", "muted-chip"));
@@ -629,12 +770,62 @@ function renderBuilderMatches() {
   completions.slice(0, 10).forEach((team) => elements.builderMatches.append(renderMiniTeam(team)));
 }
 
+function renderSavedComps() {
+  elements.savedCompsList.replaceChildren();
+  elements.saveBuilderComp.disabled = !state.builderHeroes.size;
+  elements.savedCompsStatus.textContent = state.savedCompsStatus;
+
+  if (!state.savedComps.length) {
+    elements.savedCompsList.append(makeChip("No saved comps yet", "muted-chip"));
+    return;
+  }
+
+  for (const comp of state.savedComps) {
+    const item = document.createElement("article");
+    item.className = "saved-comp";
+
+    const title = document.createElement("h4");
+    title.textContent = comp.name;
+
+    const meta = document.createElement("small");
+    meta.textContent = `${comp.mode === "222" ? "2-2-2" : "All"} - ${comp.heroes.length} hero${comp.heroes.length === 1 ? "" : "es"}`;
+
+    const heroes = document.createElement("div");
+    heroes.className = "saved-comp-heroes";
+    for (const heroName of comp.heroes) {
+      const hero = state.heroesByName.get(heroName);
+      heroes.append(hero ? heroChip(hero) : makeChip(heroName, "muted-chip"));
+    }
+
+    const actions = document.createElement("div");
+    actions.className = "saved-comp-actions";
+    actions.append(
+      makeSavedCompAction("Load", () => loadSavedComp(comp.id)),
+      makeSavedCompAction("Copy Link", () => copySavedCompLink(comp.id)),
+      makeSavedCompAction("Delete", () => deleteSavedComp(comp.id), "danger"),
+    );
+
+    item.append(title, meta, heroes, actions);
+    elements.savedCompsList.append(item);
+  }
+}
+
 function renderBuilder() {
   renderBuilderHeroPicker();
   renderBuilderSelected();
+  renderSavedComps();
   renderBuilderCurrentStatus();
   renderBuilderSuggestions();
   renderBuilderMatches();
+}
+
+function makeSavedCompAction(label, onClick, variant = "") {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = `saved-comp-action ${variant}`.trim();
+  button.textContent = label;
+  button.addEventListener("click", onClick);
+  return button;
 }
 
 function toggleHeroFilter(heroName, filterMode) {
@@ -673,16 +864,132 @@ function sanitizeBuilderHeroes() {
 }
 
 function addHeroToBuilder(heroName) {
-  if (!canUseInBuilder(heroName) || state.builderHeroes.has(heroName) || state.builderHeroes.size >= 6) {
+  if (!canUseInBuilder(heroName)) {
+    state.builderNotice = `${heroName} is not available.`;
+    update();
     return;
   }
+  if (state.builderHeroes.has(heroName)) {
+    state.builderNotice = `${heroName} is already selected.`;
+    update();
+    return;
+  }
+  if (state.builderHeroes.size >= 6) {
+    state.builderNotice = "Team is full. Remove a hero before adding another.";
+    update();
+    return;
+  }
+  state.builderNotice = "";
   state.builderHeroes.add(heroName);
   update();
 }
 
 function removeHeroFromBuilder(heroName) {
   state.builderHeroes.delete(heroName);
+  state.builderNotice = "";
   update();
+}
+
+function resetBuilder() {
+  state.builderHeroes.clear();
+  state.builderSearch = "";
+  state.builderNotice = "";
+  state.savedCompsStatus = "";
+  elements.builderHeroSearch.value = "";
+  update();
+}
+
+function saveCurrentBuilderComp() {
+  if (!state.builderHeroes.size) {
+    state.savedCompsStatus = "Pick at least one hero before saving.";
+    renderSavedComps();
+    return;
+  }
+
+  const now = new Date().toISOString();
+  const heroes = [...state.builderHeroes].sort();
+  const key = savedCompKey(heroes, state.builderMode);
+  const existing = state.savedComps.find((comp) => savedCompKey(comp.heroes, comp.mode) === key);
+
+  if (existing) {
+    existing.name = currentBuilderCompName();
+    existing.heroes = heroes;
+    existing.mode = state.builderMode;
+    existing.updatedAt = now;
+    state.savedComps = [existing, ...state.savedComps.filter((comp) => comp.id !== existing.id)];
+    state.savedCompsStatus = "Existing saved comp updated instead of duplicated.";
+  } else {
+    state.savedComps = [
+      {
+        id: createSavedCompId(),
+        name: currentBuilderCompName(),
+        heroes,
+        mode: state.builderMode,
+        createdAt: now,
+        updatedAt: now,
+      },
+      ...state.savedComps,
+    ].slice(0, MAX_SAVED_COMPS);
+    state.savedCompsStatus = "Comp saved locally.";
+  }
+
+  if (safeWriteSavedComps()) {
+    renderSavedComps();
+  } else {
+    renderSavedComps();
+  }
+}
+
+function loadSavedComp(compId) {
+  const comp = state.savedComps.find((savedComp) => savedComp.id === compId);
+  if (!comp) {
+    state.savedCompsStatus = "Saved comp not found.";
+    renderSavedComps();
+    return;
+  }
+  const heroes = comp.heroes.filter((heroName) => canUseInBuilder(heroName)).slice(0, 6);
+  state.builderHeroes = new Set(heroes);
+  state.builderMode = comp.mode === "222" ? "222" : "all";
+  state.activeView = "builder";
+  state.builderSearch = "";
+  state.builderNotice = "";
+  elements.builderHeroSearch.value = "";
+  state.savedCompsStatus = "Saved comp loaded.";
+  update();
+}
+
+function deleteSavedComp(compId) {
+  state.savedComps = state.savedComps.filter((comp) => comp.id !== compId);
+  state.savedCompsStatus = "Saved comp deleted.";
+  safeWriteSavedComps();
+  renderSavedComps();
+}
+
+function savedCompUrl(comp) {
+  const params = new URLSearchParams();
+  params.set("view", "builder");
+  params.set("builder", [...comp.heroes].sort().join(","));
+  if (comp.mode === "222") {
+    params.set("builderMode", "222");
+  }
+  return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+}
+
+async function copySavedCompLink(compId) {
+  const comp = state.savedComps.find((savedComp) => savedComp.id === compId);
+  if (!comp) {
+    state.savedCompsStatus = "Saved comp not found.";
+    renderSavedComps();
+    return;
+  }
+  const url = savedCompUrl(comp);
+  try {
+    await navigator.clipboard.writeText(url);
+    state.savedCompsStatus = "Share link copied.";
+  } catch (error) {
+    state.savedCompsStatus = url;
+  }
+  renderSavedComps();
 }
 
 function builderSourceTeams() {
@@ -1068,6 +1375,56 @@ function renderResults() {
   elements.teamList.append(fragment);
 }
 
+function setFeedbackStatus(message, stateName = "") {
+  elements.feedbackStatus.textContent = message;
+  elements.feedbackStatus.className = `feedback-status ${stateName}`.trim();
+}
+
+async function submitFeedback(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  if (formData.get("website")) {
+    setFeedbackStatus("Feedback sent.", "success");
+    form.reset();
+    return;
+  }
+
+  const payload = {
+    type: formData.get("type"),
+    title: String(formData.get("title") || "").trim(),
+    message: String(formData.get("message") || "").trim(),
+    contact: String(formData.get("contact") || "").trim(),
+    page_url: window.location.href,
+  };
+
+  if (!payload.title || !payload.message) {
+    setFeedbackStatus("Add a title and message.", "error");
+    return;
+  }
+
+  elements.feedbackSubmit.disabled = true;
+  setFeedbackStatus("Sending...");
+
+  try {
+    const response = await fetch(FEEDBACK_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!response.ok) {
+      throw new Error(`Feedback API returned ${response.status}`);
+    }
+    setFeedbackStatus("Feedback sent. Thank you.", "success");
+    form.reset();
+  } catch (error) {
+    setFeedbackStatus("Could not send yet. Try Discord or GitHub.", "error");
+  } finally {
+    elements.feedbackSubmit.disabled = false;
+  }
+}
+
 function update() {
   setActiveButtons();
   renderHeroFilters();
@@ -1095,6 +1452,7 @@ function bindEvents() {
   for (const button of elements.builderModeButtons) {
     button.addEventListener("click", () => {
       state.builderMode = button.dataset.builderMode;
+      state.builderNotice = "";
       update();
     });
   }
@@ -1117,35 +1475,45 @@ function bindEvents() {
     elements.heroSearch.value = "";
     update();
   });
-  elements.clearBuilder.addEventListener("click", () => {
-    state.builderHeroes.clear();
-    state.builderSearch = "";
-    elements.builderHeroSearch.value = "";
-    update();
+  elements.clearBuilder.addEventListener("click", resetBuilder);
+  elements.resetBuilderTeam.addEventListener("click", resetBuilder);
+  elements.saveBuilderComp.addEventListener("click", saveCurrentBuilderComp);
+  elements.updatesToggle.addEventListener("click", () => setUpdatesOpen(!state.updatesOpen));
+  elements.updatesClose.addEventListener("click", () => setUpdatesOpen(false));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && state.updatesOpen) {
+      setUpdatesOpen(false);
+    }
   });
+  elements.feedbackForm.addEventListener("submit", submitFeedback);
 }
 
 async function init() {
   try {
     readUrlState();
     bindEvents();
-    const [summary, heroes, teamups, mapsData, allTeams, balancedTeams] = await Promise.all([
+    const [summary, heroes, teamups, mapsData, updatesData, allTeams, balancedTeams] = await Promise.all([
       loadJson(DATA_FILES.summary),
       loadJson(DATA_FILES.heroes),
       loadJson(DATA_FILES.teamups),
       loadJson(DATA_FILES.maps),
+      loadJson(DATA_FILES.updates),
       loadJson(DATA_FILES.all),
       loadJson(DATA_FILES.balanced),
     ]);
     state.summary = summary;
     state.mapsData = mapsData;
+    state.updates = Array.isArray(updatesData.updates) ? updatesData.updates : [];
     state.heroesByName = new Map(heroes.heroes.map((hero) => [hero.name, hero]));
     state.teamups = new Map(Object.entries(teamups.teamups));
     state.teams.all = allTeams.teams;
     state.teams.balanced = balancedTeams.teams;
+    state.savedComps = safeReadSavedComps();
     sanitizeBuilderHeroes();
     deriveHeroes();
+    normalizeSavedComps();
     renderSummary();
+    renderUpdates();
     update();
   } catch (error) {
     elements.statusMessage.textContent = error.message;

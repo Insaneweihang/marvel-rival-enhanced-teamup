@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Marvel Rivals Fully Enhanced Teams</title>
-    <link rel="stylesheet" href="styles.css?v=20260727-compact-heroes" />
+    <link rel="stylesheet" href="styles.css?v=20260728-updates-drawer" />
   </head>
   <body>
     <header class="site-header">
@@ -17,7 +17,8 @@
           <button class="view-tab" type="button" data-view="maps">Maps</button>
         </nav>
       </div>
-      <nav class="header-actions" aria-label="Creator support links">
+      <nav class="header-actions" aria-label="Creator support and feedback links">
+        <a class="feedback-nav-action" href="#feedback" aria-label="Go to feedback form" title="Feedback">Feedback</a>
         <a class="primary-action" href="https://discord.gg/82V8xT8qRx" target="_blank" rel="noopener noreferrer" aria-label="Join Discord" title="Join Discord">
           <img class="social-logo" src="https://cdn.simpleicons.org/discord/FFFFFF" alt="" />
         </a>
@@ -44,6 +45,29 @@
         </div>
       </dl>
     </header>
+
+    <button
+      id="updates-toggle"
+      class="updates-toggle"
+      type="button"
+      aria-controls="updates-panel"
+      aria-expanded="false"
+      hidden>
+      Updates
+    </button>
+
+    <section id="updates-panel" class="updates-panel" aria-label="Latest site updates" hidden>
+      <div class="updates-heading">
+        <div>
+          <p class="eyebrow">Updates</p>
+          <h2>Latest Site Changes</h2>
+        </div>
+        <button id="updates-close" class="icon-button" type="button" aria-label="Close updates" title="Close updates">
+          x
+        </button>
+      </div>
+      <div id="updates-list" class="updates-list"></div>
+    </section>
 
     <main>
       <section id="browser-view" class="app-view browser-view active">
@@ -109,29 +133,49 @@
               x
             </button>
           </div>
-          <div class="segmented" role="tablist" aria-label="Builder mode">
-            <button class="segment active" type="button" data-builder-mode="all">All</button>
-            <button class="segment" type="button" data-builder-mode="222">2-2-2</button>
+          <div class="builder-left">
+            <section class="builder-hero-search-panel" aria-label="Add heroes to team builder">
+              <label for="builder-hero-search">Add Heroes</label>
+              <input id="builder-hero-search" type="search" placeholder="Search heroes to add" autocomplete="off" />
+              <div id="builder-hero-picker" class="builder-hero-picker"></div>
+            </section>
+            <section class="builder-block saved-comps-block" aria-label="Saved team comps">
+              <div class="saved-comps-heading">
+                <h3>Saved Comps</h3>
+              </div>
+              <div id="saved-comps-status" class="saved-comps-status" aria-live="polite"></div>
+              <div id="saved-comps-list" class="saved-comps-list"></div>
+            </section>
           </div>
-          <section class="builder-hero-search-panel" aria-label="Add heroes to team builder">
-            <label for="builder-hero-search">Add Hero</label>
-            <input id="builder-hero-search" type="search" placeholder="Search heroes to add" autocomplete="off" />
-            <div id="builder-hero-picker" class="builder-hero-picker"></div>
-          </section>
-          <div id="builder-selected" class="selected-heroes builder-selected" aria-live="polite"></div>
-          <div id="builder-status" class="builder-status">Pick 1-6 heroes.</div>
-          <section class="builder-block">
-            <h3>Current Status</h3>
-            <div id="builder-current-status" class="builder-current-status"></div>
-          </section>
-          <section class="builder-block">
-            <h3>Suggested Heroes</h3>
-            <div id="builder-suggestions" class="builder-suggestions"></div>
-          </section>
-          <section class="builder-block">
-            <h3>Matching Teams</h3>
-            <div id="builder-matches" class="builder-matches"></div>
-          </section>
+          <div class="builder-right">
+            <section class="builder-draft-panel" aria-label="Current team draft">
+              <div class="builder-draft-heading">
+                <h3>Selected Team</h3>
+                <div class="builder-draft-actions">
+                  <div class="segmented builder-mode-control" role="tablist" aria-label="Builder mode">
+                    <button class="segment active" type="button" data-builder-mode="all">All</button>
+                    <button class="segment" type="button" data-builder-mode="222">2-2-2</button>
+                  </div>
+                  <button id="save-builder-comp" class="saved-comp-save" type="button">Save Current</button>
+                  <button id="reset-builder-team" class="builder-reset-button" type="button">Reset Team</button>
+                </div>
+              </div>
+              <div id="builder-selected" class="selected-heroes builder-selected" aria-live="polite"></div>
+              <div id="builder-status" class="builder-status">Pick 1-6 heroes.</div>
+            </section>
+            <section class="builder-block">
+              <h3>Enhancement Status</h3>
+              <div id="builder-current-status" class="builder-current-status"></div>
+            </section>
+            <section class="builder-block">
+              <h3>Best Additions</h3>
+              <div id="builder-suggestions" class="builder-suggestions"></div>
+            </section>
+            <section class="builder-block">
+              <h3>Valid Completions</h3>
+              <div id="builder-matches" class="builder-matches"></div>
+            </section>
+          </div>
         </section>
       </section>
 
@@ -181,51 +225,98 @@
     </main>
 
     <footer class="site-footer">
-      <p>
-        Unofficial fan-made tool. Not affiliated with, endorsed by, sponsored by, or approved by
-        Marvel, NetEase, or Marvel Rivals. Names and related marks belong to their respective
-        owners.
-      </p>
-      <nav class="footer-social-links" aria-label="Creator social links">
-        <p class="footer-social-title">Follow InsaneWeiHang</p>
-        <div class="footer-social-group primary-socials">
-          <a href="https://linktr.ee/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Linktree" title="Linktree">
-            <img class="social-logo" src="https://cdn.simpleicons.org/linktree/43E660" alt="" />
-          </a>
-          <a href="https://discord.gg/82V8xT8qRx" target="_blank" rel="noopener noreferrer" aria-label="Join Discord" title="Discord">
-            <img class="social-logo" src="https://cdn.simpleicons.org/discord/5865F2" alt="" />
-          </a>
-          <a href="https://ko-fi.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Support on Ko-fi" title="Ko-fi">
-            <img class="social-logo" src="https://cdn.simpleicons.org/kofi/FF5E5B" alt="" />
-          </a>
+      <div class="footer-content">
+        <div class="footer-follow">
+          <nav class="footer-social-links" aria-label="Creator social links">
+            <p class="footer-social-title">Follow InsaneWeiHang</p>
+            <div class="footer-social-group primary-socials">
+              <a href="https://linktr.ee/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Linktree" title="Linktree">
+                <img class="social-logo" src="https://cdn.simpleicons.org/linktree/43E660" alt="" />
+              </a>
+              <a href="https://discord.gg/82V8xT8qRx" target="_blank" rel="noopener noreferrer" aria-label="Join Discord" title="Discord">
+                <img class="social-logo" src="https://cdn.simpleicons.org/discord/5865F2" alt="" />
+              </a>
+              <a href="https://ko-fi.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Support on Ko-fi" title="Ko-fi">
+                <img class="social-logo" src="https://cdn.simpleicons.org/kofi/FF5E5B" alt="" />
+              </a>
+            </div>
+            <div class="footer-social-group">
+              <a href="https://instagram.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram" title="Instagram">
+                <img class="social-logo" src="https://cdn.simpleicons.org/instagram/E4405F" alt="" />
+              </a>
+              <a href="https://tiktok.com/@insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open TikTok" title="TikTok">
+                <img class="social-logo" src="https://cdn.simpleicons.org/tiktok/000000" alt="" />
+              </a>
+              <a href="https://www.youtube.com/@InsaneWeihang" target="_blank" rel="noopener noreferrer" aria-label="Open YouTube" title="YouTube">
+                <img class="social-logo" src="https://cdn.simpleicons.org/youtube/FF0000" alt="" />
+              </a>
+              <a href="https://www.twitch.tv/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Twitch" title="Twitch">
+                <img class="social-logo" src="https://cdn.simpleicons.org/twitch/9146FF" alt="" />
+              </a>
+              <a href="https://x.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open X" title="X">
+                <img class="social-logo" src="https://cdn.simpleicons.org/x/000000" alt="" />
+              </a>
+              <a href="https://www.facebook.com/theinsaneapple" target="_blank" rel="noopener noreferrer" aria-label="Open Facebook" title="Facebook">
+                <img class="social-logo" src="https://cdn.simpleicons.org/facebook/0866FF" alt="" />
+              </a>
+              <a href="https://github.com/Insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub" title="GitHub">
+                <img class="social-logo" src="https://cdn.simpleicons.org/github/181717" alt="" />
+              </a>
+            </div>
+          </nav>
+          <p class="footer-disclaimer">
+            Unofficial fan-made tool. Not affiliated with, endorsed by, sponsored by, or approved by
+            Marvel, NetEase, or Marvel Rivals. Names and related marks belong to their respective
+            owners.
+          </p>
         </div>
-        <div class="footer-social-group">
-          <a href="https://instagram.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram" title="Instagram">
-            <img class="social-logo" src="https://cdn.simpleicons.org/instagram/E4405F" alt="" />
-          </a>
-          <a href="https://tiktok.com/@insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open TikTok" title="TikTok">
-            <img class="social-logo" src="https://cdn.simpleicons.org/tiktok/000000" alt="" />
-          </a>
-          <a href="https://www.youtube.com/@InsaneWeihang" target="_blank" rel="noopener noreferrer" aria-label="Open YouTube" title="YouTube">
-            <img class="social-logo" src="https://cdn.simpleicons.org/youtube/FF0000" alt="" />
-          </a>
-          <a href="https://www.twitch.tv/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open Twitch" title="Twitch">
-            <img class="social-logo" src="https://cdn.simpleicons.org/twitch/9146FF" alt="" />
-          </a>
-          <a href="https://x.com/insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open X" title="X">
-            <img class="social-logo" src="https://cdn.simpleicons.org/x/000000" alt="" />
-          </a>
-          <a href="https://www.facebook.com/theinsaneapple" target="_blank" rel="noopener noreferrer" aria-label="Open Facebook" title="Facebook">
-            <img class="social-logo" src="https://cdn.simpleicons.org/facebook/0866FF" alt="" />
-          </a>
-          <a href="https://github.com/Insaneweihang" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub" title="GitHub">
-            <img class="social-logo" src="https://cdn.simpleicons.org/github/181717" alt="" />
-          </a>
-        </div>
-      </nav>
+
+        <section id="feedback" class="feedback-panel" aria-label="Feedback">
+          <div class="feedback-content">
+            <div>
+              <p class="eyebrow">Feedback</p>
+              <h2>Send ideas or report data issues</h2>
+              <p>
+                Found a wrong Team-Up, a missing map, or an idea for the tool? Send a short note
+                and it will be stored for review.
+              </p>
+            </div>
+            <form id="feedback-form" class="feedback-form">
+              <label class="feedback-honeypot" for="feedback-website">Website</label>
+              <input id="feedback-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              <div class="feedback-grid">
+                <label>
+                  Type
+                  <select id="feedback-type" name="type" required>
+                    <option value="idea">Idea</option>
+                    <option value="bug">Bug</option>
+                    <option value="data_issue">Data issue</option>
+                  </select>
+                </label>
+                <label>
+                  Contact
+                  <input id="feedback-contact" name="contact" type="text" placeholder="Optional" maxlength="120" />
+                </label>
+              </div>
+              <label class="feedback-title-field">
+                Title
+                <input id="feedback-title" name="title" type="text" required maxlength="120" />
+              </label>
+              <label class="feedback-message-field">
+                Message
+                <textarea id="feedback-message" name="message" required maxlength="2000" rows="4"></textarea>
+              </label>
+              <div class="feedback-actions">
+                <button id="feedback-submit" type="submit">Send feedback</button>
+                <span id="feedback-status" class="feedback-status" aria-live="polite"></span>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
     </footer>
 
-    <script src="app.js?v=20260727-compact-heroes" defer></script>
+    <script src="app.js?v=20260728-updates-drawer" defer></script>
 
     <!-- Public Cloudflare Web Analytics site token; safe to expose in client HTML. -->
     <!-- Cloudflare Web Analytics -->
