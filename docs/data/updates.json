@@ -1,22 +1,49 @@
 {
+  "current_version": "v0.3.1",
+  "updated_at": "2026-07-29",
   "updates": [
     {
-      "date": "2026-07-28",
-      "type": "feature",
-      "title": "Saved Team Builder comps",
-      "summary": "Save local Team Builder comps, load them later, and copy share links."
+      "version": "v0.3.1",
+      "date": "2026-07-29",
+      "type": "analytics",
+      "title": "Google Analytics added",
+      "summary": "GA4 now tracks page views and key tool interactions for Team Browser, Team Planner, Player Pools, feedback, and social links."
     },
     {
-      "date": "2026-07-28",
-      "type": "ui",
-      "title": "Team Builder workspace layout",
-      "summary": "Team Builder now separates hero picking from draft review and completion analysis."
+      "version": "v0.3.0",
+      "date": "2026-07-29",
+      "type": "feature",
+      "title": "Team Planner and Player Pools",
+      "summary": "Team Builder is now Team Planner, with prominent Draft and Player Pools workflows for duo planning.",
+      "note": "Shoutout to David for suggesting two-player hero pools."
     },
     {
+      "version": "v0.3.0",
+      "date": "2026-07-29",
+      "type": "feature",
+      "title": "Pool Comps",
+      "summary": "Player Pools can now surface full fully enhanced teams that include heroes from both pools."
+    },
+    {
+      "version": "v0.3.0",
+      "date": "2026-07-28",
+      "type": "data",
+      "title": "Official Team-Up effect data",
+      "summary": "Team-Up ability names and effect summaries now use official Marvel Rivals hero pages where available."
+    },
+    {
+      "version": "v0.2.0",
       "date": "2026-07-28",
       "type": "feature",
-      "title": "Feedback form added",
-      "summary": "Send ideas, bugs, and data issues directly from the site footer."
+      "title": "Saved comps and feedback",
+      "summary": "Save local Team Planner comps, load them later, copy share links, and send site feedback."
+    },
+    {
+      "version": "v0.1.0",
+      "date": "2026-07-28",
+      "type": "feature",
+      "title": "Fully enhanced team browser",
+      "summary": "Browse all generated fully enhanced teams, filter by heroes, and compare unrestricted or 2-2-2 results."
     }
   ]
 }

@@ -4,7 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Marvel Rivals Fully Enhanced Teams</title>
-    <link rel="stylesheet" href="styles.css?v=20260728-teamup-effects" />
+    <!-- Public Google Analytics measurement ID; safe to expose in client HTML. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPFXF8XZSR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-LPFXF8XZSR");
+    </script>
+    <link rel="stylesheet" href="styles.css?v=20260729-update-note" />
   </head>
   <body>
     <header class="site-header">
@@ -13,7 +21,7 @@
         <h1>Fully Enhanced Team Browser</h1>
         <nav class="view-tabs" aria-label="Application views">
           <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
-          <button class="view-tab" type="button" data-view="builder">Team Builder</button>
+          <button class="view-tab" type="button" data-view="builder">Team Planner</button>
           <button class="view-tab" type="button" data-view="maps">Maps</button>
         </nav>
       </div>
@@ -61,6 +69,7 @@
         <div>
           <p class="eyebrow">Updates</p>
           <h2>Latest Site Changes</h2>
+          <div id="updates-version" class="updates-version"></div>
         </div>
         <button id="updates-close" class="icon-button" type="button" aria-label="Close updates" title="Close updates">
           x
@@ -127,55 +136,123 @@
           <div class="builder-heading">
             <div>
               <p class="eyebrow">Team Builder</p>
-              <h2>Manual Draft</h2>
+              <h2>Team Planner</h2>
             </div>
-            <button id="clear-builder" class="icon-button" type="button" title="Clear builder" aria-label="Clear builder">
-              x
+            <div class="builder-heading-actions">
+              <button id="clear-builder" class="icon-button" type="button" title="Clear builder" aria-label="Clear builder">
+                x
+              </button>
+            </div>
+          </div>
+          <div class="planner-workflows" role="tablist" aria-label="Team planner workflow">
+            <button class="planner-workflow active" type="button" data-builder-panel="draft">
+              <span>Draft</span>
+              <strong>Build a specific team</strong>
+              <small id="draft-workflow-summary">Pick heroes and see completion paths.</small>
+            </button>
+            <button class="planner-workflow" type="button" data-builder-panel="pools">
+              <span>Player Pools</span>
+              <strong>Compare two hero pools</strong>
+              <small id="pool-workflow-summary">Find duo links and shared full comps.</small>
             </button>
           </div>
-          <div class="builder-left">
-            <section class="builder-hero-search-panel" aria-label="Add heroes to team builder">
-              <label for="builder-hero-search">Add Heroes</label>
-              <input id="builder-hero-search" type="search" placeholder="Search heroes to add" autocomplete="off" />
-              <div id="builder-hero-picker" class="builder-hero-picker"></div>
-            </section>
-            <section class="builder-block saved-comps-block" aria-label="Saved team comps">
-              <div class="saved-comps-heading">
-                <h3>Saved Comps</h3>
-              </div>
-              <div id="saved-comps-status" class="saved-comps-status" aria-live="polite"></div>
-              <div id="saved-comps-list" class="saved-comps-list"></div>
-            </section>
-          </div>
-          <div class="builder-right">
-            <section class="builder-draft-panel" aria-label="Current team draft">
-              <div class="builder-draft-heading">
-                <h3>Selected Team</h3>
-                <div class="builder-draft-actions">
-                  <div class="segmented builder-mode-control" role="tablist" aria-label="Builder mode">
-                    <button class="segment active" type="button" data-builder-mode="all">All</button>
-                    <button class="segment" type="button" data-builder-mode="222">2-2-2</button>
-                  </div>
-                  <button id="save-builder-comp" class="saved-comp-save" type="button">Save Current</button>
-                  <button id="reset-builder-team" class="builder-reset-button" type="button">Reset Team</button>
+          <div id="builder-draft-workspace" class="builder-workspace active">
+            <div class="builder-left">
+              <section class="builder-hero-search-panel" aria-label="Add heroes to team builder">
+                <label for="builder-hero-search">Add Heroes</label>
+                <input id="builder-hero-search" type="search" placeholder="Search heroes to add" autocomplete="off" />
+                <div id="builder-hero-picker" class="builder-hero-picker"></div>
+              </section>
+              <section class="builder-block saved-comps-block" aria-label="Saved team comps">
+                <div class="saved-comps-heading">
+                  <h3>Saved Comps</h3>
                 </div>
-              </div>
-              <div id="builder-selected" class="selected-heroes builder-selected" aria-live="polite"></div>
-              <div id="builder-status" class="builder-status">Pick 1-6 heroes.</div>
-            </section>
-            <section class="builder-block">
-              <h3>Enhancement Status</h3>
-              <div id="builder-current-status" class="builder-current-status"></div>
-            </section>
-            <section class="builder-block">
-              <h3>Best Additions</h3>
-              <div id="builder-suggestions" class="builder-suggestions"></div>
-            </section>
-            <section class="builder-block">
-              <h3>Valid Completions</h3>
-              <div id="builder-matches" class="builder-matches"></div>
-            </section>
+                <div id="saved-comps-status" class="saved-comps-status" aria-live="polite"></div>
+                <div id="saved-comps-list" class="saved-comps-list"></div>
+              </section>
+            </div>
+            <div class="builder-right">
+              <section class="builder-draft-panel" aria-label="Current team draft">
+                <div class="builder-draft-heading">
+                  <h3>Selected Team</h3>
+                  <div class="builder-draft-actions">
+                    <div class="segmented builder-mode-control" role="tablist" aria-label="Builder mode">
+                      <button class="segment active" type="button" data-builder-mode="all">All</button>
+                      <button class="segment" type="button" data-builder-mode="222">2-2-2</button>
+                    </div>
+                    <button id="save-builder-comp" class="saved-comp-save" type="button">Save Current</button>
+                    <button id="reset-builder-team" class="builder-reset-button" type="button">Reset Team</button>
+                  </div>
+                </div>
+                <div id="builder-selected" class="selected-heroes builder-selected" aria-live="polite"></div>
+                <div id="builder-status" class="builder-status">Pick 1-6 heroes.</div>
+                <button id="show-player-pools" class="planner-callout" type="button">
+                  Planning with another player? Use Player Pools
+                </button>
+              </section>
+              <section class="builder-block">
+                <h3>Enhancement Status</h3>
+                <div id="builder-current-status" class="builder-current-status"></div>
+              </section>
+              <section class="builder-block">
+                <h3>Best Additions</h3>
+                <div id="builder-suggestions" class="builder-suggestions"></div>
+              </section>
+              <section class="builder-block">
+                <h3>Valid Completions</h3>
+                <div id="builder-matches" class="builder-matches"></div>
+              </section>
+            </div>
           </div>
+          <section id="builder-pools-workspace" class="builder-workspace player-pools" aria-label="Player hero pools">
+            <div class="pool-toolbar">
+              <div>
+                <h3>Player Pools</h3>
+                <p>Compare two player hero pools and find duo-friendly full comps.</p>
+              </div>
+              <div class="pool-actions">
+                <div class="segmented builder-mode-control" role="tablist" aria-label="Player pools mode">
+                  <button class="segment active" type="button" data-pool-mode="all">All</button>
+                  <button class="segment" type="button" data-pool-mode="222">2-2-2</button>
+                </div>
+                <button id="copy-pools-link" class="saved-comp-action" type="button">Copy Link</button>
+                <button id="reset-player-pools" class="builder-reset-button" type="button">Reset Pools</button>
+              </div>
+            </div>
+            <div id="pool-status" class="saved-comps-status" aria-live="polite"></div>
+            <div class="pool-panels">
+              <section class="pool-panel" aria-label="Player 1 hero pool">
+                <div class="pool-panel-heading">
+                  <h3>Player 1</h3>
+                  <span id="pool-one-count">0 heroes</span>
+                </div>
+                <div id="pool-one-selected" class="selected-heroes builder-selected"></div>
+                <input id="pool-one-search" type="search" placeholder="Add Player 1 heroes" autocomplete="off" />
+                <div id="pool-one-picker" class="pool-hero-picker"></div>
+              </section>
+              <section class="pool-panel" aria-label="Player 2 hero pool">
+                <div class="pool-panel-heading">
+                  <h3>Player 2</h3>
+                  <span id="pool-two-count">0 heroes</span>
+                </div>
+                <div id="pool-two-selected" class="selected-heroes builder-selected"></div>
+                <input id="pool-two-search" type="search" placeholder="Add Player 2 heroes" autocomplete="off" />
+                <div id="pool-two-picker" class="pool-hero-picker"></div>
+              </section>
+            </div>
+            <section class="builder-block pool-results-block">
+              <h3>Best Duo Matches</h3>
+              <div id="pool-recommendations" class="pool-recommendations"></div>
+            </section>
+            <section class="builder-block pool-results-block">
+              <h3>Matchup Matrix</h3>
+              <div id="pool-matrix" class="pool-matrix"></div>
+            </section>
+            <section class="builder-block pool-results-block">
+              <h3>Pool Comps</h3>
+              <div id="pool-comps" class="pool-comps"></div>
+            </section>
+          </section>
         </section>
       </section>
 
@@ -316,7 +393,7 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260728-teamup-effects" defer></script>
+    <script src="app.js?v=20260729-ga4" defer></script>
 
     <!-- Public Cloudflare Web Analytics site token; safe to expose in client HTML. -->
     <!-- Cloudflare Web Analytics -->

@@ -48,6 +48,16 @@
       "name": "FandomWire - Every Strategist Team-Up Ability in Marvel Rivals Season 9",
       "url": "https://fandomwire.com/every-strategist-team-up-ability-marvel-rivals/",
       "purpose": "Secondary cross-check for Strategist ability names, partners, base effects, and enhanced effects."
+    },
+    {
+      "name": "Marvel Rivals Official Hero Pages",
+      "url": "https://www.marvelrivals.com/heroes/index.html?heroId=0",
+      "purpose": "Primary source for current hero Team-Up ability names, base effects, enhanced effects, and live hero-page links."
+    },
+    {
+      "name": "Marvel Rivals Version 20260716 Patch Notes",
+      "url": "https://www.marvelrivals.com/20260715/41525_1307701.html",
+      "purpose": "Official Season 9 post-launch Team-Up ability name cross-check."
     }
   ],
   "notes": [
@@ -55,7 +65,7 @@
     "The Hood is included as an inactive Vanguard to keep partner validation strict; his directional partners are manually inferred from visible Season 9 pairings and should be rechecked when the official hero page is live.",
     "Inactive heroes are valid Team-Up partners but are excluded from generated six-hero teams.",
     "Deadpool uses Duelist as his primary role and Strategist as an eligible flex role for 2-2-2 assignment.",
-    "Team-Up effect summaries are stored separately in teamup_effects.json. Entries without verified effect details are kept as null and marked needs_verification instead of guessed.",
-    "This project does not hardcode generated team results; counts are derived from heroes.json and teamups.json."
+    "This project does not hardcode generated team results; counts are derived from heroes.json and teamups.json.",
+    "Team-Up effect summaries are stored separately in teamup_effects.json. Official hero pages are the primary source; entries without official hero-page details are kept as null and marked needs_verification instead of guessed."
   ]
 }

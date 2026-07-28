@@ -99,7 +99,7 @@ Outputs are written to `output/`:
 
 The static browser lives in [docs/index.html](docs/index.html). It loads committed JSON from `docs/data/`, displays the current patch and generated counts, lets users include or exclude selected heroes from unrestricted or `2-2-2` teams, and includes a hero detail panel with Team-Up partners, usage counts, best teammates, and sample teams. A header tab opens a separate Team Builder view for manually checking 1-6 selected heroes.
 
-Team-Up effect summaries live in `data/teamup_effects.json` and are copied to `docs/data/teamup_effects.json` for the frontend. This file records the ability name, base effect, enhanced effect, source URL, and verification status for each directional hero-partner pair. It does not affect generated team counts; unverified entries are kept as `null` and marked `needs_verification`.
+Team-Up effect summaries live in `data/teamup_effects.json` and are copied to `docs/data/teamup_effects.json` for the frontend. This file records the ability name, base effect, enhanced effect, source URL, and verification status for each directional hero-partner pair. `verified_official` means the entry was checked against the official Marvel Rivals hero pages. It does not affect generated team counts; unverified entries are kept as `null` and marked `needs_verification`.
 
 Team Builder uses the generated output JSON as the source of truth. It shows whether a partial draft can become fully enhanced, which selected heroes are currently enhanced, which selected heroes are missing partners, suggested heroes to complete the draft, and matching full teams. Builder links can be shared with query parameters such as:
 
