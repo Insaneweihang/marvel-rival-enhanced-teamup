@@ -17,6 +17,7 @@ OUTPUT_FILES = [
 DATA_FILES = [
     "heroes.json",
     "teamups.json",
+    "teamup_effects.json",
 ]
 
 

@@ -2,6 +2,7 @@
   summary: "data/summary.json",
   heroes: "data/heroes.json",
   teamups: "data/teamups.json",
+  teamupEffects: "data/teamup_effects.json",
   maps: "data/maps.json",
   updates: "data/updates.json",
   all: "data/all_fully_enhanced_teams.json",
@@ -10,6 +11,7 @@
 
 const FEEDBACK_ENDPOINT = "https://marvel-rivals-feedback.insaneweihang.workers.dev/feedback";
 const SAVED_COMPS_KEY = "marvel-rivals:saved-comps:v1";
+const PLAYER_POOLS_KEY = "marvel-rivals:player-pools:v1";
 const MAX_SAVED_COMPS = 20;
 const ROLE_ORDER = ["Vanguard", "Duelist", "Strategist"];
 const state = {
@@ -19,21 +21,36 @@ const state = {
   excludedHeroes: new Set(),
   builderHeroes: new Set(),
   builderMode: "all",
+  builderPanel: "draft",
   builderNotice: "",
   detailHero: null,
   search: "",
   builderSearch: "",
+  poolMode: "all",
+  poolSearches: {
+    player1: "",
+    player2: "",
+  },
+  playerPools: {
+    player1: new Set(),
+    player2: new Set(),
+  },
+  selectedPoolPair: null,
+  poolStatus: "",
   mapSearch: "",
   selectedMapType: "All",
   selectedMapCategory: "All",
   savedComps: [],
   savedCompsStatus: "",
   updates: [],
+  updatesVersion: "",
+  updatesUpdatedAt: "",
   updatesOpen: false,
   summary: null,
   mapsData: null,
   heroesByName: new Map(),
   teamups: new Map(),
+  teamupEffects: new Map(),
   teams: {
     all: [],
     balanced: [],
@@ -50,6 +67,10 @@ const elements = {
   appViews: document.querySelectorAll(".app-view"),
   modeButtons: document.querySelectorAll("[data-mode]"),
   builderModeButtons: document.querySelectorAll("[data-builder-mode]"),
+  builderPanelButtons: document.querySelectorAll("[data-builder-panel]"),
+  poolModeButtons: document.querySelectorAll("[data-pool-mode]"),
+  builderDraftWorkspace: document.querySelector("#builder-draft-workspace"),
+  builderPoolsWorkspace: document.querySelector("#builder-pools-workspace"),
   clearBuilder: document.querySelector("#clear-builder"),
   builderHeroSearch: document.querySelector("#builder-hero-search"),
   builderHeroPicker: document.querySelector("#builder-hero-picker"),
@@ -62,6 +83,23 @@ const elements = {
   saveBuilderComp: document.querySelector("#save-builder-comp"),
   savedCompsStatus: document.querySelector("#saved-comps-status"),
   savedCompsList: document.querySelector("#saved-comps-list"),
+  poolStatus: document.querySelector("#pool-status"),
+  poolOneCount: document.querySelector("#pool-one-count"),
+  poolTwoCount: document.querySelector("#pool-two-count"),
+  poolOneSelected: document.querySelector("#pool-one-selected"),
+  poolTwoSelected: document.querySelector("#pool-two-selected"),
+  poolOneSearch: document.querySelector("#pool-one-search"),
+  poolTwoSearch: document.querySelector("#pool-two-search"),
+  poolOnePicker: document.querySelector("#pool-one-picker"),
+  poolTwoPicker: document.querySelector("#pool-two-picker"),
+  poolRecommendations: document.querySelector("#pool-recommendations"),
+  poolMatrix: document.querySelector("#pool-matrix"),
+  poolComps: document.querySelector("#pool-comps"),
+  draftWorkflowSummary: document.querySelector("#draft-workflow-summary"),
+  poolWorkflowSummary: document.querySelector("#pool-workflow-summary"),
+  showPlayerPools: document.querySelector("#show-player-pools"),
+  copyPoolsLink: document.querySelector("#copy-pools-link"),
+  resetPlayerPools: document.querySelector("#reset-player-pools"),
   heroSearch: document.querySelector("#hero-search"),
   clearFilters: document.querySelector("#clear-filters"),
   selectedHeroes: document.querySelector("#selected-heroes"),
@@ -83,6 +121,7 @@ const elements = {
   updatesToggle: document.querySelector("#updates-toggle"),
   updatesPanel: document.querySelector("#updates-panel"),
   updatesClose: document.querySelector("#updates-close"),
+  updatesVersion: document.querySelector("#updates-version"),
   updatesList: document.querySelector("#updates-list"),
   feedbackForm: document.querySelector("#feedback-form"),
   feedbackSubmit: document.querySelector("#feedback-submit"),
@@ -91,6 +130,13 @@ const elements = {
 
 function formatNumber(value) {
   return Number(value).toLocaleString("en-US");
+}
+
+function trackEvent(eventName, params = {}) {
+  if (typeof window.gtag !== "function") {
+    return;
+  }
+  window.gtag("event", eventName, params);
 }
 
 async function loadJson(path) {
@@ -121,6 +167,14 @@ function eligibleRoles(hero) {
 
 function rolesText(hero) {
   return eligibleRoles(hero).join(" / ");
+}
+
+function effectKey(heroName, partnerName) {
+  return `${heroName}\u0000${partnerName}`;
+}
+
+function teamupEffect(heroName, partnerName) {
+  return state.teamupEffects.get(effectKey(heroName, partnerName));
 }
 
 function createSavedCompId() {
@@ -163,6 +217,41 @@ function safeWriteSavedComps() {
     return true;
   } catch (error) {
     state.savedCompsStatus = "Could not save comp. Browser storage may be full or disabled.";
+    return false;
+  }
+}
+
+function safeReadPlayerPools() {
+  try {
+    const raw = window.localStorage.getItem(PLAYER_POOLS_KEY);
+    if (!raw) {
+      return { player1: [], player2: [], mode: "all" };
+    }
+    const parsed = JSON.parse(raw);
+    return {
+      player1: Array.isArray(parsed.player1) ? parsed.player1.map(String) : [],
+      player2: Array.isArray(parsed.player2) ? parsed.player2.map(String) : [],
+      mode: parsed.mode === "222" ? "222" : "all",
+    };
+  } catch (error) {
+    state.poolStatus = "Player pools are unavailable in this browser.";
+    return { player1: [], player2: [], mode: "all" };
+  }
+}
+
+function safeWritePlayerPools() {
+  try {
+    window.localStorage.setItem(
+      PLAYER_POOLS_KEY,
+      JSON.stringify({
+        player1: [...state.playerPools.player1].sort(),
+        player2: [...state.playerPools.player2].sort(),
+        mode: state.poolMode,
+      }),
+    );
+    return true;
+  } catch (error) {
+    state.poolStatus = "Could not save player pools. Browser storage may be full or disabled.";
     return false;
   }
 }
@@ -221,6 +310,11 @@ function readUrlState() {
   const detail = params.get("detail");
   const builder = params.get("builder");
   const builderMode = params.get("builderMode");
+  const builderPanel = params.get("builderPanel");
+  const poolOne = params.get("pool1");
+  const poolTwo = params.get("pool2");
+  const poolMode = params.get("poolMode");
+  const poolPair = params.get("poolPair");
 
   if (view === "builder" || view === "browser" || view === "maps") {
     state.activeView = view;
@@ -249,6 +343,31 @@ function readUrlState() {
   if (builderMode === "222") {
     state.builderMode = "222";
   }
+  if (builderPanel === "pools") {
+    state.builderPanel = "pools";
+    state.activeView = "builder";
+  }
+  if (poolOne) {
+    state.playerPools.player1 = new Set(poolOne.split(",").map(decodeURIComponent).filter(Boolean));
+    state.activeView = "builder";
+    state.builderPanel = "pools";
+  }
+  if (poolTwo) {
+    state.playerPools.player2 = new Set(poolTwo.split(",").map(decodeURIComponent).filter(Boolean));
+    state.activeView = "builder";
+    state.builderPanel = "pools";
+  }
+  if (poolMode === "222") {
+    state.poolMode = "222";
+  }
+  if (poolPair) {
+    const [firstHero, secondHero] = poolPair.split("|").map(decodeURIComponent);
+    if (firstHero && secondHero) {
+      state.selectedPoolPair = { firstHero, secondHero };
+      state.activeView = "builder";
+      state.builderPanel = "pools";
+    }
+  }
 }
 
 function writeUrlState() {
@@ -274,6 +393,22 @@ function writeUrlState() {
   if (state.builderMode === "222") {
     params.set("builderMode", "222");
   }
+  const shouldWritePools = state.activeView === "builder" && state.builderPanel === "pools";
+  if (shouldWritePools) {
+    params.set("builderPanel", "pools");
+  }
+  if (shouldWritePools && state.playerPools.player1.size) {
+    params.set("pool1", [...state.playerPools.player1].sort().join(","));
+  }
+  if (shouldWritePools && state.playerPools.player2.size) {
+    params.set("pool2", [...state.playerPools.player2].sort().join(","));
+  }
+  if (shouldWritePools && state.poolMode === "222") {
+    params.set("poolMode", "222");
+  }
+  if (shouldWritePools && state.selectedPoolPair) {
+    params.set("poolPair", `${state.selectedPoolPair.firstHero}|${state.selectedPoolPair.secondHero}`);
+  }
   const query = params.toString();
   const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
   window.history.replaceState(null, "", nextUrl);
@@ -292,6 +427,14 @@ function setActiveButtons() {
   for (const button of elements.builderModeButtons) {
     button.classList.toggle("active", button.dataset.builderMode === state.builderMode);
   }
+  for (const button of elements.builderPanelButtons) {
+    button.classList.toggle("active", button.dataset.builderPanel === state.builderPanel);
+  }
+  for (const button of elements.poolModeButtons) {
+    button.classList.toggle("active", button.dataset.poolMode === state.poolMode);
+  }
+  elements.builderDraftWorkspace.classList.toggle("active", state.builderPanel === "draft");
+  elements.builderPoolsWorkspace.classList.toggle("active", state.builderPanel === "pools");
 }
 
 function renderSummary() {
@@ -307,6 +450,9 @@ function renderUpdates() {
   elements.updatesToggle.hidden = !updates.length;
   elements.updatesPanel.hidden = !updates.length || !state.updatesOpen;
   elements.updatesToggle.setAttribute("aria-expanded", String(Boolean(updates.length && state.updatesOpen)));
+  elements.updatesVersion.textContent = state.updatesVersion
+    ? `${state.updatesVersion}${state.updatesUpdatedAt ? ` - ${state.updatesUpdatedAt}` : ""}`
+    : "";
   if (!updates.length) {
     return;
   }
@@ -327,6 +473,11 @@ function renderUpdates() {
     type.className = `update-type ${update.type || "notice"}`;
     type.textContent = update.type || "notice";
 
+    const version = formatUpdateVersion(update);
+    const versionBadge = document.createElement("span");
+    versionBadge.className = "update-version";
+    versionBadge.textContent = version;
+
     const date = document.createElement("time");
     date.dateTime = update.date || "";
     date.textContent = update.date || "Undated";
@@ -337,10 +488,29 @@ function renderUpdates() {
     const summary = document.createElement("p");
     summary.textContent = update.summary || "";
 
-    meta.append(type, date);
+    const note = document.createElement("small");
+    note.className = "update-note";
+    note.textContent = update.note || "";
+
+    meta.append(type);
+    if (version) {
+      meta.append(versionBadge);
+    }
+    meta.append(date);
     item.append(meta, title, summary);
+    if (update.note) {
+      item.append(note);
+    }
     elements.updatesList.append(item);
   }
+}
+
+function formatUpdateVersion(update) {
+  const version = String(update?.version || "").trim();
+  if (!version) {
+    return "";
+  }
+  return version.startsWith("v") ? version : `v${version}`;
 }
 
 function setUpdatesOpen(isOpen) {
@@ -705,8 +875,61 @@ function renderBuilderCurrentStatus() {
       ? `Missing options: ${status.missingPartners.join(" or ") || "none"}`
       : "Add one listed partner to enhance this hero.";
     row.append(title, details);
+    if (status.enhanced) {
+      for (const partner of status.activePartners) {
+        row.append(renderInlineEffect(heroName, partner));
+      }
+    }
     elements.builderCurrentStatus.append(row);
   }
+}
+
+function renderInlineEffect(heroName, partnerName) {
+  const effect = teamupEffect(heroName, partnerName);
+  const item = document.createElement("small");
+  item.className = "inline-teamup-effect";
+  if (!effect || effect.verification_status === "needs_verification") {
+    item.textContent = `${partnerName}: effect details need verification.`;
+    return item;
+  }
+  const label = effect.ability_name && effect.ability_name !== "Unverified name" ? `${effect.ability_name}: ` : "";
+  item.textContent = `${partnerName} - ${label}${effect.enhanced_effect || effect.base_effect}`;
+  return item;
+}
+
+function renderTeamupEffectCard(heroName, partnerName) {
+  const effect = teamupEffect(heroName, partnerName);
+  const card = document.createElement("article");
+  card.className = "teamup-effect-card";
+
+  const title = document.createElement("h4");
+  title.textContent = `${heroName} <- ${partnerName}`;
+
+  const ability = document.createElement("p");
+  ability.className = "teamup-effect-ability";
+  ability.textContent = effect?.ability_name && effect.ability_name !== "Unverified name"
+    ? effect.ability_name
+    : "Ability name needs verification";
+
+  const base = document.createElement("p");
+  const baseLabel = document.createElement("strong");
+  baseLabel.textContent = "Base: ";
+  base.append(baseLabel, effect?.base_effect || "Needs verification.");
+
+  const enhanced = document.createElement("p");
+  const enhancedLabel = document.createElement("strong");
+  enhancedLabel.textContent = "Enhanced: ";
+  enhanced.append(enhancedLabel, effect?.enhanced_effect || "Needs verification.");
+
+  const meta = document.createElement("small");
+  if (effect?.verification_status === "verified_secondary") {
+    meta.textContent = "Verified from secondary source.";
+  } else if (effect?.verification_status === "needs_verification") {
+    meta.textContent = "Effect details need verification.";
+  }
+
+  card.append(title, ability, base, enhanced, meta);
+  return card;
 }
 
 function renderBuilderSuggestions() {
@@ -811,12 +1034,19 @@ function renderSavedComps() {
 }
 
 function renderBuilder() {
+  renderPlannerWorkflows();
   renderBuilderHeroPicker();
   renderBuilderSelected();
   renderSavedComps();
   renderBuilderCurrentStatus();
   renderBuilderSuggestions();
   renderBuilderMatches();
+  renderPlayerPools();
+}
+
+function renderPlannerWorkflows() {
+  elements.draftWorkflowSummary.textContent = draftWorkflowSummary();
+  elements.poolWorkflowSummary.textContent = poolWorkflowSummary();
 }
 
 function makeSavedCompAction(label, onClick, variant = "") {
@@ -863,6 +1093,18 @@ function sanitizeBuilderHeroes() {
   );
 }
 
+function sanitizePlayerPools() {
+  state.playerPools.player1 = new Set([...state.playerPools.player1].filter(canUseInBuilder));
+  state.playerPools.player2 = new Set([...state.playerPools.player2].filter(canUseInBuilder));
+  if (
+    state.selectedPoolPair &&
+    (!state.playerPools.player1.has(state.selectedPoolPair.firstHero) ||
+      !state.playerPools.player2.has(state.selectedPoolPair.secondHero))
+  ) {
+    state.selectedPoolPair = null;
+  }
+}
+
 function addHeroToBuilder(heroName) {
   if (!canUseInBuilder(heroName)) {
     state.builderNotice = `${heroName} is not available.`;
@@ -881,12 +1123,465 @@ function addHeroToBuilder(heroName) {
   }
   state.builderNotice = "";
   state.builderHeroes.add(heroName);
+  trackEvent("builder_hero_added", {
+    hero_name: heroName,
+    builder_mode: state.builderMode,
+    selected_count: state.builderHeroes.size,
+  });
   update();
+}
+
+function poolSourceTeams() {
+  return state.poolMode === "222" ? state.teams.balanced : state.teams.all;
+}
+
+function pairCompletionCount(firstHero, secondHero) {
+  return poolSourceTeams().filter((team) => teamIncludesHero(team, firstHero) && teamIncludesHero(team, secondHero)).length;
+}
+
+function poolPairTeamCompletions(firstHero, secondHero) {
+  return poolSourceTeams().filter((team) => teamIncludesHero(team, firstHero) && teamIncludesHero(team, secondHero));
+}
+
+function pairRelationship(firstHero, secondHero) {
+  const firstEnhanced = (state.teamups.get(firstHero) || []).includes(secondHero);
+  const secondEnhanced = (state.teamups.get(secondHero) || []).includes(firstHero);
+  let label = "No direct link";
+  let score = 0;
+  if (firstEnhanced && secondEnhanced) {
+    label = "Mutual";
+    score = 3;
+  } else if (firstEnhanced) {
+    label = "Enhances Player 1";
+    score = 2;
+  } else if (secondEnhanced) {
+    label = "Enhances Player 2";
+    score = 2;
+  }
+  return { firstEnhanced, secondEnhanced, label, score };
+}
+
+function poolPairStats(firstHero, secondHero) {
+  const relationship = pairRelationship(firstHero, secondHero);
+  const completions = poolPairTeamCompletions(firstHero, secondHero);
+  return {
+    firstHero,
+    secondHero,
+    ...relationship,
+    completionCount: completions.length,
+    bestTeam: completions[0] || null,
+  };
+}
+
+function poolHeroesInTeam(team, poolName) {
+  const pool = state.playerPools[poolName];
+  return teamNames(team).filter((heroName) => pool.has(heroName)).sort((a, b) => a.localeCompare(b));
+}
+
+function teamContainsPoolHeroes(team) {
+  return poolHeroesInTeam(team, "player1").length > 0 && poolHeroesInTeam(team, "player2").length > 0;
+}
+
+function poolTeamPairScore(team) {
+  const playerOneHeroes = poolHeroesInTeam(team, "player1");
+  const playerTwoHeroes = poolHeroesInTeam(team, "player2");
+  let score = 0;
+  for (const firstHero of playerOneHeroes) {
+    for (const secondHero of playerTwoHeroes) {
+      score += pairRelationship(firstHero, secondHero).score;
+    }
+  }
+  return score;
+}
+
+function poolTeamName(team) {
+  return teamNames(team).sort((a, b) => a.localeCompare(b)).join(" / ");
+}
+
+function rankedPoolComps() {
+  let teams = poolSourceTeams().filter(teamContainsPoolHeroes);
+  if (state.selectedPoolPair) {
+    teams = teams.filter((team) =>
+      teamIncludesHero(team, state.selectedPoolPair.firstHero) &&
+      teamIncludesHero(team, state.selectedPoolPair.secondHero),
+    );
+  }
+  return teams
+    .map((team) => ({
+      team,
+      playerOneHeroes: poolHeroesInTeam(team, "player1"),
+      playerTwoHeroes: poolHeroesInTeam(team, "player2"),
+      pairScore: poolTeamPairScore(team),
+    }))
+    .sort(
+      (a, b) =>
+        b.playerOneHeroes.length + b.playerTwoHeroes.length -
+          (a.playerOneHeroes.length + a.playerTwoHeroes.length) ||
+        b.pairScore - a.pairScore ||
+        poolTeamName(a.team).localeCompare(poolTeamName(b.team)),
+    );
+}
+
+function draftWorkflowSummary() {
+  const selectedCount = state.builderHeroes.size;
+  if (!selectedCount) {
+    return "No draft heroes selected.";
+  }
+  const completionCount = builderCompletionTeams().length;
+  if (selectedCount === 6) {
+    return selectedTeamIsFullyEnhanced() ? "6 heroes selected, fully enhanced." : "6 heroes selected, not fully enhanced.";
+  }
+  return `${selectedCount} selected, ${formatNumber(completionCount)} valid completions.`;
+}
+
+function poolWorkflowSummary() {
+  const firstCount = state.playerPools.player1.size;
+  const secondCount = state.playerPools.player2.size;
+  if (!firstCount && !secondCount) {
+    return "No player pools selected.";
+  }
+  const sharedComps = poolSourceTeams().filter(teamContainsPoolHeroes).length;
+  return `${firstCount} vs ${secondCount} heroes, ${formatNumber(sharedComps)} shared comps.`;
+}
+
+function rankedPoolPairs() {
+  const pairs = [];
+  for (const firstHero of state.playerPools.player1) {
+    for (const secondHero of state.playerPools.player2) {
+      pairs.push(poolPairStats(firstHero, secondHero));
+    }
+  }
+  return pairs.sort(
+    (a, b) =>
+      b.score - a.score ||
+      b.completionCount - a.completionCount ||
+      a.firstHero.localeCompare(b.firstHero) ||
+      a.secondHero.localeCompare(b.secondHero),
+  );
+}
+
+function addHeroToPool(poolName, heroName) {
+  if (!canUseInBuilder(heroName)) {
+    state.poolStatus = `${heroName} is not available.`;
+    update();
+    return;
+  }
+  if (state.playerPools[poolName].has(heroName)) {
+    state.poolStatus = `${heroName} is already in this pool.`;
+    update();
+    return;
+  }
+  state.playerPools[poolName].add(heroName);
+  state.poolStatus = "";
+  safeWritePlayerPools();
+  trackEvent("pool_hero_added", {
+    hero_name: heroName,
+    pool_name: poolName,
+    pool_mode: state.poolMode,
+    pool_size: state.playerPools[poolName].size,
+  });
+  update();
+}
+
+function removeHeroFromPool(poolName, heroName) {
+  state.playerPools[poolName].delete(heroName);
+  if (
+    state.selectedPoolPair &&
+    (state.selectedPoolPair.firstHero === heroName || state.selectedPoolPair.secondHero === heroName)
+  ) {
+    state.selectedPoolPair = null;
+  }
+  state.poolStatus = "";
+  safeWritePlayerPools();
+  update();
+}
+
+function resetPlayerPools() {
+  state.playerPools.player1.clear();
+  state.playerPools.player2.clear();
+  state.selectedPoolPair = null;
+  state.poolSearches.player1 = "";
+  state.poolSearches.player2 = "";
+  state.poolStatus = "";
+  elements.poolOneSearch.value = "";
+  elements.poolTwoSearch.value = "";
+  safeWritePlayerPools();
+  update();
+}
+
+function buildPoolComp(team) {
+  state.builderHeroes = new Set(teamNames(team));
+  state.builderMode = state.poolMode;
+  state.builderPanel = "draft";
+  state.builderSearch = "";
+  state.builderNotice = `Loaded Team #${team.team_number} from Player Pools.`;
+  elements.builderHeroSearch.value = "";
+  trackEvent("pool_comp_loaded", {
+    team_number: team.team_number,
+    pool_mode: state.poolMode,
+  });
+  update();
+}
+
+function buildAroundPoolPair(firstHero, secondHero) {
+  state.builderHeroes = new Set([firstHero, secondHero]);
+  state.builderMode = state.poolMode;
+  state.builderPanel = "draft";
+  state.builderSearch = "";
+  state.builderNotice = `Building around ${firstHero} and ${secondHero}.`;
+  elements.builderHeroSearch.value = "";
+  trackEvent("pool_pair_loaded", {
+    player1_hero: firstHero,
+    player2_hero: secondHero,
+    pool_mode: state.poolMode,
+  });
+  update();
+}
+
+function selectPoolPair(firstHero, secondHero) {
+  state.selectedPoolPair = { firstHero, secondHero };
+  state.poolStatus = `Showing comps for ${firstHero} + ${secondHero}.`;
+  trackEvent("pool_pair_selected", {
+    player1_hero: firstHero,
+    player2_hero: secondHero,
+    pool_mode: state.poolMode,
+  });
+  renderPlayerPools();
+}
+
+function clearSelectedPoolPair() {
+  state.selectedPoolPair = null;
+  state.poolStatus = "";
+  renderPlayerPools();
+}
+
+function poolShareUrl() {
+  const params = new URLSearchParams();
+  params.set("view", "builder");
+  params.set("builderPanel", "pools");
+  if (state.playerPools.player1.size) {
+    params.set("pool1", [...state.playerPools.player1].sort().join(","));
+  }
+  if (state.playerPools.player2.size) {
+    params.set("pool2", [...state.playerPools.player2].sort().join(","));
+  }
+  if (state.poolMode === "222") {
+    params.set("poolMode", "222");
+  }
+  if (state.selectedPoolPair) {
+    params.set("poolPair", `${state.selectedPoolPair.firstHero}|${state.selectedPoolPair.secondHero}`);
+  }
+  return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+}
+
+async function copyPoolsLink() {
+  const url = poolShareUrl();
+  try {
+    await navigator.clipboard.writeText(url);
+    state.poolStatus = "Player pool link copied.";
+  } catch (error) {
+    state.poolStatus = url;
+  }
+  renderPlayerPools();
+}
+
+function renderPoolSelected(poolName, target, countTarget) {
+  target.replaceChildren();
+  const heroes = [...state.playerPools[poolName]].sort();
+  countTarget.textContent = `${heroes.length} hero${heroes.length === 1 ? "" : "es"}`;
+  if (!heroes.length) {
+    target.append(makeChip("No heroes selected", "muted-chip"));
+    return;
+  }
+  for (const heroName of heroes) {
+    const hero = state.heroesByName.get(heroName);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `clear-chip ${hero?.role || ""}`;
+    button.textContent = `${heroName} x`;
+    button.title = `Remove ${heroName}`;
+    button.addEventListener("click", () => removeHeroFromPool(poolName, heroName));
+    target.append(button);
+  }
+}
+
+function renderPoolPicker(poolName, target) {
+  target.replaceChildren();
+  const search = state.poolSearches[poolName].trim().toLowerCase();
+  const selected = state.playerPools[poolName];
+  const heroes = activeHeroNames()
+    .filter((heroName) => !selected.has(heroName))
+    .filter((heroName) => !search || heroName.toLowerCase().includes(search))
+    .slice(0, 18);
+
+  if (!heroes.length) {
+    target.append(makeChip("No heroes match", "muted-chip"));
+    return;
+  }
+
+  for (const heroName of heroes) {
+    const hero = state.heroesByName.get(heroName);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `builder-hero-button ${hero?.role || ""}`;
+    button.textContent = heroName;
+    button.title = `Add ${heroName} to ${poolName === "player1" ? "Player 1" : "Player 2"}`;
+    button.addEventListener("click", () => addHeroToPool(poolName, heroName));
+    target.append(button);
+  }
+}
+
+function renderPoolRecommendations() {
+  elements.poolRecommendations.replaceChildren();
+  const pairs = rankedPoolPairs();
+  if (!state.playerPools.player1.size || !state.playerPools.player2.size) {
+    elements.poolRecommendations.append(makeChip("Add heroes to both pools to compare duo options", "muted-chip"));
+    return;
+  }
+  if (!pairs.length) {
+    elements.poolRecommendations.append(makeChip("No pairings available", "muted-chip"));
+    return;
+  }
+
+  for (const pair of pairs.slice(0, 12)) {
+    const item = document.createElement("article");
+    item.className = `pool-recommendation ${pair.score ? "linked" : ""}`;
+    const direction = pair.firstEnhanced && pair.secondEnhanced
+      ? "Both heroes are directly enhanced"
+      : pair.firstEnhanced
+        ? `${pair.firstHero} is enhanced by ${pair.secondHero}`
+        : pair.secondEnhanced
+          ? `${pair.secondHero} is enhanced by ${pair.firstHero}`
+          : "No direct Team-Up link";
+    const bestTeamText = pair.bestTeam ? ` - best Team #${pair.bestTeam.team_number}` : "";
+    item.innerHTML = `
+      <span>${pair.firstHero} + ${pair.secondHero}</span>
+      <strong>${pair.label}</strong>
+      <small>${direction} - ${formatNumber(pair.completionCount)} valid ${state.poolMode === "222" ? "2-2-2 " : ""}teams${bestTeamText}</small>
+    `;
+    const actions = document.createElement("div");
+    actions.className = "pool-card-actions";
+    actions.append(
+      makeSavedCompAction("Build Pair", () => buildAroundPoolPair(pair.firstHero, pair.secondHero)),
+      makeSavedCompAction("View Comps", () => selectPoolPair(pair.firstHero, pair.secondHero)),
+    );
+    item.append(actions);
+    elements.poolRecommendations.append(item);
+  }
+}
+
+function renderPoolMatrix() {
+  elements.poolMatrix.replaceChildren();
+  const firstHeroes = [...state.playerPools.player1].sort();
+  const secondHeroes = [...state.playerPools.player2].sort();
+  if (!firstHeroes.length || !secondHeroes.length) {
+    elements.poolMatrix.append(makeChip("Matrix appears after both pools have heroes", "muted-chip"));
+    return;
+  }
+
+  const table = document.createElement("div");
+  table.className = "pool-matrix-table";
+  table.style.setProperty("--pool-columns", secondHeroes.length + 1);
+  table.append(document.createElement("span"));
+  for (const secondHero of secondHeroes) {
+    const header = document.createElement("strong");
+    header.textContent = secondHero;
+    table.append(header);
+  }
+  for (const firstHero of firstHeroes) {
+    const rowHeader = document.createElement("strong");
+    rowHeader.textContent = firstHero;
+    table.append(rowHeader);
+    for (const secondHero of secondHeroes) {
+      const pair = poolPairStats(firstHero, secondHero);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `pool-matrix-cell ${pair.score ? "linked" : ""}`;
+      const bestTeam = pair.bestTeam ? teamNames(pair.bestTeam).join(", ") : "No full comp";
+      button.innerHTML = `
+        <span>${pair.label}</span>
+        <small>${formatNumber(pair.completionCount)} teams</small>
+        <em>Best: ${bestTeam}</em>
+      `;
+      button.addEventListener("click", () => buildAroundPoolPair(firstHero, secondHero));
+      table.append(button);
+    }
+  }
+  elements.poolMatrix.append(table);
+}
+
+function renderPoolCompCard(result) {
+  const item = renderMiniTeam(result.team);
+  item.classList.add("pool-comp-card");
+
+  const poolMeta = document.createElement("div");
+  poolMeta.className = "pool-comp-meta";
+
+  const playerOne = document.createElement("span");
+  playerOne.textContent = `P1: ${result.playerOneHeroes.join(", ")}`;
+  const playerTwo = document.createElement("span");
+  playerTwo.textContent = `P2: ${result.playerTwoHeroes.join(", ")}`;
+  poolMeta.append(playerOne, playerTwo);
+
+  const actions = document.createElement("div");
+  actions.className = "pool-card-actions";
+  actions.append(makeSavedCompAction("Build This", () => buildPoolComp(result.team)));
+
+  item.append(poolMeta, actions);
+  return item;
+}
+
+function renderPoolComps() {
+  elements.poolComps.replaceChildren();
+  if (!state.playerPools.player1.size || !state.playerPools.player2.size) {
+    elements.poolComps.append(makeChip("Add heroes to both pools to discover shared comps", "muted-chip"));
+    return;
+  }
+
+  const header = document.createElement("div");
+  header.className = "pool-comps-heading";
+  const results = rankedPoolComps();
+  const title = document.createElement("strong");
+  title.textContent = state.selectedPoolPair
+    ? `${formatNumber(results.length)} comps for ${state.selectedPoolPair.firstHero} + ${state.selectedPoolPair.secondHero}`
+    : `${formatNumber(results.length)} comps contain heroes from both pools`;
+  header.append(title);
+  if (state.selectedPoolPair) {
+    header.append(makeSavedCompAction("Show All Pool Comps", clearSelectedPoolPair));
+  }
+  elements.poolComps.append(header);
+
+  if (!results.length) {
+    elements.poolComps.append(
+      makeChip("No fully enhanced teams contain heroes from both pools in this mode", "muted-chip"),
+    );
+    return;
+  }
+
+  for (const result of results.slice(0, 10)) {
+    elements.poolComps.append(renderPoolCompCard(result));
+  }
+}
+
+function renderPlayerPools() {
+  elements.poolStatus.textContent = state.poolStatus;
+  renderPoolSelected("player1", elements.poolOneSelected, elements.poolOneCount);
+  renderPoolSelected("player2", elements.poolTwoSelected, elements.poolTwoCount);
+  renderPoolPicker("player1", elements.poolOnePicker);
+  renderPoolPicker("player2", elements.poolTwoPicker);
+  renderPoolRecommendations();
+  renderPoolMatrix();
+  renderPoolComps();
 }
 
 function removeHeroFromBuilder(heroName) {
   state.builderHeroes.delete(heroName);
   state.builderNotice = "";
+  trackEvent("builder_hero_removed", {
+    hero_name: heroName,
+    builder_mode: state.builderMode,
+    selected_count: state.builderHeroes.size,
+  });
   update();
 }
 
@@ -918,6 +1613,11 @@ function saveCurrentBuilderComp() {
     existing.updatedAt = now;
     state.savedComps = [existing, ...state.savedComps.filter((comp) => comp.id !== existing.id)];
     state.savedCompsStatus = "Existing saved comp updated instead of duplicated.";
+    trackEvent("saved_comp_created", {
+      builder_mode: state.builderMode,
+      hero_count: heroes.length,
+      save_type: "updated",
+    });
   } else {
     state.savedComps = [
       {
@@ -931,6 +1631,11 @@ function saveCurrentBuilderComp() {
       ...state.savedComps,
     ].slice(0, MAX_SAVED_COMPS);
     state.savedCompsStatus = "Comp saved locally.";
+    trackEvent("saved_comp_created", {
+      builder_mode: state.builderMode,
+      hero_count: heroes.length,
+      save_type: "created",
+    });
   }
 
   if (safeWriteSavedComps()) {
@@ -955,6 +1660,10 @@ function loadSavedComp(compId) {
   state.builderNotice = "";
   elements.builderHeroSearch.value = "";
   state.savedCompsStatus = "Saved comp loaded.";
+  trackEvent("saved_comp_loaded", {
+    builder_mode: state.builderMode,
+    hero_count: heroes.length,
+  });
   update();
 }
 
@@ -1242,10 +1951,10 @@ function renderHeroDetail() {
 
   const teamupsSection = document.createElement("section");
   teamupsSection.className = "detail-section";
-  teamupsSection.innerHTML = "<h3>Team-Up Partners</h3>";
+  teamupsSection.innerHTML = "<h3>Team-Up Effects</h3>";
   const partnerRow = document.createElement("div");
-  partnerRow.className = "detail-chip-row";
-  partners.forEach((partner) => partnerRow.append(makeChip(`${hero.name} <- ${partner}`)));
+  partnerRow.className = "teamup-effect-list";
+  partners.forEach((partner) => partnerRow.append(renderTeamupEffectCard(hero.name, partner)));
   teamupsSection.append(partnerRow);
 
   const teammatesSection = document.createElement("section");
@@ -1416,6 +2125,9 @@ async function submitFeedback(event) {
     if (!response.ok) {
       throw new Error(`Feedback API returned ${response.status}`);
     }
+    trackEvent("feedback_submitted", {
+      feedback_type: payload.type,
+    });
     setFeedbackStatus("Feedback sent. Thank you.", "success");
     form.reset();
   } catch (error) {
@@ -1439,33 +2151,114 @@ function update() {
 function bindEvents() {
   for (const button of elements.viewButtons) {
     button.addEventListener("click", () => {
+      if (state.activeView !== button.dataset.view) {
+        trackEvent("select_content", {
+          content_type: "main_view",
+          item_id: button.dataset.view,
+        });
+      }
       state.activeView = button.dataset.view;
       update();
     });
   }
   for (const button of elements.modeButtons) {
     button.addEventListener("click", () => {
+      if (state.mode !== button.dataset.mode) {
+        trackEvent("select_content", {
+          content_type: "team_set",
+          item_id: button.dataset.mode,
+        });
+      }
       state.mode = button.dataset.mode;
       update();
     });
   }
   for (const button of elements.builderModeButtons) {
     button.addEventListener("click", () => {
+      if (state.builderMode !== button.dataset.builderMode) {
+        trackEvent("builder_mode_changed", {
+          builder_mode: button.dataset.builderMode,
+        });
+      }
       state.builderMode = button.dataset.builderMode;
       state.builderNotice = "";
       update();
     });
   }
+  for (const button of elements.builderPanelButtons) {
+    button.addEventListener("click", () => {
+      if (state.builderPanel !== button.dataset.builderPanel) {
+        trackEvent("select_content", {
+          content_type: "planner_workflow",
+          item_id: button.dataset.builderPanel,
+        });
+      }
+      state.builderPanel = button.dataset.builderPanel;
+      update();
+    });
+  }
+  for (const button of elements.poolModeButtons) {
+    button.addEventListener("click", () => {
+      if (state.poolMode !== button.dataset.poolMode) {
+        trackEvent("select_content", {
+          content_type: "pool_mode",
+          item_id: button.dataset.poolMode,
+        });
+      }
+      state.poolMode = button.dataset.poolMode;
+      state.poolStatus = "";
+      safeWritePlayerPools();
+      update();
+    });
+  }
   elements.heroSearch.addEventListener("input", (event) => {
     state.search = event.target.value;
+    if (state.search.trim().length >= 2) {
+      trackEvent("search", {
+        search_term: state.search.trim(),
+        search_context: "team_browser",
+      });
+    }
     renderHeroFilters();
   });
   elements.builderHeroSearch.addEventListener("input", (event) => {
     state.builderSearch = event.target.value;
+    if (state.builderSearch.trim().length >= 2) {
+      trackEvent("search", {
+        search_term: state.builderSearch.trim(),
+        search_context: "team_planner",
+      });
+    }
     renderBuilderHeroPicker();
+  });
+  elements.poolOneSearch.addEventListener("input", (event) => {
+    state.poolSearches.player1 = event.target.value;
+    if (state.poolSearches.player1.trim().length >= 2) {
+      trackEvent("search", {
+        search_term: state.poolSearches.player1.trim(),
+        search_context: "player1_pool",
+      });
+    }
+    renderPlayerPools();
+  });
+  elements.poolTwoSearch.addEventListener("input", (event) => {
+    state.poolSearches.player2 = event.target.value;
+    if (state.poolSearches.player2.trim().length >= 2) {
+      trackEvent("search", {
+        search_term: state.poolSearches.player2.trim(),
+        search_context: "player2_pool",
+      });
+    }
+    renderPlayerPools();
   });
   elements.mapSearch.addEventListener("input", (event) => {
     state.mapSearch = event.target.value;
+    if (state.mapSearch.trim().length >= 2) {
+      trackEvent("search", {
+        search_term: state.mapSearch.trim(),
+        search_context: "maps",
+      });
+    }
     renderMaps();
   });
   elements.clearFilters.addEventListener("click", () => {
@@ -1478,6 +2271,16 @@ function bindEvents() {
   elements.clearBuilder.addEventListener("click", resetBuilder);
   elements.resetBuilderTeam.addEventListener("click", resetBuilder);
   elements.saveBuilderComp.addEventListener("click", saveCurrentBuilderComp);
+  elements.showPlayerPools.addEventListener("click", () => {
+    trackEvent("select_content", {
+      content_type: "planner_workflow",
+      item_id: "pools",
+    });
+    state.builderPanel = "pools";
+    update();
+  });
+  elements.copyPoolsLink.addEventListener("click", copyPoolsLink);
+  elements.resetPlayerPools.addEventListener("click", resetPlayerPools);
   elements.updatesToggle.addEventListener("click", () => setUpdatesOpen(!state.updatesOpen));
   elements.updatesClose.addEventListener("click", () => setUpdatesOpen(false));
   document.addEventListener("keydown", (event) => {
@@ -1486,16 +2289,25 @@ function bindEvents() {
     }
   });
   elements.feedbackForm.addEventListener("submit", submitFeedback);
+  for (const link of document.querySelectorAll(".header-actions a[target='_blank'], .footer-social-links a[target='_blank']")) {
+    link.addEventListener("click", () => {
+      trackEvent("outbound_social_clicked", {
+        link_label: link.getAttribute("title") || link.getAttribute("aria-label") || "unknown",
+        link_url: link.href,
+      });
+    });
+  }
 }
 
 async function init() {
   try {
     readUrlState();
     bindEvents();
-    const [summary, heroes, teamups, mapsData, updatesData, allTeams, balancedTeams] = await Promise.all([
+    const [summary, heroes, teamups, teamupEffects, mapsData, updatesData, allTeams, balancedTeams] = await Promise.all([
       loadJson(DATA_FILES.summary),
       loadJson(DATA_FILES.heroes),
       loadJson(DATA_FILES.teamups),
+      loadJson(DATA_FILES.teamupEffects),
       loadJson(DATA_FILES.maps),
       loadJson(DATA_FILES.updates),
       loadJson(DATA_FILES.all),
@@ -1504,13 +2316,30 @@ async function init() {
     state.summary = summary;
     state.mapsData = mapsData;
     state.updates = Array.isArray(updatesData.updates) ? updatesData.updates : [];
+    state.updatesVersion = String(updatesData.current_version || "");
+    state.updatesUpdatedAt = String(updatesData.updated_at || "");
     state.heroesByName = new Map(heroes.heroes.map((hero) => [hero.name, hero]));
     state.teamups = new Map(Object.entries(teamups.teamups));
+    state.teamupEffects = new Map(
+      Object.entries(teamupEffects.effects || {}).flatMap(([heroName, effects]) =>
+        Array.isArray(effects) ? effects.map((effect) => [effectKey(heroName, effect.partner), effect]) : [],
+      ),
+    );
     state.teams.all = allTeams.teams;
     state.teams.balanced = balancedTeams.teams;
     state.savedComps = safeReadSavedComps();
+    const storedPools = safeReadPlayerPools();
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has("pool1") && !params.has("pool2")) {
+      state.playerPools.player1 = new Set(storedPools.player1);
+      state.playerPools.player2 = new Set(storedPools.player2);
+    }
+    if (!params.has("poolMode")) {
+      state.poolMode = storedPools.mode;
+    }
     sanitizeBuilderHeroes();
     deriveHeroes();
+    sanitizePlayerPools();
     normalizeSavedComps();
     renderSummary();
     renderUpdates();

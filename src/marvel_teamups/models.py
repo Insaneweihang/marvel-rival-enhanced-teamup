@@ -27,3 +27,13 @@ class LoadedData:
     patch_version: str
     heroes_by_name: dict[str, Hero]
     teamup_partners: dict[str, frozenset[str]]
+
+
+@dataclass(frozen=True)
+class TeamupEffect:
+    partner: str
+    ability_name: str | None
+    base_effect: str | None
+    enhanced_effect: str | None
+    source_url: str | None
+    verification_status: str

@@ -4,7 +4,7 @@ import re
 from collections import Counter
 from dataclasses import dataclass
 
-from .models import Hero
+from .models import Hero, TeamupEffect
 
 
 @dataclass(frozen=True)
@@ -26,6 +26,8 @@ def validate_dataset(
     teamup_partners: dict[str, frozenset[str]],
     heroes_patch_version: str,
     teamups_patch_version: str,
+    teamup_effects: dict[str, tuple[TeamupEffect, ...]] | None = None,
+    teamup_effects_patch_version: str | None = None,
 ) -> ValidationResult:
     errors: list[str] = []
     warnings: list[str] = []
@@ -61,6 +63,11 @@ def validate_dataset(
             f"Patch-version mismatch: heroes.json={heroes_patch_version!r}, "
             f"teamups.json={teamups_patch_version!r}"
         )
+    if teamup_effects_patch_version is not None and heroes_patch_version != teamup_effects_patch_version:
+        errors.append(
+            f"Patch-version mismatch: heroes.json={heroes_patch_version!r}, "
+            f"teamup_effects.json={teamup_effects_patch_version!r}"
+        )
 
     missing_mappings = sorted(hero_set - set(teamup_partners))
     for name in missing_mappings:
@@ -87,5 +94,39 @@ def validate_dataset(
         if not partners:
             errors.append(f"{hero} has no possible enhancement path")
 
-    return ValidationResult(tuple(errors), tuple(warnings))
+    if teamup_effects is not None:
+        missing_effects = sorted(set(teamup_partners) - set(teamup_effects))
+        for name in missing_effects:
+            errors.append(f"Hero missing from Team-Up effects: {name}")
 
+        unknown_effects = sorted(set(teamup_effects) - hero_set)
+        for name in unknown_effects:
+            errors.append(f"Team-Up effects entry for unknown hero: {name}")
+
+        for hero, entries in sorted(teamup_effects.items()):
+            partners = teamup_partners.get(hero, frozenset())
+            effect_partners = [entry.partner for entry in entries]
+            duplicate_partners = [
+                partner for partner, count in Counter(effect_partners).items() if count > 1
+            ]
+            if len(entries) != 2:
+                errors.append(f"{hero} has {len(entries)} effect records; expected exactly 2")
+            for partner in sorted(duplicate_partners):
+                errors.append(f"{hero} has duplicate effect records for partner: {partner}")
+            if set(effect_partners) != set(partners):
+                errors.append(
+                    f"{hero} effect partners do not match Team-Up partners: "
+                    f"effects={', '.join(sorted(effect_partners))}; "
+                    f"teamups={', '.join(sorted(partners))}"
+                )
+            for entry in entries:
+                if entry.partner not in hero_set:
+                    errors.append(f"{hero} has effect for unknown partner: {entry.partner}")
+                if entry.verification_status == "needs_verification":
+                    continue
+                if not entry.source_url:
+                    errors.append(f"{hero} / {entry.partner} verified effect is missing source_url")
+                if not entry.base_effect or not entry.enhanced_effect:
+                    errors.append(f"{hero} / {entry.partner} verified effect is missing effect text")
+
+    return ValidationResult(tuple(errors), tuple(warnings))
