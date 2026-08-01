@@ -1,5 +1,8 @@
 {
   "patch_version": "20260710-season-9",
+  "role_format": "222",
+  "role_format_label": "2-2-2",
+  "role_format_description": "2 Vanguard / 2 Duelist / 2 Strategist",
   "team_count": 28,
   "teams": [
     {

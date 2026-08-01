@@ -3,17 +3,71 @@
   heroes: "data/heroes.json",
   teamups: "data/teamups.json",
   teamupEffects: "data/teamup_effects.json",
+  heroDetails: "data/hero_details.json",
   maps: "data/maps.json",
   updates: "data/updates.json",
   all: "data/all_fully_enhanced_teams.json",
-  balanced: "data/fully_enhanced_222_teams.json",
+  222: "data/fully_enhanced_222_teams.json",
+  132: "data/fully_enhanced_132_teams.json",
+  213: "data/fully_enhanced_213_teams.json",
+  123: "data/fully_enhanced_123_teams.json",
+  312: "data/fully_enhanced_312_teams.json",
 };
 
 const FEEDBACK_ENDPOINT = "https://marvel-rivals-feedback.insaneweihang.workers.dev/feedback";
 const SAVED_COMPS_KEY = "marvel-rivals:saved-comps:v1";
 const PLAYER_POOLS_KEY = "marvel-rivals:player-pools:v1";
 const MAX_SAVED_COMPS = 20;
+const SAMPLE_DUO_POOLS = {
+  player1: ["Venom", "The Thing"],
+  player2: ["Luna Snow", "Ultron"],
+};
 const ROLE_ORDER = ["Vanguard", "Duelist", "Strategist"];
+const TEAM_MODES = {
+  all: {
+    label: "All",
+    shortLabel: "All",
+    helperLabel: "Any Role Mix",
+    description: "Any role mix",
+    filePrefix: "all_fully_enhanced",
+  },
+  222: {
+    label: "2-2-2",
+    shortLabel: "2-2-2",
+    helperLabel: "Standard",
+    description: "Recommended: 2 Vanguard / 2 Duelist / 2 Strategist",
+    filePrefix: "fully_enhanced_222",
+  },
+  132: {
+    label: "1-3-2",
+    shortLabel: "1-3-2",
+    helperLabel: "Solo Tank, Triple DPS",
+    description: "1 Vanguard / 3 Duelist / 2 Strategist",
+    filePrefix: "fully_enhanced_132",
+  },
+  213: {
+    label: "2-1-3",
+    shortLabel: "2-1-3",
+    helperLabel: "Double Tank, Triple Support",
+    description: "2 Vanguard / 1 Duelist / 3 Strategist",
+    filePrefix: "fully_enhanced_213",
+  },
+  123: {
+    label: "1-2-3",
+    shortLabel: "1-2-3",
+    helperLabel: "Solo Tank, Triple Support",
+    description: "1 Vanguard / 2 Duelist / 3 Strategist",
+    filePrefix: "fully_enhanced_123",
+  },
+  312: {
+    label: "3-1-2",
+    shortLabel: "3-1-2",
+    helperLabel: "Triple Tank",
+    description: "3 Vanguard / 1 Duelist / 2 Strategist",
+    filePrefix: "fully_enhanced_312",
+  },
+};
+const TEAM_MODE_KEYS = ["all", "222", "132", "213", "123", "312"];
 const state = {
   activeView: "browser",
   mode: "all",
@@ -42,6 +96,10 @@ const state = {
   selectedMapCategory: "All",
   savedComps: [],
   savedCompsStatus: "",
+  shareCardPayload: null,
+  shareCardStatus: "",
+  showTeamupEffects: false,
+  teamEffectOverrides: new Map(),
   updates: [],
   updatesVersion: "",
   updatesUpdatedAt: "",
@@ -51,9 +109,14 @@ const state = {
   heroesByName: new Map(),
   teamups: new Map(),
   teamupEffects: new Map(),
+  heroDetails: new Map(),
   teams: {
     all: [],
-    balanced: [],
+    222: [],
+    132: [],
+    213: [],
+    123: [],
+    312: [],
   },
   heroesByRole: new Map(),
 };
@@ -63,6 +126,8 @@ const elements = {
   allCount: document.querySelector("#all-count"),
   balancedCount: document.querySelector("#balanced-count"),
   checkedCount: document.querySelector("#checked-count"),
+  modeDescription: document.querySelector("#mode-description"),
+  toggleTeamupEffects: document.querySelector("#toggle-teamup-effects"),
   viewButtons: document.querySelectorAll("[data-view]"),
   appViews: document.querySelectorAll(".app-view"),
   modeButtons: document.querySelectorAll("[data-mode]"),
@@ -81,6 +146,7 @@ const elements = {
   builderSuggestions: document.querySelector("#builder-suggestions"),
   builderMatches: document.querySelector("#builder-matches"),
   saveBuilderComp: document.querySelector("#save-builder-comp"),
+  savedCompsCount: document.querySelector("#saved-comps-count"),
   savedCompsStatus: document.querySelector("#saved-comps-status"),
   savedCompsList: document.querySelector("#saved-comps-list"),
   poolStatus: document.querySelector("#pool-status"),
@@ -98,6 +164,7 @@ const elements = {
   draftWorkflowSummary: document.querySelector("#draft-workflow-summary"),
   poolWorkflowSummary: document.querySelector("#pool-workflow-summary"),
   showPlayerPools: document.querySelector("#show-player-pools"),
+  trySamplePools: document.querySelector("#try-sample-pools"),
   copyPoolsLink: document.querySelector("#copy-pools-link"),
   resetPlayerPools: document.querySelector("#reset-player-pools"),
   heroSearch: document.querySelector("#hero-search"),
@@ -126,6 +193,14 @@ const elements = {
   feedbackForm: document.querySelector("#feedback-form"),
   feedbackSubmit: document.querySelector("#feedback-submit"),
   feedbackStatus: document.querySelector("#feedback-status"),
+  shareCardModal: document.querySelector("#share-card-modal"),
+  shareCardTitle: document.querySelector("#share-card-title"),
+  shareCardClose: document.querySelector("#share-card-close"),
+  shareCardCanvas: document.querySelector("#share-card-canvas"),
+  shareCardStatus: document.querySelector("#share-card-status"),
+  downloadShareCard: document.querySelector("#download-share-card"),
+  copyShareCardImage: document.querySelector("#copy-share-card-image"),
+  copyShareCardText: document.querySelector("#copy-share-card-text"),
 };
 
 function formatNumber(value) {
@@ -139,12 +214,62 @@ function trackEvent(eventName, params = {}) {
   window.gtag("event", eventName, params);
 }
 
+function normalizeTeamMode(mode) {
+  return TEAM_MODES[mode] ? mode : "all";
+}
+
+function modeLabel(mode) {
+  return TEAM_MODES[normalizeTeamMode(mode)].shortLabel;
+}
+
+function sourceTeams(mode) {
+  return state.teams[normalizeTeamMode(mode)] || state.teams.all;
+}
+
+function modeFilePrefix(mode) {
+  return TEAM_MODES[normalizeTeamMode(mode)].filePrefix;
+}
+
+function modeDetails(mode) {
+  const config = TEAM_MODES[normalizeTeamMode(mode)];
+  return config.shortLabel === "All"
+    ? config.helperLabel
+    : `${config.shortLabel} ${config.helperLabel}`;
+}
+
+function renderModeButton(button, mode) {
+  const config = TEAM_MODES[normalizeTeamMode(mode)];
+  button.title = `${config.helperLabel} - ${config.description}`;
+  button.replaceChildren();
+
+  const label = document.createElement("strong");
+  label.textContent = config.shortLabel;
+
+  const helper = document.createElement("small");
+  helper.textContent = config.helperLabel;
+
+  button.append(label, helper);
+}
+
 async function loadJson(path) {
   const response = await fetch(path, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Could not load ${path}: ${response.status}`);
   }
   return response.json();
+}
+
+function roleColor(role) {
+  if (role === "Vanguard") {
+    return "#2f6f9f";
+  }
+  if (role === "Duelist") {
+    return "#9f3f45";
+  }
+  if (role === "Strategist") {
+    return "#297a5f";
+  }
+  return "#1f2a24";
 }
 
 function teamNames(team) {
@@ -177,6 +302,51 @@ function teamupEffect(heroName, partnerName) {
   return state.teamupEffects.get(effectKey(heroName, partnerName));
 }
 
+function officialTeamupAbility(heroName, partnerName) {
+  const details = state.heroDetails.get(heroName);
+  if (!details || !Array.isArray(details.team_up_abilities)) {
+    return null;
+  }
+  return details.team_up_abilities.find((ability) => ability.partner === partnerName) || null;
+}
+
+function hasOfficialStats(stats) {
+  return Object.values(stats || {}).some(Boolean);
+}
+
+function effectAbilityName(effect) {
+  return effect?.ability_name && effect.ability_name !== "Unverified name" ? effect.ability_name : "";
+}
+
+function effectSummary(effect) {
+  if (!effect || effect.verification_status === "needs_verification") {
+    return "Effect details need verification.";
+  }
+  return effect.enhanced_effect || effect.base_effect || "Effect details need verification.";
+}
+
+function activeTeamupEffects(team) {
+  return team.heroes
+    .flatMap((hero) =>
+      hero.active_partners.map((partner) => {
+        const effect = teamupEffect(hero.name, partner);
+        return {
+          heroName: hero.name,
+          partnerName: partner,
+          abilityName: effectAbilityName(effect),
+          summary: effectSummary(effect),
+          verificationStatus: effect?.verification_status || "needs_verification",
+          officialAbility: officialTeamupAbility(hero.name, partner),
+        };
+      }),
+    )
+    .sort(
+      (a, b) =>
+        a.heroName.localeCompare(b.heroName) ||
+        a.partnerName.localeCompare(b.partnerName),
+    );
+}
+
 function createSavedCompId() {
   if (window.crypto?.randomUUID) {
     return window.crypto.randomUUID();
@@ -200,7 +370,7 @@ function safeReadSavedComps() {
         id: String(comp.id || createSavedCompId()),
         name: String(comp.name || "Saved comp"),
         heroes: comp.heroes.map(String).slice(0, 6),
-        mode: comp.mode === "222" ? "222" : "all",
+        mode: normalizeTeamMode(comp.mode),
         createdAt: String(comp.createdAt || new Date().toISOString()),
         updatedAt: String(comp.updatedAt || comp.createdAt || new Date().toISOString()),
       }))
@@ -231,10 +401,10 @@ function safeReadPlayerPools() {
     return {
       player1: Array.isArray(parsed.player1) ? parsed.player1.map(String) : [],
       player2: Array.isArray(parsed.player2) ? parsed.player2.map(String) : [],
-      mode: parsed.mode === "222" ? "222" : "all",
+      mode: normalizeTeamMode(parsed.mode),
     };
   } catch (error) {
-    state.poolStatus = "Player pools are unavailable in this browser.";
+    state.poolStatus = "Duo Planner is unavailable in this browser.";
     return { player1: [], player2: [], mode: "all" };
   }
 }
@@ -251,7 +421,7 @@ function safeWritePlayerPools() {
     );
     return true;
   } catch (error) {
-    state.poolStatus = "Could not save player pools. Browser storage may be full or disabled.";
+    state.poolStatus = "Could not save Duo Planner pools. Browser storage may be full or disabled.";
     return false;
   }
 }
@@ -270,7 +440,7 @@ function normalizeSavedComps() {
     .map((comp) => ({
       ...comp,
       heroes: comp.heroes.filter((heroName) => canUseInBuilder(heroName)).slice(0, 6),
-      mode: comp.mode === "222" ? "222" : "all",
+      mode: normalizeTeamMode(comp.mode),
     }))
     .filter((comp) => {
       if (!comp.heroes.length) {
@@ -319,8 +489,8 @@ function readUrlState() {
   if (view === "builder" || view === "browser" || view === "maps") {
     state.activeView = view;
   }
-  if (mode === "222") {
-    state.mode = "222";
+  if (mode) {
+    state.mode = normalizeTeamMode(mode);
   }
   if (include) {
     state.includedHeroes = new Set(include.split(",").map(decodeURIComponent).filter(Boolean));
@@ -340,8 +510,8 @@ function readUrlState() {
       state.activeView = "builder";
     }
   }
-  if (builderMode === "222") {
-    state.builderMode = "222";
+  if (builderMode) {
+    state.builderMode = normalizeTeamMode(builderMode);
   }
   if (builderPanel === "pools") {
     state.builderPanel = "pools";
@@ -357,8 +527,8 @@ function readUrlState() {
     state.activeView = "builder";
     state.builderPanel = "pools";
   }
-  if (poolMode === "222") {
-    state.poolMode = "222";
+  if (poolMode) {
+    state.poolMode = normalizeTeamMode(poolMode);
   }
   if (poolPair) {
     const [firstHero, secondHero] = poolPair.split("|").map(decodeURIComponent);
@@ -375,8 +545,8 @@ function writeUrlState() {
   if (state.activeView !== "browser" || state.builderHeroes.size) {
     params.set("view", state.activeView);
   }
-  if (state.mode === "222") {
-    params.set("mode", "222");
+  if (state.mode !== "all") {
+    params.set("mode", state.mode);
   }
   if (state.includedHeroes.size) {
     params.set("include", [...state.includedHeroes].sort().join(","));
@@ -390,8 +560,8 @@ function writeUrlState() {
   if (state.builderHeroes.size) {
     params.set("builder", [...state.builderHeroes].sort().join(","));
   }
-  if (state.builderMode === "222") {
-    params.set("builderMode", "222");
+  if (state.builderMode !== "all") {
+    params.set("builderMode", state.builderMode);
   }
   const shouldWritePools = state.activeView === "builder" && state.builderPanel === "pools";
   if (shouldWritePools) {
@@ -403,8 +573,8 @@ function writeUrlState() {
   if (shouldWritePools && state.playerPools.player2.size) {
     params.set("pool2", [...state.playerPools.player2].sort().join(","));
   }
-  if (shouldWritePools && state.poolMode === "222") {
-    params.set("poolMode", "222");
+  if (shouldWritePools && state.poolMode !== "all") {
+    params.set("poolMode", state.poolMode);
   }
   if (shouldWritePools && state.selectedPoolPair) {
     params.set("poolPair", `${state.selectedPoolPair.firstHero}|${state.selectedPoolPair.secondHero}`);
@@ -422,17 +592,23 @@ function setActiveButtons() {
     view.classList.toggle("active", view.id === `${state.activeView}-view`);
   }
   for (const button of elements.modeButtons) {
+    renderModeButton(button, button.dataset.mode);
     button.classList.toggle("active", button.dataset.mode === state.mode);
   }
   for (const button of elements.builderModeButtons) {
+    renderModeButton(button, button.dataset.builderMode);
     button.classList.toggle("active", button.dataset.builderMode === state.builderMode);
   }
   for (const button of elements.builderPanelButtons) {
     button.classList.toggle("active", button.dataset.builderPanel === state.builderPanel);
   }
   for (const button of elements.poolModeButtons) {
+    renderModeButton(button, button.dataset.poolMode);
     button.classList.toggle("active", button.dataset.poolMode === state.poolMode);
   }
+  const modeConfig = TEAM_MODES[normalizeTeamMode(state.mode)];
+  elements.modeDescription.textContent = `${modeConfig.helperLabel}: ${modeConfig.description}`;
+  elements.toggleTeamupEffects.checked = state.showTeamupEffects;
   elements.builderDraftWorkspace.classList.toggle("active", state.builderPanel === "draft");
   elements.builderPoolsWorkspace.classList.toggle("active", state.builderPanel === "pools");
 }
@@ -853,6 +1029,10 @@ function renderBuilderSelected() {
     button.addEventListener("click", () => removeHeroFromBuilder(heroName));
     elements.builderSelected.append(button);
   }
+  const team = currentBuilderShareTeam();
+  if (team) {
+    elements.builderSelected.append(makeSavedCompAction("Share Card", () => openShareCard(team, state.builderMode, "builder")));
+  }
 }
 
 function renderBuilderCurrentStatus() {
@@ -892,13 +1072,14 @@ function renderInlineEffect(heroName, partnerName) {
     item.textContent = `${partnerName}: effect details need verification.`;
     return item;
   }
-  const label = effect.ability_name && effect.ability_name !== "Unverified name" ? `${effect.ability_name}: ` : "";
-  item.textContent = `${partnerName} - ${label}${effect.enhanced_effect || effect.base_effect}`;
+  const label = effectAbilityName(effect) ? `${effectAbilityName(effect)}: ` : "";
+  item.textContent = `${partnerName} - ${label}${effectSummary(effect)}`;
   return item;
 }
 
 function renderTeamupEffectCard(heroName, partnerName) {
   const effect = teamupEffect(heroName, partnerName);
+  const officialAbility = officialTeamupAbility(heroName, partnerName);
   const card = document.createElement("article");
   card.className = "teamup-effect-card";
 
@@ -928,8 +1109,156 @@ function renderTeamupEffectCard(heroName, partnerName) {
     meta.textContent = "Effect details need verification.";
   }
 
-  card.append(title, ability, base, enhanced, meta);
+  card.append(title, ability, base, enhanced);
+  const numbers = renderTeamupNumberBlocks(officialAbility);
+  if (numbers) {
+    card.append(numbers);
+  }
+  card.append(meta);
   return card;
+}
+
+function renderOfficialStats(stats) {
+  const grid = document.createElement("dl");
+  grid.className = "official-stat-grid";
+  for (const [label, value] of Object.entries(stats || {})) {
+    if (!value) {
+      continue;
+    }
+    const item = document.createElement("div");
+    const term = document.createElement("dt");
+    term.textContent = label;
+    const description = document.createElement("dd");
+    description.textContent = value;
+    item.append(term, description);
+    grid.append(item);
+  }
+  if (!grid.children.length) {
+    grid.append(makeChip("No official numbers listed", "muted-chip"));
+  }
+  return grid;
+}
+
+function renderTeamupNumberBlocks(ability) {
+  if (!ability || (!hasOfficialStats(ability.base_stats) && !hasOfficialStats(ability.enhanced_stats))) {
+    return null;
+  }
+
+  const statColumns = document.createElement("div");
+  statColumns.className = "official-stat-columns teamup-number-columns";
+
+  if (hasOfficialStats(ability.base_stats)) {
+    const baseStats = document.createElement("section");
+    baseStats.innerHTML = "<h5>Base Numbers</h5>";
+    baseStats.append(renderOfficialStats(ability.base_stats));
+    statColumns.append(baseStats);
+  }
+
+  if (hasOfficialStats(ability.enhanced_stats)) {
+    const enhancedStats = document.createElement("section");
+    enhancedStats.innerHTML = "<h5>Enhanced Numbers</h5>";
+    enhancedStats.append(renderOfficialStats(ability.enhanced_stats));
+    statColumns.append(enhancedStats);
+  }
+
+  return statColumns;
+}
+
+function renderOfficialAbilityCard(ability, variant = "core") {
+  const card = document.createElement("article");
+  card.className = `official-ability-card ${variant}`;
+
+  const heading = document.createElement("div");
+  heading.className = "official-ability-heading";
+  const title = document.createElement("h4");
+  title.textContent = ability.partner
+    ? `${ability.name} <- ${ability.partner}`
+    : ability.name;
+  const key = document.createElement("span");
+  key.textContent = ability.key || ability.stats?.Key || "Key varies";
+  heading.append(title, key);
+
+  const description = document.createElement("p");
+  description.textContent = ability.description || "No official description listed.";
+  card.append(heading, description);
+
+  if (variant === "teamup") {
+    const effects = document.createElement("div");
+    effects.className = "official-effect-copy";
+    const base = document.createElement("p");
+    const baseLabel = document.createElement("strong");
+    baseLabel.textContent = "Base: ";
+    base.append(baseLabel, ability.base_effect || "No official base effect listed.");
+
+    const enhanced = document.createElement("p");
+    const enhancedLabel = document.createElement("strong");
+    enhancedLabel.textContent = "Enhanced: ";
+    enhanced.append(enhancedLabel, ability.enhanced_effect || "No official enhanced effect listed.");
+    effects.append(base, enhanced);
+    card.append(effects);
+
+    const statColumns = renderTeamupNumberBlocks(ability);
+    if (statColumns) {
+      card.append(statColumns);
+    }
+  } else {
+    card.append(renderOfficialStats(ability.stats));
+  }
+
+  return card;
+}
+
+function renderOfficialDetailsSection(heroName) {
+  const section = document.createElement("section");
+  section.className = "detail-section official-details-section";
+  section.innerHTML = "<h3>Official Ability Details</h3>";
+
+  const details = state.heroDetails.get(heroName);
+  if (!details) {
+    section.append(makeChip("Official details not loaded yet.", "muted-chip"));
+    return section;
+  }
+
+  const source = document.createElement("a");
+  source.className = "official-source-link";
+  source.href = details.source_url;
+  source.target = "_blank";
+  source.rel = "noopener noreferrer";
+  source.textContent = "Official hero page";
+
+  const baseStats = document.createElement("section");
+  baseStats.className = "official-detail-block";
+  baseStats.innerHTML = "<h4>Base Stats</h4>";
+  baseStats.append(renderOfficialStats(details.base_stats));
+
+  const teamups = document.createElement("section");
+  teamups.className = "official-detail-block";
+  teamups.innerHTML = "<h4>Team-Up Ability Numbers</h4>";
+  const teamupList = document.createElement("div");
+  teamupList.className = "official-ability-list";
+  (details.team_up_abilities || []).forEach((ability) =>
+    teamupList.append(renderOfficialAbilityCard(ability, "teamup")),
+  );
+  if (!teamupList.children.length) {
+    teamupList.append(makeChip("No official Team-Up numbers listed", "muted-chip"));
+  }
+  teamups.append(teamupList);
+
+  const abilities = document.createElement("section");
+  abilities.className = "official-detail-block";
+  abilities.innerHTML = "<h4>Core Abilities</h4>";
+  const abilityList = document.createElement("div");
+  abilityList.className = "official-ability-list";
+  (details.abilities || [])
+    .filter((ability) => ability.section !== "Team-Up Abilities")
+    .forEach((ability) => abilityList.append(renderOfficialAbilityCard(ability)));
+  if (!abilityList.children.length) {
+    abilityList.append(makeChip("No official core ability details listed", "muted-chip"));
+  }
+  abilities.append(abilityList);
+
+  section.append(source, baseStats, teamups, abilities);
+  return section;
 }
 
 function renderBuilderSuggestions() {
@@ -990,16 +1319,18 @@ function renderBuilderMatches() {
     elements.builderMatches.append(makeChip("No matching generated teams", "muted-chip"));
     return;
   }
-  completions.slice(0, 10).forEach((team) => elements.builderMatches.append(renderMiniTeam(team)));
+  completions.slice(0, 10).forEach((team) => elements.builderMatches.append(renderMiniTeam(team, "builder", state.builderMode)));
 }
 
 function renderSavedComps() {
   elements.savedCompsList.replaceChildren();
+  elements.savedCompsCount.textContent = `${state.savedComps.length} saved`;
   elements.saveBuilderComp.disabled = !state.builderHeroes.size;
-  elements.savedCompsStatus.textContent = state.savedCompsStatus;
+  elements.savedCompsStatus.textContent = state.savedCompsStatus ||
+    (state.savedComps.length ? "" : "Save a team to load or share it later.");
 
   if (!state.savedComps.length) {
-    elements.savedCompsList.append(makeChip("No saved comps yet", "muted-chip"));
+    elements.savedCompsList.append(makeChip("No saved teams yet", "muted-chip"));
     return;
   }
 
@@ -1011,7 +1342,7 @@ function renderSavedComps() {
     title.textContent = comp.name;
 
     const meta = document.createElement("small");
-    meta.textContent = `${comp.mode === "222" ? "2-2-2" : "All"} - ${comp.heroes.length} hero${comp.heroes.length === 1 ? "" : "es"}`;
+    meta.textContent = `${modeLabel(comp.mode)} - ${comp.heroes.length} hero${comp.heroes.length === 1 ? "" : "es"}`;
 
     const heroes = document.createElement("div");
     heroes.className = "saved-comp-heroes";
@@ -1025,8 +1356,12 @@ function renderSavedComps() {
     actions.append(
       makeSavedCompAction("Load", () => loadSavedComp(comp.id)),
       makeSavedCompAction("Copy Link", () => copySavedCompLink(comp.id)),
-      makeSavedCompAction("Delete", () => deleteSavedComp(comp.id), "danger"),
     );
+    const team = savedCompTeam(comp);
+    if (team) {
+      actions.append(makeSavedCompAction("Share Card", () => openShareCard(team, comp.mode, "saved_team")));
+    }
+    actions.append(makeSavedCompAction("Delete", () => deleteSavedComp(comp.id), "danger"));
 
     item.append(title, meta, heroes, actions);
     elements.savedCompsList.append(item);
@@ -1132,7 +1467,7 @@ function addHeroToBuilder(heroName) {
 }
 
 function poolSourceTeams() {
-  return state.poolMode === "222" ? state.teams.balanced : state.teams.all;
+  return sourceTeams(state.poolMode);
 }
 
 function pairCompletionCount(firstHero, secondHero) {
@@ -1238,7 +1573,7 @@ function poolWorkflowSummary() {
   const firstCount = state.playerPools.player1.size;
   const secondCount = state.playerPools.player2.size;
   if (!firstCount && !secondCount) {
-    return "No player pools selected.";
+    return "No Duo Planner heroes selected.";
   }
   const sharedComps = poolSourceTeams().filter(teamContainsPoolHeroes).length;
   return `${firstCount} vs ${secondCount} heroes, ${formatNumber(sharedComps)} shared comps.`;
@@ -1309,12 +1644,32 @@ function resetPlayerPools() {
   update();
 }
 
+function loadSampleDuoPools() {
+  state.playerPools.player1 = new Set(SAMPLE_DUO_POOLS.player1.filter(canUseInBuilder));
+  state.playerPools.player2 = new Set(SAMPLE_DUO_POOLS.player2.filter(canUseInBuilder));
+  state.selectedPoolPair = null;
+  state.poolSearches.player1 = "";
+  state.poolSearches.player2 = "";
+  state.poolStatus = "Sample Duo Planner pools loaded.";
+  state.activeView = "builder";
+  state.builderPanel = "pools";
+  elements.poolOneSearch.value = "";
+  elements.poolTwoSearch.value = "";
+  safeWritePlayerPools();
+  trackEvent("duo_sample_pools_loaded", {
+    player1_count: state.playerPools.player1.size,
+    player2_count: state.playerPools.player2.size,
+    pool_mode: state.poolMode,
+  });
+  update();
+}
+
 function buildPoolComp(team) {
   state.builderHeroes = new Set(teamNames(team));
   state.builderMode = state.poolMode;
   state.builderPanel = "draft";
   state.builderSearch = "";
-  state.builderNotice = `Loaded Team #${team.team_number} from Player Pools.`;
+  state.builderNotice = `Loaded Team #${team.team_number} from Duo Planner.`;
   elements.builderHeroSearch.value = "";
   trackEvent("pool_comp_loaded", {
     team_number: team.team_number,
@@ -1365,8 +1720,8 @@ function poolShareUrl() {
   if (state.playerPools.player2.size) {
     params.set("pool2", [...state.playerPools.player2].sort().join(","));
   }
-  if (state.poolMode === "222") {
-    params.set("poolMode", "222");
+  if (state.poolMode !== "all") {
+    params.set("poolMode", state.poolMode);
   }
   if (state.selectedPoolPair) {
     params.set("poolPair", `${state.selectedPoolPair.firstHero}|${state.selectedPoolPair.secondHero}`);
@@ -1378,7 +1733,7 @@ async function copyPoolsLink() {
   const url = poolShareUrl();
   try {
     await navigator.clipboard.writeText(url);
-    state.poolStatus = "Player pool link copied.";
+    state.poolStatus = "Duo Planner link copied.";
   } catch (error) {
     state.poolStatus = url;
   }
@@ -1457,7 +1812,7 @@ function renderPoolRecommendations() {
     item.innerHTML = `
       <span>${pair.firstHero} + ${pair.secondHero}</span>
       <strong>${pair.label}</strong>
-      <small>${direction} - ${formatNumber(pair.completionCount)} valid ${state.poolMode === "222" ? "2-2-2 " : ""}teams${bestTeamText}</small>
+      <small>${direction} - ${formatNumber(pair.completionCount)} valid ${modeLabel(state.poolMode)} teams${bestTeamText}</small>
     `;
     const actions = document.createElement("div");
     actions.className = "pool-card-actions";
@@ -1511,7 +1866,7 @@ function renderPoolMatrix() {
 }
 
 function renderPoolCompCard(result) {
-  const item = renderMiniTeam(result.team);
+  const item = renderMiniTeam(result.team, "duo_planner", state.poolMode);
   item.classList.add("pool-comp-card");
 
   const poolMeta = document.createElement("div");
@@ -1612,7 +1967,7 @@ function saveCurrentBuilderComp() {
     existing.mode = state.builderMode;
     existing.updatedAt = now;
     state.savedComps = [existing, ...state.savedComps.filter((comp) => comp.id !== existing.id)];
-    state.savedCompsStatus = "Existing saved comp updated instead of duplicated.";
+    state.savedCompsStatus = "Saved team updated.";
     trackEvent("saved_comp_created", {
       builder_mode: state.builderMode,
       hero_count: heroes.length,
@@ -1630,7 +1985,7 @@ function saveCurrentBuilderComp() {
       },
       ...state.savedComps,
     ].slice(0, MAX_SAVED_COMPS);
-    state.savedCompsStatus = "Comp saved locally.";
+    state.savedCompsStatus = "Team saved locally. Use Copy Link to share it.";
     trackEvent("saved_comp_created", {
       builder_mode: state.builderMode,
       hero_count: heroes.length,
@@ -1654,7 +2009,7 @@ function loadSavedComp(compId) {
   }
   const heroes = comp.heroes.filter((heroName) => canUseInBuilder(heroName)).slice(0, 6);
   state.builderHeroes = new Set(heroes);
-  state.builderMode = comp.mode === "222" ? "222" : "all";
+  state.builderMode = normalizeTeamMode(comp.mode);
   state.activeView = "builder";
   state.builderSearch = "";
   state.builderNotice = "";
@@ -1678,8 +2033,8 @@ function savedCompUrl(comp) {
   const params = new URLSearchParams();
   params.set("view", "builder");
   params.set("builder", [...comp.heroes].sort().join(","));
-  if (comp.mode === "222") {
-    params.set("builderMode", "222");
+  if (comp.mode !== "all") {
+    params.set("builderMode", comp.mode);
   }
   return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
 }
@@ -1701,8 +2056,266 @@ async function copySavedCompLink(compId) {
   renderSavedComps();
 }
 
+function findExactTeam(heroNames, mode) {
+  const selected = new Set(heroNames);
+  if (selected.size !== 6) {
+    return null;
+  }
+  return sourceTeams(mode).find((team) => {
+    const names = new Set(teamNames(team));
+    return names.size === selected.size && [...selected].every((heroName) => names.has(heroName));
+  }) || null;
+}
+
+function savedCompTeam(comp) {
+  return findExactTeam(comp.heroes, comp.mode);
+}
+
+function currentBuilderShareTeam() {
+  return findExactTeam([...state.builderHeroes], state.builderMode);
+}
+
+function teamShareText(payload) {
+  const title = payload.teamNumber ? `Team #${payload.teamNumber}` : "Fully Enhanced Team";
+  const effectLines = payload.activeEffects.map((effect) => {
+    const ability = effect.abilityName ? `${effect.abilityName}: ` : "";
+    return `${effect.heroName} <- ${effect.partnerName} - ${ability}${effect.summary}`;
+  });
+  return [
+    `${title} - ${modeDetails(payload.mode)}`,
+    `Patch: ${payload.patchVersion}`,
+    `Heroes: ${payload.heroes.map((hero) => hero.name).join(", ")}`,
+    "Team-Ups:",
+    ...effectLines,
+    "https://insaneweihang.com",
+  ].join("\n");
+}
+
+function sharePayloadFromTeam(team, mode, source) {
+  return {
+    teamNumber: team.team_number,
+    heroes: [...team.heroes].sort((a, b) => a.name.localeCompare(b.name)),
+    mode: normalizeTeamMode(mode),
+    patchVersion: state.summary?.patch_version || "Unknown patch",
+    activeEffects: activeTeamupEffects(team),
+    source,
+  };
+}
+
+function drawRoundRect(ctx, x, y, width, height, radius) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+}
+
+function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 2) {
+  const words = String(text).split(/\s+/);
+  const lines = [];
+  let line = "";
+  for (const word of words) {
+    const next = line ? `${line} ${word}` : word;
+    if (ctx.measureText(next).width <= maxWidth) {
+      line = next;
+      continue;
+    }
+    if (line) {
+      lines.push(line);
+    }
+    line = word;
+    if (lines.length === maxLines - 1) {
+      break;
+    }
+  }
+  if (line && lines.length < maxLines) {
+    lines.push(line);
+  }
+  for (const [index, value] of lines.entries()) {
+    ctx.fillText(value, x, y + index * lineHeight);
+  }
+  return y + lines.length * lineHeight;
+}
+
+function drawShareCard(payload) {
+  const canvas = elements.shareCardCanvas;
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#f5f2ea";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#1f2a24";
+  ctx.fillRect(0, 0, canvas.width, 112);
+
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "900 38px Arial, sans-serif";
+  ctx.fillText(payload.teamNumber ? `Team #${payload.teamNumber}` : "Fully Enhanced Team", 54, 60);
+  ctx.font = "800 22px Arial, sans-serif";
+  ctx.fillStyle = "#cbd8ce";
+  ctx.fillText(modeDetails(payload.mode), 54, 92);
+
+  ctx.textAlign = "right";
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "900 24px Arial, sans-serif";
+  ctx.fillText("Marvel Rivals Team-Up Generator", 1146, 58);
+  ctx.font = "800 18px Arial, sans-serif";
+  ctx.fillStyle = "#cbd8ce";
+  ctx.fillText("insaneweihang.com", 1146, 88);
+  ctx.textAlign = "left";
+
+  const grouped = ROLE_ORDER.flatMap((role) =>
+    payload.heroes
+      .filter((hero) => payload.mode === "all" || hero.role === role)
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((hero) => ({ ...hero, role })),
+  );
+  const heroes = payload.mode === "all" ? payload.heroes : grouped;
+  const cardWidth = 342;
+  heroes.forEach((hero, index) => {
+    const col = index % 3;
+    const row = Math.floor(index / 3);
+    const x = 54 + col * 374;
+    const y = 148 + row * 116;
+    ctx.fillStyle = "#ffffff";
+    drawRoundRect(ctx, x, y, cardWidth, 84, 12);
+    ctx.fill();
+    ctx.fillStyle = roleColor(hero.role);
+    drawRoundRect(ctx, x, y, 10, 84, 8);
+    ctx.fill();
+    ctx.fillStyle = "#1f2a24";
+    ctx.font = "900 25px Arial, sans-serif";
+    ctx.fillText(hero.name, x + 26, y + 37);
+    ctx.fillStyle = "#68746c";
+    ctx.font = "800 16px Arial, sans-serif";
+    ctx.fillText(hero.role, x + 26, y + 63);
+  });
+
+  ctx.fillStyle = "#1f2a24";
+  ctx.font = "900 24px Arial, sans-serif";
+  ctx.fillText("Active Team-Ups", 54, 414);
+  ctx.font = "800 18px Arial, sans-serif";
+  ctx.fillStyle = "#344139";
+  let y = 450;
+  for (const effect of payload.activeEffects.slice(0, 6)) {
+    const ability = effect.abilityName || "Effect details need verification";
+    y = drawWrappedText(ctx, `${effect.heroName} <- ${effect.partnerName}: ${ability}`, 54, y, 1080, 25, 1) + 8;
+  }
+
+  ctx.fillStyle = "#68746c";
+  ctx.font = "800 17px Arial, sans-serif";
+  ctx.fillText(`Patch ${payload.patchVersion}`, 54, 632);
+  ctx.textAlign = "right";
+  ctx.fillText("Fully enhanced team card", 1146, 632);
+  ctx.textAlign = "left";
+}
+
+function openShareCard(team, mode, source) {
+  const payload = sharePayloadFromTeam(team, mode, source);
+  state.shareCardPayload = payload;
+  state.shareCardStatus = "";
+  elements.shareCardTitle.textContent = payload.teamNumber ? `Team #${payload.teamNumber}` : "Team Card";
+  elements.shareCardStatus.textContent = "";
+  elements.shareCardModal.hidden = false;
+  drawShareCard(payload);
+  trackEvent("share_card_opened", {
+    team_mode: payload.mode,
+    hero_count: payload.heroes.length,
+    share_source: source,
+  });
+}
+
+function closeShareCard() {
+  elements.shareCardModal.hidden = true;
+  state.shareCardPayload = null;
+  state.shareCardStatus = "";
+  elements.shareCardStatus.textContent = "";
+}
+
+function shareCardFileName(payload) {
+  const teamLabel = payload.teamNumber ? `team-${payload.teamNumber}` : "team";
+  return `marvel-rivals-${teamLabel}-${payload.mode}.png`;
+}
+
+function canvasToBlob(canvas) {
+  return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+}
+
+async function downloadShareCard() {
+  if (!state.shareCardPayload) {
+    return;
+  }
+  const blob = await canvasToBlob(elements.shareCardCanvas);
+  if (!blob) {
+    elements.shareCardStatus.textContent = "Could not create image.";
+    return;
+  }
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = shareCardFileName(state.shareCardPayload);
+  link.click();
+  URL.revokeObjectURL(url);
+  elements.shareCardStatus.textContent = "PNG downloaded.";
+  trackEvent("share_card_downloaded", {
+    team_mode: state.shareCardPayload.mode,
+    hero_count: state.shareCardPayload.heroes.length,
+    share_source: state.shareCardPayload.source,
+  });
+}
+
+async function copyShareCardImage() {
+  if (!state.shareCardPayload) {
+    return;
+  }
+  try {
+    if (!window.ClipboardItem || !navigator.clipboard?.write) {
+      throw new Error("Image clipboard is unavailable.");
+    }
+    const blob = await canvasToBlob(elements.shareCardCanvas);
+    if (!blob) {
+      throw new Error("Could not create image.");
+    }
+    await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+    elements.shareCardStatus.textContent = "Image copied.";
+    trackEvent("share_card_copied", {
+      team_mode: state.shareCardPayload.mode,
+      hero_count: state.shareCardPayload.heroes.length,
+      share_source: state.shareCardPayload.source,
+      copy_type: "image",
+    });
+  } catch (error) {
+    await copyShareCardText();
+    elements.shareCardStatus.textContent = "Image copy is unavailable. Team text copied instead.";
+  }
+}
+
+async function copyShareCardText() {
+  if (!state.shareCardPayload) {
+    return;
+  }
+  const text = teamShareText(state.shareCardPayload);
+  try {
+    await navigator.clipboard.writeText(text);
+    elements.shareCardStatus.textContent = "Team text copied.";
+    trackEvent("share_card_copied", {
+      team_mode: state.shareCardPayload.mode,
+      hero_count: state.shareCardPayload.heroes.length,
+      share_source: state.shareCardPayload.source,
+      copy_type: "text",
+    });
+  } catch (error) {
+    elements.shareCardStatus.textContent = text;
+  }
+}
+
 function builderSourceTeams() {
-  return state.builderMode === "222" ? state.teams.balanced : state.teams.all;
+  return sourceTeams(state.builderMode);
 }
 
 function teamContainsAll(team, heroNames) {
@@ -1779,7 +2392,7 @@ function builderSuggestions() {
 }
 
 function filteredTeams() {
-  const source = state.mode === "222" ? state.teams.balanced : state.teams.all;
+  const source = sourceTeams(state.mode);
   if (!state.includedHeroes.size && !state.excludedHeroes.size) {
     return source;
   }
@@ -1807,7 +2420,7 @@ function heroChip(hero) {
 }
 
 function detailTeams(heroName, mode = state.mode) {
-  const source = mode === "222" ? state.teams.balanced : state.teams.all;
+  const source = sourceTeams(mode);
   return source.filter((team) => teamIncludesHero(team, heroName));
 }
 
@@ -1842,9 +2455,45 @@ function makeDetailAction(label, onClick) {
   return button;
 }
 
-function renderMiniTeam(team) {
+function teamEffectToggleKey(team, source, mode) {
+  return `${source}:${normalizeTeamMode(mode)}:${team.team_number}`;
+}
+
+function teamEffectVisible(team, source, mode) {
+  const key = teamEffectToggleKey(team, source, mode);
+  return state.teamEffectOverrides.has(key)
+    ? state.teamEffectOverrides.get(key)
+    : state.showTeamupEffects;
+}
+
+function toggleTeamEffectOverride(team, source, mode) {
+  const key = teamEffectToggleKey(team, source, mode);
+  const enabled = !teamEffectVisible(team, source, mode);
+  state.teamEffectOverrides.set(key, enabled);
+  trackEvent("teamup_effect_card_toggled", {
+    enabled,
+    source,
+    mode: normalizeTeamMode(mode),
+    team_number: team.team_number,
+  });
+  update();
+}
+
+function makeTeamEffectToggleButton(team, source, mode) {
+  const enabled = teamEffectVisible(team, source, mode);
+  const button = makeSavedCompAction(
+    enabled ? "Hide Effects" : "Show Effects",
+    () => toggleTeamEffectOverride(team, source, mode),
+  );
+  button.classList.add("team-effect-toggle-action");
+  button.setAttribute("aria-pressed", String(enabled));
+  return button;
+}
+
+function renderMiniTeam(team, source = "builder", mode = state.builderMode) {
   const item = document.createElement("article");
   item.className = "mini-team";
+  const showEffects = teamEffectVisible(team, source, mode);
 
   const title = document.createElement("h3");
   title.textContent = `Team #${team.team_number}`;
@@ -1855,9 +2504,14 @@ function renderMiniTeam(team) {
 
   const paths = document.createElement("div");
   paths.className = "paths";
-  team.heroes.forEach((hero) => paths.append(pathChip(hero)));
+  activeTeamupEffects(team).forEach((effect) => paths.append(renderTeamupPath(effect, showEffects)));
 
-  item.append(title, heroes, paths);
+  const actions = document.createElement("div");
+  actions.className = "pool-card-actions";
+  actions.append(makeTeamEffectToggleButton(team, source, mode));
+  actions.append(makeSavedCompAction("Share Card", () => openShareCard(team, mode, source)));
+
+  item.append(title, heroes, paths, actions);
   return item;
 }
 
@@ -1881,9 +2535,9 @@ function renderHeroDetail() {
   }
 
   const allHeroTeams = detailTeams(hero.name, "all");
-  const balancedHeroTeams = detailTeams(hero.name, "222");
+  const recommendedHeroTeams = detailTeams(hero.name, "222");
   const currentHeroTeams = detailTeams(hero.name);
-  const sourceCount = state.mode === "222" ? state.teams.balanced.length : state.teams.all.length;
+  const sourceCount = sourceTeams(state.mode).length;
   const currentPercent = sourceCount ? Math.round((currentHeroTeams.length / sourceCount) * 100) : 0;
   const partners = state.teamups.get(hero.name) || [];
 
@@ -1923,9 +2577,9 @@ function renderHeroDetail() {
   stats.className = "detail-stats";
   stats.innerHTML = `
     <div><dt>All Teams</dt><dd>${formatNumber(allHeroTeams.length)}</dd></div>
-    <div><dt>2-2-2</dt><dd>${formatNumber(balancedHeroTeams.length)}</dd></div>
+    <div><dt>2-2-2</dt><dd>${formatNumber(recommendedHeroTeams.length)}</dd></div>
     <div><dt>Current</dt><dd>${formatNumber(currentHeroTeams.length)}</dd></div>
-    <div><dt>Share</dt><dd>${currentPercent}%</dd></div>
+    <div><dt>Appears In</dt><dd>${currentPercent}%</dd></div>
   `;
 
   const actions = document.createElement("div");
@@ -1957,6 +2611,8 @@ function renderHeroDetail() {
   partners.forEach((partner) => partnerRow.append(renderTeamupEffectCard(hero.name, partner)));
   teamupsSection.append(partnerRow);
 
+  const officialDetailsSection = renderOfficialDetailsSection(hero.name);
+
   const teammatesSection = document.createElement("section");
   teammatesSection.className = "detail-section";
   teammatesSection.innerHTML = "<h3>Best Teammates</h3>";
@@ -1983,25 +2639,60 @@ function renderHeroDetail() {
   samplesSection.innerHTML = "<h3>Sample Teams</h3>";
   const sampleList = document.createElement("div");
   sampleList.className = "sample-list";
-  currentHeroTeams.slice(0, 5).forEach((team) => sampleList.append(renderMiniTeam(team)));
+  currentHeroTeams.slice(0, 5).forEach((team) => sampleList.append(renderMiniTeam(team, "hero_detail", state.mode)));
   if (!sampleList.children.length) {
     sampleList.append(makeChip("No teams in current mode"));
   }
   samplesSection.append(sampleList);
 
-  elements.heroDetail.append(header, roles, stats, actions, teamupsSection, teammatesSection, samplesSection);
+  elements.heroDetail.append(
+    header,
+    roles,
+    stats,
+    actions,
+    teamupsSection,
+    officialDetailsSection,
+    teammatesSection,
+    samplesSection,
+  );
 }
 
-function pathChip(hero) {
+function teamupPathCard(effect) {
+  const card = document.createElement("div");
+  card.className = "path-chip teamup-trigger";
+
+  const title = document.createElement("strong");
+  title.textContent = `${effect.heroName} <- ${effect.partnerName}`;
+
+  const summary = document.createElement("small");
+  summary.textContent = effect.abilityName
+    ? `${effect.abilityName}: ${effect.summary}`
+    : effect.summary;
+
+  card.append(title, summary);
+  const numbers = renderTeamupNumberBlocks(effect.officialAbility);
+  if (numbers) {
+    card.append(numbers);
+  }
+  return card;
+}
+
+function compactTeamupPath(effect) {
   const chip = document.createElement("span");
-  chip.className = "path-chip";
-  chip.textContent = `${hero.name} <- ${hero.active_partners.join(", ")}`;
+  chip.className = "path-chip teamup-path-compact";
+  chip.textContent = `${effect.heroName} <- ${effect.partnerName}`;
   return chip;
+}
+
+function renderTeamupPath(effect, showEffects) {
+  return showEffects ? teamupPathCard(effect) : compactTeamupPath(effect);
 }
 
 function renderTeam(team) {
   const row = document.createElement("article");
   row.className = "team-row";
+  const source = "browser";
+  const showEffects = teamEffectVisible(team, source, state.mode);
 
   const number = document.createElement("div");
   number.className = "team-number";
@@ -2010,7 +2701,10 @@ function renderTeam(team) {
   const content = document.createElement("div");
   content.className = "team-content";
 
-  if (state.mode === "222") {
+  if (state.mode !== "all") {
+    const roleGroups = document.createElement("div");
+    roleGroups.className = "role-groups";
+
     for (const role of ROLE_ORDER) {
       const group = document.createElement("div");
       group.className = "role-group";
@@ -2027,8 +2721,9 @@ function renderTeam(team) {
         .forEach((hero) => heroes.append(heroChip(hero)));
 
       group.append(label, heroes);
-      content.append(group);
+      roleGroups.append(group);
     }
+    content.append(roleGroups);
   } else {
     const heroes = document.createElement("div");
     heroes.className = "hero-line";
@@ -2038,8 +2733,14 @@ function renderTeam(team) {
 
   const paths = document.createElement("div");
   paths.className = "paths";
-  team.heroes.forEach((hero) => paths.append(pathChip(hero)));
+  activeTeamupEffects(team).forEach((effect) => paths.append(renderTeamupPath(effect, showEffects)));
   content.append(paths);
+
+  const actions = document.createElement("div");
+  actions.className = "pool-card-actions team-row-actions";
+  actions.append(makeTeamEffectToggleButton(team, source, state.mode));
+  actions.append(makeSavedCompAction("Share Card", () => openShareCard(team, state.mode, "browser")));
+  content.append(actions);
 
   row.append(number, content);
   return row;
@@ -2047,18 +2748,12 @@ function renderTeam(team) {
 
 function renderResults() {
   const teams = filteredTeams();
-  const sourceCount = state.mode === "222" ? state.teams.balanced.length : state.teams.all.length;
-  const suffix = state.mode === "222" ? "2-2-2 teams" : "teams";
+  const sourceCount = sourceTeams(state.mode).length;
+  const suffix = state.mode === "all" ? "teams" : `${modeLabel(state.mode)} teams`;
   elements.resultsTitle.textContent = `${formatNumber(teams.length)} of ${formatNumber(sourceCount)} ${suffix}`;
 
-  elements.markdownLink.href =
-    state.mode === "222"
-      ? "data/fully_enhanced_222_teams.md"
-      : "data/all_fully_enhanced_teams.md";
-  elements.jsonLink.href =
-    state.mode === "222"
-      ? "data/fully_enhanced_222_teams.json"
-      : "data/all_fully_enhanced_teams.json";
+  elements.markdownLink.href = `data/${modeFilePrefix(state.mode)}_teams.md`;
+  elements.jsonLink.href = `data/${modeFilePrefix(state.mode)}_teams.json`;
 
   elements.teamList.replaceChildren();
   if (!teams.length) {
@@ -2169,10 +2864,17 @@ function bindEvents() {
           item_id: button.dataset.mode,
         });
       }
-      state.mode = button.dataset.mode;
+      state.mode = normalizeTeamMode(button.dataset.mode);
       update();
     });
   }
+  elements.toggleTeamupEffects.addEventListener("change", (event) => {
+    state.showTeamupEffects = event.target.checked;
+    trackEvent("teamup_effect_display_changed", {
+      enabled: state.showTeamupEffects,
+    });
+    update();
+  });
   for (const button of elements.builderModeButtons) {
     button.addEventListener("click", () => {
       if (state.builderMode !== button.dataset.builderMode) {
@@ -2180,7 +2882,7 @@ function bindEvents() {
           builder_mode: button.dataset.builderMode,
         });
       }
-      state.builderMode = button.dataset.builderMode;
+      state.builderMode = normalizeTeamMode(button.dataset.builderMode);
       state.builderNotice = "";
       update();
     });
@@ -2205,7 +2907,7 @@ function bindEvents() {
           item_id: button.dataset.poolMode,
         });
       }
-      state.poolMode = button.dataset.poolMode;
+      state.poolMode = normalizeTeamMode(button.dataset.poolMode);
       state.poolStatus = "";
       safeWritePlayerPools();
       update();
@@ -2279,11 +2981,25 @@ function bindEvents() {
     state.builderPanel = "pools";
     update();
   });
+  elements.trySamplePools.addEventListener("click", loadSampleDuoPools);
   elements.copyPoolsLink.addEventListener("click", copyPoolsLink);
   elements.resetPlayerPools.addEventListener("click", resetPlayerPools);
   elements.updatesToggle.addEventListener("click", () => setUpdatesOpen(!state.updatesOpen));
   elements.updatesClose.addEventListener("click", () => setUpdatesOpen(false));
+  elements.shareCardClose.addEventListener("click", closeShareCard);
+  elements.shareCardModal.addEventListener("click", (event) => {
+    if (event.target === elements.shareCardModal) {
+      closeShareCard();
+    }
+  });
+  elements.downloadShareCard.addEventListener("click", downloadShareCard);
+  elements.copyShareCardImage.addEventListener("click", copyShareCardImage);
+  elements.copyShareCardText.addEventListener("click", copyShareCardText);
   document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !elements.shareCardModal.hidden) {
+      closeShareCard();
+      return;
+    }
     if (event.key === "Escape" && state.updatesOpen) {
       setUpdatesOpen(false);
     }
@@ -2303,15 +3019,24 @@ async function init() {
   try {
     readUrlState();
     bindEvents();
-    const [summary, heroes, teamups, teamupEffects, mapsData, updatesData, allTeams, balancedTeams] = await Promise.all([
+    const [
+      summary,
+      heroes,
+      teamups,
+      teamupEffects,
+      heroDetails,
+      mapsData,
+      updatesData,
+      ...teamPayloads
+    ] = await Promise.all([
       loadJson(DATA_FILES.summary),
       loadJson(DATA_FILES.heroes),
       loadJson(DATA_FILES.teamups),
       loadJson(DATA_FILES.teamupEffects),
+      loadJson(DATA_FILES.heroDetails),
       loadJson(DATA_FILES.maps),
       loadJson(DATA_FILES.updates),
-      loadJson(DATA_FILES.all),
-      loadJson(DATA_FILES.balanced),
+      ...TEAM_MODE_KEYS.map((key) => loadJson(DATA_FILES[key])),
     ]);
     state.summary = summary;
     state.mapsData = mapsData;
@@ -2325,8 +3050,10 @@ async function init() {
         Array.isArray(effects) ? effects.map((effect) => [effectKey(heroName, effect.partner), effect]) : [],
       ),
     );
-    state.teams.all = allTeams.teams;
-    state.teams.balanced = balancedTeams.teams;
+    state.heroDetails = new Map(Object.entries(heroDetails.heroes || {}));
+    TEAM_MODE_KEYS.forEach((key, index) => {
+      state.teams[key] = teamPayloads[index].teams;
+    });
     state.savedComps = safeReadSavedComps();
     const storedPools = safeReadPlayerPools();
     const params = new URLSearchParams(window.location.search);

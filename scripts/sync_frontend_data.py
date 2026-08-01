@@ -13,11 +13,20 @@ OUTPUT_FILES = [
     "all_fully_enhanced_teams.md",
     "fully_enhanced_222_teams.json",
     "fully_enhanced_222_teams.md",
+    "fully_enhanced_132_teams.json",
+    "fully_enhanced_132_teams.md",
+    "fully_enhanced_213_teams.json",
+    "fully_enhanced_213_teams.md",
+    "fully_enhanced_123_teams.json",
+    "fully_enhanced_123_teams.md",
+    "fully_enhanced_312_teams.json",
+    "fully_enhanced_312_teams.md",
 ]
 DATA_FILES = [
     "heroes.json",
     "teamups.json",
     "teamup_effects.json",
+    "hero_details.json",
 ]
 
 

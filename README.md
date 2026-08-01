@@ -12,7 +12,7 @@ See [COPYRIGHT_RISK.md](COPYRIGHT_RISK.md) for the project copyright and tradema
 
 A hero has two directional Team-Up abilities in the Season 9 system, and only one can be equipped at a time. A hero is counted as enhanced when at least one matching partner for one of those two abilities is present on the same team. The mapping is directional: if `Hero A` lists `Hero B`, that enhances `Hero A`; it does not automatically enhance `Hero B`.
 
-The generator checks every six-hero combination, not permutations, and outputs both unrestricted teams and exact `2 Vanguard / 2 Duelist / 2 Strategist` teams.
+The generator checks every six-hero combination, not permutations, and outputs unrestricted teams plus supported Vanguard-Duelist-Strategist role composition filters.
 
 ## Current Dataset
 
@@ -21,6 +21,10 @@ The generator checks every six-hero combination, not permutations, and outputs b
 - Active heroes generated: `52`
 - Fully enhanced unrestricted combinations: `247`
 - Fully enhanced 2-2-2 combinations: `28`
+- Fully enhanced 1-3-2 combinations: `29`
+- Fully enhanced 2-1-3 combinations: `7`
+- Fully enhanced 1-2-3 combinations: `9`
+- Fully enhanced 3-1-2 combinations: `10`
 - Old reference count match (`247` unrestricted / `28` 2-2-2): `true` / `true`
 - Main official source: <https://www.marvelrivals.com/20260708/41525_1306959.html>
 - Pairing source: <https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/>
@@ -93,11 +97,23 @@ Outputs are written to `output/`:
 - `fully_enhanced_222_teams.csv`
 - `fully_enhanced_222_teams.json`
 - [fully_enhanced_222_teams.md](output/fully_enhanced_222_teams.md)
+- `fully_enhanced_132_teams.csv`
+- `fully_enhanced_132_teams.json`
+- [fully_enhanced_132_teams.md](output/fully_enhanced_132_teams.md)
+- `fully_enhanced_213_teams.csv`
+- `fully_enhanced_213_teams.json`
+- [fully_enhanced_213_teams.md](output/fully_enhanced_213_teams.md)
+- `fully_enhanced_123_teams.csv`
+- `fully_enhanced_123_teams.json`
+- [fully_enhanced_123_teams.md](output/fully_enhanced_123_teams.md)
+- `fully_enhanced_312_teams.csv`
+- `fully_enhanced_312_teams.json`
+- [fully_enhanced_312_teams.md](output/fully_enhanced_312_teams.md)
 - `summary.json`
 
 ## Frontend
 
-The static browser lives in [docs/index.html](docs/index.html). It loads committed JSON from `docs/data/`, displays the current patch and generated counts, lets users include or exclude selected heroes from unrestricted or `2-2-2` teams, and includes a hero detail panel with Team-Up partners, usage counts, best teammates, and sample teams. A header tab opens a separate Team Builder view for manually checking 1-6 selected heroes.
+The static browser lives in [docs/index.html](docs/index.html). It loads committed JSON from `docs/data/`, displays the current patch and generated counts, lets users include or exclude selected heroes from unrestricted or role-filtered teams (`2-2-2`, `1-3-2`, `2-1-3`, `1-2-3`, `3-1-2`), and includes a hero detail panel with Team-Up partners, usage counts, best teammates, and sample teams. A header tab opens a separate Team Builder view for manually checking 1-6 selected heroes.
 
 Team-Up effect summaries live in `data/teamup_effects.json` and are copied to `docs/data/teamup_effects.json` for the frontend. This file records the ability name, base effect, enhanced effect, source URL, and verification status for each directional hero-partner pair. `verified_official` means the entry was checked against the official Marvel Rivals hero pages. It does not affect generated team counts; unverified entries are kept as `null` and marked `needs_verification`.
 

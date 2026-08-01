@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .generator import active_partners, role_assignment
 from .models import Hero, Role
+from .role_formats import ROLE_FORMATS
 
 
 def enhancement_details(
@@ -91,38 +92,42 @@ def _role_names(
     return sorted(hero for hero in team if assigned_roles[hero] == role)
 
 
-def export_222(
+def export_role_format(
     teams: list[tuple[str, ...]],
     heroes_by_name: dict[str, Hero],
     teamup_partners: dict[str, frozenset[str]],
     patch_version: str,
     output_dir: Path,
     formats: set[str],
+    role_format_key: str,
 ) -> None:
+    role_format = ROLE_FORMATS[role_format_key]
+    distribution = role_format.distribution
+    base_name = f"fully_enhanced_{role_format.key}_teams"
     output_dir.mkdir(parents=True, exist_ok=True)
     if "csv" in formats:
-        with (output_dir / "fully_enhanced_222_teams.csv").open("w", newline="", encoding="utf-8") as f:
+        with (output_dir / f"{base_name}.csv").open("w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["team_number", "vanguard_1", "vanguard_2", "duelist_1", "duelist_2", "strategist_1", "strategist_2", "enhancement_details"])
+            header = ["team_number"]
+            for role in (Role.VANGUARD, Role.DUELIST, Role.STRATEGIST):
+                header.extend(f"{role.value.lower()}_{index}" for index in range(1, distribution[role] + 1))
+            header.append("enhancement_details")
+            writer.writerow(header)
             for index, team in enumerate(teams, start=1):
-                assigned_roles = role_assignment(
-                    team,
-                    heroes_by_name,
-                    {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
-                )
+                assigned_roles = role_assignment(team, heroes_by_name, distribution)
                 if assigned_roles is None:
-                    raise ValueError(f"2-2-2 team has no valid role assignment: {team}")
-                row = (
-                    [index]
-                    + _role_names(team, heroes_by_name, Role.VANGUARD, assigned_roles)
-                    + _role_names(team, heroes_by_name, Role.DUELIST, assigned_roles)
-                    + _role_names(team, heroes_by_name, Role.STRATEGIST, assigned_roles)
-                    + [details_text(team, teamup_partners)]
-                )
+                    raise ValueError(f"{role_format.label} team has no valid role assignment: {team}")
+                row = [index]
+                for role in (Role.VANGUARD, Role.DUELIST, Role.STRATEGIST):
+                    row.extend(_role_names(team, heroes_by_name, role, assigned_roles))
+                row.append(details_text(team, teamup_partners))
                 writer.writerow(row)
     if "json" in formats:
         payload = {
             "patch_version": patch_version,
+            "role_format": role_format.key,
+            "role_format_label": role_format.label,
+            "role_format_description": role_format.description,
             "team_count": len(teams),
             "teams": [
                 {
@@ -131,36 +136,39 @@ def export_222(
                         team,
                         heroes_by_name,
                         teamup_partners,
-                        role_assignment(
-                            team,
-                            heroes_by_name,
-                            {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
-                        ),
+                        role_assignment(team, heroes_by_name, distribution),
                     ),
                 }
                 for index, team in enumerate(teams, start=1)
             ],
         }
-        (output_dir / "fully_enhanced_222_teams.json").write_text(
+        (output_dir / f"{base_name}.json").write_text(
             json.dumps(payload, indent=2), encoding="utf-8"
         )
     if "md" in formats:
         rows = ["| # | Vanguards | Duelists | Strategists | Enhancement paths |", "|---:|---|---|---|---|"]
         for index, team in enumerate(teams, start=1):
-            assigned_roles = role_assignment(
-                team,
-                heroes_by_name,
-                {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
-            )
+            assigned_roles = role_assignment(team, heroes_by_name, distribution)
             if assigned_roles is None:
-                raise ValueError(f"2-2-2 team has no valid role assignment: {team}")
+                raise ValueError(f"{role_format.label} team has no valid role assignment: {team}")
             rows.append(
                 f"| {index} | {', '.join(_role_names(team, heroes_by_name, Role.VANGUARD, assigned_roles))} | "
                 f"{', '.join(_role_names(team, heroes_by_name, Role.DUELIST, assigned_roles))} | "
                 f"{', '.join(_role_names(team, heroes_by_name, Role.STRATEGIST, assigned_roles))} | "
                 f"{details_text(team, teamup_partners)} |"
             )
-        (output_dir / "fully_enhanced_222_teams.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
+        (output_dir / f"{base_name}.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
+
+
+def export_222(
+    teams: list[tuple[str, ...]],
+    heroes_by_name: dict[str, Hero],
+    teamup_partners: dict[str, frozenset[str]],
+    patch_version: str,
+    output_dir: Path,
+    formats: set[str],
+) -> None:
+    export_role_format(teams, heroes_by_name, teamup_partners, patch_version, output_dir, formats, "222")
 
 
 def export_summary(payload: dict[str, object], output_dir: Path) -> None:

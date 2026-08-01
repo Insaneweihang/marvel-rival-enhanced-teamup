@@ -1,7 +1,35 @@
 {
-  "current_version": "v0.3.1",
-  "updated_at": "2026-07-29",
+  "current_version": "v0.3.3",
+  "updated_at": "2026-08-01",
   "updates": [
+    {
+      "version": "v0.3.3",
+      "date": "2026-08-01",
+      "type": "ui",
+      "title": "Team Browser and role filters",
+      "summary": "Renamed the site to Marvel Rivals Team-Up Planner, added role composition filters, clearer comp labels, and a more compact Team Browser row layout with right-aligned sharing."
+    },
+    {
+      "version": "v0.3.3",
+      "date": "2026-08-01",
+      "type": "feature",
+      "title": "Team-Up effect display",
+      "summary": "Team-Up paths now default to compact mode, with official effect numbers available through global and per-card show/hide controls."
+    },
+    {
+      "version": "v0.3.3",
+      "date": "2026-08-01",
+      "type": "feature",
+      "title": "Shareable team cards",
+      "summary": "Generated teams can be exported as social-ready PNG cards with heroes, role format, patch, and active Team-Ups."
+    },
+    {
+      "version": "v0.3.2",
+      "date": "2026-08-01",
+      "type": "feature",
+      "title": "Duo Planner visibility",
+      "summary": "Player Pools is now Duo Planner, with a clearer duo CTA, example pools, sample setup, and more visible Saved Teams."
+    },
     {
       "version": "v0.3.1",
       "date": "2026-07-29",

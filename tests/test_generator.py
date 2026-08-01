@@ -8,6 +8,7 @@ from marvel_teamups.generator import (
     role_assignment,
 )
 from marvel_teamups.models import Hero, Role
+from marvel_teamups.role_formats import ROLE_FORMATS
 
 TEAMUPS = {
     "A": frozenset({"B", "C"}),
@@ -65,8 +66,17 @@ def test_222_filter_works() -> None:
     assert has_role_distribution(
         ("A", "B", "C", "D", "E", "F"),
         heroes,
-        {Role.VANGUARD: 2, Role.DUELIST: 2, Role.STRATEGIST: 2},
+        ROLE_FORMATS["222"].distribution,
     )
+
+
+def test_meta_role_formats_are_available() -> None:
+    assert set(ROLE_FORMATS) == {"222", "132", "213", "123", "312"}
+    assert ROLE_FORMATS["132"].distribution == {
+        Role.VANGUARD: 1,
+        Role.DUELIST: 3,
+        Role.STRATEGIST: 2,
+    }
 
 
 def test_222_filter_supports_multi_role_heroes() -> None:

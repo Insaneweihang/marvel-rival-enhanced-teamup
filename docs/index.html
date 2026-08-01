@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Marvel Rivals Fully Enhanced Teams</title>
+    <title>Marvel Rivals Team-Up Planner</title>
     <!-- Public Google Analytics measurement ID; safe to expose in client HTML. -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPFXF8XZSR"></script>
     <script>
@@ -12,13 +12,13 @@
       gtag("js", new Date());
       gtag("config", "G-LPFXF8XZSR");
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260729-update-note" />
+    <link rel="stylesheet" href="styles.css?v=20260801-wide-teamups" />
   </head>
   <body>
     <header class="site-header">
       <div>
         <p class="eyebrow">Marvel Rivals Team-Up Generator</p>
-        <h1>Fully Enhanced Team Browser</h1>
+        <h1>Marvel Rivals Team-Up Planner</h1>
         <nav class="view-tabs" aria-label="Application views">
           <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
           <button class="view-tab" type="button" data-view="builder">Team Planner</button>
@@ -85,9 +85,21 @@
             <section class="control-group">
               <h2>Team Set</h2>
               <div class="segmented" role="tablist" aria-label="Team set">
-                <button class="segment active" type="button" data-mode="all">All Teams</button>
-                <button class="segment" type="button" data-mode="222">2-2-2 Only</button>
+                <button class="segment active" type="button" data-mode="all"></button>
+                <button class="segment" type="button" data-mode="222"></button>
+                <button class="segment" type="button" data-mode="132"></button>
+                <button class="segment" type="button" data-mode="213"></button>
+                <button class="segment" type="button" data-mode="123"></button>
+                <button class="segment" type="button" data-mode="312"></button>
               </div>
+              <p id="mode-description" class="mode-description"></p>
+              <label class="teamup-toggle" for="toggle-teamup-effects">
+                <span>
+                  <strong>Show Team-Up Effects</strong>
+                  <small>Expand triggered ability details in team lists.</small>
+                </span>
+                <input id="toggle-teamup-effects" type="checkbox" />
+              </label>
             </section>
 
             <section class="control-group">
@@ -151,7 +163,7 @@
               <small id="draft-workflow-summary">Pick heroes and see completion paths.</small>
             </button>
             <button class="planner-workflow" type="button" data-builder-panel="pools">
-              <span>Player Pools</span>
+              <span>Duo Planner</span>
               <strong>Compare two hero pools</strong>
               <small id="pool-workflow-summary">Find duo links and shared full comps.</small>
             </button>
@@ -165,7 +177,8 @@
               </section>
               <section class="builder-block saved-comps-block" aria-label="Saved team comps">
                 <div class="saved-comps-heading">
-                  <h3>Saved Comps</h3>
+                  <h3>Saved Teams</h3>
+                  <span id="saved-comps-count" class="saved-comps-count">0 saved</span>
                 </div>
                 <div id="saved-comps-status" class="saved-comps-status" aria-live="polite"></div>
                 <div id="saved-comps-list" class="saved-comps-list"></div>
@@ -177,17 +190,21 @@
                   <h3>Selected Team</h3>
                   <div class="builder-draft-actions">
                     <div class="segmented builder-mode-control" role="tablist" aria-label="Builder mode">
-                      <button class="segment active" type="button" data-builder-mode="all">All</button>
-                      <button class="segment" type="button" data-builder-mode="222">2-2-2</button>
+                      <button class="segment active" type="button" data-builder-mode="all"></button>
+                      <button class="segment" type="button" data-builder-mode="222"></button>
+                      <button class="segment" type="button" data-builder-mode="132"></button>
+                      <button class="segment" type="button" data-builder-mode="213"></button>
+                      <button class="segment" type="button" data-builder-mode="123"></button>
+                      <button class="segment" type="button" data-builder-mode="312"></button>
                     </div>
-                    <button id="save-builder-comp" class="saved-comp-save" type="button">Save Current</button>
+                    <button id="save-builder-comp" class="saved-comp-save" type="button">Save Team</button>
                     <button id="reset-builder-team" class="builder-reset-button" type="button">Reset Team</button>
                   </div>
                 </div>
                 <div id="builder-selected" class="selected-heroes builder-selected" aria-live="polite"></div>
                 <div id="builder-status" class="builder-status">Pick 1-6 heroes.</div>
                 <button id="show-player-pools" class="planner-callout" type="button">
-                  Planning with another player? Use Player Pools
+                  Planning with a duo? Compare both hero pools
                 </button>
               </section>
               <section class="builder-block">
@@ -204,17 +221,23 @@
               </section>
             </div>
           </div>
-          <section id="builder-pools-workspace" class="builder-workspace player-pools" aria-label="Player hero pools">
+          <section id="builder-pools-workspace" class="builder-workspace player-pools" aria-label="Duo Planner">
             <div class="pool-toolbar">
               <div>
-                <h3>Player Pools</h3>
-                <p>Compare two player hero pools and find duo-friendly full comps.</p>
+                <h3>Duo Planner</h3>
+                <p>Compare two hero pools and find duo-friendly full comps.</p>
+                <p class="pool-example">Example: You play Venom / The Thing, teammate plays Luna Snow / Ultron.</p>
               </div>
               <div class="pool-actions">
-                <div class="segmented builder-mode-control" role="tablist" aria-label="Player pools mode">
-                  <button class="segment active" type="button" data-pool-mode="all">All</button>
-                  <button class="segment" type="button" data-pool-mode="222">2-2-2</button>
+                <div class="segmented builder-mode-control" role="tablist" aria-label="Duo Planner mode">
+                  <button class="segment active" type="button" data-pool-mode="all"></button>
+                  <button class="segment" type="button" data-pool-mode="222"></button>
+                  <button class="segment" type="button" data-pool-mode="132"></button>
+                  <button class="segment" type="button" data-pool-mode="213"></button>
+                  <button class="segment" type="button" data-pool-mode="123"></button>
+                  <button class="segment" type="button" data-pool-mode="312"></button>
                 </div>
+                <button id="try-sample-pools" class="saved-comp-action sample-pools-action" type="button">Try Sample Pools</button>
                 <button id="copy-pools-link" class="saved-comp-action" type="button">Copy Link</button>
                 <button id="reset-player-pools" class="builder-reset-button" type="button">Reset Pools</button>
               </div>
@@ -300,6 +323,27 @@
         </section>
       </section>
     </main>
+
+    <section id="share-card-modal" class="share-card-modal" aria-label="Share team card" hidden>
+      <div class="share-card-dialog">
+        <div class="share-card-heading">
+          <div>
+            <p class="eyebrow">Share Card</p>
+            <h2 id="share-card-title">Team Card</h2>
+          </div>
+          <button id="share-card-close" class="icon-button" type="button" aria-label="Close share card" title="Close share card">
+            x
+          </button>
+        </div>
+        <canvas id="share-card-canvas" width="1200" height="675"></canvas>
+        <div id="share-card-status" class="share-card-status" aria-live="polite"></div>
+        <div class="share-card-actions">
+          <button id="download-share-card" class="saved-comp-save" type="button">Download PNG</button>
+          <button id="copy-share-card-image" class="saved-comp-action" type="button">Copy Image</button>
+          <button id="copy-share-card-text" class="saved-comp-action" type="button">Copy Team Text</button>
+        </div>
+      </div>
+    </section>
 
     <footer class="site-footer">
       <div class="footer-content">
@@ -393,7 +437,7 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260729-ga4" defer></script>
+    <script src="app.js?v=20260801-compact-effects" defer></script>
 
     <!-- Public Cloudflare Web Analytics site token; safe to expose in client HTML. -->
     <!-- Cloudflare Web Analytics -->
