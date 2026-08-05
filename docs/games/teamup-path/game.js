@@ -38,6 +38,13 @@ async function loadJson(path) {
   return response.json();
 }
 
+function trackEvent(eventName, params = {}) {
+  if (typeof window.gtag !== "function") {
+    return;
+  }
+  window.gtag("event", eventName, params);
+}
+
 function getPartners(heroName) {
   return (state.teamups.get(heroName) || []).filter((partner) => state.heroesByName.has(partner));
 }
@@ -215,6 +222,10 @@ function toggleOptimalMoves() {
   const shouldShow = elements.optimalPanel.hidden;
   if (shouldShow) {
     elements.optimalPanel.textContent = `Optimal route: ${state.puzzle.optimalDistance} moves`;
+    trackEvent("mini_game_optimal_revealed", {
+      patch_id: state.patchId,
+      optimal_moves: state.puzzle.optimalDistance,
+    });
   }
   elements.optimalPanel.hidden = !shouldShow;
   elements.optimalToggle.textContent = shouldShow ? "Hide optimal moves" : "Show optimal moves";
@@ -223,6 +234,7 @@ function toggleOptimalMoves() {
 
 function selectHero(heroName) {
   if (state.gameFinished || state.playerPath.includes(heroName)) return;
+  const previousHero = currentHero();
   if (!isValidConnection(currentHero(), heroName)) {
     setMessage("That hero is not an available partner for the current hero.", "error");
     renderGame();
@@ -230,6 +242,12 @@ function selectHero(heroName) {
   }
 
   state.playerPath.push(heroName);
+  trackEvent("mini_game_move", {
+    patch_id: state.patchId,
+    from_hero: previousHero,
+    to_hero: heroName,
+    move_number: state.playerPath.length - 1,
+  });
   if (heroName === state.puzzle.targetHero) {
     finishGame();
     return;
@@ -247,6 +265,14 @@ function finishGame() {
   state.gameFinished = true;
   const playerDistance = state.playerPath.length - 1;
   const difference = playerDistance - state.puzzle.optimalDistance;
+  trackEvent("mini_game_completed", {
+    patch_id: state.patchId,
+    start_hero: state.puzzle.startHero,
+    target_hero: state.puzzle.targetHero,
+    player_moves: playerDistance,
+    optimal_moves: state.puzzle.optimalDistance,
+    moves_from_optimal: difference,
+  });
   setMessage("Connected!", "success");
   renderGame();
   elements.completionPanel.hidden = false;
@@ -271,6 +297,12 @@ function undoMove() {
 
 function restartGame() {
   if (!state.puzzle) return;
+  trackEvent("mini_game_restarted", {
+    patch_id: state.patchId,
+    start_hero: state.puzzle.startHero,
+    target_hero: state.puzzle.targetHero,
+    moves_before_restart: state.playerPath.length - 1,
+  });
   state.playerPath = [state.puzzle.startHero];
   state.gameFinished = false;
   elements.completionPanel.hidden = true;
@@ -280,11 +312,19 @@ function restartGame() {
 }
 
 function startNewGame() {
+  const previousPuzzle = state.puzzle;
   state.puzzle = generateRandomPuzzle();
   state.playerPath = [state.puzzle.startHero];
   state.gameFinished = false;
   elements.completionPanel.hidden = true;
   resetOptimalMoves();
+  trackEvent("mini_game_started", {
+    patch_id: state.patchId,
+    start_hero: state.puzzle.startHero,
+    target_hero: state.puzzle.targetHero,
+    optimal_moves: state.puzzle.optimalDistance,
+    is_new_game: Boolean(previousPuzzle),
+  });
   setMessage("Choose a partner to make your first connection.", "info");
   renderGame();
 }
