@@ -1,7 +1,14 @@
 {
-  "current_version": "v0.3.3",
-  "updated_at": "2026-08-01",
+  "current_version": "v0.3.4",
+  "updated_at": "2026-08-05",
   "updates": [
+    {
+      "version": "v0.3.4",
+      "date": "2026-08-05",
+      "type": "feature",
+      "title": "Directional Team-Up Path game",
+      "summary": "Added a lightweight path puzzle where players connect heroes using valid one-way Team-Up relationships and compare their result with the shortest route."
+    },
     {
       "version": "v0.3.3",
       "date": "2026-08-01",

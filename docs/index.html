@@ -12,7 +12,7 @@
       gtag("js", new Date());
       gtag("config", "G-LPFXF8XZSR");
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260801-wide-teamups" />
+    <link rel="stylesheet" href="styles.css?v=20260805-multi-patch" />
   </head>
   <body>
     <header class="site-header">
@@ -23,6 +23,7 @@
           <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
           <button class="view-tab" type="button" data-view="builder">Team Planner</button>
           <button class="view-tab" type="button" data-view="maps">Maps</button>
+          <a id="link-challenge-link" class="view-tab nav-link-tab" href="games/teamup-path/">Mini Game</a>
         </nav>
       </div>
       <nav class="header-actions" aria-label="Creator support and feedback links">
@@ -37,7 +38,11 @@
       <dl class="summary-grid" aria-label="Dataset summary">
         <div>
           <dt>Patch</dt>
-          <dd id="patch-version">Loading</dd>
+          <dd class="patch-summary-value">
+            <span id="patch-version">Loading</span>
+            <label class="patch-select-label" for="patch-select">View</label>
+            <select id="patch-select" aria-label="Select patch version"></select>
+          </dd>
         </div>
         <div>
           <dt>All Teams</dt>
@@ -437,7 +442,7 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260801-compact-effects" defer></script>
+    <script src="app.js?v=20260805-multi-patch" defer></script>
 
     <!-- Public Cloudflare Web Analytics site token; safe to expose in client HTML. -->
     <!-- Cloudflare Web Analytics -->

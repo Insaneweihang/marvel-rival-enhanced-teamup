@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Team-Up Mini Game | Marvel Rivals Team-Up Planner</title>
+    <link rel="stylesheet" href="../../styles.css?v=20260805-multi-patch" />
+    <link rel="stylesheet" href="./game.css?v=20260805-optimal-reveal" />
+  </head>
+  <body>
+    <header class="site-header path-site-header">
+      <div>
+        <p class="eyebrow">Marvel Rivals Team-Up Planner</p>
+        <h1>Team-Up Mini Game</h1>
+        <p class="path-header-copy">Connect the start hero to the target with directional Team-Up links. Use as few connections as possible.</p>
+      </div>
+      <nav class="header-actions" aria-label="Game navigation">
+        <a class="secondary-action" href="../../">Back to planner</a>
+      </nav>
+    </header>
+
+    <main class="path-game-shell">
+      <section class="path-intro" aria-labelledby="game-heading">
+        <div>
+          <p class="eyebrow">How to play</p>
+          <h2 id="game-heading">Find the shortest Team-Up route</h2>
+          <ol class="how-to-play-list">
+            <li>Start with the hero shown on the left.</li>
+            <li>Choose one available partner to make your next connection.</li>
+            <li>Follow the arrow direction exactly: <strong>A -&gt; B</strong> does not automatically mean <strong>B -&gt; A</strong>.</li>
+            <li>Reach the target hero using as few moves as possible.</li>
+          </ol>
+          <p class="how-to-play-note">Each connection activates or enhances the current hero's Team-Up ability. The note under a hero shows the benefit for that specific connection.</p>
+        </div>
+        <div class="direction-note" role="note">
+          <span class="direction-note-mark" aria-hidden="true">A -&gt; B</span>
+          <span>One-way Team-Up link</span>
+        </div>
+      </section>
+
+      <section class="puzzle-panel" aria-labelledby="puzzle-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Current puzzle</p>
+            <h2 id="puzzle-heading">Connect the heroes</h2>
+          </div>
+          <div class="score-summary">
+            <span id="move-count" class="move-count" aria-live="polite">0 moves</span>
+            <button id="optimal-toggle" class="optimal-toggle" type="button" aria-expanded="false" aria-controls="optimal-panel">Show optimal moves</button>
+            <span id="optimal-panel" class="optimal-panel" aria-live="polite" hidden></span>
+          </div>
+        </div>
+
+        <div class="duel-grid">
+          <article class="duel-card start-card" id="start-hero"></article>
+          <div class="route-arrow" aria-hidden="true">→</div>
+          <article class="duel-card target-card" id="target-hero"></article>
+        </div>
+
+        <div id="game-status" class="game-status" role="status" aria-live="polite"></div>
+
+        <div class="path-section">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">Your path</p>
+              <h3>Your route</h3>
+            </div>
+          </div>
+          <ol id="player-path" class="path-list" aria-label="Your current hero path"></ol>
+        </div>
+
+        <div class="path-section choices-section">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="eyebrow">Next move</p>
+            <h3 id="choices-heading">Choose the next hero</h3>
+            </div>
+          </div>
+          <div id="hero-choices" class="choice-grid"></div>
+        </div>
+
+        <div id="completion-panel" class="completion-panel" hidden></div>
+
+        <div class="game-actions">
+          <button id="undo-button" class="secondary-action" type="button">Undo</button>
+          <button id="restart-button" class="secondary-action" type="button">Restart</button>
+          <button id="new-game-button" class="primary-action" type="button">New game</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./game.js?v=20260805-optimal-reveal" defer></script>
+  </body>
+</html>

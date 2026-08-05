@@ -1,0 +1,960 @@
+{
+    "patch_version": "20260807-season-9-5",
+    "effects":  {
+                    "Adam Warlock":  [
+                                         {
+                                             "partner":  "Storm",
+                                             "ability_name":  "Cosmic Cyclone",
+                                             "base_effect":  "Teammates linked by Soul Bond receive a Speed Boost.",
+                                             "enhanced_effect":  "With Storm, linked teammates additionally gain a Damage Boost.",
+                                             "source_url":  "https://www.marvelrivals.com/20241123/41360_1195670.html",
+                                             "verification_status":  "verified_official"
+                                         },
+                                         {
+                                             "partner":  "Ultron",
+                                             "ability_name":  "Flawless Design",
+                                             "base_effect":  "Cosmic Cluster provides healing to allies it hits.",
+                                             "enhanced_effect":  "With Ultron, Cosmic Cluster creates an explosion on impact.",
+                                             "source_url":  "https://www.marvelrivals.com/20241123/41360_1195670.html",
+                                             "verification_status":  "verified_official"
+                                         }
+                                     ],
+                    "Angela":  [
+                                   {
+                                       "partner":  "Star-Lord",
+                                       "ability_name":  "Asgardians of the Galaxy",
+                                       "base_effect":  "Reveals a targeted area, then can re-activate to slam and Ground enemies hit.",
+                                       "enhanced_effect":  "With Star-Lord, Angela gains Bonus Health based on enemies hit by the slam.",
+                                       "source_url":  "https://www.marvelrivals.com/20250911/41360_1258873.html",
+                                       "verification_status":  "verified_official"
+                                   },
+                                   {
+                                       "partner":  "Loki",
+                                       "ability_name":  "Odin\u0027s Unacknowledged",
+                                       "base_effect":  "Sends an illusion forward that uses Assassin\u0027s Charge and carries enemies struck head-on.",
+                                       "enhanced_effect":  "With Loki, the ability gains two charges.",
+                                       "source_url":  "https://www.marvelrivals.com/20250911/41360_1258873.html",
+                                       "verification_status":  "verified_official"
+                                   }
+                               ],
+                    "Black Cat":  [
+                                      {
+                                          "partner":  "Black Panther",
+                                          "ability_name":  "Feline Alliance",
+                                          "base_effect":  "Damage taken builds Vibranium Energy; at threshold Black Cat can explode, damage and knock back nearby enemies, and gain Speed Boost and Bonus Health.",
+                                          "enhanced_effect":  "With Black Panther, the explosion can be triggered without waiting for the energy threshold.",
+                                          "source_url":  "https://www.marvelrivals.com/20260416/41360_1296480.html",
+                                          "verification_status":  "verified_official"
+                                      },
+                                      {
+                                          "partner":  "Spider-Man",
+                                          "ability_name":  "Binding Ties",
+                                          "base_effect":  "Turn of Fortune becomes Spider-Web Grapple with two charges; hits steal Fortune, apply Spider-Tracer, and enable bonus damage when detonated by other abilities.",
+                                          "enhanced_effect":  "With Spider-Man, grappling an already marked enemy briefly Immobilizes them.",
+                                          "source_url":  "https://www.marvelrivals.com/20260416/41360_1296480.html",
+                                          "verification_status":  "verified_official"
+                                      }
+                                  ],
+                    "Black Panther":  [
+                                          {
+                                              "partner":  "Storm",
+                                              "ability_name":  "Damisa-Yao",
+                                              "base_effect":  "Triggers elemental power in Black Panther armor, damaging and Slowing nearby enemies while applying Vibranium Marks.",
+                                              "enhanced_effect":  "With Storm, enemies in range are launched toward Black Panther.",
+                                              "source_url":  "https://www.marvelrivals.com/20241123/41360_1195677.html",
+                                              "verification_status":  "verified_official"
+                                          },
+                                          {
+                                              "partner":  "Magik",
+                                              "ability_name":  "Dimensional Shortcut",
+                                              "base_effect":  "Uses a Limbo stepping disc to return to a recent position, gaining Bonus Health; the disc later explodes and applies Vibranium Marks.",
+                                              "enhanced_effect":  "With Magik, the teleport sequence can be manually canceled mid-transit.",
+                                              "source_url":  "https://www.marvelrivals.com/20241123/41360_1195677.html",
+                                              "verification_status":  "verified_official"
+                                          }
+                                      ],
+                    "Black Widow":  [
+                                        {
+                                            "partner":  "Hawkeye",
+                                            "ability_name":  "Allied Agents",
+                                            "base_effect":  "Red Room Rifle hits build Focus; at three stacks the next bullet gains Hunter Sight, Damage Boost, and piercing effects.",
+                                            "enhanced_effect":  "With Hawkeye, critical hits prevent Focused state from expiring until a critical hit is missed.",
+                                            "source_url":  "https://www.marvelrivals.com/20241204/41360_1198106.html",
+                                            "verification_status":  "verified_official"
+                                        },
+                                        {
+                                            "partner":  "Phoenix",
+                                            "ability_name":  "Burning Bullets",
+                                            "base_effect":  "Activation boosts Red Room Rifle fire rate and turns Plasma Cannon into an uncharged hitscan laser.",
+                                            "enhanced_effect":  "With Phoenix, Plasma Cannon gains a second charge.",
+                                            "source_url":  "https://www.marvelrivals.com/20241204/41360_1198106.html",
+                                            "verification_status":  "verified_official"
+                                        }
+                                    ],
+                    "Blade":  [
+                                  {
+                                      "partner":  "Moon Knight",
+                                      "ability_name":  "Blade of Khonshu",
+                                      "base_effect":  "Blade performs a forward cleave and short dash, then slashes four times to send bouncing Darkmoon Blades forward.",
+                                      "enhanced_effect":  "With Moon Knight, each Whirlwind Slash generates one extra Darkmoon Blade.",
+                                      "source_url":  "https://www.marvelrivals.com/20250808/41360_1252733.html",
+                                      "verification_status":  "verified_official"
+                                  },
+                                  {
+                                      "partner":  "Captain America",
+                                      "ability_name":  "Bleed for Battle",
+                                      "base_effect":  "Taking enough damage builds Bloodline Awakening stacks.",
+                                      "enhanced_effect":  "With Captain America, critical damage instantly triggers Bloodline Awakening, grants bonus stacks, and raises the stack cap.",
+                                      "source_url":  "https://www.marvelrivals.com/20250808/41360_1252733.html",
+                                      "verification_status":  "verified_official"
+                                  }
+                              ],
+                    "Captain America":  [
+                                            {
+                                                "partner":  "Winter Soldier",
+                                                "ability_name":  "Stars Aligned",
+                                                "base_effect":  "Captain America leaps to an ally, gives both heroes Bonus Health, and redirects part of the ally damage to himself.",
+                                                "enhanced_effect":  "With Winter Soldier, the duo can mutually rally, collide, grant nearby allies Bonus Health and Movement Speed, and speed up the targeted teammate.",
+                                                "source_url":  "https://www.marvelrivals.com/20241123/41360_1195652.html",
+                                                "verification_status":  "verified_official"
+                                            },
+                                            {
+                                                "partner":  "Thor",
+                                                "ability_name":  "Voltaic Union",
+                                                "base_effect":  "Sentinel Strike becomes Lightning Shield. After landing two hits, Captain America throws piercing lightning shields.",
+                                                "enhanced_effect":  "With Thor, Lightning Shield hits trigger extra area damage bursts.",
+                                                "source_url":  "https://www.marvelrivals.com/20241123/41360_1195652.html",
+                                                "verification_status":  "verified_official"
+                                            }
+                                        ],
+                    "Cloak \u0026 Dagger":  [
+                                                {
+                                                    "partner":  "Luna Snow",
+                                                    "ability_name":  "Frozen Haven",
+                                                    "base_effect":  "Cloak \u0026 Dagger enter a protective ice block, becoming frozen in place while still healable and emitting a weak healing aura.",
+                                                    "enhanced_effect":  "With Luna Snow, the healing aura around the frozen block becomes significantly stronger.",
+                                                    "source_url":  "https://www.marvelrivals.com/20241204/41360_1198095.html",
+                                                    "verification_status":  "verified_official"
+                                                },
+                                                {
+                                                    "partner":  "The Hood",
+                                                    "ability_name":  "Oblivion Shroud",
+                                                    "base_effect":  "Veil of Lightforce and Terror Cape become stationary hellfire veils that weaken enemy damage or reduce enemy healing passing through them.",
+                                                    "enhanced_effect":  "With The Hood, both veils become wider and allies passing through gain a temporary Damage Boost.",
+                                                    "source_url":  "https://www.marvelrivals.com/20241204/41360_1198095.html",
+                                                    "verification_status":  "verified_official"
+                                                }
+                                            ],
+                    "Cyclops":  [
+                                    {
+                                        "partner":  "Phoenix",
+                                        "ability_name":  "Slim and Red",
+                                        "base_effect":  "Ricochet Force ignites enemies with Phoenix Force burn; Optic Blast or Concussive Beam can detonate part of the remaining burn damage.",
+                                        "enhanced_effect":  "With Phoenix, Spark detonations reduce Ricochet Force cooldown.",
+                                        "source_url":  "https://www.marvelrivals.com/20260611/41360_1303977.html",
+                                        "verification_status":  "verified_official"
+                                    },
+                                    {
+                                        "partner":  "Gambit",
+                                        "ability_name":  "Kinetic Kin",
+                                        "base_effect":  "Cyclops releases stored kinetic energy to gain greatly increased movement speed and jump height for a duration.",
+                                        "enhanced_effect":  "With Gambit, Optic Blast and Concussive Beam attack speeds increase during the enhanced state.",
+                                        "source_url":  "https://www.marvelrivals.com/20260611/41360_1303977.html",
+                                        "verification_status":  "verified_official"
+                                    }
+                                ],
+                    "Daredevil":  [
+                                      {
+                                          "partner":  "Iron Fist",
+                                          "ability_name":  "Comprehensive Defense",
+                                          "base_effect":  "Objection! improves Whirling Billy Clubs so they damage enemies in range, deflect projectiles from every direction, and restore Fury on successful deflects.",
+                                          "enhanced_effect":  "With Iron Fist, Daredevil passively heals for the duration.",
+                                          "source_url":  "https://www.marvelrivals.com/20251009/41360_1263889.html",
+                                          "verification_status":  "verified_official"
+                                      },
+                                      {
+                                          "partner":  "Black Widow",
+                                          "ability_name":  "Devilish Affair",
+                                          "base_effect":  "Daredevil swings Devil\u0027s Chain in a criss-cross pattern, damaging and Slowing enemies in front.",
+                                          "enhanced_effect":  "With Black Widow, the radius expands and hits restore Fury.",
+                                          "source_url":  "https://www.marvelrivals.com/20251009/41360_1263889.html",
+                                          "verification_status":  "verified_official"
+                                      }
+                                  ],
+                    "Deadpool":  [
+                                     {
+                                         "partner":  "Hela",
+                                         "ability_name":  "Hel-Yeah, Honey",
+                                         "base_effect":  "Deadpool can upgrade either Desert Eagles or Katanas one extra time with Hel energy.",
+                                         "enhanced_effect":  "With Hela, both Desert Eagles and Katanas can be upgraded one extra time.",
+                                         "source_url":  "https://www.marvelrivals.com/20260115/41360_1281973.html",
+                                         "verification_status":  "verified_official"
+                                     },
+                                     {
+                                         "partner":  "Gambit",
+                                         "ability_name":  "Gumbo Chimichangas",
+                                         "base_effect":  "Deadpool leaps forward with kinetic energy and scatters charged chimichangas on landing to damage enemies.",
+                                         "enhanced_effect":  "With Gambit, the landing blast Stuns enemies in its radius.",
+                                         "source_url":  "https://www.marvelrivals.com/20260115/41360_1281973.html",
+                                         "verification_status":  "verified_official"
+                                     }
+                                 ],
+                    "Devil Dinosaur":  [
+                                           {
+                                               "partner":  "The Punisher",
+                                               "ability_name":  "Primal Punishment",
+                                               "base_effect":  "Primal Bite is replaced by two magnetic cannons that fire explosive cannonballs.",
+                                               "enhanced_effect":  "With The Punisher, a mounted interaction lets The Punisher ride Devil Dinosaur with Damage Reduction while Devil Dinosaur absorbs part of his incoming damage.",
+                                               "source_url":  "https://www.marvelrivals.com/20260514/41360_1300391.html",
+                                               "verification_status":  "verified_official"
+                                           },
+                                           {
+                                               "partner":  "Jeff the Land Shark",
+                                               "ability_name":  "Surf \u0026 Turf",
+                                               "base_effect":  "Impact Beam is replaced by a frontal water spray that damages enemies and heals allies.",
+                                               "enhanced_effect":  "With Jeff, Jeff can ride Devil Dinosaur; both gain Damage Reduction and Continuous Healing while Jeff is limited to selected abilities.",
+                                               "source_url":  "https://www.marvelrivals.com/20260514/41360_1300391.html",
+                                               "verification_status":  "verified_official"
+                                           }
+                                       ],
+                    "Doctor Strange":  [
+                                           {
+                                               "partner":  "Hulk",
+                                               "ability_name":  "Gamma Maelstrom",
+                                               "base_effect":  "Maelstrom of Madness becomes Gamma Maelstrom with faster energy charge and no Anti-Heal curse.",
+                                               "enhanced_effect":  "With Hulk, releasing Gamma Maelstrom preserves some energy and stored Gamma energy no longer decays.",
+                                               "source_url":  "https://www.marvelrivals.com/20241123/41360_1195649.html",
+                                               "verification_status":  "verified_official"
+                                           },
+                                           {
+                                               "partner":  "Invisible Woman",
+                                               "ability_name":  "Psionic Vortex",
+                                               "base_effect":  "Maelstrom of Madness becomes Psionic Vortex, pulling enemies toward Doctor Strange and increasing Shield of the Seraphim shield value.",
+                                               "enhanced_effect":  "With Invisible Woman, Psionic Vortex damage converts proportionally into Bonus Health for Doctor Strange.",
+                                               "source_url":  "https://www.marvelrivals.com/20241123/41360_1195649.html",
+                                               "verification_status":  "verified_official"
+                                           }
+                                       ],
+                    "Elsa Bloodstone":  [
+                                            {
+                                                "partner":  "Devil Dinosaur",
+                                                "ability_name":  "Prehistoric Trap",
+                                                "base_effect":  "Smoky Snare deploys Diablo to monitor an area, Immobilize and damage approaching enemies, and release damaging gas.",
+                                                "enhanced_effect":  "With Devil Dinosaur, Elsa can store and deploy two Smoky Snares.",
+                                                "source_url":  "https://www.marvelrivals.com/20260212/41360_1286981.html",
+                                                "verification_status":  "verified_official"
+                                            },
+                                            {
+                                                "partner":  "Deadpool",
+                                                "ability_name":  "Loudmouth Mercs",
+                                                "base_effect":  "Living Bullet fires special rounds that Taunt, Slow, and damage nearby enemies over time, then recall to heal Elsa and raise her Inherited Instinct cap.",
+                                                "enhanced_effect":  "With Deadpool, Instinct acquisition rate is significantly boosted.",
+                                                "source_url":  "https://www.marvelrivals.com/20260212/41360_1286981.html",
+                                                "verification_status":  "verified_official"
+                                            }
+                                        ],
+                    "Emma Frost":  [
+                                       {
+                                           "partner":  "Mantis",
+                                           "ability_name":  "Spirit Breaker",
+                                           "base_effect":  "Damaging the summoned Soul Crystal can be converted into Bonus Health for Emma Frost.",
+                                           "enhanced_effect":  "With Mantis, shattering the Soul Crystal grants one-time Bonus Health and reduces Mind Control cooldown.",
+                                           "source_url":  "https://www.marvelrivals.com/20250408/41360_1225547.html",
+                                           "verification_status":  "verified_official"
+                                       },
+                                       {
+                                           "partner":  "Luna Snow",
+                                           "ability_name":  "Iced Out Diamond",
+                                           "base_effect":  "Emma releases winter energy that damages and Slows enemies, and can form Zero Diamond during Diamond Form to block attacks and movement.",
+                                           "enhanced_effect":  "With Luna Snow, Diamond Form causes ability damage and Soul Wave to apply Slow.",
+                                           "source_url":  "https://www.marvelrivals.com/20250408/41360_1225547.html",
+                                           "verification_status":  "verified_official"
+                                       }
+                                   ],
+                    "Gambit":  [
+                                   {
+                                       "partner":  "Jubilee",
+                                       "ability_name":  "Sparkling Staff",
+                                       "base_effect":  "Gambit spins a firework-enhanced Bo Staff, healing nearby allies, damaging nearby enemies, and blocking most projectiles.",
+                                       "enhanced_effect":  "With Jubilee, Bayou Bash and Big Easy Impact gain an additional Continuous Healing aura.",
+                                       "source_url":  "https://www.marvelrivals.com/20251114/41360_1270998.html",
+                                       "verification_status":  "verified_official"
+                                   },
+                                   {
+                                       "partner":  "Magneto",
+                                       "ability_name":  "Favorable Odds",
+                                       "base_effect":  "Gambit throws two magnetic cards that spin in place, healing allies they hit while damaging and Launching enemies.",
+                                       "enhanced_effect":  "With Magneto, the cards slam together and explode at the end for extra healing and damage.",
+                                       "source_url":  "https://www.marvelrivals.com/20251114/41360_1270998.html",
+                                       "verification_status":  "verified_official"
+                                   }
+                               ],
+                    "Groot":  [
+                                  {
+                                      "partner":  "Mantis",
+                                      "ability_name":  "Wild Wall",
+                                      "base_effect":  "Summons a Wild Wall that gives allies in range Continuous Healing and Bonus Health.",
+                                      "enhanced_effect":  "With Mantis, Wild Wall evolves after enough healing and increases its healing output.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195653.html",
+                                      "verification_status":  "verified_official"
+                                  },
+                                  {
+                                      "partner":  "Jeff the Land Shark",
+                                      "ability_name":  "Bubble Buddies",
+                                      "base_effect":  "Groot retreats into a Bubble Shield, becoming Invincible and receiving Continuous Healing.",
+                                      "enhanced_effect":  "With Jeff, the bubble healing is stronger and excess healing converts into Bonus Health.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195653.html",
+                                      "verification_status":  "verified_official"
+                                  }
+                              ],
+                    "Hawkeye":  [
+                                    {
+                                        "partner":  "Psylocke",
+                                        "ability_name":  "Senbonzakura Strike",
+                                        "base_effect":  "Blast Arrow becomes Psionic Arrow; Hawkeye can bank extra arrows while drawn and rapidly fire them on release.",
+                                        "enhanced_effect":  "With Psylocke, arrow nocking is faster and arrows explode on impact.",
+                                        "source_url":  "https://www.marvelrivals.com/20241124/41360_1195753.html",
+                                        "verification_status":  "verified_official"
+                                    },
+                                    {
+                                        "partner":  "Cloak \u0026 Dagger",
+                                        "ability_name":  "Moonlit Slash",
+                                        "base_effect":  "Crescent Slash becomes Moonlit Slash, sending a radiant blade that heals allies, boosts healing, damages enemies, and applies Vulnerability.",
+                                        "enhanced_effect":  "With Cloak \u0026 Dagger, Moonlit Slash chains into a three-hit light blade combo.",
+                                        "source_url":  "https://www.marvelrivals.com/20241124/41360_1195753.html",
+                                        "verification_status":  "verified_official"
+                                    }
+                                ],
+                    "Hela":  [
+                                 {
+                                     "partner":  "Venom",
+                                     "ability_name":  "Hel Tendrils",
+                                     "base_effect":  "Soul Drainer is replaced by Hel Tendrils, pulling nearby enemies toward the impact point and linking them with a Slow when they try to escape.",
+                                     "enhanced_effect":  "With Venom, Piercing Night fires symbiote-infused Nightsword Thorns and direct hits restore Hela\u0027s Health.",
+                                     "source_url":  "https://www.marvelrivals.com/20241123/41360_1195676.html",
+                                     "verification_status":  "verified_official"
+                                 },
+                                 {
+                                     "partner":  "Namor",
+                                     "ability_name":  "Deep Wrath",
+                                     "base_effect":  "Hela participation in a KO spawns an Undead Monstro that can spit Nightsword Thorns when Piercing Night is cast.",
+                                     "enhanced_effect":  "With Namor, each Goddess of Death attack spawns an Undead Monstro at the impact point.",
+                                     "source_url":  "https://www.marvelrivals.com/20241123/41360_1195676.html",
+                                     "verification_status":  "verified_official"
+                                 }
+                             ],
+                    "Hulk":  [
+                                 {
+                                     "partner":  "Captain America",
+                                     "ability_name":  "Savage Slam",
+                                     "base_effect":  "Hulk leaps high and slams the ground, damaging enemies and reducing other cooldowns based on remaining Health.",
+                                     "enhanced_effect":  "With Captain America, the slam also applies Vulnerability to enemies hit.",
+                                     "source_url":  "https://www.marvelrivals.com/20241123/41360_1195678.html",
+                                     "verification_status":  "verified_official"
+                                 },
+                                 {
+                                     "partner":  "Wolverine",
+                                     "ability_name":  "Gamma Fastball",
+                                     "base_effect":  "Hulk enters a Furious state with Speed Boost and Attack Speed, and gains Dances With Werewolves for Unstoppable at low Health.",
+                                     "enhanced_effect":  "With Wolverine, Hulk unlocks Fastball Special and can throw Wolverine forward after mutual confirmation.",
+                                     "source_url":  "https://www.marvelrivals.com/20241123/41360_1195678.html",
+                                     "verification_status":  "verified_official"
+                                 }
+                             ],
+                    "Human Torch":  [
+                                        {
+                                            "partner":  "Jubilee",
+                                            "ability_name":  "Fiery Sparks",
+                                            "base_effect":  "Passively detects nearby enemies and launches tracking Sparks to chip their Health.",
+                                            "enhanced_effect":  "With Jubilee, landing a Firework Spark grants Human Torch Bonus Health.",
+                                            "source_url":  "https://www.marvelrivals.com/20250220/41360_1213050.html",
+                                            "verification_status":  "verified_official"
+                                        },
+                                        {
+                                            "partner":  "Storm",
+                                            "ability_name":  "Storming Ignition",
+                                            "base_effect":  "Fires a storm-driven blaze that creates a persistent Fire Vortex, damaging and pulling enemies.",
+                                            "enhanced_effect":  "With Storm, Omega Hurricane can become Burning Hurricane when crossing Flame Tornado, and storm/fire fields can generate new Flame Tornadoes.",
+                                            "source_url":  "https://www.marvelrivals.com/20250220/41360_1213050.html",
+                                            "verification_status":  "verified_official"
+                                        }
+                                    ],
+                    "Invisible Woman":  [
+                                            {
+                                                "partner":  "Human Torch",
+                                                "ability_name":  "United Siblings",
+                                                "base_effect":  "Invisible Woman creates a Flame Shield on an ally that blocks damage, heals nearby allies, boosts friendly projectiles fired through it, and Slows enemies passing through.",
+                                                "enhanced_effect":  "With Human Torch, the Flame Shield gains a larger radius and much higher shield value.",
+                                                "source_url":  "https://www.marvelrivals.com/20250108/41360_1205353.html",
+                                                "verification_status":  "verified_official"
+                                            },
+                                            {
+                                                "partner":  "Mister Fantastic",
+                                                "ability_name":  "First Family",
+                                                "base_effect":  "Invisible Woman and nearby allies become Invisible, receiving healing and Speed Boost until damaged or expired, and can re-enter Invisible state after disengaging.",
+                                                "enhanced_effect":  "With Mister Fantastic, healing, Speed Boost, and Invisible duration are enhanced.",
+                                                "source_url":  "https://www.marvelrivals.com/20250108/41360_1205353.html",
+                                                "verification_status":  "verified_official"
+                                            }
+                                        ],
+                    "Iron Fist":  [
+                                      {
+                                          "partner":  "The Thing",
+                                          "ability_name":  "Iron \u0026 Stone",
+                                          "base_effect":  "Iron Fist launches enemies upward with a powerful uppercut.",
+                                          "enhanced_effect":  "With The Thing, the uppercut can chain into a sweeping leg follow-up.",
+                                          "source_url":  "https://www.marvelrivals.com/20241201/41360_1197227.html",
+                                          "verification_status":  "verified_official"
+                                      },
+                                      {
+                                          "partner":  "White Fox",
+                                          "ability_name":  "Kumiho Palm",
+                                          "base_effect":  "Yat Jee Chung Kuen hits burst-heal nearby allies.",
+                                          "enhanced_effect":  "With White Fox, Yat Jee Chung Kuen lock-on distance is greatly increased.",
+                                          "source_url":  "https://www.marvelrivals.com/20241201/41360_1197227.html",
+                                          "verification_status":  "verified_official"
+                                      }
+                                  ],
+                    "Iron Man":  [
+                                     {
+                                         "partner":  "Hulk",
+                                         "ability_name":  "Gamma Charge",
+                                         "base_effect":  "Armor Overdrive becomes Gamma Overdrive, granting a Gamma Shield and stronger Repulsor Blasts and Unibeams.",
+                                         "enhanced_effect":  "With Hulk, Invincible Pulse Cannon creates a Gamma Shield and becomes a stronger Gamma Pulse Cannon.",
+                                         "source_url":  "https://www.marvelrivals.com/20241123/41360_1195687.html",
+                                         "verification_status":  "verified_official"
+                                     },
+                                     {
+                                         "partner":  "Thor",
+                                         "ability_name":  "Thunder Overdrive",
+                                         "base_effect":  "Unibeam is enhanced in and out of Armor Overdrive, forming lightning rings that deal bonus damage near the beam edge.",
+                                         "enhanced_effect":  "With Thor, Armor Overdrive cooldown is greatly reduced.",
+                                         "source_url":  "https://www.marvelrivals.com/20241123/41360_1195687.html",
+                                         "verification_status":  "verified_official"
+                                     }
+                                 ],
+                    "Jeff the Land Shark":  [
+                                                {
+                                                    "partner":  "Venom",
+                                                    "ability_name":  "Guardian of the Deep",
+                                                    "base_effect":  "Jeff fires healing tendrils that link allies for continuous healing, converting excess healing into Bonus Health.",
+                                                    "enhanced_effect":  "With Venom, symbiote tendrils also lash nearby enemies for continuous damage.",
+                                                    "source_url":  "https://www.marvelrivals.com/20241123/41360_1195674.html",
+                                                    "verification_status":  "verified_official"
+                                                },
+                                                {
+                                                    "partner":  "Deadpool",
+                                                    "ability_name":  "Mr. Pool\u0027s Interdimensional Toy Box",
+                                                    "base_effect":  "Jeff spits out a Deadpool Plushie that Taunts nearby enemies while spraying healing mist on nearby allies.",
+                                                    "enhanced_effect":  "With Deadpool, the plushie\u0027s Taunt is stronger and it also damages enemies in its radius.",
+                                                    "source_url":  "https://www.marvelrivals.com/20241123/41360_1195674.html",
+                                                    "verification_status":  "verified_official"
+                                                }
+                                            ],
+                    "Jubilee":  [
+                                    {
+                                        "partner":  "Blade",
+                                        "ability_name":  "Vampiric Kin",
+                                        "base_effect":  "Jubilee deploys a Vampiric Field where allies gain Life Steal while attacking enemies.",
+                                        "enhanced_effect":  "With Blade, allies inside the field also receive Continuous Healing.",
+                                        "source_url":  "https://www.marvelrivals.com/20260707/41360_1306826.html",
+                                        "verification_status":  "verified_official"
+                                    },
+                                    {
+                                        "partner":  "The Hood",
+                                        "ability_name":  "Hellfire Sparks",
+                                        "base_effect":  "When Attack Speed is enhanced, Energy Plasmoids become a hitscan attack that can critically hit and heal Jubilee on hit.",
+                                        "enhanced_effect":  "With The Hood, Void Magic Mark is never cleared, allowing Jubilee to sustain the hitscan form indefinitely.",
+                                        "source_url":  "https://www.marvelrivals.com/20260707/41360_1306826.html",
+                                        "verification_status":  "verified_official"
+                                    }
+                                ],
+                    "Loki":  [
+                                 {
+                                     "partner":  "Mantis",
+                                     "ability_name":  "Vibrant Vitality",
+                                     "base_effect":  "Regeneration Domain\u0027s Rune Stones are enhanced with life energy, granting allies inside the field a Damage Boost.",
+                                     "enhanced_effect":  "With Mantis, Loki gains the Deific Blessing Team-Up effect through the Mantis anchor, improving Regeneration Domain\u0027s support field.",
+                                     "source_url":  "https://www.marvelrivals.com/20241123/41360_1195662.html",
+                                     "verification_status":  "verified_official"
+                                 },
+                                 {
+                                     "partner":  "Hela",
+                                     "ability_name":  "Villain\u0027s Illusion",
+                                     "base_effect":  "Loki can target a fallen hero, ally or enemy, and assume that form temporarily without access to their Ultimate Ability.",
+                                     "enhanced_effect":  "With Hela, the transformation lasts longer and lethal damage while transformed or using God of Mischief reverts Loki with low Health instead of KO\u0027ing him.",
+                                     "source_url":  "https://www.marvelrivals.com/20241123/41360_1195662.html",
+                                     "verification_status":  "verified_official"
+                                 }
+                             ],
+                    "Luna Snow":  [
+                                      {
+                                          "partner":  "White Fox",
+                                          "ability_name":  "Atlas Bond",
+                                          "base_effect":  "Luna sends a spirit fox forward that Charms enemies, heals allies in its path, and cleanses Luna of negative status effects.",
+                                          "enhanced_effect":  "With White Fox, the spirit fox returns after reaching maximum distance and the self-cleanse remains available.",
+                                          "source_url":  "https://www.marvelrivals.com/20241123/41360_1195671.html",
+                                          "verification_status":  "verified_official"
+                                      },
+                                      {
+                                          "partner":  "Adam Warlock",
+                                          "ability_name":  "Duality Dance",
+                                          "base_effect":  "Soul Bond tethers nearby characters; damaging tethered enemies or healing linked allies restores Luna Snow Health.",
+                                          "enhanced_effect":  "With Adam Warlock, Light \u0026 Dark Ice critical hits reduce Absolute Zero and Ice Arts cooldowns.",
+                                          "source_url":  "https://www.marvelrivals.com/20241123/41360_1195671.html",
+                                          "verification_status":  "verified_official"
+                                      }
+                                  ],
+                    "Magik":  [
+                                  {
+                                      "partner":  "Doctor Strange",
+                                      "ability_name":  "Chain of Cyttorak",
+                                      "base_effect":  "Chain of Cyttorak can tether two enemies at once and drag both to the same location.",
+                                      "enhanced_effect":  "With Doctor Strange, Chain of Cyttorak can tether multiple enemies and pull the whole group to one point.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195682.html",
+                                      "verification_status":  "verified_official"
+                                  },
+                                  {
+                                      "partner":  "The Hood",
+                                      "ability_name":  "Void Pentagram",
+                                      "base_effect":  "Stepping Discs inside a Hellish Magic Circle refund energy and summon a Limbo Demon on each use.",
+                                      "enhanced_effect":  "With The Hood, summoned Limbo Demons gain much more Health and a wider attack range.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195682.html",
+                                      "verification_status":  "verified_official"
+                                  }
+                              ],
+                    "Magneto":  [
+                                    {
+                                        "partner":  "Scarlet Witch",
+                                        "ability_name":  "Metallic Chaos",
+                                        "base_effect":  "Magneto summons a Chaos Greatsword that damages enemies in front.",
+                                        "enhanced_effect":  "With Scarlet Witch, Magnetic Cannon can be charged with passive energy to fire Chaos Greatswords.",
+                                        "source_url":  "https://www.marvelrivals.com/20241123/41360_1195655.html",
+                                        "verification_status":  "verified_official"
+                                    },
+                                    {
+                                        "partner":  "Emma Frost",
+                                        "ability_name":  "Magnetic Resonance",
+                                        "base_effect":  "Creates a magnetic projection that mirrors Magneto\u0027s movement and ability casts from the enemy perspective.",
+                                        "enhanced_effect":  "With Emma Frost, the projection gains much more Health and persists until destroyed or recalled.",
+                                        "source_url":  "https://www.marvelrivals.com/20241123/41360_1195655.html",
+                                        "verification_status":  "verified_official"
+                                    }
+                                ],
+                    "Mantis":  [
+                                   {
+                                       "partner":  "Adam Warlock",
+                                       "ability_name":  "Vitality Pact",
+                                       "base_effect":  "After defeat, Mantis can move as a soul, heal nearby allies, and reforge her body; Natural Anger also enhances Nature Favor self-healing.",
+                                       "enhanced_effect":  "With Adam Warlock, Mantis soul state can create Soul Bond with nearby allies for Healing Over Time and shared damage.",
+                                       "source_url":  "https://www.marvelrivals.com/20241123/41360_1195661.html",
+                                       "verification_status":  "verified_official"
+                                   },
+                                   {
+                                       "partner":  "Star-Lord",
+                                       "ability_name":  "Star Blossom",
+                                       "base_effect":  "Recasting Healing Flower on a teammate who already has it enhances and spreads the healing aura.",
+                                       "enhanced_effect":  "With Star-Lord, Healing Flower on any teammate instantly triggers the enhanced spell field and healing effect.",
+                                       "source_url":  "https://www.marvelrivals.com/20241123/41360_1195661.html",
+                                       "verification_status":  "verified_official"
+                                   }
+                               ],
+                    "Mister Fantastic":  [
+                                             {
+                                                 "partner":  "Rocket Raccoon",
+                                                 "ability_name":  "Fantastic Amplifier",
+                                                 "base_effect":  "Equips the Fantastic Amplifier, increasing maximum Elasticity and allowing active Inflation State entry.",
+                                                 "enhanced_effect":  "With Rocket Raccoon, Brainiac Bounce launches enemies hit.",
+                                                 "source_url":  "https://www.marvelrivals.com/20250108/41360_1205352.html",
+                                                 "verification_status":  "verified_official"
+                                             },
+                                             {
+                                                 "partner":  "The Thing",
+                                                 "ability_name":  "Clobberin\u0027 Research Dept.",
+                                                 "base_effect":  "In brawler stance, Stretch Punch becomes a charged Brawling Punch that grants Bonus Health on hit and Launches at full charge.",
+                                                 "enhanced_effect":  "With The Thing, Distended Grip also becomes a charged Distended Hammer that grants Bonus Health and Launches at full charge.",
+                                                 "source_url":  "https://www.marvelrivals.com/20250108/41360_1205352.html",
+                                                 "verification_status":  "verified_official"
+                                             }
+                                         ],
+                    "Moon Knight":  [
+                                        {
+                                            "partner":  "Cloak \u0026 Dagger",
+                                            "ability_name":  "Luminous Moon",
+                                            "base_effect":  "Moon Knight enters Phased state, dashes forward, then emits a Light Energy Healing Wave for himself and nearby allies.",
+                                            "enhanced_effect":  "With Cloak \u0026 Dagger, Phased duration, dash distance, healing radius, and healing output are increased.",
+                                            "source_url":  "https://www.marvelrivals.com/20241123/41360_1195685.html",
+                                            "verification_status":  "verified_official"
+                                        },
+                                        {
+                                            "partner":  "Elsa Bloodstone",
+                                            "ability_name":  "Blood Moon",
+                                            "base_effect":  "Deploys an Ankh Trap that creates an Ankh and summons one Talon of Khonshu to launch enemies toward its center.",
+                                            "enhanced_effect":  "With Elsa Bloodstone, triggering the trap summons multiple Talons of Khonshu to bombard the area.",
+                                            "source_url":  "https://www.marvelrivals.com/20241123/41360_1195685.html",
+                                            "verification_status":  "verified_official"
+                                        }
+                                    ],
+                    "Namor":  [
+                                  {
+                                      "partner":  "Hulk",
+                                      "ability_name":  "Gamma Monstro",
+                                      "base_effect":  "Summons an extra Gamma Monstro that attacks nearby enemies and gains Attack Speed on critical hits; Wrath of the Seven Seas commands a beam attack.",
+                                      "enhanced_effect":  "With Hulk, Blessing of the Deep creates a Gamma water barrier that speeds Gamma Monstro cooldown and gives it Damage Boost.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195686.html",
+                                      "verification_status":  "verified_official"
+                                  },
+                                  {
+                                      "partner":  "Luna Snow",
+                                      "ability_name":  "Chilling Charisma",
+                                      "base_effect":  "Namor summons Frost Tide forward, damaging, pushing back, and Slowing enemies hit.",
+                                      "enhanced_effect":  "With Luna Snow, Frost Tide gains one charge and crashes at max range for area damage and Slow.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195686.html",
+                                      "verification_status":  "verified_official"
+                                  }
+                              ],
+                    "Peni Parker":  [
+                                        {
+                                            "partner":  "Black Panther",
+                                            "ability_name":  "Vibranium Mech",
+                                            "base_effect":  "Briefly grants Cyber-Web Cluster Attack Speed and Damage Boost.",
+                                            "enhanced_effect":  "With Black Panther, activation deploys a frontal Vibranium Shield and lowers Cyber-Web Cluster Vibranium Energy cost.",
+                                            "source_url":  "https://www.marvelrivals.com/20241123/41360_1195656.html",
+                                            "verification_status":  "verified_official"
+                                        },
+                                        {
+                                            "partner":  "Rocket Raccoon",
+                                            "ability_name":  "Rocket Network",
+                                            "base_effect":  "Deploys an Armored Spider-Nest that drops Spider-Drones and Armor Packs granting Bonus Health.",
+                                            "enhanced_effect":  "With Rocket Raccoon, the Armored Spider-Nest regenerates Health, and Rocket\u0027s B.R.B. creates Cyber-Webs plus Spider-Drones and Arachno-Mines.",
+                                            "source_url":  "https://www.marvelrivals.com/20241123/41360_1195656.html",
+                                            "verification_status":  "verified_official"
+                                        }
+                                    ],
+                    "Phoenix":  [
+                                    {
+                                        "partner":  "Hela",
+                                        "ability_name":  "Circle of Life",
+                                        "base_effect":  "Psionic Detonation becomes Phoenix Netherfire, creating staged explosions that Stun, apply Healing Reduction, and add Sparks.",
+                                        "enhanced_effect":  "With Hela, every blast applies multiple Spark stacks.",
+                                        "source_url":  "https://www.marvelrivals.com/20250710/41360_1246363.html",
+                                        "verification_status":  "verified_official"
+                                    },
+                                    {
+                                        "partner":  "Rogue",
+                                        "ability_name":  "Telekinetic Beatdown",
+                                        "base_effect":  "Phoenix fires a telekinetic shockwave; on hit, Phoenix Force rushes the target, chains to nearby enemies, applies Sparks, and heals Phoenix.",
+                                        "enhanced_effect":  "With Rogue, the shockwave is wider and Phoenix Force target detection range increases.",
+                                        "source_url":  "https://www.marvelrivals.com/20250710/41360_1246363.html",
+                                        "verification_status":  "verified_official"
+                                    }
+                                ],
+                    "Psylocke":  [
+                                     {
+                                         "partner":  "Emma Frost",
+                                         "ability_name":  "Mental Projection",
+                                         "base_effect":  "Creates an illusion that dashes forward with Psi-Blade Dash while Psylocke enters Stealth; the illusion mimics attacks if Psylocke attacks.",
+                                         "enhanced_effect":  "With Emma Frost, Psylocke can reactivate the ability to swap positions with the illusion.",
+                                         "source_url":  "https://www.marvelrivals.com/20241124/41360_1195754.html",
+                                         "verification_status":  "verified_official"
+                                     },
+                                     {
+                                         "partner":  "Cloak \u0026 Dagger",
+                                         "ability_name":  "Light \u0026 Dark Darts",
+                                         "base_effect":  "Releases Light Darts in all directions, damaging enemies, healing Psylocke on hit, and leaving a Shadow Domain that can re-enter Stealth.",
+                                         "enhanced_effect":  "With Cloak \u0026 Dagger, Shadow Domain radius expands and re-entering Stealth fires Light Darts again.",
+                                         "source_url":  "https://www.marvelrivals.com/20241124/41360_1195754.html",
+                                         "verification_status":  "verified_official"
+                                     }
+                                 ],
+                    "Rocket Raccoon":  [
+                                           {
+                                               "partner":  "Groot",
+                                               "ability_name":  "Planet X Pals",
+                                               "base_effect":  "Bombard Mode fires Thorny Spores that damage enemies while healing allies and granting Bonus Health in the impact field.",
+                                               "enhanced_effect":  "With Groot, Rocket can ride on Groot\u0027s shoulders and the Thorny Spores field lasts longer.",
+                                               "source_url":  "https://www.marvelrivals.com/20241123/41360_1195663.html",
+                                               "verification_status":  "verified_official"
+                                           },
+                                           {
+                                               "partner":  "Squirrel Girl",
+                                               "ability_name":  "Mammalian Bond",
+                                               "base_effect":  "Rocket tosses augmented Vitality Acorns that heal teammates and reduce global cooldowns when hit directly or collected.",
+                                               "enhanced_effect":  "With Squirrel Girl, the maximum charge count for the ability increases.",
+                                               "source_url":  "https://www.marvelrivals.com/20241123/41360_1195663.html",
+                                               "verification_status":  "verified_official"
+                                           }
+                                       ],
+                    "Rogue":  [
+                                  {
+                                      "partner":  "Gambit",
+                                      "ability_name":  "Mr. \u0026 Mrs. X",
+                                      "base_effect":  "After activation, Rogue attacks trigger kinetic explosions that damage nearby enemies and heal nearby allies.",
+                                      "enhanced_effect":  "With Gambit, Rogue remains permanently in the Hearts as One state.",
+                                      "source_url":  "https://www.marvelrivals.com/20251212/41360_1276333.html",
+                                      "verification_status":  "verified_official"
+                                  },
+                                  {
+                                      "partner":  "Magneto",
+                                      "ability_name":  "Explosive Entanglement",
+                                      "base_effect":  "Defensive Stance expands a magnetic field that greatly improves Damage Reduction and converts absorbed damage into Southern Brawl damage.",
+                                      "enhanced_effect":  "With Magneto, Southern Brawl knocks enemies back and deals extra damage if they hit a wall.",
+                                      "source_url":  "https://www.marvelrivals.com/20251212/41360_1276333.html",
+                                      "verification_status":  "verified_official"
+                                  }
+                              ],
+                    "Scarlet Witch":  [
+                                          {
+                                              "partner":  "Doctor Strange",
+                                              "ability_name":  "Sorcerers Supreme",
+                                              "base_effect":  "Chthonian Burst becomes Mystic Burst, a held stream of magical missiles fired in the target direction.",
+                                              "enhanced_effect":  "With Doctor Strange, maximum Chaos Energy increases and Chaos Control generates energy faster while attacking.",
+                                              "source_url":  "https://www.marvelrivals.com/20241123/41360_1195684.html",
+                                              "verification_status":  "verified_official"
+                                          },
+                                          {
+                                              "partner":  "Jubilee",
+                                              "ability_name":  "Hex Fireworks",
+                                              "base_effect":  "Dark Seal becomes a Plasmoid Seal with a secondary detonation that damages enemies and applies Vulnerability.",
+                                              "enhanced_effect":  "With Jubilee, Scarlet Witch receives constant healing while using Mystic Projection.",
+                                              "source_url":  "https://www.marvelrivals.com/20241123/41360_1195684.html",
+                                              "verification_status":  "verified_official"
+                                          }
+                                      ],
+                    "Spider-Man":  [
+                                       {
+                                           "partner":  "Venom",
+                                           "ability_name":  "Symbiote Bond",
+                                           "base_effect":  "Spider-Man gains symbiote abilities and can form explosive spikes that damage and push nearby enemies.",
+                                           "enhanced_effect":  "With Venom, additional Touch of Klyntar tendrils tether and damage enemies over time.",
+                                           "source_url":  "https://www.marvelrivals.com/20241123/41360_1195680.html",
+                                           "verification_status":  "verified_official"
+                                       },
+                                       {
+                                           "partner":  "Peni Parker",
+                                           "ability_name":  "Parker Power-Up",
+                                           "base_effect":  "Spider-Man receives a timed Sticky Spider-Bomb that damages nearby enemies and applies Spider-Tracer, or recharges Web-Cluster if it times out on him.",
+                                           "enhanced_effect":  "With Peni Parker, Web-Cluster Spider-Tracers are upgraded and generate Bonus Health when detonated.",
+                                           "source_url":  "https://www.marvelrivals.com/20241123/41360_1195680.html",
+                                           "verification_status":  "verified_official"
+                                       }
+                                   ],
+                    "Squirrel Girl":  [
+                                          {
+                                              "partner":  "Iron Man",
+                                              "ability_name":  "Squirrel Missile",
+                                              "base_effect":  "Squirrel Girl gains Squirrel Missile, sending a squirrel on Iron Man\u0027s nanotech glove as a homing explosive missile.",
+                                              "enhanced_effect":  "With Iron Man, Squirrel Blockade also fires a Squirrel Missile.",
+                                              "source_url":  "https://www.marvelrivals.com/20241205/41360_1198132.html",
+                                              "verification_status":  "verified_official"
+                                          },
+                                          {
+                                              "partner":  "Spider-Man",
+                                              "ability_name":  "ESU Alumnus",
+                                              "base_effect":  "Spider-Man gives Squirrel Girl a web bomb that explodes on contact, damaging and briefly Slowing enemies.",
+                                              "enhanced_effect":  "With Spider-Man, Webbed Acorn leaves a sticky Web Area that continuously Slows and can Stun enemies that remain inside.",
+                                              "source_url":  "https://www.marvelrivals.com/20241205/41360_1198132.html",
+                                              "verification_status":  "verified_official"
+                                          }
+                                      ],
+                    "Star-Lord":  [
+                                      {
+                                          "partner":  "Groot",
+                                          "ability_name":  "Flora Munitions",
+                                          "base_effect":  "Star-Lord throws Twisted Thorn Seeds that sprout Thorn Snares, damaging and Rooting enemies who step on them.",
+                                          "enhanced_effect":  "With Groot, more Thorn Snares deploy and snare damage is boosted.",
+                                          "source_url":  "https://www.marvelrivals.com/20241123/41360_1195683.html",
+                                          "verification_status":  "verified_official"
+                                      },
+                                      {
+                                          "partner":  "Adam Warlock",
+                                          "ability_name":  "Star-Soul",
+                                          "base_effect":  "Star-Lord places a Telekinetic Beacon he can teleport back to; on defeat, he cocoons and respawns at the beacon.",
+                                          "enhanced_effect":  "With Adam Warlock, Star-Lord participation in KOs reduces Telekinetic Beacon cooldown.",
+                                          "source_url":  "https://www.marvelrivals.com/20241123/41360_1195683.html",
+                                          "verification_status":  "verified_official"
+                                      }
+                                  ],
+                    "Storm":  [
+                                  {
+                                      "partner":  "Thor",
+                                      "ability_name":  "God of Thunder",
+                                      "base_effect":  "Wind Blade becomes a hitscan beam that detonates when it hits a target.",
+                                      "enhanced_effect":  "With Thor, Bolt Rush becomes Chain Lightning and bounces between enemies.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195675.html",
+                                      "verification_status":  "verified_official"
+                                  },
+                                  {
+                                      "partner":  "Jeff the Land Shark",
+                                      "ability_name":  "Jaws of Fate",
+                                      "base_effect":  "Storm calls down rain that continuously heals herself and allies.",
+                                      "enhanced_effect":  "With Jeff, Omega Hurricane lets Jeff swim inside the cyclone to create a localized Jeff-nado.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195675.html",
+                                      "verification_status":  "verified_official"
+                                  }
+                              ],
+                    "The Hood":  [
+                                     {
+                                         "partner":  "Magik",
+                                         "ability_name":  null,
+                                         "base_effect":  null,
+                                         "enhanced_effect":  null,
+                                         "source_url":  null,
+                                         "verification_status":  "needs_verification"
+                                     },
+                                     {
+                                         "partner":  "Jubilee",
+                                         "ability_name":  null,
+                                         "base_effect":  null,
+                                         "enhanced_effect":  null,
+                                         "source_url":  null,
+                                         "verification_status":  "needs_verification"
+                                     }
+                                 ],
+                    "The Punisher":  [
+                                         {
+                                             "partner":  "Daredevil",
+                                             "ability_name":  "Bestial Hunt",
+                                             "base_effect":  "The Punisher fires piercing bullets with Damage Boost.",
+                                             "enhanced_effect":  "With Daredevil, the bullets break summoned walls and shields faster.",
+                                             "source_url":  "https://www.marvelrivals.com/20241123/41360_1195673.html",
+                                             "verification_status":  "verified_official"
+                                         },
+                                         {
+                                             "partner":  "Rocket Raccoon",
+                                             "ability_name":  "Ammo Overload",
+                                             "base_effect":  "The Punisher throws an Ammo Overload Device that grants Faster Firing to allies in range.",
+                                             "enhanced_effect":  "With Rocket Raccoon, the device grants Infinite Ammo.",
+                                             "source_url":  "https://www.marvelrivals.com/20241123/41360_1195673.html",
+                                             "verification_status":  "verified_official"
+                                         }
+                                     ],
+                    "The Thing":  [
+                                      {
+                                          "partner":  "Human Torch",
+                                          "ability_name":  "Two in One",
+                                          "base_effect":  "The Thing\u0027s fists ignite; Rocky Jab deals splash damage and Stone Haymaker explodes in a frontal cone.",
+                                          "enhanced_effect":  "With Human Torch, Human Torch can lift and slam The Thing, damaging and Stunning enemies and putting The Thing into the flaming state.",
+                                          "source_url":  "https://www.marvelrivals.com/20250220/41360_1213067.html",
+                                          "verification_status":  "verified_official"
+                                      },
+                                      {
+                                          "partner":  "Invisible Woman",
+                                          "ability_name":  "Unbreakable Forces",
+                                          "base_effect":  "Generates Psionic Armor that grants Bonus Health based on missing Health.",
+                                          "enhanced_effect":  "With Invisible Woman, Psionic Armor pulses area healing after The Thing takes enough damage and converts missing Health into more Bonus Health.",
+                                          "source_url":  "https://www.marvelrivals.com/20250220/41360_1213067.html",
+                                          "verification_status":  "verified_official"
+                                      }
+                                  ],
+                    "Thor":  [
+                                 {
+                                     "partner":  "Hela",
+                                     "ability_name":  "Ragnarok Rebirth",
+                                     "base_effect":  "Fatal damage is delayed; Thor gains decaying Bonus Health and can revive by participating in a KO.",
+                                     "enhanced_effect":  "With Hela, either hero participating in a KO can instantly revive Thor with Health restored from remaining Bonus Health and Continuous Healing.",
+                                     "source_url":  "https://www.marvelrivals.com/20241123/41360_1195657.html",
+                                     "verification_status":  "verified_official"
+                                 },
+                                 {
+                                     "partner":  "Angela",
+                                     "ability_name":  "Divine Armory",
+                                     "base_effect":  "Throws a Thunder Spear that restores Thorforce per enemy hit, then Thor can leap to its explosion point for a second damage wave.",
+                                     "enhanced_effect":  "With Angela, leaping to the Thunder Spear grants Bonus Health.",
+                                     "source_url":  "https://www.marvelrivals.com/20241123/41360_1195657.html",
+                                     "verification_status":  "verified_official"
+                                 }
+                             ],
+                    "Ultron":  [
+                                   {
+                                       "partner":  "Peni Parker",
+                                       "ability_name":  "SP//DR Sync",
+                                       "base_effect":  "Imperative: Patch applies to all allies.",
+                                       "enhanced_effect":  "With Peni Parker, Imperative: Firewall applies to all drones so its effects can trigger multiple times at once.",
+                                       "source_url":  "https://www.marvelrivals.com/20250529/41360_1237549.html",
+                                       "verification_status":  "verified_official"
+                                   },
+                                   {
+                                       "partner":  "Iron Man",
+                                       "ability_name":  "Stark Protocol",
+                                       "base_effect":  "Encephalo-Ray is upgraded to Nano-Ray, firing multiple damaging nano-projectiles forward.",
+                                       "enhanced_effect":  "With Iron Man, Imperative: Firewall fires homing missiles at enemies in range for area damage.",
+                                       "source_url":  "https://www.marvelrivals.com/20250529/41360_1237549.html",
+                                       "verification_status":  "verified_official"
+                                   }
+                               ],
+                    "Venom":  [
+                                  {
+                                      "partner":  "Blade",
+                                      "ability_name":  "Blood Leech",
+                                      "base_effect":  "Cellular Corrosion siphons Health from tethered enemies to heal Venom.",
+                                      "enhanced_effect":  "With Blade, Venom gains a burst of one-time healing when using specified abilities.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195654.html",
+                                      "verification_status":  "verified_official"
+                                  },
+                                  {
+                                      "partner":  "Phoenix",
+                                      "ability_name":  "Abyssal Flames",
+                                      "base_effect":  "Venom ignites the symbiote with Phoenix Flames, replacing Dark Predation with a frontal Phoenix Touch slash.",
+                                      "enhanced_effect":  "With Phoenix, Phoenix Touch applies Sparks that detonate at three stacks.",
+                                      "source_url":  "https://www.marvelrivals.com/20241123/41360_1195654.html",
+                                      "verification_status":  "verified_official"
+                                  }
+                              ],
+                    "White Fox":  [
+                                      {
+                                          "partner":  "Black Cat",
+                                          "ability_name":  "Lucky Loan",
+                                          "base_effect":  "White Fox uses Black Cat\u0027s Orb of Life to recover Spirit Tail energy and release Nine-Tailed Aura, healing and speeding allies while damaging and Slowing enemies.",
+                                          "enhanced_effect":  "With Black Cat, using the Orb prevents Spirit Tail energy consumption for a duration, allowing free use of Spectral Surge and Fox Form Awakening.",
+                                          "source_url":  "https://www.marvelrivals.com/20260320/41360_1292187.html",
+                                          "verification_status":  "verified_official"
+                                      },
+                                      {
+                                          "partner":  "Psylocke",
+                                          "ability_name":  "Psionic Fox",
+                                          "base_effect":  "Fox Form Awakening no longer consumes Spirit Tail energy and immediately grants its maximum possible duration.",
+                                          "enhanced_effect":  "With Psylocke, Fox Form Awakening\u0027s cooldown is greatly reduced.",
+                                          "source_url":  "https://www.marvelrivals.com/20260320/41360_1292187.html",
+                                          "verification_status":  "verified_official"
+                                      }
+                                  ],
+                    "Winter Soldier":  [
+                                           {
+                                               "partner":  "The Punisher",
+                                               "ability_name":  "Timeless Veterans",
+                                               "base_effect":  "Winter Soldier unlocks Burst Spike, emitting electricity forward to damage and Knock Back enemies.",
+                                               "enhanced_effect":  "With The Punisher, the burst also Grounds enemies and increases Knock Back.",
+                                               "source_url":  "https://www.marvelrivals.com/20241123/41360_1195681.html",
+                                               "verification_status":  "verified_official"
+                                           },
+                                           {
+                                               "partner":  "Elsa Bloodstone",
+                                               "ability_name":  "Expert Instinct",
+                                               "base_effect":  "KO participation grants Culling Instinct stacks that reduce other ability cooldowns; stacks are lost on defeat.",
+                                               "enhanced_effect":  "With Elsa Bloodstone, Ceaseless Charge grants more Bonus Health.",
+                                               "source_url":  "https://www.marvelrivals.com/20241123/41360_1195681.html",
+                                               "verification_status":  "verified_official"
+                                           }
+                                       ],
+                    "Wolverine":  [
+                                      {
+                                          "partner":  "Cyclops",
+                                          "ability_name":  "Blast Slash",
+                                          "base_effect":  "Extends Savage Claw and Berserk Claw Strike range, and replaces Vicious Rampage with a forward Kinetic Claws slash flurry.",
+                                          "enhanced_effect":  "With Cyclops, Blast Slash stays permanently active.",
+                                          "source_url":  "https://www.marvelrivals.com/20241204/41360_1198101.html",
+                                          "verification_status":  "verified_official"
+                                      },
+                                      {
+                                          "partner":  "Gambit",
+                                          "ability_name":  "Pair of Threes",
+                                          "base_effect":  "Wolverine gains Kinetic Enhancement with Movement Speed and Jump Boost; attacks apply delayed explosive Kinetic Particles.",
+                                          "enhanced_effect":  "With Gambit, Wolverine receives Continuous Healing for the ability duration.",
+                                          "source_url":  "https://www.marvelrivals.com/20241204/41360_1198101.html",
+                                          "verification_status":  "verified_official"
+                                      }
+                                  ]
+                }
+}
+

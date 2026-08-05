@@ -30,6 +30,16 @@ The generator checks every six-hero combination, not permutations, and outputs u
 - Pairing source: <https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/>
 - Cross-checks: FandomWire role guides and Mobalytics Season 9 Team-Ups overview.
 
+The frontend supports multiple patch snapshots. Season 9 remains the default until
+`docs/data/patches.json` is changed. Season 9.5 is stored separately under
+`data/patches/20260807-season-9-5/` and `docs/data/patches/20260807-season-9-5/`.
+The Season 9.5 snapshot activates The Hood as a Vanguard and uses the two
+directional Team-Up links already represented in the source data. Its generated
+counts are provisional until the live Season 9.5 Team-Up details are rechecked.
+
+Provisional Season 9.5 counts: `587` unrestricted, `113` 2-2-2, `108` 1-3-2,
+`45` 2-1-3, `91` 1-2-3, and `20` 3-1-2.
+
 The Hood is listed as a Team-Up partner in Season 9 source tables before full independent live-roster details were consistently available. He is included as an inactive Vanguard so validation remains strict, but he is excluded from generated teams. Deadpool is listed with Duelist as his primary role and Strategist as an eligible 2-2-2 flex role.
 
 ## Setup
@@ -80,7 +90,10 @@ python scripts/generate_teams.py --role-format both --format all --show-details
 Refresh the static frontend data after regenerating outputs:
 
 ```bash
-python scripts/sync_frontend_data.py
+python scripts/sync_frontend_data.py --patch-id 20260710-season-9
+python scripts/sync_frontend_data.py --patch-id 20260807-season-9-5 \
+  --data-dir data/patches/20260807-season-9-5 \
+  --output-dir output/20260807-season-9-5
 ```
 
 Optional count regression comparison:
@@ -140,7 +153,9 @@ For GitHub Pages, set the Pages source to the repository branch and `/docs` fold
 ## Compare Patches
 
 ```bash
-python scripts/compare_patch_results.py --old-data-dir path/to/old/data --new-data-dir data
+python scripts/compare_patch_results.py \
+  --old-data-dir data/patches/20260710-season-9 \
+  --new-data-dir data/patches/20260807-season-9-5
 ```
 
 Use `--format json` for machine-readable comparison output.
@@ -155,9 +170,14 @@ pytest
 
 1. Review official patch notes and official hero or Team-Up pages first.
 2. Use `python scripts/fetch_teamup_data.py` only to cache source snapshots for manual review.
-3. Update `data/heroes.json`, `data/teamups.json`, and `data/metadata.json` together.
+3. Create a new folder under `data/patches/<patch-id>/` and update its
+   `heroes.json`, `teamups.json`, `teamup_effects.json`, `hero_details.json`,
+   and `metadata.json` together.
 4. Run validation and tests.
-5. Generate outputs and compare counts against the previous patch.
+5. Generate outputs into `output/<patch-id>/` and compare counts against the
+   previous patch.
+6. Sync the snapshot into `docs/data/patches/<patch-id>/` and add it to
+   `docs/data/patches.json`.
 
 ## Reference Counts
 

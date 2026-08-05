@@ -1,11 +1,11 @@
 from __future__ import annotations
 
+import argparse
 import shutil
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = ROOT / "output"
 FRONTEND_DATA_DIR = ROOT / "docs" / "data"
 OUTPUT_FILES = [
     "summary.json",
@@ -31,19 +31,28 @@ DATA_FILES = [
 
 
 def main() -> int:
-    FRONTEND_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    parser = argparse.ArgumentParser(description="Sync a generated patch snapshot into the static frontend.")
+    parser.add_argument("--patch-id", default="20260710-season-9")
+    parser.add_argument("--output-dir", type=Path, default=None)
+    parser.add_argument("--data-dir", type=Path, default=None)
+    args = parser.parse_args()
+
+    output_dir = args.output_dir or ROOT / "output" / args.patch_id
+    data_dir = args.data_dir or ROOT / "data" / "patches" / args.patch_id
+    frontend_data_dir = FRONTEND_DATA_DIR / "patches" / args.patch_id
+    frontend_data_dir.mkdir(parents=True, exist_ok=True)
     for name in OUTPUT_FILES:
-        source = OUTPUT_DIR / name
+        source = output_dir / name
         if not source.exists():
             raise FileNotFoundError(f"Missing generated output file: {source}")
-        shutil.copy2(source, FRONTEND_DATA_DIR / name)
-        print(f"Copied {source} -> {FRONTEND_DATA_DIR / name}")
+        shutil.copy2(source, frontend_data_dir / name)
+        print(f"Copied {source} -> {frontend_data_dir / name}")
     for name in DATA_FILES:
-        source = ROOT / "data" / name
+        source = data_dir / name
         if not source.exists():
             raise FileNotFoundError(f"Missing source data file: {source}")
-        shutil.copy2(source, FRONTEND_DATA_DIR / name)
-        print(f"Copied {source} -> {FRONTEND_DATA_DIR / name}")
+        shutil.copy2(source, frontend_data_dir / name)
+        print(f"Copied {source} -> {frontend_data_dir / name}")
     return 0
 
 

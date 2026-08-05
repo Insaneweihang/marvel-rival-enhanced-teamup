@@ -1,18 +1,27 @@
-﻿const DATA_FILES = {
-  summary: "data/summary.json",
-  heroes: "data/heroes.json",
-  teamups: "data/teamups.json",
-  teamupEffects: "data/teamup_effects.json",
-  heroDetails: "data/hero_details.json",
+const PATCH_MANIFEST_FILE = "data/patches.json";
+const PATCH_STORAGE_KEY = "marvel-rivals:selected-patch:v1";
+const SHARED_DATA_FILES = {
   maps: "data/maps.json",
   updates: "data/updates.json",
-  all: "data/all_fully_enhanced_teams.json",
-  222: "data/fully_enhanced_222_teams.json",
-  132: "data/fully_enhanced_132_teams.json",
-  213: "data/fully_enhanced_213_teams.json",
-  123: "data/fully_enhanced_123_teams.json",
-  312: "data/fully_enhanced_312_teams.json",
 };
+
+function patchDataFiles(patch) {
+  const base = `${patch.data_path.replace(/\/$/, "")}/`;
+  return {
+    summary: `${base}summary.json`,
+    heroes: `${base}heroes.json`,
+    teamups: `${base}teamups.json`,
+    teamupEffects: `${base}teamup_effects.json`,
+    heroDetails: `${base}hero_details.json`,
+    all: `${base}all_fully_enhanced_teams.json`,
+    222: `${base}fully_enhanced_222_teams.json`,
+    132: `${base}fully_enhanced_132_teams.json`,
+    213: `${base}fully_enhanced_213_teams.json`,
+    123: `${base}fully_enhanced_123_teams.json`,
+    312: `${base}fully_enhanced_312_teams.json`,
+    ...SHARED_DATA_FILES,
+  };
+}
 
 const FEEDBACK_ENDPOINT = "https://marvel-rivals-feedback.insaneweihang.workers.dev/feedback";
 const SAVED_COMPS_KEY = "marvel-rivals:saved-comps:v1";
@@ -69,6 +78,8 @@ const TEAM_MODES = {
 };
 const TEAM_MODE_KEYS = ["all", "222", "132", "213", "123", "312"];
 const state = {
+  patchId: "",
+  patchManifest: null,
   activeView: "browser",
   mode: "all",
   includedHeroes: new Set(),
@@ -123,6 +134,8 @@ const state = {
 
 const elements = {
   patchVersion: document.querySelector("#patch-version"),
+  patchSelect: document.querySelector("#patch-select"),
+  linkChallenge: document.querySelector("#link-challenge-link"),
   allCount: document.querySelector("#all-count"),
   balancedCount: document.querySelector("#balanced-count"),
   checkedCount: document.querySelector("#checked-count"),
@@ -473,6 +486,7 @@ function deriveHeroes() {
 
 function readUrlState() {
   const params = new URLSearchParams(window.location.search);
+  const patch = params.get("patch");
   const view = params.get("view");
   const mode = params.get("mode");
   const include = params.get("include");
@@ -485,6 +499,10 @@ function readUrlState() {
   const poolTwo = params.get("pool2");
   const poolMode = params.get("poolMode");
   const poolPair = params.get("poolPair");
+
+  if (patch) {
+    state.patchId = patch;
+  }
 
   if (view === "builder" || view === "browser" || view === "maps") {
     state.activeView = view;
@@ -542,6 +560,9 @@ function readUrlState() {
 
 function writeUrlState() {
   const params = new URLSearchParams();
+  if (state.patchId && state.patchId !== state.patchManifest?.default_patch) {
+    params.set("patch", state.patchId);
+  }
   if (state.activeView !== "browser" || state.builderHeroes.size) {
     params.set("view", state.activeView);
   }
@@ -613,7 +634,29 @@ function setActiveButtons() {
   elements.builderPoolsWorkspace.classList.toggle("active", state.builderPanel === "pools");
 }
 
+function renderPatchSelector() {
+  if (!elements.patchSelect || !state.patchManifest) {
+    return;
+  }
+  elements.patchSelect.replaceChildren();
+  for (const patch of state.patchManifest.patches || []) {
+    const option = document.createElement("option");
+    option.value = patch.id;
+    option.textContent = patch.label || patch.id;
+    option.disabled = patch.available === false;
+    elements.patchSelect.append(option);
+  }
+  elements.patchSelect.value = state.patchId;
+  if (elements.linkChallenge) {
+    const patchQuery = state.patchId === state.patchManifest.default_patch
+      ? ""
+      : `?patch=${encodeURIComponent(state.patchId)}`;
+    elements.linkChallenge.href = `games/teamup-path/${patchQuery}`;
+  }
+}
+
 function renderSummary() {
+  renderPatchSelector();
   elements.patchVersion.textContent = state.summary.patch_version;
   elements.allCount.textContent = formatNumber(state.summary.fully_enhanced_unrestricted_count);
   elements.balancedCount.textContent = formatNumber(state.summary.fully_enhanced_222_count);
@@ -2844,6 +2887,16 @@ function update() {
 }
 
 function bindEvents() {
+  elements.patchSelect?.addEventListener("change", (event) => {
+    const patchId = event.target.value;
+    if (!state.patchManifest?.patches?.some((patch) => patch.id === patchId)) {
+      return;
+    }
+    window.localStorage.setItem(PATCH_STORAGE_KEY, patchId);
+    const params = new URLSearchParams(window.location.search);
+    params.set("patch", patchId);
+    window.location.search = params.toString();
+  });
   for (const button of elements.viewButtons) {
     button.addEventListener("click", () => {
       if (state.activeView !== button.dataset.view) {
@@ -3019,6 +3072,20 @@ async function init() {
   try {
     readUrlState();
     bindEvents();
+    const manifest = await loadJson(PATCH_MANIFEST_FILE);
+    const patches = Array.isArray(manifest.patches) ? manifest.patches : [];
+    const patchIds = new Set(
+      patches.filter((patch) => patch.available !== false).map((patch) => patch.id),
+    );
+    const storedPatch = window.localStorage.getItem(PATCH_STORAGE_KEY);
+    const requestedPatch = state.patchId || storedPatch || manifest.default_patch;
+    state.patchManifest = manifest;
+    state.patchId = patchIds.has(requestedPatch) ? requestedPatch : manifest.default_patch;
+    const selectedPatch = patches.find((patch) => patch.id === state.patchId);
+    if (!selectedPatch) {
+      throw new Error("No valid default patch is configured.");
+    }
+    const dataFiles = patchDataFiles(selectedPatch);
     const [
       summary,
       heroes,
@@ -3029,14 +3096,14 @@ async function init() {
       updatesData,
       ...teamPayloads
     ] = await Promise.all([
-      loadJson(DATA_FILES.summary),
-      loadJson(DATA_FILES.heroes),
-      loadJson(DATA_FILES.teamups),
-      loadJson(DATA_FILES.teamupEffects),
-      loadJson(DATA_FILES.heroDetails),
-      loadJson(DATA_FILES.maps),
-      loadJson(DATA_FILES.updates),
-      ...TEAM_MODE_KEYS.map((key) => loadJson(DATA_FILES[key])),
+      loadJson(dataFiles.summary),
+      loadJson(dataFiles.heroes),
+      loadJson(dataFiles.teamups),
+      loadJson(dataFiles.teamupEffects),
+      loadJson(dataFiles.heroDetails),
+      loadJson(dataFiles.maps),
+      loadJson(dataFiles.updates),
+      ...TEAM_MODE_KEYS.map((key) => loadJson(dataFiles[key])),
     ]);
     state.summary = summary;
     state.mapsData = mapsData;
@@ -3078,4 +3145,3 @@ async function init() {
 }
 
 init();
-

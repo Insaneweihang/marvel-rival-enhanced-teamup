@@ -1,0 +1,10 @@
+team_number,vanguard_1,duelist_1,duelist_2,strategist_1,strategist_2,strategist_3,enhancement_details
+1,Peni Parker,Spider-Man,Squirrel Girl,Adam Warlock,Rocket Raccoon,Ultron,Adam Warlock <- Ultron; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Squirrel Girl; Spider-Man <- Peni Parker; Squirrel Girl <- Spider-Man; Ultron <- Peni Parker
+2,Emma Frost,Hawkeye,Psylocke,Cloak & Dagger,Luna Snow,White Fox,"Cloak & Dagger <- Luna Snow; Emma Frost <- Luna Snow; Hawkeye <- Cloak & Dagger, Psylocke; Luna Snow <- White Fox; Psylocke <- Cloak & Dagger, Emma Frost; White Fox <- Psylocke"
+3,Emma Frost,Iron Fist,Psylocke,Cloak & Dagger,Luna Snow,White Fox,"Cloak & Dagger <- Luna Snow; Emma Frost <- Luna Snow; Iron Fist <- White Fox; Luna Snow <- White Fox; Psylocke <- Cloak & Dagger, Emma Frost; White Fox <- Psylocke"
+4,Emma Frost,Moon Knight,Psylocke,Cloak & Dagger,Luna Snow,White Fox,"Cloak & Dagger <- Luna Snow; Emma Frost <- Luna Snow; Luna Snow <- White Fox; Moon Knight <- Cloak & Dagger; Psylocke <- Cloak & Dagger, Emma Frost; White Fox <- Psylocke"
+5,Emma Frost,Namor,Psylocke,Cloak & Dagger,Luna Snow,White Fox,"Cloak & Dagger <- Luna Snow; Emma Frost <- Luna Snow; Luna Snow <- White Fox; Namor <- Luna Snow; Psylocke <- Cloak & Dagger, Emma Frost; White Fox <- Psylocke"
+6,Venom,Hela,Phoenix,Deadpool,Jeff the Land Shark,Loki,"Deadpool <- Hela; Hela <- Venom; Jeff the Land Shark <- Deadpool, Venom; Loki <- Hela; Phoenix <- Hela; Venom <- Phoenix"
+7,Groot,Mister Fantastic,Star-Lord,Invisible Woman,Mantis,Rocket Raccoon,Groot <- Mantis; Invisible Woman <- Mister Fantastic; Mantis <- Star-Lord; Mister Fantastic <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot
+8,Groot,Mister Fantastic,Star-Lord,Loki,Mantis,Rocket Raccoon,Groot <- Mantis; Loki <- Mantis; Mantis <- Star-Lord; Mister Fantastic <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot
+9,Groot,Star-Lord,The Punisher,Loki,Mantis,Rocket Raccoon,Groot <- Mantis; Loki <- Mantis; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot; The Punisher <- Rocket Raccoon

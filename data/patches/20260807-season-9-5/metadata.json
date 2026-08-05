@@ -1,0 +1,72 @@
+{
+    "game":  "Marvel Rivals",
+    "patch_version":  "20260807-season-9-5",
+    "patch_date":  "2026-08-07",
+    "data_retrieved_at":  "2026-07-23T00:00:00+08:00",
+    "sources":  [
+                    {
+                        "name":  "Marvel Rivals Version 20260710 Patch Notes - Season 9 Arrives",
+                        "url":  "https://www.marvelrivals.com/20260708/41525_1306959.html",
+                        "purpose":  "Official patch date, Season 9 launch context, and Team-Up system overhaul confirmation."
+                    },
+                    {
+                        "name":  "AllThings.How - Marvel Rivals Season 9 Team-Up System",
+                        "url":  "https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/",
+                        "purpose":  "Cross-role Season 9 Team-Up pairing table used for directional partner data."
+                    },
+                    {
+                        "name":  "FandomWire - Every Vanguard Team-Up Ability in Marvel Rivals Season 9",
+                        "url":  "https://fandomwire.com/every-vanguard-team-up-ability-marvel-rivals/",
+                        "purpose":  "Secondary cross-check for Vanguard partner pairings."
+                    },
+                    {
+                        "name":  "FandomWire - Every Duelist Team-Up Ability in Marvel Rivals Season 9",
+                        "url":  "https://fandomwire.com/every-duelist-team-up-ability-marvel-rivals/",
+                        "purpose":  "Secondary cross-check for Duelist partner pairings."
+                    },
+                    {
+                        "name":  "Mobalytics - Season 9 Team-Ups Explained",
+                        "url":  "https://mobalytics.gg/marvel-rivals/guides/season-9-team-ups-explained",
+                        "purpose":  "Mechanics confirmation that each hero has two Team-Up loadouts and partners enhance effects."
+                    },
+                    {
+                        "name":  "Mobalytics - The Best Marvel Rivals Team-Ups Ranked",
+                        "url":  "https://mobalytics.gg/marvel-rivals/guides/best-team-ups",
+                        "purpose":  "Secondary examples for selected Team-Up ability names and effect summaries."
+                    },
+                    {
+                        "name":  "MarvelRivals.gg - Team-Ups",
+                        "url":  "https://marvelrivals.gg/team-ups/",
+                        "purpose":  "Season 9 Team-Up ability-name list and active/inactive Team-Up guide index."
+                    },
+                    {
+                        "name":  "MarvelRivals.gg - Season 9 New Team-Up Abilities",
+                        "url":  "https://marvelrivals.gg/season-9-new-team-up/",
+                        "purpose":  "Season 9 base/enhanced Team-Up system explanation and role-grouped ability-name list."
+                    },
+                    {
+                        "name":  "FandomWire - Every Strategist Team-Up Ability in Marvel Rivals Season 9",
+                        "url":  "https://fandomwire.com/every-strategist-team-up-ability-marvel-rivals/",
+                        "purpose":  "Secondary cross-check for Strategist ability names, partners, base effects, and enhanced effects."
+                    },
+                    {
+                        "name":  "Marvel Rivals Official Hero Pages",
+                        "url":  "https://www.marvelrivals.com/heroes/index.html?heroId=0",
+                        "purpose":  "Primary source for current hero Team-Up ability names, base effects, enhanced effects, and live hero-page links."
+                    },
+                    {
+                        "name":  "Marvel Rivals Version 20260716 Patch Notes",
+                        "url":  "https://www.marvelrivals.com/20260715/41525_1307701.html",
+                        "purpose":  "Official Season 9 post-launch Team-Up ability name cross-check."
+                    }
+                ],
+    "notes":  [
+                  "The Season 9 sources expose The Hood as a Team-Up partner before full independent live-roster details were consistently published.",
+                  "The Season 9 baseline included The Hood as an inactive Vanguard; this Season 9.5 snapshot activates him and retains his two directional links.",
+                  "Inactive heroes are valid Team-Up partners but are excluded from generated six-hero teams.",
+                  "Deadpool uses Duelist as his primary role and Strategist as an eligible flex role for 2-2-2 assignment.",
+                  "This project does not hardcode generated team results; counts are derived from heroes.json and teamups.json.",
+                  "Team-Up effect summaries are stored separately in teamup_effects.json. Official hero pages are the primary source; entries without official hero-page details are kept as null and marked needs_verification instead of guessed.",
+                  " Season 9.5 snapshot activates The Hood as a Vanguard while retaining his two directional Team-Up links."
+              ]
+}
