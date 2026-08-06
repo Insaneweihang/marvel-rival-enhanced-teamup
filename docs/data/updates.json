@@ -1,7 +1,14 @@
 {
-  "current_version": "v0.3.4",
-  "updated_at": "2026-08-05",
+  "current_version": "v0.3.5",
+  "updated_at": "2026-08-06",
   "updates": [
+    {
+      "version": "v0.3.5",
+      "date": "2026-08-06",
+      "type": "data",
+      "title": "Season 9.5 Team-Up dataset",
+      "summary": "Unlocked the Season 9.5 snapshot with The Hood as an active Vanguard, updated directional Team-Up effects, and regenerated every team composition set."
+    },
     {
       "version": "v0.3.4",
       "date": "2026-08-05",

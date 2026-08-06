@@ -3,7 +3,7 @@
   "role_format": "312",
   "role_format_label": "3-1-2",
   "role_format_description": "3 Vanguard / 1 Duelist / 2 Strategist",
-  "team_count": 20,
+  "team_count": 12,
   "teams": [
     {
       "team_number": 1,
@@ -172,83 +172,6 @@
           ],
           "active": true,
           "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Groot",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Jubilee",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Hood"
-          ]
-        },
-        {
-          "name": "Mantis",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Star-Lord",
-          "role": "Duelist",
-          "primary_role": "Duelist",
-          "eligible_roles": [
-            "Duelist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Groot"
-          ]
-        },
-        {
-          "name": "The Hood",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 4,
-      "heroes": [
-        {
-          "name": "Angela",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
             "Star-Lord",
             "Loki"
           ]
@@ -316,7 +239,7 @@
       ]
     },
     {
-      "team_number": 5,
+      "team_number": 4,
       "heroes": [
         {
           "name": "Angela",
@@ -393,7 +316,7 @@
       ]
     },
     {
-      "team_number": 6,
+      "team_number": 5,
       "heroes": [
         {
           "name": "Angela",
@@ -470,7 +393,7 @@
       ]
     },
     {
-      "team_number": 7,
+      "team_number": 6,
       "heroes": [
         {
           "name": "Cloak & Dagger",
@@ -541,245 +464,13 @@
           ],
           "active": true,
           "active_partners": [
-            "Jubilee"
+            "Scarlet Witch"
           ]
         }
       ]
     },
     {
-      "team_number": 8,
-      "heroes": [
-        {
-          "name": "Doctor Strange",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Hulk"
-          ]
-        },
-        {
-          "name": "Gambit",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Hulk",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Wolverine"
-          ]
-        },
-        {
-          "name": "Jubilee",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Hood"
-          ]
-        },
-        {
-          "name": "The Hood",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Wolverine",
-          "role": "Duelist",
-          "primary_role": "Duelist",
-          "eligible_roles": [
-            "Duelist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Gambit"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 9,
-      "heroes": [
-        {
-          "name": "Doctor Strange",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Invisible Woman"
-          ]
-        },
-        {
-          "name": "Human Torch",
-          "role": "Duelist",
-          "primary_role": "Duelist",
-          "eligible_roles": [
-            "Duelist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Invisible Woman",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Human Torch"
-          ]
-        },
-        {
-          "name": "Jubilee",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Hood"
-          ]
-        },
-        {
-          "name": "The Hood",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "The Thing",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Human Torch",
-            "Invisible Woman"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 10,
-      "heroes": [
-        {
-          "name": "Doctor Strange",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Invisible Woman"
-          ]
-        },
-        {
-          "name": "Invisible Woman",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Mister Fantastic"
-          ]
-        },
-        {
-          "name": "Jubilee",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Hood"
-          ]
-        },
-        {
-          "name": "Mister Fantastic",
-          "role": "Duelist",
-          "primary_role": "Duelist",
-          "eligible_roles": [
-            "Duelist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Thing"
-          ]
-        },
-        {
-          "name": "The Hood",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "The Thing",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Invisible Woman"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 11,
+      "team_number": 7,
       "heroes": [
         {
           "name": "Emma Frost",
@@ -856,84 +547,7 @@
       ]
     },
     {
-      "team_number": 12,
-      "heroes": [
-        {
-          "name": "Emma Frost",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Groot",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Mantis"
-          ]
-        },
-        {
-          "name": "Jubilee",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Hood"
-          ]
-        },
-        {
-          "name": "Mantis",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Star-Lord"
-          ]
-        },
-        {
-          "name": "Star-Lord",
-          "role": "Duelist",
-          "primary_role": "Duelist",
-          "eligible_roles": [
-            "Duelist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Groot"
-          ]
-        },
-        {
-          "name": "The Hood",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 13,
+      "team_number": 8,
       "heroes": [
         {
           "name": "Emma Frost",
@@ -1010,7 +624,7 @@
       ]
     },
     {
-      "team_number": 14,
+      "team_number": 9,
       "heroes": [
         {
           "name": "Emma Frost",
@@ -1087,7 +701,7 @@
       ]
     },
     {
-      "team_number": 15,
+      "team_number": 10,
       "heroes": [
         {
           "name": "Emma Frost",
@@ -1164,7 +778,7 @@
       ]
     },
     {
-      "team_number": 16,
+      "team_number": 11,
       "heroes": [
         {
           "name": "Emma Frost",
@@ -1241,161 +855,7 @@
       ]
     },
     {
-      "team_number": 17,
-      "heroes": [
-        {
-          "name": "Gambit",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Hulk",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Wolverine"
-          ]
-        },
-        {
-          "name": "Jubilee",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Hood"
-          ]
-        },
-        {
-          "name": "Rogue",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Gambit"
-          ]
-        },
-        {
-          "name": "The Hood",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Wolverine",
-          "role": "Duelist",
-          "primary_role": "Duelist",
-          "eligible_roles": [
-            "Duelist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Gambit"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 18,
-      "heroes": [
-        {
-          "name": "Gambit",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Human Torch",
-          "role": "Duelist",
-          "primary_role": "Duelist",
-          "eligible_roles": [
-            "Duelist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Jubilee",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Hood"
-          ]
-        },
-        {
-          "name": "Rogue",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Gambit"
-          ]
-        },
-        {
-          "name": "The Hood",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "The Thing",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Human Torch"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 19,
+      "team_number": 12,
       "heroes": [
         {
           "name": "Gambit",
@@ -1468,84 +928,7 @@
           ],
           "active": true,
           "active_partners": [
-            "Jubilee"
-          ]
-        }
-      ]
-    },
-    {
-      "team_number": 20,
-      "heroes": [
-        {
-          "name": "Gambit",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Jubilee",
-          "role": "Strategist",
-          "primary_role": "Strategist",
-          "eligible_roles": [
-            "Strategist"
-          ],
-          "active": true,
-          "active_partners": [
-            "The Hood"
-          ]
-        },
-        {
-          "name": "Phoenix",
-          "role": "Duelist",
-          "primary_role": "Duelist",
-          "eligible_roles": [
-            "Duelist"
-          ],
-          "active": true,
-          "active_partners": [
-            "Rogue"
-          ]
-        },
-        {
-          "name": "Rogue",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Gambit"
-          ]
-        },
-        {
-          "name": "The Hood",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Jubilee"
-          ]
-        },
-        {
-          "name": "Venom",
-          "role": "Vanguard",
-          "primary_role": "Vanguard",
-          "eligible_roles": [
-            "Vanguard"
-          ],
-          "active": true,
-          "active_partners": [
-            "Phoenix"
+            "Scarlet Witch"
           ]
         }
       ]

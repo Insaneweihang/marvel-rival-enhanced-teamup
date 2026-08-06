@@ -4,14 +4,14 @@
   "total_heroes_loaded": 53,
   "team_size": 6,
   "total_combinations_checked": 22957480,
-  "fully_enhanced_unrestricted_count": 587,
-  "fully_enhanced_222_count": 113,
+  "fully_enhanced_unrestricted_count": 380,
+  "fully_enhanced_222_count": 57,
   "role_distribution_counts": {
-    "123": 91,
-    "132": 108,
-    "213": 45,
-    "222": 113,
-    "312": 20
+    "123": 38,
+    "132": 72,
+    "213": 12,
+    "222": 57,
+    "312": 12
   },
   "role_distribution_labels": {
     "123": "1-2-3",

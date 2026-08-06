@@ -30,15 +30,16 @@ The generator checks every six-hero combination, not permutations, and outputs u
 - Pairing source: <https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/>
 - Cross-checks: FandomWire role guides and Mobalytics Season 9 Team-Ups overview.
 
-The frontend supports multiple patch snapshots. Season 9 remains the default until
-`docs/data/patches.json` is changed. Season 9.5 is stored separately under
+The frontend supports multiple patch snapshots. Season 9.5 is now the default;
+Season 9 remains available as an archive. Season 9.5 is stored separately under
 `data/patches/20260807-season-9-5/` and `docs/data/patches/20260807-season-9-5/`.
-The Season 9.5 snapshot activates The Hood as a Vanguard and uses the two
-directional Team-Up links already represented in the source data. Its generated
-counts are provisional until the live Season 9.5 Team-Up details are rechecked.
+The Season 9.5 snapshot activates The Hood as a Vanguard and uses his two
+directional Team-Up links: Scarlet Witch and Moon Knight.
 
-Provisional Season 9.5 counts: `587` unrestricted, `113` 2-2-2, `108` 1-3-2,
-`45` 2-1-3, `91` 1-2-3, and `20` 3-1-2.
+Season 9.5 counts: `380` unrestricted, `57` 2-2-2, `72` 1-3-2,
+`12` 2-1-3, `38` 1-2-3, and `12` 3-1-2.
+
+The Hood source: <https://marvelrivals.gg/the-hood/>.
 
 The Hood is listed as a Team-Up partner in Season 9 source tables before full independent live-roster details were consistently available. He is included as an inactive Vanguard so validation remains strict, but he is excluded from generated teams. Deadpool is listed with Duelist as his primary role and Strategist as an eligible 2-2-2 flex role.
 

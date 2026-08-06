@@ -1,5 +1,5 @@
 {
-  "default_patch": "20260710-season-9",
+  "default_patch": "20260807-season-9-5",
   "patches": [
     {
       "id": "20260710-season-9",
@@ -9,11 +9,11 @@
     },
     {
       "id": "20260807-season-9-5",
-      "label": "Season 9.5 (Coming soon)",
+      "label": "Season 9.5",
       "date": "2026-08-07",
       "data_path": "data/patches/20260807-season-9-5",
-      "status": "provisional",
-      "available": false
+      "status": "available",
+      "available": true
     }
   ]
 }

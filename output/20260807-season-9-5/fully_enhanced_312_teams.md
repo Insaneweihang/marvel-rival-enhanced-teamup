@@ -2,21 +2,13 @@
 |---:|---|---|---|---|
 | 1 | Angela, Emma Frost, Groot | Star-Lord | Loki, Mantis | Angela <- Star-Lord, Loki; Emma Frost <- Mantis; Groot <- Mantis; Loki <- Mantis; Mantis <- Star-Lord; Star-Lord <- Groot |
 | 2 | Angela, Emma Frost, Groot | Star-Lord | Mantis, Rocket Raccoon | Angela <- Star-Lord; Emma Frost <- Mantis; Groot <- Mantis; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot |
-| 3 | Angela, Groot, The Hood | Star-Lord | Jubilee, Mantis | Angela <- Star-Lord; Groot <- Mantis; Jubilee <- The Hood; Mantis <- Star-Lord; Star-Lord <- Groot; The Hood <- Jubilee |
-| 4 | Angela, Groot, Thor | Star-Lord | Loki, Mantis | Angela <- Star-Lord, Loki; Groot <- Mantis; Loki <- Mantis; Mantis <- Star-Lord; Star-Lord <- Groot; Thor <- Angela |
-| 5 | Angela, Groot, Peni Parker | Star-Lord | Mantis, Rocket Raccoon | Angela <- Star-Lord; Groot <- Mantis; Mantis <- Star-Lord; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot |
-| 6 | Angela, Groot, Thor | Star-Lord | Mantis, Rocket Raccoon | Angela <- Star-Lord; Groot <- Mantis; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot; Thor <- Angela |
-| 7 | Magneto, Rogue, The Hood | Scarlet Witch | Cloak & Dagger, Jubilee | Cloak & Dagger <- The Hood; Jubilee <- The Hood; Magneto <- Scarlet Witch; Rogue <- Magneto; Scarlet Witch <- Jubilee; The Hood <- Jubilee |
-| 8 | Doctor Strange, Hulk, The Hood | Wolverine | Gambit, Jubilee | Doctor Strange <- Hulk; Gambit <- Jubilee; Hulk <- Wolverine; Jubilee <- The Hood; The Hood <- Jubilee; Wolverine <- Gambit |
-| 9 | Doctor Strange, The Hood, The Thing | Human Torch | Invisible Woman, Jubilee | Doctor Strange <- Invisible Woman; Human Torch <- Jubilee; Invisible Woman <- Human Torch; Jubilee <- The Hood; The Hood <- Jubilee; The Thing <- Human Torch, Invisible Woman |
-| 10 | Doctor Strange, The Hood, The Thing | Mister Fantastic | Invisible Woman, Jubilee | Doctor Strange <- Invisible Woman; Invisible Woman <- Mister Fantastic; Jubilee <- The Hood; Mister Fantastic <- The Thing; The Hood <- Jubilee; The Thing <- Invisible Woman |
-| 11 | Emma Frost, Groot, Magneto | Star-Lord | Gambit, Mantis | Emma Frost <- Mantis; Gambit <- Magneto; Groot <- Mantis; Magneto <- Emma Frost; Mantis <- Star-Lord; Star-Lord <- Groot |
-| 12 | Emma Frost, Groot, The Hood | Star-Lord | Jubilee, Mantis | Emma Frost <- Mantis; Groot <- Mantis; Jubilee <- The Hood; Mantis <- Star-Lord; Star-Lord <- Groot; The Hood <- Jubilee |
-| 13 | Emma Frost, Groot, Magneto | Star-Lord | Loki, Mantis | Emma Frost <- Mantis; Groot <- Mantis; Loki <- Mantis; Magneto <- Emma Frost; Mantis <- Star-Lord; Star-Lord <- Groot |
-| 14 | Emma Frost, Groot, Magneto | Star-Lord | Mantis, Rocket Raccoon | Emma Frost <- Mantis; Groot <- Mantis; Magneto <- Emma Frost; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot |
-| 15 | Emma Frost, Groot, Peni Parker | Star-Lord | Mantis, Rocket Raccoon | Emma Frost <- Mantis; Groot <- Mantis; Mantis <- Star-Lord; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot |
-| 16 | Emma Frost, Magneto, Rogue | Psylocke | Luna Snow, White Fox | Emma Frost <- Luna Snow; Luna Snow <- White Fox; Magneto <- Emma Frost; Psylocke <- Emma Frost; Rogue <- Magneto; White Fox <- Psylocke |
-| 17 | Hulk, Rogue, The Hood | Wolverine | Gambit, Jubilee | Gambit <- Jubilee; Hulk <- Wolverine; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee; Wolverine <- Gambit |
-| 18 | Rogue, The Hood, The Thing | Human Torch | Gambit, Jubilee | Gambit <- Jubilee; Human Torch <- Jubilee; Jubilee <- The Hood; Rogue <- Gambit; The Hood <- Jubilee; The Thing <- Human Torch |
-| 19 | Magneto, Rogue, The Hood | Scarlet Witch | Gambit, Jubilee | Gambit <- Jubilee, Magneto; Jubilee <- The Hood; Magneto <- Scarlet Witch; Rogue <- Gambit, Magneto; Scarlet Witch <- Jubilee; The Hood <- Jubilee |
-| 20 | Rogue, The Hood, Venom | Phoenix | Gambit, Jubilee | Gambit <- Jubilee; Jubilee <- The Hood; Phoenix <- Rogue; Rogue <- Gambit; The Hood <- Jubilee; Venom <- Phoenix |
+| 3 | Angela, Groot, Thor | Star-Lord | Loki, Mantis | Angela <- Star-Lord, Loki; Groot <- Mantis; Loki <- Mantis; Mantis <- Star-Lord; Star-Lord <- Groot; Thor <- Angela |
+| 4 | Angela, Groot, Peni Parker | Star-Lord | Mantis, Rocket Raccoon | Angela <- Star-Lord; Groot <- Mantis; Mantis <- Star-Lord; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot |
+| 5 | Angela, Groot, Thor | Star-Lord | Mantis, Rocket Raccoon | Angela <- Star-Lord; Groot <- Mantis; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot; Thor <- Angela |
+| 6 | Magneto, Rogue, The Hood | Scarlet Witch | Cloak & Dagger, Jubilee | Cloak & Dagger <- The Hood; Jubilee <- The Hood; Magneto <- Scarlet Witch; Rogue <- Magneto; Scarlet Witch <- Jubilee; The Hood <- Scarlet Witch |
+| 7 | Emma Frost, Groot, Magneto | Star-Lord | Gambit, Mantis | Emma Frost <- Mantis; Gambit <- Magneto; Groot <- Mantis; Magneto <- Emma Frost; Mantis <- Star-Lord; Star-Lord <- Groot |
+| 8 | Emma Frost, Groot, Magneto | Star-Lord | Loki, Mantis | Emma Frost <- Mantis; Groot <- Mantis; Loki <- Mantis; Magneto <- Emma Frost; Mantis <- Star-Lord; Star-Lord <- Groot |
+| 9 | Emma Frost, Groot, Magneto | Star-Lord | Mantis, Rocket Raccoon | Emma Frost <- Mantis; Groot <- Mantis; Magneto <- Emma Frost; Mantis <- Star-Lord; Rocket Raccoon <- Groot; Star-Lord <- Groot |
+| 10 | Emma Frost, Groot, Peni Parker | Star-Lord | Mantis, Rocket Raccoon | Emma Frost <- Mantis; Groot <- Mantis; Mantis <- Star-Lord; Peni Parker <- Rocket Raccoon; Rocket Raccoon <- Groot; Star-Lord <- Groot |
+| 11 | Emma Frost, Magneto, Rogue | Psylocke | Luna Snow, White Fox | Emma Frost <- Luna Snow; Luna Snow <- White Fox; Magneto <- Emma Frost; Psylocke <- Emma Frost; Rogue <- Magneto; White Fox <- Psylocke |
+| 12 | Magneto, Rogue, The Hood | Scarlet Witch | Gambit, Jubilee | Gambit <- Jubilee, Magneto; Jubilee <- The Hood; Magneto <- Scarlet Witch; Rogue <- Gambit, Magneto; Scarlet Witch <- Jubilee; The Hood <- Scarlet Witch |
