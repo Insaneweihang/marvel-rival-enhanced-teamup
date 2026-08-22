@@ -60,6 +60,10 @@
       "purpose": "Official Season 9 post-launch Team-Up ability name cross-check."
     }
   ],
+  "allowed_reciprocal_teamups": [
+    ["Jubilee", "The Hood"],
+    ["Magik", "The Hood"]
+  ],
   "notes": [
     "The Season 9 sources expose The Hood as a Team-Up partner before full independent live-roster details were consistently published.",
     "The Hood is included as an inactive Vanguard to keep partner validation strict; his directional partners are manually inferred from visible Season 9 pairings and should be rechecked when the official hero page is live.",

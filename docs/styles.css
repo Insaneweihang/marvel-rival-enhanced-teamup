@@ -323,6 +323,53 @@ dd {
   display: block;
 }
 
+.header-navigation-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mini-game-quick-launch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 4px 4px 4px 10px;
+  border: 1px solid rgb(185 32 53 / 30%);
+  border-radius: 6px;
+  background: #fff8f8;
+}
+
+.mini-game-quick-label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.mini-game-quick-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mini-game-quick-link:hover,
+.mini-game-quick-link:focus-visible {
+  outline: 3px solid rgb(29 95 209 / 22%);
+  outline-offset: 2px;
+}
+
 .layout {
   display: grid;
   grid-template-columns: minmax(280px, 340px) minmax(0, 1fr) minmax(300px, 360px);
@@ -2324,6 +2371,12 @@ button.hero-chip {
   .builder-view,
   .maps-view {
     padding: 14px;
+  }
+
+  .header-navigation-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .builder-view .team-builder {

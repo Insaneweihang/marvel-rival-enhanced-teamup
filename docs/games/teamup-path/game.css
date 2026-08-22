@@ -54,11 +54,386 @@ body {
   margin: 28px auto 64px;
 }
 
+.game-mode {
+  display: none;
+}
+
+.game-mode.active {
+  display: block;
+}
+
+.mini-game-mode-selector {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.mini-game-mode {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.mini-game-mode.active,
+.mini-game-mode:hover,
+.mini-game-mode:focus-visible {
+  border-color: var(--path-accent);
+  background: var(--path-accent-soft);
+  color: var(--path-accent);
+}
+
 .path-intro,
 .puzzle-panel {
   border: 1px solid var(--line);
   background: var(--path-panel);
   box-shadow: 0 12px 28px rgb(24 35 29 / 6%);
+}
+
+.complete-team-panel {
+  margin-top: 16px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--path-panel);
+  box-shadow: 0 12px 28px rgb(24 35 29 / 6%);
+}
+
+.complete-team-copy {
+  max-width: 660px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.complete-team-metrics {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  min-width: 130px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.complete-team-metrics strong {
+  color: var(--path-accent);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.complete-team-progress-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.complete-team-slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.complete-team-slot {
+  display: grid;
+  align-content: center;
+  min-height: 106px;
+  gap: 7px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+}
+
+.complete-team-slot.filled {
+  border-color: var(--path-accent);
+  background: var(--path-accent-soft);
+}
+
+.complete-team-slot.seed-hero {
+  background: #eef1f5;
+  border-color: #99a5b4;
+}
+
+.complete-team-slot.empty {
+  place-items: center;
+  min-height: 106px;
+  border-style: dashed;
+  color: #8a918e;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.slot-remove {
+  width: fit-content;
+  padding: 3px 6px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.slot-note {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.complete-team-search-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.complete-team-search {
+  width: min(100%, 360px);
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.complete-team-search:focus-visible {
+  outline: 3px solid rgb(11 110 79 / 28%);
+  outline-offset: 2px;
+  border-color: var(--path-accent);
+}
+
+.complete-team-candidates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 8px;
+  max-height: 420px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
+.complete-team-candidate {
+  display: grid;
+  gap: 3px;
+  min-height: 74px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.complete-team-candidate:hover,
+.complete-team-candidate:focus-visible,
+.complete-team-candidate.hint-candidate {
+  border-color: var(--path-accent);
+  background: var(--path-accent-soft);
+}
+
+.complete-team-candidate:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.candidate-role,
+.complete-team-candidate > span:last-child {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.complete-team-candidate > span:last-child {
+  color: var(--path-accent);
+}
+
+.guess-hero-panel {
+  margin-top: 16px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--path-panel);
+  box-shadow: 0 12px 28px rgb(24 35 29 / 6%);
+}
+
+.guess-hero-copy {
+  max-width: 660px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.guess-hero-metrics {
+  display: grid;
+  justify-items: end;
+  gap: 5px;
+  min-width: 145px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.guess-hero-metrics > strong {
+  color: var(--path-accent);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.guess-hero-round-controls {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  background: var(--path-soft);
+}
+
+.guess-round-button {
+  min-height: 26px;
+  padding: 3px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.guess-round-button.active,
+.guess-round-button:hover,
+.guess-round-button:focus-visible {
+  background: #ffffff;
+  color: var(--path-accent);
+}
+
+.guess-hero-progress-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.guess-clue-card {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 18px;
+  border: 1px solid var(--path-accent);
+  background: var(--path-accent-soft);
+}
+
+.guess-clue-label {
+  color: var(--path-accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.guess-clue-card strong {
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.guess-picker-section,
+.guess-feedback-section {
+  margin-top: 26px;
+}
+
+.guess-hero-search {
+  width: min(100%, 380px);
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.guess-hero-search:focus-visible {
+  outline: 3px solid rgb(11 110 79 / 28%);
+  outline-offset: 2px;
+  border-color: var(--path-accent);
+}
+
+.guess-hero-candidates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.guess-hero-candidate {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 850;
+  text-align: left;
+}
+
+.guess-hero-candidate:hover,
+.guess-hero-candidate:focus-visible {
+  border-color: var(--path-accent);
+  background: var(--path-accent-soft);
+}
+
+.guess-hero-candidate:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.guess-feedback-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.guess-feedback-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 1fr) auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  font-size: 12px;
+}
+
+.feedback-match,
+.feedback-different {
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.feedback-match {
+  background: var(--path-accent-soft);
+  color: var(--path-accent);
+}
+
+.feedback-different {
+  background: #f3eeee;
+  color: #8b3c36;
 }
 
 .path-intro {
@@ -385,7 +760,10 @@ body {
 .choice-card:focus-visible,
 .game-actions button:focus-visible,
 .header-actions a:focus-visible,
-.optimal-toggle:focus-visible {
+.optimal-toggle:focus-visible,
+.mini-game-mode:focus-visible,
+.slot-remove:focus-visible,
+.complete-team-candidate:focus-visible {
   outline: 3px solid rgb(11 110 79 / 28%);
   outline-offset: 2px;
 }
@@ -404,6 +782,39 @@ body {
 
 .completion-rating {
   color: var(--path-accent);
+}
+
+.complete-effects-heading {
+  display: block;
+  margin-top: 16px;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.complete-effects-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.complete-effect-item {
+  display: grid;
+  gap: 3px;
+  padding: 9px 10px;
+  border: 1px solid rgb(11 110 79 / 20%);
+  background: rgb(255 255 255 / 70%);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.complete-effect-item strong {
+  color: var(--path-accent);
+  font-size: 11px;
+}
+
+.complete-effect-item span {
+  color: var(--muted);
 }
 
 .game-actions {
@@ -425,8 +836,19 @@ body {
   }
 
   .path-intro,
-  .puzzle-panel {
+  .puzzle-panel,
+  .complete-team-panel,
+  .guess-hero-panel {
     padding: 16px;
+  }
+
+  .mini-game-mode-selector {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mini-game-mode {
+    padding: 0 8px;
   }
 
   .path-intro {
@@ -439,6 +861,58 @@ body {
 
   .direction-note {
     margin-top: 18px;
+  }
+
+  .complete-team-metrics {
+    justify-items: start;
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .guess-hero-metrics {
+    justify-items: start;
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .guess-hero-progress-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .complete-team-progress-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .complete-team-slots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .complete-team-candidates {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .complete-effects-list {
+    grid-template-columns: 1fr;
+  }
+
+  .guess-feedback-row {
+    grid-template-columns: 1fr;
+  }
+
+  .guess-hero-search {
+    width: 100%;
+  }
+
+  .complete-team-search-label {
+    display: none;
+  }
+
+  .complete-team-search {
+    width: 100%;
   }
 
   .duel-grid {

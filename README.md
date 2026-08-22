@@ -14,18 +14,17 @@ A hero has two directional Team-Up abilities in the Season 9 system, and only on
 
 The generator checks every six-hero combination, not permutations, and outputs unrestricted teams plus supported Vanguard-Duelist-Strategist role composition filters.
 
-## Current Dataset
+## Active Dataset
 
-- Patch: `20260710-season-9`
-- Patch date: `2026-07-10`
-- Active heroes generated: `52`
-- Fully enhanced unrestricted combinations: `247`
-- Fully enhanced 2-2-2 combinations: `28`
-- Fully enhanced 1-3-2 combinations: `29`
-- Fully enhanced 2-1-3 combinations: `7`
-- Fully enhanced 1-2-3 combinations: `9`
-- Fully enhanced 3-1-2 combinations: `10`
-- Old reference count match (`247` unrestricted / `28` 2-2-2): `true` / `true`
+- Patch: `20260807-season-9-5`
+- Patch date: `2026-08-07`
+- Active heroes generated: `53`
+- Fully enhanced unrestricted combinations: `380`
+- Fully enhanced 2-2-2 combinations: `57`
+- Fully enhanced 1-3-2 combinations: `72`
+- Fully enhanced 2-1-3 combinations: `12`
+- Fully enhanced 1-2-3 combinations: `38`
+- Fully enhanced 3-1-2 combinations: `12`
 - Main official source: <https://www.marvelrivals.com/20260708/41525_1306959.html>
 - Pairing source: <https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/>
 - Cross-checks: FandomWire role guides and Mobalytics Season 9 Team-Ups overview.
@@ -41,7 +40,7 @@ Season 9.5 counts: `380` unrestricted, `57` 2-2-2, `72` 1-3-2,
 
 The Hood source: <https://marvelrivals.gg/the-hood/>.
 
-The Hood is listed as a Team-Up partner in Season 9 source tables before full independent live-roster details were consistently available. He is included as an inactive Vanguard so validation remains strict, but he is excluded from generated teams. Deadpool is listed with Duelist as his primary role and Strategist as an eligible 2-2-2 flex role.
+Season 9 (`20260710-season-9`) remains available as an archive with `247` unrestricted and `28` 2-2-2 teams. Deadpool is listed with Duelist as his primary role and Strategist as an eligible 2-2-2 flex role.
 
 ## Setup
 
@@ -71,15 +70,18 @@ pip install -r requirements.txt
 
 ```bash
 python scripts/validate_data.py
+python scripts/validate_patch.py
 ```
+
+`validate_patch.py` is the release gate for patch snapshots. It validates the
+manifest, patch-version consistency, exactly two outgoing relationships per
+hero, directional effect mappings, source-status fields, approved reciprocal
+relationships, and reproducibility of all committed generated outputs.
 
 Expected success format:
 
 ```text
-Data validation passed.
-Heroes: 53
-Team-Up mappings: 53
-Patch: 20260710-season-9
+Patch validation passed: 20260710-season-9, 20260807-season-9-5
 ```
 
 ## Generate
@@ -174,11 +176,13 @@ pytest
 3. Create a new folder under `data/patches/<patch-id>/` and update its
    `heroes.json`, `teamups.json`, `teamup_effects.json`, `hero_details.json`,
    and `metadata.json` together.
-4. Run validation and tests.
+4. Run `python scripts/validate_patch.py --patch-id <patch-id>` and the tests.
 5. Generate outputs into `output/<patch-id>/` and compare counts against the
    previous patch.
 6. Sync the snapshot into `docs/data/patches/<patch-id>/` and add it to
    `docs/data/patches.json`.
+7. Set `available` to `true` only after the patch validation passes. Change
+   `default_patch` only after the new snapshot is ready for release.
 
 ## Reference Counts
 

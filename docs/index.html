@@ -12,19 +12,25 @@
       gtag("js", new Date());
       gtag("config", "G-LPFXF8XZSR");
     </script>
-    <link rel="stylesheet" href="styles.css?v=20260805-multi-patch" />
+    <link rel="stylesheet" href="styles.css?v=20260822-game-launcher" />
   </head>
   <body>
     <header class="site-header">
       <div>
         <p class="eyebrow">Marvel Rivals Team-Up Generator</p>
         <h1>Marvel Rivals Team-Up Planner</h1>
-        <nav class="view-tabs" aria-label="Application views">
-          <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
-          <button class="view-tab" type="button" data-view="builder">Team Planner</button>
-          <button class="view-tab" type="button" data-view="maps">Maps</button>
-          <a id="link-challenge-link" class="view-tab nav-link-tab" href="games/teamup-path/">Mini Game</a>
-        </nav>
+        <div class="header-navigation-row">
+          <nav class="view-tabs" aria-label="Application views">
+            <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
+            <button class="view-tab" type="button" data-view="builder">Team Planner</button>
+            <button class="view-tab" type="button" data-view="maps">Maps</button>
+            <a id="link-challenge-link" class="view-tab nav-link-tab" href="games/teamup-path/">Mini Games</a>
+          </nav>
+          <div class="mini-game-quick-launch" aria-label="Daily mini game">
+            <span class="mini-game-quick-label">Today's game</span>
+            <a class="mini-game-quick-link" href="games/teamup-path/?mode=complete-team" data-game-launcher-mode="complete-team">Play</a>
+          </div>
+        </div>
       </div>
       <nav class="header-actions" aria-label="Creator support and feedback links">
         <a class="feedback-nav-action" href="#feedback" aria-label="Go to feedback form" title="Feedback">Feedback</a>
@@ -442,7 +448,7 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260805-multi-patch" defer></script>
+    <script src="app.js?v=20260822-game-launcher" defer></script>
 
     <!-- Public Cloudflare Web Analytics site token; safe to expose in client HTML. -->
     <!-- Cloudflare Web Analytics -->

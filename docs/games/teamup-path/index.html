@@ -13,14 +13,14 @@
       gtag("config", "G-LPFXF8XZSR");
     </script>
     <link rel="stylesheet" href="../../styles.css?v=20260805-multi-patch" />
-    <link rel="stylesheet" href="./game.css?v=20260805-mini-game-analytics" />
+    <link rel="stylesheet" href="./game.css?v=20260822-guess-hero" />
   </head>
   <body>
     <header class="site-header path-site-header">
       <div>
         <p class="eyebrow">Marvel Rivals Team-Up Planner</p>
         <h1>Team-Up Mini Game</h1>
-        <p class="path-header-copy">Connect the start hero to the target with directional Team-Up links. Use as few connections as possible.</p>
+        <p class="path-header-copy">Solve directional Team-Up puzzles or complete a fully enhanced six-hero team.</p>
       </div>
       <nav class="header-actions" aria-label="Game navigation">
         <a class="secondary-action" href="../../">Back to planner</a>
@@ -46,6 +46,112 @@
         </div>
       </section>
 
+      <div class="mini-game-mode-selector" role="tablist" aria-label="Mini game mode">
+        <button class="mini-game-mode active" type="button" role="tab" aria-selected="true" aria-controls="link-mode" data-game-mode="link">Link Challenge</button>
+        <button class="mini-game-mode" type="button" role="tab" aria-selected="false" aria-controls="complete-team-mode" data-game-mode="complete-team">Complete the Team</button>
+        <button class="mini-game-mode" type="button" role="tab" aria-selected="false" aria-controls="guess-hero-mode" data-game-mode="guess-hero">Guess the Hero</button>
+      </div>
+
+      <section id="complete-team-mode" class="game-mode" data-game-mode-panel="complete-team" aria-labelledby="complete-team-heading" hidden>
+        <div class="complete-team-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Daily Team-Up puzzle</p>
+              <h2 id="complete-team-heading">Complete the Team</h2>
+              <p class="complete-team-copy">Start with the revealed heroes and add three or four more heroes to form a fully enhanced six-hero team.</p>
+            </div>
+            <div class="complete-team-metrics" aria-live="polite">
+              <span id="complete-team-date">Today</span>
+              <strong id="complete-team-timer">00:00</strong>
+              <span id="complete-team-score">Score: --</span>
+            </div>
+          </div>
+
+          <div id="complete-team-status" class="game-status" role="status" aria-live="polite"></div>
+          <div class="complete-team-progress-row">
+            <span id="complete-team-progress">0 / 6 heroes</span>
+            <span>Seed heroes are locked</span>
+          </div>
+          <div id="complete-team-slots" class="complete-team-slots" aria-label="Your six-hero team"></div>
+
+          <div class="path-section complete-team-picker">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">Add heroes</p>
+                <h3>Choose from the roster</h3>
+              </div>
+              <label class="complete-team-search-label" for="complete-team-search">Search heroes</label>
+            </div>
+            <input id="complete-team-search" class="complete-team-search" type="search" placeholder="Search heroes..." autocomplete="off" />
+            <div id="complete-team-candidates" class="complete-team-candidates"></div>
+          </div>
+
+          <div id="complete-team-completion" class="completion-panel" hidden></div>
+          <div class="game-actions">
+            <button id="complete-team-undo" class="secondary-action" type="button">Undo</button>
+            <button id="complete-team-restart" class="secondary-action" type="button">Restart</button>
+            <button id="complete-team-hint" class="secondary-action" type="button">Hint</button>
+            <button id="complete-team-share" class="secondary-action" type="button" disabled>Share result</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="guess-hero-mode" class="game-mode" data-game-mode-panel="guess-hero" aria-labelledby="guess-hero-heading" hidden>
+        <div class="guess-hero-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Identify the hero</p>
+              <h2 id="guess-hero-heading">Guess the Hero</h2>
+              <p class="guess-hero-copy">Use the clues, then search and select the hero you think they describe.</p>
+            </div>
+            <div class="guess-hero-metrics" aria-live="polite">
+              <div class="guess-hero-round-controls" role="tablist" aria-label="Guess the Hero round type">
+                <button id="guess-daily-button" class="guess-round-button active" type="button" role="tab" aria-selected="true">Daily</button>
+                <button id="guess-random-button" class="guess-round-button" type="button" role="tab" aria-selected="false">Random</button>
+              </div>
+              <strong id="guess-hero-timer">00:00</strong>
+              <span id="guess-hero-score">Score: --</span>
+            </div>
+          </div>
+
+          <div id="guess-hero-status" class="game-status" role="status" aria-live="polite"></div>
+          <div class="guess-hero-progress-row">
+            <span id="guess-hero-clue-progress">Clue 1</span>
+            <span id="guess-hero-guess-count">0 guesses</span>
+          </div>
+          <article id="guess-hero-clue" class="guess-clue-card"></article>
+
+          <div class="guess-picker-section">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">Make a guess</p>
+                <h3>Search the hero roster</h3>
+              </div>
+            </div>
+            <input id="guess-hero-search" class="guess-hero-search" type="search" placeholder="Search heroes..." autocomplete="off" />
+            <div id="guess-hero-candidates" class="guess-hero-candidates"></div>
+          </div>
+
+          <div class="guess-feedback-section">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">Guess feedback</p>
+                <h3>Your guesses</h3>
+              </div>
+            </div>
+            <div id="guess-hero-feedback" class="guess-hero-feedback" aria-live="polite"></div>
+          </div>
+
+          <div id="guess-hero-completion" class="completion-panel" hidden></div>
+          <div class="game-actions">
+            <button id="guess-hero-reveal" class="secondary-action" type="button">Reveal next clue</button>
+            <button id="guess-hero-new-round" class="primary-action" type="button">New round</button>
+            <button id="guess-hero-share" class="secondary-action" type="button" disabled>Share result</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="link-mode" class="game-mode active" data-game-mode-panel="link" aria-labelledby="puzzle-heading">
       <section class="puzzle-panel" aria-labelledby="puzzle-heading">
         <div class="section-heading">
           <div>
@@ -95,8 +201,9 @@
           <button id="new-game-button" class="primary-action" type="button">New game</button>
         </div>
       </section>
+      </section>
     </main>
 
-    <script src="./game.js?v=20260805-mini-game-analytics" defer></script>
+    <script src="./game.js?v=20260822-guess-hero" defer></script>
   </body>
 </html>

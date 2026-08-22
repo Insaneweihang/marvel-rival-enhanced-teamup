@@ -136,6 +136,7 @@ const elements = {
   patchVersion: document.querySelector("#patch-version"),
   patchSelect: document.querySelector("#patch-select"),
   linkChallenge: document.querySelector("#link-challenge-link"),
+  gameLauncherLinks: document.querySelectorAll("[data-game-launcher-mode]"),
   allCount: document.querySelector("#all-count"),
   balancedCount: document.querySelector("#balanced-count"),
   checkedCount: document.querySelector("#checked-count"),
@@ -652,12 +653,22 @@ function renderPatchSelector() {
       ? ""
       : `?patch=${encodeURIComponent(state.patchId)}`;
     elements.linkChallenge.href = `games/teamup-path/${patchQuery}`;
+    for (const link of elements.gameLauncherLinks) {
+      const mode = link.dataset.gameLauncherMode;
+      const params = new URLSearchParams();
+      if (mode) params.set("mode", mode);
+      if (state.patchId !== state.patchManifest.default_patch) {
+        params.set("patch", state.patchId);
+      }
+      link.href = `games/teamup-path/?${params.toString()}`;
+    }
   }
 }
 
 function renderSummary() {
   renderPatchSelector();
   elements.patchVersion.textContent = state.summary.patch_version;
+  trackEvent("game_launcher_viewed", { patch_id: state.patchId });
   elements.allCount.textContent = formatNumber(state.summary.fully_enhanced_unrestricted_count);
   elements.balancedCount.textContent = formatNumber(state.summary.fully_enhanced_222_count);
   elements.checkedCount.textContent = formatNumber(state.summary.total_combinations_checked);
@@ -2907,6 +2918,14 @@ function bindEvents() {
       }
       state.activeView = button.dataset.view;
       update();
+    });
+  }
+  for (const link of elements.gameLauncherLinks) {
+    link.addEventListener("click", () => {
+      trackEvent("game_launcher_click", {
+        patch_id: state.patchId,
+        game_mode: link.dataset.gameLauncherMode,
+      });
     });
   }
   for (const button of elements.modeButtons) {

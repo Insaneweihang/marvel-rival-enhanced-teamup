@@ -65,6 +65,7 @@
       "purpose": "Season 9.5 The Hood role, base health, abilities, and Team-Up effects."
     }
   ],
+  "allowed_reciprocal_teamups": [],
   "notes": [
     "The Season 9 baseline included The Hood as an inactive Vanguard; this Season 9.5 snapshot activates him and retains his two directional links.",
     "Inactive heroes are valid Team-Up partners but are excluded from generated six-hero teams.",
