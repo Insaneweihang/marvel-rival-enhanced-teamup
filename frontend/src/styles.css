@@ -121,4 +121,18 @@ footer span:last-child { display: flex; gap: 15px; } footer a { color: #b92035; 
 .share-preview { display: grid; gap: 8px; margin: 18px 0; padding: 26px; border: 1px solid #d8ddd7; background: #19201d; color: #fff; } .share-preview strong { color: #ffb3bc; font-size: 14px; } .share-preview p { margin: 0; font-size: 20px; font-weight: 850; } .share-preview small { color: #d8ddd7; }
 .feedback-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }
 .footer-social-links { display: flex; flex-wrap: wrap; gap: 12px; } .footer-social-links a { display: inline-flex; align-items: center; gap: 5px; color: #b92035; font-weight: 800; text-decoration: none; } .footer-social-links img { width: 16px; height: 16px; }
+.pool-matrix-scroll { max-width: 100%; overflow-x: auto; padding-bottom: 5px; }
+.pool-matrix-table { display: grid; grid-template-columns: repeat(var(--pool-columns), minmax(150px, 1fr)); min-width: max-content; gap: 1px; background: #d8ddd7; border: 1px solid #d8ddd7; }
+.matrix-corner, .matrix-header { display: flex; align-items: center; min-height: 48px; padding: 8px; background: #f0f3ef; color: #19201d; font-size: 11px; font-weight: 850; }
+.matrix-header { justify-content: center; text-align: center; }
+.matrix-row { display: contents; }
+.pool-matrix-cell { display: grid; gap: 4px; min-height: 92px; padding: 8px; border: 0; background: #fff; color: #19201d; text-align: left; }
+.pool-matrix-cell:hover, .pool-matrix-cell:focus-visible { outline: 2px solid #b92035; outline-offset: -2px; }
+.pool-matrix-cell span { color: #b92035; font-size: 11px; font-weight: 850; }
+.pool-matrix-cell small { font-size: 11px; }
+.pool-matrix-cell em { color: #68736e; font-size: 10px; font-style: normal; line-height: 1.25; }
+.pool-matrix-cell.score-3 { background: #e8f6ed; } .pool-matrix-cell.score-2 { background: #fff7e7; } .pool-matrix-cell.score-0 { background: #fff; }
+.matrix-empty { padding: 14px; border: 1px dashed #d8ddd7; color: #68736e; font-size: 12px; }
+.share-canvas { display: block; width: 100%; height: auto; border: 1px solid #d8ddd7; }
+.share-status { min-height: 20px; margin: 8px 0 0; color: #68736e; font-size: 12px; }
 @media (max-width: 900px) { .pool-panels { grid-template-columns: 1fr; } }

@@ -9,3 +9,4 @@ frontend/public/styles.css
 frontend/tsconfig.node.tsbuildinfo
 frontend/vite.config.js
 frontend/vite.config.d.ts
+published/

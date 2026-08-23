@@ -10,11 +10,17 @@ import type {
   Update,
 } from "../types/data";
 
-const DATA_BASE = (import.meta.env.VITE_DATA_BASE_URL || "./data").replace(/\/$/, "");
+function runtimeDataBase(): string {
+  if (import.meta.env.VITE_DATA_BASE_URL) return import.meta.env.VITE_DATA_BASE_URL.replace(/\/$/, "");
+  const pathname = window.location.pathname === "/" ? "" : window.location.pathname.replace(/\/$/, "");
+  return `${pathname}/data`;
+}
 
 async function getJson<T>(path: string): Promise<T> {
-  const response = await fetch(`${DATA_BASE}/${path}`, { cache: "no-store" });
+  const response = await fetch(`${runtimeDataBase()}/${path}`, { cache: "no-store" });
   if (!response.ok) throw new Error(`Unable to load ${path} (${response.status})`);
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("json")) throw new Error(`Expected JSON for ${path}, but the server returned ${contentType || "HTML"}. Check the deployed base path.`);
   return response.json() as Promise<T>;
 }
 

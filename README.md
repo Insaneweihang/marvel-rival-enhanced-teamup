@@ -151,7 +151,17 @@ Then open:
 http://localhost:8000/docs/
 ```
 
-For GitHub Pages, set the Pages source to the repository branch and `/docs` folder.
+For GitHub Pages, set the Pages source to `GitHub Actions`. The deployment
+workflow publishes the existing HTML site at the root and the React preview
+under `/react/`:
+
+```text
+https://insaneweihang.com/
+https://insaneweihang.com/react/
+```
+
+The workflow preserves `docs/CNAME` at the root of the published artifact, so
+the custom domain continues to point to the existing production site.
 
 ## React Migration
 
@@ -172,6 +182,19 @@ npm run dev
 `npm run build` copies the validated static patch snapshots from `docs/data/`
 into the frontend build output. The React app uses these committed snapshots
 directly; no Node server or local database is required.
+
+To preview the combined deployment locally after building React, assemble the
+same directory layout and serve it from the repository root:
+
+```bash
+mkdir -p published/react
+cp -R docs/. published/
+cp -R frontend/dist/. published/react/
+python -m http.server 8000 --directory published
+```
+
+Then open `http://localhost:8000/` for the HTML version or
+`http://localhost:8000/react/` for the React preview.
 
 The Python generator and patch validators remain the backend/data source. A
 FastAPI service can be added later if server-side queries or cloud-saved user
