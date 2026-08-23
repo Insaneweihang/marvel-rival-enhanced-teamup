@@ -12,6 +12,9 @@ import type {
 
 function runtimeDataBase(): string {
   if (import.meta.env.VITE_DATA_BASE_URL) return import.meta.env.VITE_DATA_BASE_URL.replace(/\/$/, "");
+  const segments = window.location.pathname.split("/").filter(Boolean);
+  const reactIndex = segments.indexOf("react");
+  if (reactIndex >= 0) return import.meta.env.DEV ? "/data" : `/${segments.slice(0, reactIndex + 1).join("/")}/data`;
   const pathname = window.location.pathname === "/" ? "" : window.location.pathname.replace(/\/$/, "");
   return `${pathname}/data`;
 }

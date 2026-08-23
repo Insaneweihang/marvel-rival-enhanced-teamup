@@ -153,11 +153,14 @@ http://localhost:8000/docs/
 
 For GitHub Pages, set the Pages source to `GitHub Actions`. The deployment
 workflow publishes the existing HTML site at the root and the React preview
-under `/react/`:
+under `/react/`. The React build also exposes a creator hub, the Marvel Rivals
+tool, and a directory for future tools:
 
 ```text
 https://insaneweihang.com/
 https://insaneweihang.com/react/
+https://insaneweihang.com/react/marvel-rivals/
+https://insaneweihang.com/react/tools/
 ```
 
 The workflow preserves `docs/CNAME` at the root of the published artifact, so
@@ -190,11 +193,22 @@ same directory layout and serve it from the repository root:
 mkdir -p published/react
 cp -R docs/. published/
 cp -R frontend/dist/. published/react/
+mkdir -p published/react/marvel-rivals published/react/tools
+cp published/react/index.html published/react/marvel-rivals/index.html
+cp published/react/index.html published/react/tools/index.html
 python -m http.server 8000 --directory published
 ```
 
 Then open `http://localhost:8000/` for the HTML version or
-`http://localhost:8000/react/` for the React preview.
+`http://localhost:8000/react/` for the creator hub. The planner and future
+tools entry points are available at `/react/marvel-rivals/` and `/react/tools/`.
+
+The React hub can optionally load the latest three YouTube videos through the
+Worker in `cloudflare/creator-feed-worker/`. Configure its channel ID and
+deploy it at `https://insaneweihang-creator-feed.insaneweihang.workers.dev/creator-feed`.
+The frontend uses that Worker URL by default. A branded
+`https://api.insaneweihang.com/creator-feed` route can be added later without
+changing the React app.
 
 The Python generator and patch validators remain the backend/data source. A
 FastAPI service can be added later if server-side queries or cloud-saved user

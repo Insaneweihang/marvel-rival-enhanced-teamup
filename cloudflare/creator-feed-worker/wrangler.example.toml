@@ -1,0 +1,6 @@
+name = "insaneweihang-creator-feed"
+main = "worker.js"
+compatibility_date = "2026-08-23"
+
+[vars]
+YOUTUBE_CHANNEL_ID = "UCo-nX99UszrwtcmUqraKS3w"

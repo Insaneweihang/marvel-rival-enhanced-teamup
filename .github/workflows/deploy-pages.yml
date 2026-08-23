@@ -61,10 +61,15 @@ jobs:
           mkdir -p published/react
           cp -R docs/. published/
           cp -R frontend/dist/. published/react/
+          mkdir -p published/react/marvel-rivals published/react/tools
+          cp published/react/index.html published/react/marvel-rivals/index.html
+          cp published/react/index.html published/react/tools/index.html
           touch published/.nojekyll
           test -f published/CNAME
           test -f published/index.html
           test -f published/react/index.html
+          test -f published/react/marvel-rivals/index.html
+          test -f published/react/tools/index.html
           test -f published/react/data/patches.json
           test -f published/react/games/teamup-path/index.html
 
