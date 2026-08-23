@@ -50,7 +50,10 @@ jobs:
 
       - name: Build React preview
         working-directory: frontend
-        run: npm ci && npm run build
+        run: npm ci
+      - name: Build React preview
+        working-directory: frontend
+        run: npm run build
 
       - name: Assemble combined site
         run: |
