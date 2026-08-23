@@ -153,6 +153,31 @@ http://localhost:8000/docs/
 
 For GitHub Pages, set the Pages source to the repository branch and `/docs` folder.
 
+## React Migration
+
+An incremental React/TypeScript frontend now lives in `frontend/`. It includes
+the Team Browser, Team Planner with directional enhancement checks, saved
+teams, Duo Planner pools, map reference filters, updates, feedback, analytics,
+and shareable planner state. The existing `docs/` site remains the production
+fallback while the React version is verified for feature parity.
+
+Run the new frontend locally:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+`npm run build` copies the validated static patch snapshots from `docs/data/`
+into the frontend build output. The React app uses these committed snapshots
+directly; no Node server or local database is required.
+
+The Python generator and patch validators remain the backend/data source. A
+FastAPI service can be added later if server-side queries or cloud-saved user
+data become necessary. Feedback remains on the existing Cloudflare Worker/D1
+service during this migration.
+
 ## Compare Patches
 
 ```bash

@@ -1,2 +1,11 @@
 src/marvel_teamups/__pycache__/*
 tests/__pycache__/*
+frontend/node_modules/
+backend/
+frontend/dist/
+frontend/public/data/
+frontend/public/games/
+frontend/public/styles.css
+frontend/tsconfig.node.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
