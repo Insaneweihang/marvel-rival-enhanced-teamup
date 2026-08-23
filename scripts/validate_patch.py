@@ -145,6 +145,15 @@ def validate_generated_outputs(data_dir: Path, output_dir: Path, patch_id: str) 
             "--format",
             "all",
         ]
+        committed_summary = read_json(output_dir / "summary.json")
+        expected_counts = committed_summary.get("expected_counts", {})
+        if isinstance(expected_counts, dict):
+            expected_unrestricted = expected_counts.get("unrestricted")
+            expected_222 = expected_counts.get("222")
+            if isinstance(expected_unrestricted, int):
+                command.extend(["--expected-unrestricted", str(expected_unrestricted)])
+            if isinstance(expected_222, int):
+                command.extend(["--expected-222", str(expected_222)])
         result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
         if result.returncode != 0:
             return [f"{patch_id} generation failed:\n{result.stderr.strip() or result.stdout.strip()}"]
