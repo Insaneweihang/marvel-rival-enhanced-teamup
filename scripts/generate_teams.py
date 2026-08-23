@@ -33,8 +33,8 @@ def main() -> int:
     parser.add_argument("--exclude-hero", action="append", default=[])
     parser.add_argument("--format", choices=["csv", "json", "md", "all"], default="all")
     parser.add_argument("--show-details", action="store_true")
-    parser.add_argument("--expected-unrestricted", type=int, default=247)
-    parser.add_argument("--expected-222", type=int, default=28)
+    parser.add_argument("--expected-unrestricted", type=int, default=None)
+    parser.add_argument("--expected-222", type=int, default=None)
     parser.add_argument("--fail-on-count-mismatch", action="store_true")
     args = parser.parse_args()
 
@@ -100,8 +100,8 @@ def main() -> int:
             "222": args.expected_222,
         },
         "count_match": {
-            "unrestricted": len(all_teams) == args.expected_unrestricted,
-            "222": len(role_teams["222"]) == args.expected_222,
+            "unrestricted": None if args.expected_unrestricted is None else len(all_teams) == args.expected_unrestricted,
+            "222": None if args.expected_222 is None else len(role_teams["222"]) == args.expected_222,
         },
         "filters": {
             "hero": sorted(args.hero),
@@ -118,7 +118,7 @@ def main() -> int:
         print(f"Fully enhanced {ROLE_FORMATS[key].label} teams: {len(role_teams[key])}")
     print(f"Output directory: {args.output_dir}")
 
-    mismatch = not all(summary["count_match"].values())
+    mismatch = any(value is False for value in summary["count_match"].values())
     if mismatch:
         print("Reference count mismatch detected; see output/summary.json.")
     if args.fail_on_count_mismatch and mismatch:

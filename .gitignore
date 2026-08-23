@@ -1,5 +1,6 @@
 src/marvel_teamups/__pycache__/*
 tests/__pycache__/*
+scripts/__pycache__/*
 frontend/node_modules/
 backend/
 frontend/dist/
