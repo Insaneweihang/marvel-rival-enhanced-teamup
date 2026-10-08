@@ -1,0 +1,2954 @@
+{
+  "patch_version": "20260911-season-10",
+  "role_format": "123",
+  "role_format_label": "1-2-3",
+  "role_format_description": "1 Vanguard / 2 Duelist / 3 Strategist",
+  "team_count": 38,
+  "teams": [
+    {
+      "team_number": 1,
+      "heroes": [
+        {
+          "name": "Adam Warlock",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Ultron"
+          ]
+        },
+        {
+          "name": "Peni Parker",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Squirrel Girl"
+          ]
+        },
+        {
+          "name": "Spider-Man",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Peni Parker"
+          ]
+        },
+        {
+          "name": "Squirrel Girl",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Spider-Man"
+          ]
+        },
+        {
+          "name": "Ultron",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Peni Parker"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 2,
+      "heroes": [
+        {
+          "name": "Blade",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        },
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Blade",
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 3,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Cyclops",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 4,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Cyclops",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 5,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Deadpool",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 6,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Deadpool",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 7,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Emma Frost",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Hawkeye",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger",
+            "Psylocke"
+          ]
+        },
+        {
+          "name": "Luna Snow",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "White Fox"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger",
+            "Emma Frost"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 8,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Emma Frost",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Iron Fist",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "White Fox"
+          ]
+        },
+        {
+          "name": "Luna Snow",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "White Fox"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger",
+            "Emma Frost"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 9,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Emma Frost",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Luna Snow",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "White Fox"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger",
+            "Emma Frost"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 10,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Emma Frost",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Luna Snow",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "White Fox"
+          ]
+        },
+        {
+          "name": "Namor",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger",
+            "Emma Frost"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 11,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Hawkeye",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 12,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Hawkeye",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 13,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Human Torch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 14,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Human Torch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 15,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Magik",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 16,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Magik",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 17,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 18,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight",
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 19,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        },
+        {
+          "name": "Wolverine",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 20,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 21,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        },
+        {
+          "name": "Wolverine",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 22,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Human Torch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Invisible Woman",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Human Torch"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 23,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Human Torch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Invisible Woman",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Human Torch"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 24,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 25,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 26,
+      "heroes": [
+        {
+          "name": "Cloak & Dagger",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Luna Snow",
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Luna Snow",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "White Fox"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "Psylocke",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Cloak & Dagger"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        },
+        {
+          "name": "White Fox",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Psylocke"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 27,
+      "heroes": [
+        {
+          "name": "Cyclops",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 28,
+      "heroes": [
+        {
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Elsa Bloodstone",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Deadpool"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Moon Knight",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Elsa Bloodstone"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Moon Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 29,
+      "heroes": [
+        {
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Elsa Bloodstone",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Deadpool"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 30,
+      "heroes": [
+        {
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Human Torch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 31,
+      "heroes": [
+        {
+          "name": "Deadpool",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jeff the Land Shark",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Deadpool"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 32,
+      "heroes": [
+        {
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Magik",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 33,
+      "heroes": [
+        {
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        },
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        },
+        {
+          "name": "Wolverine",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Gambit"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 34,
+      "heroes": [
+        {
+          "name": "Deadpool",
+          "role": "Strategist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist",
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Hela",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Venom"
+          ]
+        },
+        {
+          "name": "Jeff the Land Shark",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Deadpool",
+            "Venom"
+          ]
+        },
+        {
+          "name": "Loki",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Phoenix",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Hela"
+          ]
+        },
+        {
+          "name": "Venom",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Phoenix"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 35,
+      "heroes": [
+        {
+          "name": "Gambit",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Human Torch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "Invisible Woman",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Human Torch"
+          ]
+        },
+        {
+          "name": "Jubilee",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "The Hood"
+          ]
+        },
+        {
+          "name": "Scarlet Witch",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Jubilee"
+          ]
+        },
+        {
+          "name": "The Hood",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Scarlet Witch"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 36,
+      "heroes": [
+        {
+          "name": "Groot",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Invisible Woman",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mister Fantastic"
+          ]
+        },
+        {
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Star-Lord"
+          ]
+        },
+        {
+          "name": "Mister Fantastic",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 37,
+      "heroes": [
+        {
+          "name": "Groot",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Loki",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Star-Lord"
+          ]
+        },
+        {
+          "name": "Mister Fantastic",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        }
+      ]
+    },
+    {
+      "team_number": 38,
+      "heroes": [
+        {
+          "name": "Groot",
+          "role": "Vanguard",
+          "primary_role": "Vanguard",
+          "eligible_roles": [
+            "Vanguard"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Loki",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Mantis"
+          ]
+        },
+        {
+          "name": "Mantis",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Star-Lord"
+          ]
+        },
+        {
+          "name": "Rocket Raccoon",
+          "role": "Strategist",
+          "primary_role": "Strategist",
+          "eligible_roles": [
+            "Strategist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "Star-Lord",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Groot"
+          ]
+        },
+        {
+          "name": "The Punisher",
+          "role": "Duelist",
+          "primary_role": "Duelist",
+          "eligible_roles": [
+            "Duelist"
+          ],
+          "active": true,
+          "active_partners": [
+            "Rocket Raccoon"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -16,26 +16,27 @@ The generator checks every six-hero combination, not permutations, and outputs u
 
 ## Active Dataset
 
-- Patch: `20260807-season-9-5`
-- Patch date: `2026-08-07`
-- Active heroes generated: `53`
-- Fully enhanced unrestricted combinations: `380`
+- Patch: `20260911-season-10`
+- Patch date: `2026-09-11`
+- Active heroes generated: `54`
+- Fully enhanced unrestricted combinations: `416`
 - Fully enhanced 2-2-2 combinations: `57`
-- Fully enhanced 1-3-2 combinations: `72`
+- Fully enhanced 1-3-2 combinations: `75`
 - Fully enhanced 2-1-3 combinations: `12`
 - Fully enhanced 1-2-3 combinations: `38`
 - Fully enhanced 3-1-2 combinations: `12`
-- Main official source: <https://www.marvelrivals.com/20260708/41525_1306959.html>
-- Pairing source: <https://allthings.how/marvel-rivals-season-9-how-the-reworked-team-up-system-works/>
-- Cross-checks: FandomWire role guides and Mobalytics Season 9 Team-Ups overview.
+- Main official source: <https://www.marvelrivals.com/m/gameupdate/20260909/41548_1313441.html>
+- Team-Up source: <https://www.marvelrivals.com/heroes/teamup.html>
+- Balance source: <https://www.marvelrivals.com/m/balancepost/20260908/41667_1313334.html>
+- Cross-check: <https://rivalsdex.com/team-ups>.
 
-The frontend supports multiple patch snapshots. Season 9.5 is now the default;
-Season 9 remains available as an archive. Season 9.5 is stored separately under
-`data/patches/20260807-season-9-5/` and `docs/data/patches/20260807-season-9-5/`.
-The Season 9.5 snapshot activates The Hood as a Vanguard and uses his two
-directional Team-Up links: Scarlet Witch and Moon Knight.
+The frontend supports multiple patch snapshots. Season 10 is now the default;
+Season 9 and Season 9.5 remain available as archives. Season 10.5 is staged as
+a disabled “Coming soon” snapshot until its release validation is complete.
+Season 10 adds Gorr the God Butcher as a Duelist with directional links to Hela
+and Venom.
 
-Season 9.5 counts: `380` unrestricted, `57` 2-2-2, `72` 1-3-2,
+Season 10 counts: `416` unrestricted, `57` 2-2-2, `75` 1-3-2,
 `12` 2-1-3, `38` 1-2-3, and `12` 3-1-2.
 
 The Hood source: <https://marvelrivals.gg/the-hood/>.
@@ -81,7 +82,7 @@ relationships, and reproducibility of all committed generated outputs.
 Expected success format:
 
 ```text
-Patch validation passed: 20260710-season-9, 20260807-season-9-5
+Patch validation passed: 20260710-season-9, 20260807-season-9-5, 20260911-season-10, 20261009-season-10-5
 ```
 
 ## Generate

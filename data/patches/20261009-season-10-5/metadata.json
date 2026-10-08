@@ -1,0 +1,35 @@
+{
+  "game": "Marvel Rivals",
+  "patch_version": "20261009-season-10-5",
+  "patch_date": "2026-10-09",
+  "data_retrieved_at": "2026-10-08T00:00:00+08:00",
+  "sources": [
+    {
+      "name": "Marvel Rivals season patch notes",
+      "url": "https://www.marvelrivals.com/gameupdate/20261006/41548_1315865.html",
+      "purpose": "Official season release and availability information."
+    },
+    {
+      "name": "Marvel Rivals balance notes",
+      "url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
+      "purpose": "Official Team-Up effect and numeric balance changes."
+    },
+    {
+      "name": "Marvel Rivals official Team-Up page",
+      "url": "https://www.marvelrivals.com/heroes/teamup.html",
+      "purpose": "Official directional Team-Up relationship cross-check."
+    },
+    {
+      "name": "RivalsDex Season 10 Team-Ups",
+      "url": "https://rivalsdex.com/team-ups",
+      "purpose": "Secondary cross-check for Gorr and the full Season 10 roster."
+    }
+  ],
+  "allowed_reciprocal_teamups": [],
+  "notes": [
+    "Team-Up relationships are directional: each active hero has exactly two outgoing partners.",
+    "Generated combinations are derived from heroes.json and teamups.json.",
+    "Gorr the God Butcher is active as a Duelist with outgoing links to Hela and Venom.",
+    "Season 10.5 is staged and disabled until post-release validation."
+  ]
+}

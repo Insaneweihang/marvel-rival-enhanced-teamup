@@ -1,7 +1,21 @@
 {
-  "current_version": "v0.3.6",
-  "updated_at": "2026-08-22",
+  "current_version": "v0.3.7",
+  "updated_at": "2026-10-08",
   "updates": [
+    {
+      "version": "v0.3.7",
+      "date": "2026-10-08",
+      "type": "data",
+      "title": "Season 10 Team-Up dataset",
+      "summary": "Added Gorr the God Butcher, his directional Team-Up links to Hela and Venom, updated Season 10 effects and numbers, and regenerated all team composition formats."
+    },
+    {
+      "version": "v0.3.7",
+      "date": "2026-10-08",
+      "type": "data",
+      "title": "Season 10.5 staged",
+      "summary": "Prepared the Season 10.5 Team-Up effect updates as a disabled Coming soon snapshot pending release validation."
+    },
     {
       "version": "v0.3.6",
       "date": "2026-08-22",
