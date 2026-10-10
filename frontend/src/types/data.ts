@@ -70,6 +70,9 @@ export type MapRecord = {
   objective_type?: string;
   category?: string;
   availability?: string[];
+  modes?: string[];
+  mode_rules?: Record<string, string[]>;
+  release?: string;
 };
 
 export type MapsData = {
@@ -77,6 +80,26 @@ export type MapsData = {
   sources?: Array<{ label: string; url: string }>;
   objective_types?: Array<{ name: string; summary: string }>;
   maps: MapRecord[];
+};
+
+export type EventMode = {
+  id: string;
+  label: string;
+  summary: string;
+  team_size?: number;
+  players?: number;
+  squad_count?: number;
+  squad_size?: number;
+  duplicate_heroes: "allowed_secondary" | "verify" | "not_documented";
+  draft_type: "none_documented" | "planning_simulator";
+  maps?: string[];
+  notes: string[];
+};
+
+export type EventModesData = {
+  last_checked?: string;
+  sources?: Array<{ label: string; url: string; scope?: string }>;
+  modes: EventMode[];
 };
 
 export type Update = {
@@ -96,6 +119,7 @@ export type PatchData = {
   teams: Record<string, Team[]>;
   heroDetails: Record<string, HeroDetails>;
   maps: MapsData;
+  eventModes: EventModesData;
   updates: Update[];
 };
 

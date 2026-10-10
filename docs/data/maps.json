@@ -270,10 +270,17 @@
     {
       "name": "Alchemax Headquarters",
       "location": "Alchemax Headquarters",
-      "objective_type": "18v18",
+      "objective_type": "Doom Match",
       "category": "Event",
-      "availability": ["18v18"],
-      "release": "Season 10.5"
+      "availability": ["Arcade", "18v18"],
+      "modes": ["Doom Match", "18v18 Annihilation"],
+      "mode_rules": {
+        "18v18 Annihilation": [
+          "No special pick/ban draft is documented in the official Season 10.5 notes.",
+          "Duplicate heroes are reported as allowed by secondary mode references."
+        ]
+      },
+      "release": "Season 8.0; 18v18 added in Season 10.5"
     }
   ]
 }

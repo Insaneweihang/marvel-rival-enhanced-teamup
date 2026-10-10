@@ -7,6 +7,7 @@ import type {
   Team,
   TeamUpEffect,
   MapsData,
+  EventModesData,
   Update,
 } from "../types/data";
 
@@ -34,7 +35,7 @@ function patchPath(patch: Patch, filename: string): string {
 export const staticDataProvider: DataProvider = {
   getManifest: () => getJson<PatchManifest>("patches.json"),
   async getPatchData(patch) {
-    const [summary, heroes, teamups, effects, heroDetails, all, balanced, oneThreeTwo, twoOneThree, oneTwoThree, threeOneTwo, maps, updates] = await Promise.all([
+    const [summary, heroes, teamups, effects, heroDetails, all, balanced, oneThreeTwo, twoOneThree, oneTwoThree, threeOneTwo, maps, eventModes, updates] = await Promise.all([
       getJson<PatchData["summary"]>(patchPath(patch, "summary.json")),
       getJson<{ heroes: Hero[] }>(patchPath(patch, "heroes.json")),
       getJson<{ teamups: Record<string, string[]> }>(patchPath(patch, "teamups.json")),
@@ -47,6 +48,7 @@ export const staticDataProvider: DataProvider = {
       getJson<{ teams: Team[] }>(patchPath(patch, "fully_enhanced_123_teams.json")),
       getJson<{ teams: Team[] }>(patchPath(patch, "fully_enhanced_312_teams.json")),
       getJson<MapsData>("maps.json"),
+      getJson<EventModesData>("event_modes.json"),
       getJson<{ updates: Update[] }>("updates.json"),
     ]);
     return {
@@ -56,6 +58,7 @@ export const staticDataProvider: DataProvider = {
       teamupEffects: effects.effects,
       heroDetails: heroDetails.heroes || {},
       maps,
+      eventModes,
       updates: updates.updates || [],
       teams: {
         all: all.teams,

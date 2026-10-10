@@ -1,0 +1,48 @@
+{
+  "last_checked": "2026-10-10",
+  "sources": [
+    {
+      "label": "Marvel Rivals Version 20261009 Patch Notes - Season 10.5 Arrives",
+      "url": "https://www.marvelrivals.com/gameupdate/20261006/41548_1315865.html",
+      "scope": "Official event mode structure and Alchemax 18v18 availability."
+    },
+    {
+      "label": "Rivals.GS Game Modes",
+      "url": "https://rivals.gs/modes/",
+      "scope": "Secondary reference for 18v18 duplicate-hero rules."
+    }
+  ],
+  "modes": [
+    {
+      "id": "18v18-annihilation",
+      "label": "18v18 Annihilation",
+      "summary": "Build a large event roster for an 18-player team.",
+      "team_size": 18,
+      "squad_size": 6,
+      "duplicate_heroes": "allowed_secondary",
+      "draft_type": "none_documented",
+      "maps": ["Grand Garden", "Alchemax Headquarters"],
+      "notes": [
+        "No special pick/ban draft is documented in the official Season 10.5 notes.",
+        "Duplicate heroes are reported as allowed by secondary mode references.",
+        "Role balance is guidance only; no official role composition restriction is documented."
+      ]
+    },
+    {
+      "id": "avengers-infinity-war",
+      "label": "Avengers: Infinity War",
+      "summary": "Plan six two-player squads for the Infinity Stone event.",
+      "players": 12,
+      "squad_count": 6,
+      "squad_size": 2,
+      "duplicate_heroes": "verify",
+      "draft_type": "planning_simulator",
+      "maps": [],
+      "notes": [
+        "The official notes describe 12 players forming six duo squads.",
+        "Each round has two squads competing to collect Infinity Stones.",
+        "A formal pick/ban order is not documented; this tool is a planning simulator."
+      ]
+    }
+  ]
+}

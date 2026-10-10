@@ -25,6 +25,7 @@
             <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
             <button class="view-tab" type="button" data-view="builder">Team Planner</button>
             <button class="view-tab" type="button" data-view="maps">Maps</button>
+            <button class="view-tab" type="button" data-view="events">Event Modes</button>
             <a id="link-challenge-link" class="view-tab nav-link-tab" href="games/teamup-path/">Mini Games</a>
           </nav>
           <div class="mini-game-quick-launch" aria-label="Daily mini game">
@@ -332,6 +333,33 @@
             </div>
             <div id="maps-list" class="maps-list"></div>
           </section>
+        </section>
+      </section>
+
+      <section id="events-view" class="app-view events-view">
+        <section class="event-modes-panel" aria-label="Event mode planner">
+          <div class="maps-heading">
+            <div>
+              <p class="eyebrow">Event planning</p>
+              <h2>Event Modes</h2>
+              <p>Mode-specific planning for large rosters and duo squads. Draft rules are shown only when documented.</p>
+            </div>
+            <span id="event-modes-checked" class="maps-source"></span>
+          </div>
+          <div id="event-mode-tabs" class="event-mode-tabs" role="tablist"></div>
+          <div id="event-mode-facts" class="event-mode-facts"></div>
+          <div id="event-mode-notes" class="event-mode-notes"></div>
+          <section id="event-roster-workspace" class="event-workspace">
+            <div class="section-heading"><div><h3>18v18 roster</h3><p id="event-roster-summary"></p></div><button id="reset-event-roster" type="button">Reset roster</button></div>
+            <input id="event-hero-search" type="search" placeholder="Search heroes to add" autocomplete="off" />
+            <div id="event-hero-picker" class="event-hero-picker"></div>
+            <div id="event-roster" class="event-roster"></div>
+          </section>
+          <section id="event-squads-workspace" class="event-workspace" hidden>
+            <div class="section-heading"><div><h3>Infinity War duo squads</h3><p>Assign two heroes to each squad. This is a planning simulator, not an official pick/ban draft.</p></div><button id="reset-event-squads" type="button">Reset squads</button></div>
+            <div id="event-squads" class="event-squads"></div>
+          </section>
+          <section class="event-effects"><h3>Directional Team-Up effects</h3><div id="event-effects"></div></section>
         </section>
       </section>
     </main>

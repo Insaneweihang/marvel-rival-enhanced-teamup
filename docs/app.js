@@ -2,6 +2,7 @@ const PATCH_MANIFEST_FILE = "data/patches.json";
 const PATCH_STORAGE_KEY = "marvel-rivals:selected-patch:v1";
 const SHARED_DATA_FILES = {
   maps: "data/maps.json",
+  eventModes: "data/event_modes.json",
   updates: "data/updates.json",
 };
 
@@ -103,6 +104,11 @@ const state = {
   selectedPoolPair: null,
   poolStatus: "",
   mapSearch: "",
+  eventModesData: null,
+  eventModeId: "18v18-annihilation",
+  eventRoster: [],
+  eventSquads: Array.from({ length: 6 }, () => ["", ""]),
+  eventHeroSearch: "",
   selectedMapType: "All",
   selectedMapCategory: "All",
   savedComps: [],
@@ -199,6 +205,20 @@ const elements = {
   mapsSource: document.querySelector("#maps-source"),
   mapsTitle: document.querySelector("#maps-title"),
   mapsList: document.querySelector("#maps-list"),
+  eventModesChecked: document.querySelector("#event-modes-checked"),
+  eventModeTabs: document.querySelector("#event-mode-tabs"),
+  eventModeFacts: document.querySelector("#event-mode-facts"),
+  eventModeNotes: document.querySelector("#event-mode-notes"),
+  eventRosterWorkspace: document.querySelector("#event-roster-workspace"),
+  eventSquadsWorkspace: document.querySelector("#event-squads-workspace"),
+  eventRosterSummary: document.querySelector("#event-roster-summary"),
+  eventHeroSearch: document.querySelector("#event-hero-search"),
+  eventHeroPicker: document.querySelector("#event-hero-picker"),
+  eventRoster: document.querySelector("#event-roster"),
+  eventSquads: document.querySelector("#event-squads"),
+  eventEffects: document.querySelector("#event-effects"),
+  resetEventRoster: document.querySelector("#reset-event-roster"),
+  resetEventSquads: document.querySelector("#reset-event-squads"),
   updatesToggle: document.querySelector("#updates-toggle"),
   updatesPanel: document.querySelector("#updates-panel"),
   updatesClose: document.querySelector("#updates-close"),
@@ -505,7 +525,7 @@ function readUrlState() {
     state.patchId = patch;
   }
 
-  if (view === "builder" || view === "browser" || view === "maps") {
+  if (view === "builder" || view === "browser" || view === "maps" || view === "events") {
     state.activeView = view;
   }
   if (mode) {
@@ -787,7 +807,7 @@ function renderMapFilters() {
   elements.mapTypeFilters.replaceChildren();
   elements.mapCategoryFilters.replaceChildren();
 
-  const types = ["All", ...uniqueSorted(maps.map((map) => map.objective_type))];
+  const types = ["All", ...uniqueSorted(maps.flatMap((map) => map.modes?.length ? map.modes : [map.objective_type].filter(Boolean)))];
   const categories = ["All", ...uniqueSorted(maps.map((map) => map.category))];
 
   for (const type of types) {
@@ -822,12 +842,14 @@ function renderMapDefinitions() {
 function filteredMaps() {
   const search = state.mapSearch.trim().toLowerCase();
   return (state.mapsData?.maps || []).filter((map) => {
-    const matchesType = state.selectedMapType === "All" || map.objective_type === state.selectedMapType;
+    const modes = map.modes?.length ? map.modes : [map.objective_type].filter(Boolean);
+    const matchesType = state.selectedMapType === "All" || modes.includes(state.selectedMapType);
     const matchesCategory = state.selectedMapCategory === "All" || map.category === state.selectedMapCategory;
     const haystack = [
       map.name,
       map.location,
       map.objective_type,
+      ...modes,
       map.category,
       ...(map.availability || []),
       map.release || "",
@@ -842,7 +864,8 @@ function renderMapCard(map) {
 
   const title = document.createElement("div");
   title.className = "map-card-title";
-  title.innerHTML = `<h3>${map.name}</h3><span>${map.objective_type}</span>`;
+  const modes = map.modes?.length ? map.modes : [map.objective_type || "Unknown"];
+  title.innerHTML = `<h3>${map.name}</h3><span>${modes.join(" / ")}</span>`;
 
   const facts = document.createElement("dl");
   facts.className = "map-facts";
@@ -852,6 +875,13 @@ function renderMapCard(map) {
     <div><dt>Availability</dt><dd>${(map.availability || ["Unknown"]).join(", ")}</dd></div>
     <div><dt>Release</dt><dd>${map.release || "Not listed"}</dd></div>
   `;
+
+  for (const [mode, rules] of Object.entries(map.mode_rules || {})) {
+    const rulesBlock = document.createElement("div");
+    rulesBlock.className = "map-rules";
+    rulesBlock.innerHTML = `<dt>${mode} rules</dt><dd>${rules.map((rule) => `<p>${rule}</p>`).join("")}</dd>`;
+    facts.append(rulesBlock);
+  }
 
   card.append(title, facts);
   return card;
@@ -892,6 +922,110 @@ function renderMaps() {
 
   for (const map of maps) {
     elements.mapsList.append(renderMapCard(map));
+  }
+}
+
+function currentEventMode() {
+  return state.eventModesData?.modes?.find((mode) => mode.id === state.eventModeId) || state.eventModesData?.modes?.[0] || null;
+}
+
+function eventRosterNames() {
+  const mode = currentEventMode();
+  return mode?.id === "18v18-annihilation" ? state.eventRoster : state.eventSquads.flat();
+}
+
+function renderEventModes() {
+  if (!state.eventModesData || !elements.eventModeTabs) return;
+  const mode = currentEventMode();
+  if (!mode) return;
+  elements.eventModesChecked.textContent = `Checked ${state.eventModesData.last_checked || "Unknown"}`;
+  elements.eventModeTabs.replaceChildren();
+  for (const item of state.eventModesData.modes) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = item.id === mode.id ? "active" : "";
+    button.innerHTML = `<strong>${item.label}</strong><small>${item.summary}</small>`;
+    button.addEventListener("click", () => {
+      state.eventModeId = item.id;
+      state.eventHeroSearch = "";
+      elements.eventHeroSearch.value = "";
+      trackEvent("event_mode_selected", { event_mode: item.id });
+      renderEventModes();
+    });
+    elements.eventModeTabs.append(button);
+  }
+  const duplicateText = mode.duplicate_heroes === "allowed_secondary"
+    ? "Duplicate heroes: allowed (secondary source)"
+    : mode.duplicate_heroes === "verify" ? "Duplicate heroes: verify" : "Duplicate heroes: not documented";
+  elements.eventModeFacts.innerHTML = `
+    <div><strong>${mode.team_size ? `${mode.team_size}-player team` : `${mode.players}-player event`}</strong><span>${mode.squad_count ? `${mode.squad_count} squads of ${mode.squad_size}` : `Squad size: ${mode.squad_size}`}</span></div>
+    <div><strong>${duplicateText}</strong><span>${mode.draft_type === "none_documented" ? "Draft: no special draft documented" : "Draft: planning simulator only"}</span></div>
+    <div><strong>Maps</strong><span>${(mode.maps || []).join(", ") || "Event structure only"}</span></div>`;
+  elements.eventModeNotes.replaceChildren();
+  for (const note of mode.notes || []) {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = note;
+    elements.eventModeNotes.append(paragraph);
+  }
+  elements.eventRosterWorkspace.hidden = mode.id !== "18v18-annihilation";
+  elements.eventSquadsWorkspace.hidden = mode.id === "18v18-annihilation";
+  const names = activeHeroNames();
+  if (mode.id === "18v18-annihilation") {
+    elements.eventRosterSummary.textContent = `${state.eventRoster.length}/${mode.team_size} slots used. Repeated heroes are supported by the current secondary-source rule.`;
+    elements.eventHeroPicker.replaceChildren();
+    const search = state.eventHeroSearch.toLowerCase();
+    for (const heroName of names.filter((name) => name.toLowerCase().includes(search)).slice(0, 24)) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.disabled = state.eventRoster.length >= mode.team_size;
+      const count = state.eventRoster.filter((name) => name === heroName).length;
+      button.innerHTML = `<span>${heroName}</span><small>${count ? `x${count}` : state.heroesByName.get(heroName)?.role || ""}</small>`;
+      button.addEventListener("click", () => {
+        if (state.eventRoster.length < mode.team_size) {
+          state.eventRoster.push(heroName);
+          trackEvent("event_roster_hero_added", { event_mode: mode.id, hero_name: heroName });
+          renderEventModes();
+        }
+      });
+      elements.eventHeroPicker.append(button);
+    }
+    elements.eventRoster.replaceChildren();
+    if (!state.eventRoster.length) {
+      elements.eventRoster.append(makeChip("Add heroes to begin the roster.", "muted-chip"));
+    } else {
+      state.eventRoster.forEach((heroName, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = `${heroName} x`;
+        button.addEventListener("click", () => { state.eventRoster.splice(index, 1); renderEventModes(); });
+        elements.eventRoster.append(button);
+      });
+    }
+  } else {
+    elements.eventSquads.replaceChildren();
+    state.eventSquads.forEach((squad, squadIndex) => {
+      const item = document.createElement("div");
+      item.className = "event-squad";
+      const title = document.createElement("strong");
+      title.textContent = `Squad ${squadIndex + 1}`;
+      item.append(title);
+      squad.forEach((heroName, slot) => {
+        const select = document.createElement("select");
+        select.setAttribute("aria-label", `Squad ${squadIndex + 1} hero ${slot + 1}`);
+        select.innerHTML = `<option value="">Select hero</option>` + names.map((name) => `<option value="${name}" ${name === heroName ? "selected" : ""}>${name}</option>`).join("");
+        select.addEventListener("change", (event) => { state.eventSquads[squadIndex][slot] = event.target.value; renderEventModes(); });
+        item.append(select);
+      });
+      elements.eventSquads.append(item);
+    });
+  }
+  elements.eventEffects.replaceChildren();
+  const selected = new Set(eventRosterNames());
+  const effects = eventRosterNames().flatMap((heroName) => (state.teamups.get(heroName) || []).filter((partner) => selected.has(partner)).map((partner) => `${heroName} + ${partner}`));
+  if (!effects.length) {
+    elements.eventEffects.append(makeChip("No active directional effects yet.", "muted-chip"));
+  } else {
+    for (const effect of effects) elements.eventEffects.append(makeChip(effect, "event-effect-chip"));
   }
 }
 
@@ -2892,6 +3026,7 @@ function update() {
   renderSelectedHeroes();
   renderBuilder();
   renderMaps();
+  renderEventModes();
   renderResults();
   renderHeroDetail();
   writeUrlState();
@@ -3035,6 +3170,18 @@ function bindEvents() {
     }
     renderMaps();
   });
+  elements.eventHeroSearch?.addEventListener("input", (event) => {
+    state.eventHeroSearch = event.target.value;
+    renderEventModes();
+  });
+  elements.resetEventRoster?.addEventListener("click", () => {
+    state.eventRoster = [];
+    renderEventModes();
+  });
+  elements.resetEventSquads?.addEventListener("click", () => {
+    state.eventSquads = Array.from({ length: 6 }, () => ["", ""]);
+    renderEventModes();
+  });
   elements.clearFilters.addEventListener("click", () => {
     state.includedHeroes.clear();
     state.excludedHeroes.clear();
@@ -3112,6 +3259,7 @@ async function init() {
       teamupEffects,
       heroDetails,
       mapsData,
+      eventModesData,
       updatesData,
       ...teamPayloads
     ] = await Promise.all([
@@ -3121,11 +3269,13 @@ async function init() {
       loadJson(dataFiles.teamupEffects),
       loadJson(dataFiles.heroDetails),
       loadJson(dataFiles.maps),
+      loadJson(dataFiles.eventModes),
       loadJson(dataFiles.updates),
       ...TEAM_MODE_KEYS.map((key) => loadJson(dataFiles[key])),
     ]);
     state.summary = summary;
     state.mapsData = mapsData;
+    state.eventModesData = eventModesData;
     state.updates = Array.isArray(updatesData.updates) ? updatesData.updates : [];
     state.updatesVersion = String(updatesData.current_version || "");
     state.updatesUpdatedAt = String(updatesData.updated_at || "");
