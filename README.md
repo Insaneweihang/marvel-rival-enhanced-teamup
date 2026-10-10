@@ -16,8 +16,8 @@ The generator checks every six-hero combination, not permutations, and outputs u
 
 ## Active Dataset
 
-- Patch: `20260911-season-10`
-- Patch date: `2026-09-11`
+- Patch: `20261009-season-10-5`
+- Patch date: `2026-10-09`
 - Active heroes generated: `54`
 - Fully enhanced unrestricted combinations: `416`
 - Fully enhanced 2-2-2 combinations: `57`
@@ -25,13 +25,13 @@ The generator checks every six-hero combination, not permutations, and outputs u
 - Fully enhanced 2-1-3 combinations: `12`
 - Fully enhanced 1-2-3 combinations: `38`
 - Fully enhanced 3-1-2 combinations: `12`
-- Main official source: <https://www.marvelrivals.com/m/gameupdate/20260909/41548_1313441.html>
+- Main official source: <https://www.marvelrivals.com/gameupdate/20261006/41548_1315865.html>
 - Team-Up source: <https://www.marvelrivals.com/heroes/teamup.html>
-- Balance source: <https://www.marvelrivals.com/m/balancepost/20260908/41667_1313334.html>
+- Balance source: <https://www.marvelrivals.com/20261006/41525_1315864.html>
 - Cross-check: <https://rivalsdex.com/team-ups>.
 
-The frontend supports multiple patch snapshots. Season 10 is now the default;
-Season 9 and Season 9.5 remain available as archives. Season 10.5 is now
+The frontend supports multiple patch snapshots. Season 10.5 is now the default;
+Season 9, Season 9.5, and Season 10 remain available as archives. Season 10.5 is
 available with its Team-Up balance updates and Alchemax Headquarters map data.
 Season 10 adds Gorr the God Butcher as a Duelist with directional links to Hela
 and Venom.
