@@ -28,8 +28,8 @@
       "label": "Season 10.5",
       "date": "2026-10-09",
       "data_path": "data/patches/20261009-season-10-5",
-      "status": "announced",
-      "available": false
+      "status": "available",
+      "available": true
     }
   ]
 }

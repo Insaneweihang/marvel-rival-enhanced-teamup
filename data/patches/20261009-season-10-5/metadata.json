@@ -2,7 +2,7 @@
   "game": "Marvel Rivals",
   "patch_version": "20261009-season-10-5",
   "patch_date": "2026-10-09",
-  "data_retrieved_at": "2026-10-08T00:00:00+08:00",
+  "data_retrieved_at": "2026-10-10T00:00:00+08:00",
   "sources": [
     {
       "name": "Marvel Rivals season patch notes",
@@ -30,6 +30,6 @@
     "Team-Up relationships are directional: each active hero has exactly two outgoing partners.",
     "Generated combinations are derived from heroes.json and teamups.json.",
     "Gorr the God Butcher is active as a Duelist with outgoing links to Hela and Venom.",
-    "Season 10.5 is staged and disabled until post-release validation."
+    "Season 10.5 is available after post-release validation."
   ]
 }

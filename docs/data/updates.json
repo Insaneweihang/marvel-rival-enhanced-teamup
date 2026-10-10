@@ -1,6 +1,6 @@
 {
   "current_version": "v0.3.7",
-  "updated_at": "2026-10-08",
+  "updated_at": "2026-10-10",
   "updates": [
     {
       "version": "v0.3.7",
@@ -11,10 +11,10 @@
     },
     {
       "version": "v0.3.7",
-      "date": "2026-10-08",
+      "date": "2026-10-10",
       "type": "data",
-      "title": "Season 10.5 staged",
-      "summary": "Prepared the Season 10.5 Team-Up effect updates as a disabled Coming soon snapshot pending release validation."
+      "title": "Season 10.5 Team-Up dataset",
+      "summary": "Enabled the Season 10.5 snapshot with updated Team-Up effects, balance numbers, and Alchemax Headquarters map data."
     },
     {
       "version": "v0.3.6",

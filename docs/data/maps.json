@@ -1,6 +1,11 @@
 {
-  "last_checked": "2026-07-23",
+  "last_checked": "2026-10-10",
   "sources": [
+    {
+      "label": "Marvel Rivals Version 20261009 Patch Notes - Season 10.5 Arrives",
+      "url": "https://www.marvelrivals.com/gameupdate/20261006/41548_1315865.html",
+      "scope": "Season 10.5 map and mode availability."
+    },
     {
       "label": "Marvel Rivals Wiki - Maps",
       "url": "https://marvelrivals.fandom.com/wiki/Maps"
@@ -58,6 +63,10 @@
     {
       "name": "Training",
       "summary": "Practice and tutorial spaces."
+    },
+    {
+      "name": "18v18",
+      "summary": "Large-scale event mode featuring 18 players per team."
     }
   ],
   "maps": [
@@ -257,6 +266,14 @@
       "objective_type": "Event",
       "category": "Event",
       "availability": ["Blood Hunt"]
+    },
+    {
+      "name": "Alchemax Headquarters",
+      "location": "Alchemax Headquarters",
+      "objective_type": "18v18",
+      "category": "Event",
+      "availability": ["18v18"],
+      "release": "Season 10.5"
     }
   ]
 }

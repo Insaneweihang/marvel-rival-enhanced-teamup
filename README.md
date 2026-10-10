@@ -31,8 +31,8 @@ The generator checks every six-hero combination, not permutations, and outputs u
 - Cross-check: <https://rivalsdex.com/team-ups>.
 
 The frontend supports multiple patch snapshots. Season 10 is now the default;
-Season 9 and Season 9.5 remain available as archives. Season 10.5 is staged as
-a disabled “Coming soon” snapshot until its release validation is complete.
+Season 9 and Season 9.5 remain available as archives. Season 10.5 is now
+available with its Team-Up balance updates and Alchemax Headquarters map data.
 Season 10 adds Gorr the God Butcher as a Duelist with directional links to Hela
 and Venom.
 
