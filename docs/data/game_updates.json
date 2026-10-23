@@ -1,68 +1,121 @@
 {
-  "updated_at": "2026-10-22",
-  "source": "Steam news feed for Marvel Rivals (app 2767030)",
-  "source_url": "https://store.steampowered.com/news/app/2767030/",
+  "updated_at": "2026-10-23",
+  "source": "Marvel Rivals official news, Steam and YouTube",
+  "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
-    "steam_rss_items": 8,
-    "official_news_links": 9
+    "official_news_cards": 9,
+    "steam_rss_items": 10,
+    "youtube_items": 7
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
     {
-      "id": "703282928078032948",
-      "date": "2026-10-22",
+      "id": "official:40954_1317554",
+      "date": "2026-10-23",
+      "title": "Art Vision Vol. 06 // Behind The Scenes (Part 2): Dedication and Passion | Marvel Rivals",
+      "category": "dev",
+      "url": "https://www.marvelrivals.com/devdiaries/20261023/40954_1317554.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "official:41548_1317253",
+      "date": "2026-10-21",
       "title": "Marvel Rivals Version 20261022 Patch Notes",
       "category": "patch",
-      "url": "https://store.steampowered.com/news/app/2767030/view/703282928078032948"
+      "url": "https://www.marvelrivals.com/gameupdate/20261021/41548_1317253.html",
+      "source": "official",
+      "source_label": "Official site"
     },
     {
-      "id": "746066581090468110",
-      "date": "2026-10-15",
+      "id": "youtube:XzW9t8tLP3Q",
+      "date": "2026-10-21",
+      "title": "The Cosmic Shark Snaps Back! | New Jeff the Landshark Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=XzW9t8tLP3Q",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:hFelg1evOg0",
+      "date": "2026-10-20",
+      "title": "Hunt the Creatures of the Dark! | New Elsa Bloodstone Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=hFelg1evOg0",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:RUEk4Bak3Xk",
+      "date": "2026-10-20",
+      "title": "Path to Doomsday - Avengers: Endgame | New PvE Mode Trailer | Marvel Rivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=RUEk4Bak3Xk",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:HuHs1Wh6_wI",
+      "date": "2026-10-20",
+      "title": "Assemble, participate, and reign! | New FREE Captain America Costume Reveal Trailer | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=HuHs1Wh6_wI",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "official:40954_1316982",
+      "date": "2026-10-19",
       "title": "Art Vision Vol. 06 // Behind The Scenes (Part 1): Dedication and Passion",
       "category": "dev",
-      "url": "https://store.steampowered.com/news/app/2767030/view/746066581090468110"
+      "url": "https://www.marvelrivals.com/devdiaries/20261019/40954_1316982.html",
+      "source": "official",
+      "source_label": "Official site"
     },
     {
-      "id": "746066581090467873",
+      "id": "official:40955_1316802",
+      "date": "2026-10-16",
+      "title": "Speech Moderation and Penalties",
+      "category": "news",
+      "url": "https://www.marvelrivals.com/announcements/20261016/40955_1316802.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "official:40955_1316797",
       "date": "2026-10-15",
+      "title": "Use of Mods and Violation Management",
+      "category": "news",
+      "url": "https://www.marvelrivals.com/announcements/20261015/40955_1316797.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "official:41548_1316588",
+      "date": "2026-10-14",
       "title": "Marvel Rivals Version 20261015 Patch Notes",
       "category": "patch",
-      "url": "https://store.steampowered.com/news/app/2767030/view/746066581090467873"
+      "url": "https://www.marvelrivals.com/gameupdate/20261014/41548_1316588.html",
+      "source": "official",
+      "source_label": "Official site"
     },
     {
-      "id": "686393161428239270",
-      "date": "2026-10-08",
+      "id": "official:40954_1315872",
+      "date": "2026-10-07",
       "title": "Season 10.5: New Modes and Halloween // Dev Vision Vol. 22 | Marvel Rivals",
       "category": "dev",
-      "url": "https://store.steampowered.com/news/app/2767030/view/686393161428239270"
+      "url": "https://www.marvelrivals.com/devdiaries/20261007/40954_1315872.html",
+      "source": "official",
+      "source_label": "Official site"
     },
     {
-      "id": "686393161428239263",
-      "date": "2026-10-08",
-      "title": "Marvel Rivals Version 20261009 Patch Notes - Season 10.5 Arrives",
-      "category": "patch",
-      "url": "https://store.steampowered.com/news/app/2767030/view/686393161428239263"
-    },
-    {
-      "id": "686393161428239261",
-      "date": "2026-10-08",
+      "id": "official:41667_1315864",
+      "date": "2026-10-06",
       "title": "Marvel Rivals Version 20261009 Balance Post",
       "category": "balance",
-      "url": "https://store.steampowered.com/news/app/2767030/view/686393161428239261"
-    },
-    {
-      "id": "686392527015641278",
-      "date": "2026-10-01",
-      "title": "Marvel Rivals Version 20261001 Patch Notes",
-      "category": "patch",
-      "url": "https://store.steampowered.com/news/app/2767030/view/686392527015641278"
-    },
-    {
-      "id": "685265994960077911",
-      "date": "2026-09-24",
-      "title": "Marvel Rivals Version 20260924 Patch Notes",
-      "category": "patch",
-      "url": "https://store.steampowered.com/news/app/2767030/view/685265994960077911"
+      "url": "https://www.marvelrivals.com/balancepost/20261006/41667_1315864.html",
+      "source": "official",
+      "source_label": "Official site"
     }
   ]
 }

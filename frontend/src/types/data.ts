@@ -117,13 +117,21 @@ export type GameUpdate = {
   title: string;
   category: string;
   url: string;
+  /** Feed the item came from: official | steam | youtube */
+  source?: string;
+  source_label?: string;
 };
 
 export type GameUpdates = {
   updated_at: string;
   source: string;
   source_url: string;
-  sources_checked?: { steam_rss_items?: number; official_news_links?: number };
+  sources_checked?: {
+    official_news_cards?: number;
+    steam_rss_items?: number;
+    youtube_items?: number;
+    official_news_links?: number;
+  };
   disclaimer: string;
   items: GameUpdate[];
 };

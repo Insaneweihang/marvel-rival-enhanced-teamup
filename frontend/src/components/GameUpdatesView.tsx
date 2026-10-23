@@ -7,6 +7,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   balance: "Balance",
   dev: "Dev post",
   news: "News",
+  video: "Video",
 };
 
 function categoryLabel(category: string) {
@@ -24,7 +25,8 @@ export function GameUpdatesView({ gameUpdates, patches }: Props) {
           <p className="eyebrow">Official news feed</p>
           <h2>Game Updates</h2>
           <p>
-            Newest Marvel Rivals patch notes and announcements. Headlines open the official post.
+            Newest patch notes, balance posts, dev diaries and videos from the official Marvel Rivals
+            channels. Steam mirrors are folded into their official-site post.
             {gameUpdates.updated_at ? ` Last synced ${gameUpdates.updated_at}.` : ""}
           </p>
         </div>
@@ -36,6 +38,9 @@ export function GameUpdatesView({ gameUpdates, patches }: Props) {
             <li className="game-update-item" key={item.id}>
               <div className="game-update-meta">
                 <span className={`game-update-badge ${item.category}`}>{categoryLabel(item.category)}</span>
+                {item.source_label && (
+                  <span className={`game-update-from ${item.source || "official"}`}>{item.source_label}</span>
+                )}
                 <span className="game-update-date">{item.date}</span>
                 {coveredDates.has(item.date) && <span className="game-update-covered">in this dataset</span>}
               </div>

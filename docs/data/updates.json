@@ -1,7 +1,15 @@
 {
-  "current_version": "v0.3.8",
+  "current_version": "v0.3.9",
   "updated_at": "2026-10-23",
   "updates": [
+    {
+      "version": "v0.3.9",
+      "date": "2026-10-23",
+      "type": "feature",
+      "title": "Game Updates from every official channel",
+      "summary": "The Game Updates tab no longer relies on Steam alone. It now merges the official marvelrivals.com news index (patch notes, balance posts, dev diaries, announcements), the official Steam news feed, and the official YouTube channel, labelling each item with its source and folding Steam mirrors into the canonical official-site post.",
+      "note": "Esports match VODs are filtered out and videos are capped, so articles stay at the top of the feed."
+    },
     {
       "version": "v0.3.8",
       "date": "2026-10-23",

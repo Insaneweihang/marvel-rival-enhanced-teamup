@@ -220,6 +220,10 @@ footer span:last-child { display: flex; gap: 15px; } footer a { color: #b92035; 
 .game-update-badge.patch { background: #fff0f1; color: #b92035; }
 .game-update-badge.balance { background: #eef4ff; color: #2a4f8f; }
 .game-update-badge.dev { background: #f4f0ff; color: #5b3fa8; }
+.game-update-badge.video { background: #fff4e8; color: #9a5b00; }
+.game-update-from { padding: 2px 7px; border: 1px solid #d7ddd9; border-radius: 999px; background: #fff; color: #5d6a64; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
+.game-update-from.official { border-color: #c9d8cd; color: #2f5c3d; }
+.game-update-from.youtube { border-color: #f0d0d0; color: #a13030; }
 .game-update-date { color: #68736e; }
 .game-update-covered { color: #2f7a4f; font-weight: 700; }
 .game-update-source { margin: 14px 0 0; color: #68736e; font-size: 12px; }

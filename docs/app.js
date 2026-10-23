@@ -777,6 +777,7 @@ const GAME_UPDATE_CATEGORY_LABELS = {
   balance: "Balance",
   dev: "Dev post",
   news: "News",
+  video: "Video",
 };
 
 function renderGameUpdates() {
@@ -788,8 +789,8 @@ function renderGameUpdates() {
 
   if (elements.gameUpdatesMeta) {
     elements.gameUpdatesMeta.textContent = state.gameUpdatesUpdatedAt
-      ? `Last synced ${state.gameUpdatesUpdatedAt}. Headlines open the official post.`
-      : "Headlines open the official post.";
+      ? `Last synced ${state.gameUpdatesUpdatedAt}. Patch notes, balance posts, dev diaries and videos from official channels.`
+      : "Patch notes, balance posts, dev diaries and videos from official channels.";
   }
 
   if (elements.gameUpdatesSource) {
@@ -824,6 +825,13 @@ function renderGameUpdates() {
     badge.className = `game-update-badge ${item.category || "news"}`;
     badge.textContent = GAME_UPDATE_CATEGORY_LABELS[item.category] || "News";
     meta.append(badge);
+
+    if (item.source_label) {
+      const from = document.createElement("span");
+      from.className = `game-update-from ${item.source || "official"}`;
+      from.textContent = item.source_label;
+      meta.append(from);
+    }
 
     const when = document.createElement("span");
     when.className = "game-update-date";
