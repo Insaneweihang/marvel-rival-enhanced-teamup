@@ -210,3 +210,17 @@ footer span:last-child { display: flex; gap: 15px; } footer a { color: #b92035; 
 .tool-directory-card p { margin: 5px 0 0; color: #68736e; font-size: 13px; line-height: 1.4; }
 .tool-icon { display: grid; place-items: center; width: 42px; height: 42px; background: #fff0f1; color: #b92035; font-size: 11px; font-weight: 950; }
 @media (max-width: 760px) { .creator-header { align-items: flex-start; } .creator-header nav { justify-content: flex-end; gap: 10px 14px; } .creator-main { padding-top: 30px; } .creator-intro { grid-template-columns: 1fr; gap: 28px; padding-bottom: 38px; } .creator-intro h1, .tools-intro h1 { font-size: clamp(36px, 12vw, 54px); } .video-grid { grid-template-columns: 1fr; } .creator-tool-callout, .creator-footer { display: block; } .creator-tool-callout .creator-primary-action { margin-top: 18px; } .creator-footer span + span, .creator-footer a { display: block; margin-top: 8px; } }
+.game-updates-panel { margin-top: 18px; padding: 20px; border: 1px solid #d8ddd7; background: #fff; }
+.game-update-list { display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
+.game-update-item { padding: 12px 13px; border: 1px solid #edf0ec; }
+.game-update-item a { color: #19201d; font-size: 14px; font-weight: 700; text-decoration: none; }
+.game-update-item a:hover { color: #b92035; }
+.game-update-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 11px; }
+.game-update-badge { padding: 2px 7px; border-radius: 999px; background: #eef1ee; color: #3f4a45; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; }
+.game-update-badge.patch { background: #fff0f1; color: #b92035; }
+.game-update-badge.balance { background: #eef4ff; color: #2a4f8f; }
+.game-update-badge.dev { background: #f4f0ff; color: #5b3fa8; }
+.game-update-date { color: #68736e; }
+.game-update-covered { color: #2f7a4f; font-weight: 700; }
+.game-update-source { margin: 14px 0 0; color: #68736e; font-size: 12px; }
+.game-update-source a { color: #b92035; }

@@ -1,7 +1,7 @@
 {
-  "patch_version": "20260710-season-9",
-  "source": "official_marvel_rivals_hero_pages",
-  "source_url": "https://www.marvelrivals.com/heroes/index.html?heroId=0",
+  "patch_version": "20261022-season-10-5-2",
+  "source": "marvelrivals_gg_the_hood_guide",
+  "source_url": "https://marvelrivals.gg/the-hood/",
   "heroes": {
     "Adam Warlock": {
       "source_url": "https://www.marvelrivals.com/20241123/41360_1195670.html",
@@ -159,9 +159,9 @@
           "name": "FLAWLESS DESIGN",
           "partner": "Ultron",
           "key": "Right Click",
-          "description": "Base Effect: Cosmic Cluster now provides healing to allies.  Enhanced Effect: When teaming up with Ultron, Cosmic Cluster creates an explosion upon impact.",
+          "description": "Base Effect: Cosmic Cluster now provides healing to allies. Enhanced Effect: With Ultron, Cosmic Cluster heals for 18 and its explosion field heals for 7.",
           "base_effect": "Cosmic Cluster now provides healing to allies.",
-          "enhanced_effect": "When teaming up with Ultron, Cosmic Cluster creates an explosion upon impact.",
+          "enhanced_effect": "With Ultron, Cosmic Cluster heals for 18 and its explosion field heals for 7.",
           "stats": {
             "Key": "Right Click",
             "Healing to Allies Hit by Cosmic Cluster": "16 damage per round",
@@ -361,9 +361,9 @@
           "name": "ODIN'S UNACKNOWLEDGED",
           "partner": "Loki",
           "key": "C",
-          "description": "Base Effect: Project an Illusion forward. The illusion utilizes Assassin's Charge to thrust at enemies. Enemies struck head-on will be carried through the air for a short while.  Enhanced Effect: When teaming up with Loki, the ability gains two charges.",
+          "description": "Base Effect: Project an Illusion forward. The illusion utilizes Assassin's Charge to thrust at enemies. Enemies struck head-on will be carried through the air for a short while. Enhanced Effect: With Loki, the ability gains two charges; illusion damage is capped at 150.",
           "base_effect": "Project an Illusion forward. The illusion utilizes Assassin's Charge to thrust at enemies. Enemies struck head-on will be carried through the air for a short while.",
-          "enhanced_effect": "When teaming up with Loki, the ability gains two charges.",
+          "enhanced_effect": "With Loki, the ability gains two charges; illusion damage is capped at 150.",
           "stats": {
             "Key": "C",
             "Cooldown": "20s",
@@ -698,9 +698,9 @@
           "name": "FELINE ALLIANCE",
           "partner": "Black Panther",
           "key": "C",
-          "description": "Base Effect: Taking damage accumulates Vibranium Energy. Upon reaching a specific threshold, Black Cat can unleash a violent explosion, damaging and Knocking back surrounding enemies while gaining a brief Speed Boost and Bonus Health.  Enhanced Effect: When teaming up with Black Panther, this explosion is no longer restricted by the energy threshold and can be triggered at any time.",
+          "description": "Base Effect: Taking damage accumulates Vibranium Energy. Upon reaching a specific threshold, Black Cat can unleash a violent explosion, damaging and Knocking back surrounding enemies while gaining a brief Speed Boost and Bonus Health. Enhanced Effect: With Black Panther, the explosion can be triggered without waiting for the energy threshold; hits grant 50 Fortune per enemy, capped at 100.",
           "base_effect": "Taking damage accumulates Vibranium Energy. Upon reaching a specific threshold, Black Cat can unleash a violent explosion, damaging and Knocking back surrounding enemies while gaining a brief Speed Boost and Bonus Health.",
-          "enhanced_effect": "When teaming up with Black Panther, this explosion is no longer restricted by the energy threshold and can be triggered at any time.",
+          "enhanced_effect": "With Black Panther, the explosion can be triggered without waiting for the energy threshold; hits grant 50 Fortune per enemy, capped at 100.",
           "stats": {
             "Key": "C",
             "Cooldown": "12s",
@@ -1250,9 +1250,9 @@
           "name": "BLEED FOR BATTLE",
           "partner": "Captain America",
           "key": "Passive",
-          "description": "Base Effect: For every set amount of damage taken, Blade builds a stack of Bloodline Awakening.  Enhanced Effect: When teaming up with Captain America, taking critical damage instantly triggers the Bloodline Awakening state, gaining bonus stacks while raising the overall stack cap.",
-          "base_effect": "For every set amount of damage taken, Blade builds a stack of Bloodline Awakening.",
-          "enhanced_effect": "When teaming up with Captain America, taking critical damage instantly triggers the Bloodline Awakening state, gaining bonus stacks while raising the overall stack cap.",
+          "description": "Base Effect: Taking enough damage builds Bloodline Awakening stacks; the Team-Up adds 2 maximum stacks. Enhanced Effect: With Captain America, critical damage instantly triggers Bloodline Awakening, grants bonus stacks, and adds 4 extra maximum stacks.",
+          "base_effect": "Taking enough damage builds Bloodline Awakening stacks; the Team-Up adds 2 maximum stacks.",
+          "enhanced_effect": "With Captain America, critical damage instantly triggers Bloodline Awakening, grants bonus stacks, and adds 4 extra maximum stacks.",
           "stats": {
             "Key": "Passive",
             "Bloodline Awakening Stacks Gained from Damage Taken": "40 per stack"
@@ -1437,9 +1437,9 @@
           "name": "VOLTAIC UNION",
           "partner": "Thor",
           "key": "C",
-          "description": "Base Effect: Modifies Sentinel Strike into a Lightning Shield projectile. After landing two hits, Captain America launches the piercing Lightning Shield four times.  Enhanced Effect: When teaming up with Thor, the lightning energy imbued in the shield intensifies. Each hit from the Lightning Shield triggers an extra burst of damage in the surrounding area.",
+          "description": "Base Effect: Modifies Sentinel Strike into a Lightning Shield projectile. After landing two hits, Captain America launches the piercing Lightning Shield four times. Enhanced Effect: With Thor, Lightning Shield hits trigger extra area damage bursts, and Voltaic Union lasts 10s.",
           "base_effect": "Modifies Sentinel Strike into a Lightning Shield projectile. After landing two hits, Captain America launches the piercing Lightning Shield four times.",
-          "enhanced_effect": "When teaming up with Thor, the lightning energy imbued in the shield intensifies. Each hit from the Lightning Shield triggers an extra burst of damage in the surrounding area.",
+          "enhanced_effect": "With Thor, Lightning Shield hits trigger extra area damage bursts, and Voltaic Union lasts 10s.",
           "stats": {
             "Key": "C",
             "Cooldown": "15s",
@@ -1840,9 +1840,9 @@
           "name": "KINETIC KIN",
           "partner": "Gambit",
           "key": "C",
-          "description": "Base Effect: Release stored kinetic energy to enter an enhanced state for a duration. While active, Cyclops gains significantly increased movement speed and jump height.  Enhanced Effect: When teaming up with Gambit, during the enhanced state, the attack speeds for both Optic Blast and Concussive Beam are increased.",
+          "description": "Base Effect: Release stored kinetic energy to enter an enhanced state for a duration. While active, Cyclops gains significantly increased movement speed and jump height. Enhanced Effect: With Gambit, Kinetic Kin lasts 8s.",
           "base_effect": "Release stored kinetic energy to enter an enhanced state for a duration. While active, Cyclops gains significantly increased movement speed and jump height.",
-          "enhanced_effect": "When teaming up with Gambit, during the enhanced state, the attack speeds for both Optic Blast and Concussive Beam are increased.",
+          "enhanced_effect": "With Gambit, Kinetic Kin lasts 8s.",
           "stats": {
             "Key": "C",
             "Cooldown": "15s",
@@ -3697,9 +3697,9 @@
           "name": "PREHISTORIC TRAP",
           "partner": "Devil Dinosaur",
           "key": "F",
-          "description": "Base Effect: After deploying the Smoky Snare trap, Diablo will monitor the area. If enemies approach, Diablo Immobilizes and Damages them. He also releases a lethal gas, causing continuous area damage.  Enhanced Effect: When teaming up with Devil Dinosaur, Elsa can store and deploy two Smoky Snares.",
+          "description": "Base Effect: After deploying the Smoky Snare trap, Diablo will monitor the area. If enemies approach, Diablo Immobilizes and Damages them. He also releases a lethal gas, causing continuous area damage. Enhanced Effect: With Devil Dinosaur, Elsa can store and deploy two Smoky Snares; cooldown is 15s.",
           "base_effect": "After deploying the Smoky Snare trap, Diablo will monitor the area. If enemies approach, Diablo Immobilizes and Damages them. He also releases a lethal gas, causing continuous area damage.",
-          "enhanced_effect": "When teaming up with Devil Dinosaur, Elsa can store and deploy two Smoky Snares.",
+          "enhanced_effect": "With Devil Dinosaur, Elsa can store and deploy two Smoky Snares; cooldown is 15s.",
           "stats": {
             "Key": "F",
             "Trap Trigger Range": "5m radius",
@@ -4127,9 +4127,9 @@
           "name": "FAVORABLE ODDS",
           "partner": "Jubilee",
           "key": "C",
-          "description": "Base Effect: Throw two magnetic playing cards forward. Upon hitting the environment or a character, the two cards magnetically repel and unfurl, spinning in place for a duration. They heal allies they hit, while damaging and Launchingenemies.  Enhanced Effect: When teaming up with Magneto, after the duration ends, the magnetic poles of the two cards reverse. They violently slam back together and explode, providing an extra burst of healing to allies and damage to enemies.",
+          "description": "Base Effect: Throw two magnetic playing cards forward. Upon hitting the environment or a character, the two cards magnetically repel and unfurl, spinning in place for a duration. They heal allies they hit, while damaging and Launchingenemies. Enhanced Effect: With Jubilee, Bayou Bash and Big Easy Impact gain Continuous Healing; Sparkling Staff lasts 2s.",
           "base_effect": "Throw two magnetic playing cards forward. Upon hitting the environment or a character, the two cards magnetically repel and unfurl, spinning in place for a duration. They heal allies they hit, while damaging and Launchingenemies.",
-          "enhanced_effect": "When teaming up with Magneto, after the duration ends, the magnetic poles of the two cards reverse. They violently slam back together and explode, providing an extra burst of healing to allies and damage to enemies.",
+          "enhanced_effect": "With Jubilee, Bayou Bash and Big Easy Impact gain Continuous Healing; Sparkling Staff lasts 2s.",
           "stats": {
             "Key": "C",
             "Cooldown": "15s",
@@ -4518,9 +4518,9 @@
           "name": "SENBONZAKURA STRIKE",
           "partner": "Psylocke",
           "key": "Left Click",
-          "description": "Base Effect: Upgrade Blast Arrow to Psionic Arrow. While drawn, Hawkeye can continuously bank extra Psionic Arrows. Releasing the bowstring rapidly fires all accumulated arrows forward in sequence.  Enhanced Effect: When teaming up with Psylocke, the nocking speed for each Psionic Arrow is significantly quickened, and they explode upon hitting enemies or the environment.",
+          "description": "Base Effect: Upgrade Blast Arrow to Psionic Arrow. While drawn, Hawkeye can continuously bank extra Psionic Arrows. Releasing the bowstring rapidly fires all accumulated arrows forward in sequence. Enhanced Effect: With Psylocke, arrows nock faster and explode on impact; Psionic Arrow single-shot damage is 33.",
           "base_effect": "Upgrade Blast Arrow to Psionic Arrow. While drawn, Hawkeye can continuously bank extra Psionic Arrows. Releasing the bowstring rapidly fires all accumulated arrows forward in sequence.",
-          "enhanced_effect": "When teaming up with Psylocke, the nocking speed for each Psionic Arrow is significantly quickened, and they explode upon hitting enemies or the environment.",
+          "enhanced_effect": "With Psylocke, arrows nock faster and explode on impact; Psionic Arrow single-shot damage is 33.",
           "stats": {
             "Key": "Left Click",
             "Charge Time per Arrow (s)": "0.09",
@@ -4547,9 +4547,9 @@
           "name": "MOONLIT SLASH",
           "partner": "Cloak & Dagger",
           "key": "Shift",
-          "description": "Base Effect: Upgrade Crescent Slash to Moonlit Slash, projecting a radiant slash outward. It heals and boosts healing for allies, while damaging enemies and applying Vulnerability.  Enhanced Effect: When teaming up with Cloak & Dagger, Moonlit Slash can be chained into a three-hit combo, firing off three consecutive sweeping light blades.",
+          "description": "Base Effect: Upgrade Crescent Slash to Moonlit Slash, projecting a radiant slash outward. It heals and boosts healing for allies, while damaging enemies and applying Vulnerability. Enhanced Effect: With Cloak & Dagger, Moonlit Slash chains into a three-hit light blade combo and heals Hawkeye for the healing dealt.",
           "base_effect": "Upgrade Crescent Slash to Moonlit Slash, projecting a radiant slash outward. It heals and boosts healing for allies, while damaging enemies and applying Vulnerability.",
-          "enhanced_effect": "When teaming up with Cloak & Dagger, Moonlit Slash can be chained into a three-hit combo, firing off three consecutive sweeping light blades.",
+          "enhanced_effect": "With Cloak & Dagger, Moonlit Slash chains into a three-hit light blade combo and heals Hawkeye for the healing dealt.",
           "stats": {
             "Key": "Shift",
             "Light Blade Damage": "65",
@@ -5076,9 +5076,9 @@
           "name": "GAMMA FASTBALL",
           "partner": "Wolverine",
           "key": "C",
-          "description": "Base Effect: Enter a Furious state upon activation, gaining Speed Boost and Attack Speed for a duration. Also unlocks the Dances With Werewolves ability, granting Unstoppable for a period when Health drops to a certain threshold.  Enhanced Effect: When teaming up with Wolverine, unlocks the Fastball Special. Upon mutual confirmation, Hulk hurls Wolverine forward",
+          "description": "Base Effect: Enter a Furious state upon activation, gaining Speed Boost and Attack Speed for a duration. Also unlocks the Dances With Werewolves ability, granting Unstoppable for a period when Health drops to a certain threshold. Enhanced Effect: With Wolverine, Furious state grants 25% Attack Speed and 25% Movement Speed; Unstoppable triggers at 400 Health and has a 45s cooldown.",
           "base_effect": "Enter a Furious state upon activation, gaining Speed Boost and Attack Speed for a duration. Also unlocks the Dances With Werewolves ability, granting Unstoppable for a period when Health drops to a certain threshold.",
-          "enhanced_effect": "When teaming up with Wolverine, unlocks the Fastball Special. Upon mutual confirmation, Hulk hurls Wolverine forward",
+          "enhanced_effect": "With Wolverine, Furious state grants 25% Attack Speed and 25% Movement Speed; Unstoppable triggers at 400 Health and has a 45s cooldown.",
           "stats": {
             "Key": "C",
             "Cooldown": "15s",
@@ -5654,9 +5654,9 @@
           "name": "IRON & STONE",
           "partner": "The Thing",
           "key": "C",
-          "description": "Base Effect: Unleash a powerful uppercut to Launch Up enemies.  Enhanced Effect: When teaming up The Thing, unleashing the uppercut can be chained directly into a sweeping leg sweep for a follow-up attack.",
+          "description": "Base Effect: Unleash a powerful uppercut to Launch Up enemies. Enhanced Effect: With The Thing, the uppercut can chain into a sweeping leg follow-up; the enhanced second hit deals 50 damage.",
           "base_effect": "Unleash a powerful uppercut to Launch Up enemies.",
-          "enhanced_effect": "When teaming up The Thing, unleashing the uppercut can be chained directly into a sweeping leg sweep for a follow-up attack.",
+          "enhanced_effect": "With The Thing, the uppercut can chain into a sweeping leg follow-up; the enhanced second hit deals 50 damage.",
           "stats": {
             "Key": "C",
             "Cooldown": "8s",
@@ -5920,9 +5920,9 @@
           "name": "THUNDER OVERDRIVE",
           "partner": "Thor",
           "key": "E",
-          "description": "Base Effect: Enhance Unibeam both in and out of Armor Overdrive. When fired, a ring of volatile lightning energy forms, dealing bonus damage to enemies caught near the beam's edge.  Enhanced Effect: When teaming up with Thor, Armor Overdrive cooldown is massively reduced.",
+          "description": "Base Effect: Enhance Unibeam both in and out of Armor Overdrive. When fired, a ring of volatile lightning energy forms, dealing bonus damage to enemies caught near the beam's edge. Enhanced Effect: With Thor, Thunder Overdrive outer-ring damage is 80/s and enhanced damage is 90/s.",
           "base_effect": "Enhance Unibeam both in and out of Armor Overdrive. When fired, a ring of volatile lightning energy forms, dealing bonus damage to enemies caught near the beam's edge.",
-          "enhanced_effect": "When teaming up with Thor, Armor Overdrive cooldown is massively reduced.",
+          "enhanced_effect": "With Thor, Thunder Overdrive outer-ring damage is 80/s and enhanced damage is 90/s.",
           "stats": {
             "Key": "E",
             "Unibeam Outer Ring Range": "0.75m radius",
@@ -6282,9 +6282,9 @@
           "name": "HELLFIRE SPARKS",
           "partner": "Blade",
           "key": "PASSIVE",
-          "description": "Base Effect: When Attack Speed is enhanced, Energy Plasmoids transform into a hitscan attack that grants self-healing on hit and is capable of dealing critical hits.  Enhanced Effect: When teaming up with The Hood, the Void Magic Mark is never cleared, allowing her to indefinitely sustain the hitscan attack form.",
-          "base_effect": "When Attack Speed is enhanced, Energy Plasmoids transform into a hitscan attack that grants self-healing on hit and is capable of dealing critical hits.",
-          "enhanced_effect": "When teaming up with The Hood, the Void Magic Mark is never cleared, allowing her to indefinitely sustain the hitscan attack form.",
+          "description": "Base Effect: Jubilee deploys a Vampiric Field where allies gain Life Steal and receive 15/s Continuous Healing for 6s during Vampiric Kin. Enhanced Effect: With Blade, the Vampiric Field provides 15/s Continuous Healing to surrounding allies for 6s.",
+          "base_effect": "Jubilee deploys a Vampiric Field where allies gain Life Steal and receive 15/s Continuous Healing for 6s during Vampiric Kin.",
+          "enhanced_effect": "With Blade, the Vampiric Field provides 15/s Continuous Healing to surrounding allies for 6s.",
           "stats": {
             "Key": "PASSIVE",
             "Hitscan Attack Damage": "5 per use",
@@ -6979,9 +6979,9 @@
           "name": "VOID PENTAGRAM",
           "partner": "The Hood",
           "key": "C",
-          "description": "Base Effect: Casting Stepping Discs within an Hellish Magic Circle refunds energy, and each use of Stepping Discs summons a Limbo Demon.  Enhanced Effect: When teaming up with The Hood, the summoned Limbo Demons have heavily increased Health and a wider attack range.",
+          "description": "Base Effect: Casting Stepping Discs within an Hellish Magic Circle refunds energy, and each use of Stepping Discs summons a Limbo Demon. Enhanced Effect: With The Hood, summoned Limbo Demons gain 25 additional Health and wider attack range; cooldown is 20s.",
           "base_effect": "Casting Stepping Discs within an Hellish Magic Circle refunds energy, and each use of Stepping Discs summons a Limbo Demon.",
-          "enhanced_effect": "When teaming up with The Hood, the summoned Limbo Demons have heavily increased Health and a wider attack range.",
+          "enhanced_effect": "With The Hood, summoned Limbo Demons gain 25 additional Health and wider attack range; cooldown is 20s.",
           "stats": {
             "Key": "C",
             "Cooldown": "15s",
@@ -7149,9 +7149,9 @@
           "name": "METALLIC CHAOS",
           "partner": "Scarlet Witch",
           "key": "C",
-          "description": "Base Effect: Summons a Chaos Greatsword that deals damage to enemies in front.  Enhanced Effect: When teaming up with Scarlet Witch, Magnetic Cannon becomes a charged ability. Charging consumes passive energy, and each energy segment consumed fires a Chaos Greatsword that deals damage to enemies.",
+          "description": "Base Effect: Summons a Chaos Greatsword that deals damage to enemies in front. Enhanced Effect: With Scarlet Witch, Magnetic Cannon can be charged with passive energy to fire Chaos Greatswords; cooldown is 18s and enhanced projectiles deal 10 damage each.",
           "base_effect": "Summons a Chaos Greatsword that deals damage to enemies in front.",
-          "enhanced_effect": "When teaming up with Scarlet Witch, Magnetic Cannon becomes a charged ability. Charging consumes passive energy, and each energy segment consumed fires a Chaos Greatsword that deals damage to enemies.",
+          "enhanced_effect": "With Scarlet Witch, Magnetic Cannon can be charged with passive energy to fire Chaos Greatswords; cooldown is 18s and enhanced projectiles deal 10 damage each.",
           "stats": {
             "Key": "C",
             "Cooldown": "12s",
@@ -7184,9 +7184,9 @@
           "name": "MAGNETIC RESONANCE",
           "partner": "Emma Frost",
           "key": "C",
-          "description": "Base Effect: Cast a magnetic projection that mimics Magneto's movement and ability casts perfectly from the enemy's perspective.  Enhanced Effect: When teaming up with Emma Frost, the magnetic projection receives a massive Health bump and will persist indefinitely unless destroyed or manually recalled.",
+          "description": "Base Effect: Cast a magnetic projection that mimics Magneto's movement and ability casts perfectly from the enemy's perspective. Enhanced Effect: With Emma Frost, Magnetic Resonance deals 50% damage and its projection lasts up to 6s.",
           "base_effect": "Cast a magnetic projection that mimics Magneto's movement and ability casts perfectly from the enemy's perspective.",
-          "enhanced_effect": "When teaming up with Emma Frost, the magnetic projection receives a massive Health bump and will persist indefinitely unless destroyed or manually recalled.",
+          "enhanced_effect": "With Emma Frost, Magnetic Resonance deals 50% damage and its projection lasts up to 6s.",
           "stats": {
             "Key": "C",
             "Cooldown": "15s",
@@ -7342,9 +7342,9 @@
           "name": "STAR BLOSSOM",
           "partner": "Adam Warlock",
           "key": "Right Click",
-          "description": "Base Effect: Recasting Healing Flower on a teammate with the effect enhances and spreads the healing aura.  Enhanced Effect: When teaming up with Star-Lord, using Healing Flower on any teammate instantly triggers the enhanced Spell Field and healing effect.",
+          "description": "Base Effect: Recasting Healing Flower on a teammate with the effect enhances and spreads the healing aura. Enhanced Effect: With Adam Warlock, soul-form area healing is 30/s with an 8m field radius; Healing Flower healing is 12 + 3% of target Maximum Health per second.",
           "base_effect": "Recasting Healing Flower on a teammate with the effect enhances and spreads the healing aura.",
-          "enhanced_effect": "When teaming up with Star-Lord, using Healing Flower on any teammate instantly triggers the enhanced Spell Field and healing effect.",
+          "enhanced_effect": "With Adam Warlock, soul-form area healing is 30/s with an 8m field radius; Healing Flower healing is 12 + 3% of target Maximum Health per second.",
           "stats": {
             "Key": "Right Click",
             "Healing Flower Healing Amount": "12+Target's 3% Maximum Health/s",
@@ -7373,9 +7373,9 @@
           "name": "VITALITY PACT",
           "partner": "Star-Lord",
           "key": "Passive",
-          "description": "Base Effect: Upon defeat, Mantis can freely move as a soul, healing nearby allies, and reforge her body at a chosen spot. After using Natural Anger, the effect of Nature's Favor is enhanced, increasing the amount of healing provided.  Enhanced Effect: When teaming up with Adam Warlock, her soul state can forge Soul Bond with nearby teammates, granting Healing Over Timeand distributing damage taken across the bond.",
-          "base_effect": "Upon defeat, Mantis can freely move as a soul, healing nearby allies, and reforge her body at a chosen spot. After using Natural Anger, the effect of Nature's Favor is enhanced, increasing the amount of healing provided.",
-          "enhanced_effect": "When teaming up with Adam Warlock, her soul state can forge Soul Bond with nearby teammates, granting Healing Over Timeand distributing damage taken across the bond.",
+          "description": "Base Effect: Recasting Healing Flower enhances and spreads the healing aura; base healing is 10 + 3% of target Maximum Health per second. Enhanced Effect: With Star-Lord, Healing Flower instantly triggers the enhanced field; enhanced healing is 10 + 3.5% of target Maximum Health per second.",
+          "base_effect": "Recasting Healing Flower enhances and spreads the healing aura; base healing is 10 + 3% of target Maximum Health per second.",
+          "enhanced_effect": "With Star-Lord, Healing Flower instantly triggers the enhanced field; enhanced healing is 10 + 3.5% of target Maximum Health per second.",
           "stats": {
             "Key": "Passive",
             "Cooldown": "90",
@@ -7921,9 +7921,9 @@
           "name": "GAMMA MONSTRO",
           "partner": "Hulk",
           "key": "C",
-          "description": "Base Effect: Summon an extra Gamma Monstro that continuously damages the nearest enemy. Upon landing critical hits, the Gamma Monstro gains increased Attack Speed. Hitting an enemy with Wrath of the Seven Seas prompts it to fire a powerful beam.  Enhanced Effect: When teaming up with Hulk, casting Blessing of the Deep creates a water barrier infused with Gamma energy. Standing inside accelerates the Gamma Monstro cooldown and grants it a Damage Boost.",
+          "description": "Base Effect: Summon an extra Gamma Monstro that continuously damages the nearest enemy. Upon landing critical hits, the Gamma Monstro gains increased Attack Speed. Hitting an enemy with Wrath of the Seven Seas prompts it to fire a powerful beam. Enhanced Effect: With Hulk, Gamma Monstro cooldown is 25s and its single-hit damage is 5.5.",
           "base_effect": "Summon an extra Gamma Monstro that continuously damages the nearest enemy. Upon landing critical hits, the Gamma Monstro gains increased Attack Speed. Hitting an enemy with Wrath of the Seven Seas prompts it to fire a powerful beam.",
-          "enhanced_effect": "When teaming up with Hulk, casting Blessing of the Deep creates a water barrier infused with Gamma energy. Standing inside accelerates the Gamma Monstro cooldown and grants it a Damage Boost.",
+          "enhanced_effect": "With Hulk, Gamma Monstro cooldown is 25s and its single-hit damage is 5.5.",
           "stats": {
             "Key": "C",
             "Cooldown": "30",
@@ -7954,9 +7954,9 @@
           "name": "CHILLING CHARISMA",
           "partner": "Luna Snow",
           "key": "C",
-          "description": "Base Effect: Gain a new ability to summon a Frost Tide forward. The wave damages, Pushes Back, and inflicts a Slow on all enemies hit.  Enhanced Effect: When teaming up with Luna Snow, the Frost Tide gains 1 charge and crashes down upon reaching its maximum range, dealing area damage and Slowing enemies caught near the endpoint.",
+          "description": "Base Effect: Gain a new ability to summon a Frost Tide forward. The wave damages, Pushes Back, and inflicts a Slow on all enemies hit. Enhanced Effect: With Luna Snow, Frozen Spawn attacks apply a 15% Slow for 1s.",
           "base_effect": "Gain a new ability to summon a Frost Tide forward. The wave damages, Pushes Back, and inflicts a Slow on all enemies hit.",
-          "enhanced_effect": "When teaming up with Luna Snow, the Frost Tide gains 1 charge and crashes down upon reaching its maximum range, dealing area damage and Slowing enemies caught near the endpoint.",
+          "enhanced_effect": "With Luna Snow, Frozen Spawn attacks apply a 15% Slow for 1s.",
           "stats": {
             "Key": "C",
             "Frost Tide Damage": "75",
@@ -8133,9 +8133,9 @@
           "name": "VIBRANIUM MECH",
           "partner": "Black Panther",
           "key": "C",
-          "description": "Base Effect: Upon activation, briefly grants Cyber-Web Clusteran Attack Speedand DamageBoost.  Enhanced Effect: When teaming up with Black Panther, activating the ability deploys a frontal Vibranium Shield, while reducing the Vibranium Energy cost of Cyber-Web Cluster.",
+          "description": "Base Effect: Upon activation, briefly grants Cyber-Web Clusteran Attack Speedand DamageBoost. Enhanced Effect: With Black Panther, activation deploys a frontal Vibranium Shield and lowers Cyber-Web Cluster cost; cooldown is 15s and enhanced firing interval is 0.18s.",
           "base_effect": "Upon activation, briefly grants Cyber-Web Clusteran Attack Speedand DamageBoost.",
-          "enhanced_effect": "When teaming up with Black Panther, activating the ability deploys a frontal Vibranium Shield, while reducing the Vibranium Energy cost of Cyber-Web Cluster.",
+          "enhanced_effect": "With Black Panther, activation deploys a frontal Vibranium Shield and lowers Cyber-Web Cluster cost; cooldown is 15s and enhanced firing interval is 0.18s.",
           "stats": {
             "Key": "C",
             "Cooldown": "20s",
@@ -8289,9 +8289,9 @@
           "name": "CIRCLE OF LIFE",
           "partner": "Hela",
           "key": "Right Click",
-          "description": "Base Effect: Psionic Detonation is replaced by Phoenix Netherfire, applying a Telekinetic Mark to the targeted location. Upon hitting, it triggers an initial small explosion that briefly Stuns enemies, followed by two larger explosions that apply a Healing Reduction effect. Every single blast inflicts Sparks onto the enemies.  Enhanced Effect: When teaming up with Hela, every blast in the sequence applies multiple stacks of Sparks to enemies caught within.",
+          "description": "Base Effect: Psionic Detonation is replaced by Phoenix Netherfire, applying a Telekinetic Mark to the targeted location. Upon hitting, it triggers an initial small explosion that briefly Stuns enemies, followed by two larger explosions that apply a Healing Reduction effect. Every single blast inflicts Sparks onto the enemies. Enhanced Effect: With Hela, every blast applies multiple Spark stacks and ability cooldown is 10s.",
           "base_effect": "Psionic Detonation is replaced by Phoenix Netherfire, applying a Telekinetic Mark to the targeted location. Upon hitting, it triggers an initial small explosion that briefly Stuns enemies, followed by two larger explosions that apply a Healing Reduction effect. Every single blast inflicts Sparks onto the enemies.",
-          "enhanced_effect": "When teaming up with Hela, every blast in the sequence applies multiple stacks of Sparks to enemies caught within.",
+          "enhanced_effect": "With Hela, every blast applies multiple Spark stacks and ability cooldown is 10s.",
           "stats": {
             "Key": "Right Click",
             "Cooldown": "12s",
@@ -9069,9 +9069,9 @@
           "name": "HEX FIREWORKS",
           "partner": "Jubilee",
           "key": "E",
-          "description": "Base Effect: Infuse firework energy into the Dark Seal forcefield, turning it into a Plasmoid Seal, allowing for a secondary blast. After expanding the Plasmoid Seal, pressing the {Ability1} key again while it persists will detonate the fireworks, dealing damage and inflicting Vulnerability.  Enhanced Effect: When teaming up with Jubilee, Scarlet Witch receives constant healing from the firework energy while using Mystic Projection.",
+          "description": "Base Effect: Infuse firework energy into the Dark Seal forcefield, turning it into a Plasmoid Seal, allowing for a secondary blast. After expanding the Plasmoid Seal, pressing the {Ability1} key again while it persists will detonate the fireworks, dealing damage and inflicting Vulnerability. Enhanced Effect: With Jubilee, Scarlet Witch receives healing while using Mystic Projection; enhanced healing is 30/s.",
           "base_effect": "Infuse firework energy into the Dark Seal forcefield, turning it into a Plasmoid Seal, allowing for a secondary blast. After expanding the Plasmoid Seal, pressing the {Ability1} key again while it persists will detonate the fireworks, dealing damage and inflicting Vulnerability.",
-          "enhanced_effect": "When teaming up with Jubilee, Scarlet Witch receives constant healing from the firework energy while using Mystic Projection.",
+          "enhanced_effect": "With Jubilee, Scarlet Witch receives healing while using Mystic Projection; enhanced healing is 30/s.",
           "stats": {
             "Key": "E",
             "Cooldown": "12s",
@@ -9301,9 +9301,9 @@
           "name": "PARKER POWER-UP",
           "partner": "Peni Parker",
           "key": "C",
-          "description": "Base Effect: Peni Parker whips up a Sticky Spider-Bomb for Spider-Man! Prime it, then toss it before the timer's up for a blast that damages nearby enemies and attaches a Spider-Tracer to them. If not thrown in time, it explodes on Spider-Man, recharging all Web-Cluster shots.  Enhanced Effect: When teaming up with Peni Parker, Spider-Tracers applied by Web-Cluster are upgraded. Detonating these upgraded marks generates <Buff>Bonus Health for Spider-Man.",
+          "description": "Base Effect: Peni Parker whips up a Sticky Spider-Bomb for Spider-Man! Prime it, then toss it before the timer's up for a blast that damages nearby enemies and attaches a Spider-Tracer to them. If not thrown in time, it explodes on Spider-Man, recharging all Web-Cluster shots. Enhanced Effect: With Peni Parker, Web-Cluster Spider-Tracers are upgraded and generate Bonus Health when detonated; Parker Power-Up cooldown is 10s.",
           "base_effect": "Peni Parker whips up a Sticky Spider-Bomb for Spider-Man! Prime it, then toss it before the timer's up for a blast that damages nearby enemies and attaches a Spider-Tracer to them. If not thrown in time, it explodes on Spider-Man, recharging all Web-Cluster shots.",
-          "enhanced_effect": "When teaming up with Peni Parker, Spider-Tracers applied by Web-Cluster are upgraded. Detonating these upgraded marks generates <Buff>Bonus Health for Spider-Man.",
+          "enhanced_effect": "With Peni Parker, Web-Cluster Spider-Tracers are upgraded and generate Bonus Health when detonated; Parker Power-Up cooldown is 10s.",
           "stats": {
             "Key": "C",
             "Cooldown": "15s",
@@ -10183,9 +10183,9 @@
           "name": "TWO IN ONE",
           "partner": "Human Torch",
           "key": "C",
-          "description": "Base Effect: Enter an enhanced state upon activation. For the duration, The Thing's fists are violently engulfed in flames. Every Rocky Jab deals splash damage, and every Stone Haymaker creates an explosion, dealing damage in a frontal cone.  Enhanced Effect: When teaming up with Human Torch, Human Torch can lift The Thing into the air and slam him down, dealing damage and Stun to enemies. The Thing then automatically enters his flaming enhanced state upon landing.",
+          "description": "Base Effect: Enter an enhanced state upon activation. For the duration, The Thing's fists are violently engulfed in flames. Every Rocky Jab deals splash damage, and every Stone Haymaker creates an explosion, dealing damage in a frontal cone. Enhanced Effect: With Human Torch, Human Torch can lift and slam The Thing; cooldown is 18s and duration is 8s.",
           "base_effect": "Enter an enhanced state upon activation. For the duration, The Thing's fists are violently engulfed in flames. Every Rocky Jab deals splash damage, and every Stone Haymaker creates an explosion, dealing damage in a frontal cone.",
-          "enhanced_effect": "When teaming up with Human Torch, Human Torch can lift The Thing into the air and slam him down, dealing damage and Stun to enemies. The Thing then automatically enters his flaming enhanced state upon landing.",
+          "enhanced_effect": "With Human Torch, Human Torch can lift and slam The Thing; cooldown is 18s and duration is 8s.",
           "stats": {
             "Key": "C",
             "Cooldown": "15s",
@@ -10215,9 +10215,9 @@
           "name": "UNBREAKABLE FORCES",
           "partner": "Invisible Woman",
           "key": "C",
-          "description": "Base Effect: Generate a layer of Psionic Armor upon activation, granting Bonus Health scaling off currently missing Health.  Enhanced Effect: When teaming up Invisible Woman, the Psionic Armor is fortified. While active, every time The Thing takes a set amount of damage, the armor pulses out a wave of area healing for allies. Furthermore, the conversion ratio for missing Health into Bonus Health is increased.",
+          "description": "Base Effect: Generate a layer of Psionic Armor upon activation, granting Bonus Health scaling off currently missing Health. Enhanced Effect: With Invisible Woman, Unbreakable Forces cooldown is 15s and healing triggers at 125 damage received.",
           "base_effect": "Generate a layer of Psionic Armor upon activation, granting Bonus Health scaling off currently missing Health.",
-          "enhanced_effect": "When teaming up Invisible Woman, the Psionic Armor is fortified. While active, every time The Thing takes a set amount of damage, the armor pulses out a wave of area healing for allies. Furthermore, the conversion ratio for missing Health into Bonus Health is increased.",
+          "enhanced_effect": "With Invisible Woman, Unbreakable Forces cooldown is 15s and healing triggers at 125 damage received.",
           "stats": {
             "Key": "C",
             "Cooldown": "20s",
@@ -10413,9 +10413,9 @@
           "name": "DIVINE ARMORY",
           "partner": "Angela",
           "key": "C",
-          "description": "Base Effect: Hurl a Thunder Spear that restores Thorforce for each enemy struck. Afterward, Thor canleap to the spear's explosion point, dealing a second wave of damage to all enemies within range.  Enhanced Effect: When teaming up with Angela, leaping to the Thunder Spear grants Bonus Health.",
+          "description": "Base Effect: Hurl a Thunder Spear that restores Thorforce for each enemy struck. Afterward, Thor canleap to the spear's explosion point, dealing a second wave of damage to all enemies within range. Enhanced Effect: With Angela, leaping to the Thunder Spear grants Bonus Health; Divine Armory cooldown is 15s.",
           "base_effect": "Hurl a Thunder Spear that restores Thorforce for each enemy struck. Afterward, Thor canleap to the spear's explosion point, dealing a second wave of damage to all enemies within range.",
-          "enhanced_effect": "When teaming up with Angela, leaping to the Thunder Spear grants Bonus Health.",
+          "enhanced_effect": "With Angela, leaping to the Thunder Spear grants Bonus Health; Divine Armory cooldown is 15s.",
           "stats": {
             "Key": "C",
             "Cooldown": "20s",
@@ -11179,9 +11179,9 @@
           "name": "EXPERT INSTINCT",
           "partner": "Elsa Bloodstone",
           "key": "Passive",
-          "description": "Base Effect: Securing or participating in a KO grants a stack of Culling Instinct. Each stack reduces the cooldowns of Winter Soldier's other abilities. All stacks are lost upon defeat.  Enhanced Effect: When teaming up with Elsa Bloodstone, the Bonus Health generated by Ceaseless Charge is increased.",
+          "description": "Base Effect: Securing or participating in a KO grants a stack of Culling Instinct. Each stack reduces the cooldowns of Winter Soldier's other abilities. All stacks are lost upon defeat. Enhanced Effect: With Elsa Bloodstone, Ceaseless Charge grants 55 Bonus Health.",
           "base_effect": "Securing or participating in a KO grants a stack of Culling Instinct. Each stack reduces the cooldowns of Winter Soldier's other abilities. All stacks are lost upon defeat.",
-          "enhanced_effect": "When teaming up with Elsa Bloodstone, the Bonus Health generated by Ceaseless Charge is increased.",
+          "enhanced_effect": "With Elsa Bloodstone, Ceaseless Charge grants 55 Bonus Health.",
           "stats": {
             "Key": "Passive",
             "Other Ability CD Reduction per Culling Instinct Stack": "1.5s",
@@ -11419,6 +11419,148 @@
             "Key": "C",
             "Healing Amount": "25/s"
           }
+        }
+      ]
+    },
+    "The Hood": {
+      "source_url": "https://marvelrivals.gg/the-hood/",
+      "display_name": "The Hood",
+      "real_name": "PARKER ROBBINS",
+      "role": "VANGUARD",
+      "base_stats": {
+        "Health": "550"
+      },
+      "abilities": [
+        {
+          "section": "Normal Attack",
+          "name": "Accursed Pistols",
+          "key": "Left Click",
+          "description": "Shoot forward dual-wielded pistols. Gain increased Attack Speed when Demonic Energy exceeds 50%.",
+          "stats": {}
+        },
+        {
+          "section": "Normal Attack",
+          "name": "Leaded Transformation",
+          "key": "Left Click",
+          "description": "Enter Half-Demon State, transforming your arms into demonic rifles with increased Attack Speed and Infinite Ammo. Every bullet that strikes an enemy triggers Lifesteal.",
+          "stats": {}
+        },
+        {
+          "section": "Abilities",
+          "name": "Mantle of Oblivion",
+          "key": "Right Click",
+          "description": "Spread your cloak to form a spherical barrier, blocking incoming enemy attacks. When Demonic Energy exceeds 50%, the radius expands further.",
+          "stats": {}
+        },
+        {
+          "section": "Ultimate",
+          "name": "Demon of the End",
+          "key": "Q",
+          "description": "Enter Full Demon State and fire up to 6 high-powered shots that pierce enemies and barriers while granting Bonus Health to yourself and nearby allies.",
+          "stats": {
+            "Maximum Shots": "6"
+          }
+        },
+        {
+          "section": "Abilities",
+          "name": "Void Walk",
+          "key": "Shift",
+          "description": "Enter the Void free-flight. Upon reappearing, gain a decaying Movement Boost and damage surrounding enemies.",
+          "stats": {}
+        },
+        {
+          "section": "Abilities",
+          "name": "Abyssal Veil",
+          "key": "E",
+          "description": "Throw a dark magic sphere that generates a Veil. Shots passing through it gain benefits while enemy projectiles, healing, and movement are hindered.",
+          "stats": {}
+        },
+        {
+          "section": "Passive",
+          "name": "Ruinous Pact",
+          "key": "Passive",
+          "description": "Accumulate Demonic Energy by dealing damage, blocking attacks, or using Void Walk. Reaching full energy automatically triggers Half-Demon State.",
+          "stats": {}
+        },
+        {
+          "section": "Team-Up Abilities",
+          "name": "Chaos Collision",
+          "key": "Team-Up",
+          "description": "Base Effect: Gain a New Ability. Create an arcane zone that continuously damages enemies and applies stacking Damage and Healing Reduction. Reactivate to teleport to the zone's center. Enhanced Effect: After teleporting, unleash a magical shockwave that damages and launches nearby enemies.",
+          "stats": {},
+          "base_stats": {},
+          "enhanced_stats": {}
+        },
+        {
+          "section": "Team-Up Abilities",
+          "name": "New Moon's Shadow",
+          "key": "Team-Up",
+          "description": "Base Effect: Enhances Abyssal Veil into a Lunar Barrier that blocks projectiles, detonates when broken, and applies Damage and Healing Reduction. Enhanced Effect: The Lunar Barrier gains greater shield value and attacks passing through it gain a bounce effect.",
+          "stats": {},
+          "base_stats": {},
+          "enhanced_stats": {}
+        }
+      ],
+      "team_up_abilities": [
+        {
+          "name": "CHAOS COLLISION",
+          "partner": "Scarlet Witch",
+          "key": "Team-Up",
+          "description": "Base Effect: Gain a New Ability. Create an arcane zone that continuously damages enemies and applies stacking Damage and Healing Reduction. Reactivate to teleport to the zone's center. Enhanced Effect: When teaming up with Scarlet Witch, after teleporting, unleash a magical shockwave, dealing one-time damage to nearby enemies while launching them towards The Hood.",
+          "base_effect": "Gain a New Ability. Create an arcane zone that continuously damages enemies and applies stacking Damage and Healing Reduction. Reactivate to teleport to the zone's center.",
+          "enhanced_effect": "When teaming up with Scarlet Witch, after teleporting, unleash a magical shockwave, dealing one-time damage to nearby enemies while launching them towards The Hood.",
+          "stats": {},
+          "base_stats": {},
+          "enhanced_stats": {}
+        },
+        {
+          "name": "NEW MOON'S SHADOW",
+          "partner": "Moon Knight",
+          "key": "Team-Up",
+          "description": "Base Effect: Enhances Abyssal Veil into a Lunar Barrier that blocks projectiles. Upon breaking, it detonates, damaging enemies and applying Damage and Healing Reduction. Enemies passing through take damage and are briefly Blinded. Enhanced Effect: With Moon Knight, the Lunar Barrier has greater shield value and The Hood attacks passing through it bounce from enemies within 6m.",
+          "base_effect": "Enhances Abyssal Veil into a Lunar Barrier that blocks projectiles. Upon breaking, it detonates, damaging enemies and applying Damage and Healing Reduction. Enemies passing through take damage and are briefly Blinded.",
+          "enhanced_effect": "With Moon Knight, the Lunar Barrier has greater shield value and The Hood attacks passing through it bounce from enemies within 6m.",
+          "stats": {},
+          "base_stats": {},
+          "enhanced_stats": {}
+        }
+      ]
+    },
+    "Gorr the God Butcher": {
+      "source_url": "https://rivalsdex.com/team-ups",
+      "display_name": "Gorr the God Butcher",
+      "real_name": "GORR",
+      "role": "DUELIST",
+      "base_stats": {},
+      "abilities": [],
+      "team_up_abilities": [
+        {
+          "partner": "Hela",
+          "ability_name": "Ragnarok",
+          "base_effect": "Gain a new ability to morph the All-Black into a scythe and execute a sweeping strike, damaging and briefly Grounding nearby enemies.",
+          "enhanced_effect": "With Hela, the scythe attack range is expanded and each hit scatters symbiote fragments that grant Bonus Health to Gorr and nearby allies.",
+          "source_url": "https://rivalsdex.com/team-ups",
+          "verification_status": "verified_secondary",
+          "name": "RAGNAROK",
+          "key": "Team-Up",
+          "description": "Base Effect: Gain a new ability to morph the All-Black into a scythe and execute a sweeping strike, damaging and briefly Grounding nearby enemies. Enhanced Effect: With Hela, the scythe attack range is expanded and each hit scatters symbiote fragments that grant Bonus Health to Gorr and nearby allies.",
+          "stats": {},
+          "base_stats": {},
+          "enhanced_stats": {}
+        },
+        {
+          "partner": "Venom",
+          "ability_name": "Hive Mind",
+          "base_effect": "Gain a new ability to fire a Symbiote Claw that deals piercing damage to enemies and launches caught enemies toward Gorr when it retracts.",
+          "enhanced_effect": "With Venom, Black Berserkers gain a slight Damage Boost and apply Slow to enemies they strike.",
+          "source_url": "https://rivalsdex.com/team-ups",
+          "verification_status": "verified_secondary",
+          "name": "HIVE MIND",
+          "key": "Team-Up",
+          "description": "Base Effect: Gain a new ability to fire a Symbiote Claw that deals piercing damage to enemies and launches caught enemies toward Gorr when it retracts. Enhanced Effect: With Venom, Black Berserkers gain a slight Damage Boost and apply Slow to enemies they strike.",
+          "stats": {},
+          "base_stats": {},
+          "enhanced_stats": {}
         }
       ]
     }

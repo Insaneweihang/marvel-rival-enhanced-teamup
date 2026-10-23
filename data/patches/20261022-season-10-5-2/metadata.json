@@ -1,0 +1,31 @@
+{
+  "game": "Marvel Rivals",
+  "patch_version": "20261022-season-10-5-2",
+  "patch_date": "2026-10-22",
+  "data_retrieved_at": "2026-10-23T09:30:00+08:00",
+  "sources": [
+    {
+      "name": "Marvel Rivals Version 20261022 Patch Notes (Steam)",
+      "url": "https://store.steampowered.com/news/app/2767030/view/703282928078032948",
+      "purpose": "Official patch notes for the 2026-10-22 version update."
+    },
+    {
+      "name": "Marvel Rivals 20261021 game update (official site)",
+      "url": "https://www.marvelrivals.com/gameupdate/20261021/41548_1317253.html",
+      "purpose": "Official cross-check of the same update."
+    },
+    {
+      "name": "Marvel Rivals official Team-Up page",
+      "url": "https://www.marvelrivals.com/heroes/teamup.html",
+      "purpose": "Official directional Team-Up relationship cross-check."
+    }
+  ],
+  "allowed_reciprocal_teamups": [],
+  "notes": [
+    "Metadata-only snapshot: the 2026-10-22 update shipped a limited mode (Path to Doomsday - Avengers: Endgame), store bundles, and cosmetic/audio fixes.",
+    "It contains no hero additions or removals, no role changes, and no Team-Up additions, removals, or re-routes, so roster and Team-Up data are carried over unchanged from 20261009-season-10-5.",
+    "Fixes referenced the Punisher -> Daredevil and Hawkeye -> Psylocke Team-Ups (SFX/audio only); both edges were already present.",
+    "Team-Up relationships are directional: each active hero has exactly two outgoing partners.",
+    "Generated combinations are derived from heroes.json and teamups.json."
+  ]
+}

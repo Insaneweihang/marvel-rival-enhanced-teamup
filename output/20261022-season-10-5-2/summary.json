@@ -1,0 +1,35 @@
+{
+  "patch_version": "20261022-season-10-5-2",
+  "hero_count": 54,
+  "total_heroes_loaded": 54,
+  "team_size": 6,
+  "total_combinations_checked": 25827165,
+  "fully_enhanced_unrestricted_count": 416,
+  "fully_enhanced_222_count": 57,
+  "role_distribution_counts": {
+    "222": 57,
+    "132": 75,
+    "213": 12,
+    "123": 38,
+    "312": 12
+  },
+  "role_distribution_labels": {
+    "222": "2-2-2",
+    "132": "1-3-2",
+    "213": "2-1-3",
+    "123": "1-2-3",
+    "312": "3-1-2"
+  },
+  "expected_counts": {
+    "unrestricted": 416,
+    "222": 57
+  },
+  "count_match": {
+    "unrestricted": true,
+    "222": true
+  },
+  "filters": {
+    "hero": [],
+    "exclude_hero": []
+  }
+}

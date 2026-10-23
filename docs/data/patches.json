@@ -1,5 +1,5 @@
 {
-  "default_patch": "20261009-season-10-5",
+  "default_patch": "20261022-season-10-5-2",
   "patches": [
     {
       "id": "20260710-season-9",
@@ -28,6 +28,14 @@
       "label": "Season 10.5",
       "date": "2026-10-09",
       "data_path": "data/patches/20261009-season-10-5",
+      "status": "available",
+      "available": true
+    },
+    {
+      "id": "20261022-season-10-5-2",
+      "label": "Season 10.5 (Oct 22 patch)",
+      "date": "2026-10-22",
+      "data_path": "data/patches/20261022-season-10-5-2",
       "status": "available",
       "available": true
     }

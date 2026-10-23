@@ -1,0 +1,68 @@
+{
+  "updated_at": "2026-10-22",
+  "source": "Steam news feed for Marvel Rivals (app 2767030)",
+  "source_url": "https://store.steampowered.com/news/app/2767030/",
+  "sources_checked": {
+    "steam_rss_items": 8,
+    "official_news_links": 9
+  },
+  "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
+  "items": [
+    {
+      "id": "703282928078032948",
+      "date": "2026-10-22",
+      "title": "Marvel Rivals Version 20261022 Patch Notes",
+      "category": "patch",
+      "url": "https://store.steampowered.com/news/app/2767030/view/703282928078032948"
+    },
+    {
+      "id": "746066581090468110",
+      "date": "2026-10-15",
+      "title": "Art Vision Vol. 06 // Behind The Scenes (Part 1): Dedication and Passion",
+      "category": "dev",
+      "url": "https://store.steampowered.com/news/app/2767030/view/746066581090468110"
+    },
+    {
+      "id": "746066581090467873",
+      "date": "2026-10-15",
+      "title": "Marvel Rivals Version 20261015 Patch Notes",
+      "category": "patch",
+      "url": "https://store.steampowered.com/news/app/2767030/view/746066581090467873"
+    },
+    {
+      "id": "686393161428239270",
+      "date": "2026-10-08",
+      "title": "Season 10.5: New Modes and Halloween // Dev Vision Vol. 22 | Marvel Rivals",
+      "category": "dev",
+      "url": "https://store.steampowered.com/news/app/2767030/view/686393161428239270"
+    },
+    {
+      "id": "686393161428239263",
+      "date": "2026-10-08",
+      "title": "Marvel Rivals Version 20261009 Patch Notes - Season 10.5 Arrives",
+      "category": "patch",
+      "url": "https://store.steampowered.com/news/app/2767030/view/686393161428239263"
+    },
+    {
+      "id": "686393161428239261",
+      "date": "2026-10-08",
+      "title": "Marvel Rivals Version 20261009 Balance Post",
+      "category": "balance",
+      "url": "https://store.steampowered.com/news/app/2767030/view/686393161428239261"
+    },
+    {
+      "id": "686392527015641278",
+      "date": "2026-10-01",
+      "title": "Marvel Rivals Version 20261001 Patch Notes",
+      "category": "patch",
+      "url": "https://store.steampowered.com/news/app/2767030/view/686392527015641278"
+    },
+    {
+      "id": "685265994960077911",
+      "date": "2026-09-24",
+      "title": "Marvel Rivals Version 20260924 Patch Notes",
+      "category": "patch",
+      "url": "https://store.steampowered.com/news/app/2767030/view/685265994960077911"
+    }
+  ]
+}

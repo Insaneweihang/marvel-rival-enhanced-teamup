@@ -1,7 +1,15 @@
 {
-  "current_version": "v0.3.7",
-  "updated_at": "2026-10-10",
+  "current_version": "v0.3.8",
+  "updated_at": "2026-10-23",
   "updates": [
+    {
+      "version": "v0.3.8",
+      "date": "2026-10-23",
+      "type": "feature",
+      "title": "Game Updates tab",
+      "summary": "Added a Game Updates tab that lists the latest official Marvel Rivals patch notes, balance posts, and dev posts with dates and direct links. The feed is refreshed automatically from the official Steam news channel.",
+      "note": "Also added a metadata-only Season 10.5 snapshot for the 2026-10-22 update."
+    },
     {
       "version": "v0.3.7",
       "date": "2026-10-08",

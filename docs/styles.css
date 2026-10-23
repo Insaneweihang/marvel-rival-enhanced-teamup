@@ -2682,3 +2682,88 @@ button.hero-chip {
     height: 32px;
   }
 }
+
+.game-updates-panel {
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid #d8ddd7;
+  background: #fff;
+}
+
+.game-updates-meta {
+  color: #68736e;
+  font-size: 12px;
+  margin: 0;
+}
+
+.game-update-list {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.game-update-item {
+  padding: 12px 13px;
+  border: 1px solid #edf0ec;
+}
+
+.game-update-item a {
+  color: #19201d;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.game-update-item a:hover {
+  color: #b92035;
+}
+
+.game-update-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.game-update-badge {
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #eef1ee;
+  color: #3f4a45;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.game-update-badge.patch {
+  background: #fff0f1;
+  color: #b92035;
+}
+
+.game-update-badge.balance {
+  background: #eef4ff;
+  color: #2a4f8f;
+}
+
+.game-update-badge.dev {
+  background: #f4f0ff;
+  color: #5b3fa8;
+}
+
+.game-update-date {
+  color: #68736e;
+}
+
+.game-update-source {
+  margin: 14px 0 0;
+  color: #68736e;
+  font-size: 12px;
+}
+
+.game-update-source a {
+  color: #b92035;
+}

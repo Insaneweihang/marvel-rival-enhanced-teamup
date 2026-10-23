@@ -111,6 +111,23 @@ export type Update = {
   note?: string;
 };
 
+export type GameUpdate = {
+  id: string;
+  date: string;
+  title: string;
+  category: string;
+  url: string;
+};
+
+export type GameUpdates = {
+  updated_at: string;
+  source: string;
+  source_url: string;
+  sources_checked?: { steam_rss_items?: number; official_news_links?: number };
+  disclaimer: string;
+  items: GameUpdate[];
+};
+
 export type PatchData = {
   summary: PatchSummary;
   heroes: Hero[];
@@ -121,6 +138,7 @@ export type PatchData = {
   maps: MapsData;
   eventModes: EventModesData;
   updates: Update[];
+  gameUpdates: GameUpdates;
 };
 
 export type DataProvider = {

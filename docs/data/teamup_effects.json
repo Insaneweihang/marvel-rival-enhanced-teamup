@@ -1,5 +1,5 @@
 {
-  "patch_version": "20260710-season-9",
+  "patch_version": "20261022-season-10-5-2",
   "effects": {
     "Adam Warlock": [
       {
@@ -14,8 +14,8 @@
         "partner": "Ultron",
         "ability_name": "Flawless Design",
         "base_effect": "Cosmic Cluster provides healing to allies it hits.",
-        "enhanced_effect": "With Ultron, Cosmic Cluster creates an explosion on impact.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195670.html",
+        "enhanced_effect": "With Ultron, Cosmic Cluster heals for 18 and its explosion field heals for 7.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -32,8 +32,8 @@
         "partner": "Loki",
         "ability_name": "Odin's Unacknowledged",
         "base_effect": "Sends an illusion forward that uses Assassin's Charge and carries enemies struck head-on.",
-        "enhanced_effect": "With Loki, the ability gains two charges.",
-        "source_url": "https://www.marvelrivals.com/20250911/41360_1258873.html",
+        "enhanced_effect": "With Loki, the ability gains two charges; illusion damage is capped at 150.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -42,8 +42,8 @@
         "partner": "Black Panther",
         "ability_name": "Feline Alliance",
         "base_effect": "Damage taken builds Vibranium Energy; at threshold Black Cat can explode, damage and knock back nearby enemies, and gain Speed Boost and Bonus Health.",
-        "enhanced_effect": "With Black Panther, the explosion can be triggered without waiting for the energy threshold.",
-        "source_url": "https://www.marvelrivals.com/20260416/41360_1296480.html",
+        "enhanced_effect": "With Black Panther, the explosion can be triggered without waiting for the energy threshold; hits grant 50 Fortune per enemy, capped at 100.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
@@ -103,9 +103,9 @@
       {
         "partner": "Captain America",
         "ability_name": "Bleed for Battle",
-        "base_effect": "Taking enough damage builds Bloodline Awakening stacks.",
-        "enhanced_effect": "With Captain America, critical damage instantly triggers Bloodline Awakening, grants bonus stacks, and raises the stack cap.",
-        "source_url": "https://www.marvelrivals.com/20250808/41360_1252733.html",
+        "base_effect": "Taking enough damage builds Bloodline Awakening stacks; the Team-Up adds 2 maximum stacks.",
+        "enhanced_effect": "With Captain America, critical damage instantly triggers Bloodline Awakening, grants bonus stacks, and adds 4 extra maximum stacks.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -122,8 +122,8 @@
         "partner": "Thor",
         "ability_name": "Voltaic Union",
         "base_effect": "Sentinel Strike becomes Lightning Shield. After landing two hits, Captain America throws piercing lightning shields.",
-        "enhanced_effect": "With Thor, Lightning Shield hits trigger extra area damage bursts.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195652.html",
+        "enhanced_effect": "With Thor, Lightning Shield hits trigger extra area damage bursts, and Voltaic Union lasts 10s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -158,8 +158,8 @@
         "partner": "Gambit",
         "ability_name": "Kinetic Kin",
         "base_effect": "Cyclops releases stored kinetic energy to gain greatly increased movement speed and jump height for a duration.",
-        "enhanced_effect": "With Gambit, Optic Blast and Concussive Beam attack speeds increase during the enhanced state.",
-        "source_url": "https://www.marvelrivals.com/20260611/41360_1303977.html",
+        "enhanced_effect": "With Gambit, Kinetic Kin lasts 8s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -240,8 +240,8 @@
         "partner": "Devil Dinosaur",
         "ability_name": "Prehistoric Trap",
         "base_effect": "Smoky Snare deploys Diablo to monitor an area, Immobilize and damage approaching enemies, and release damaging gas.",
-        "enhanced_effect": "With Devil Dinosaur, Elsa can store and deploy two Smoky Snares.",
-        "source_url": "https://www.marvelrivals.com/20260212/41360_1286981.html",
+        "enhanced_effect": "With Devil Dinosaur, Elsa can store and deploy two Smoky Snares; cooldown is 15s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
@@ -276,8 +276,8 @@
         "partner": "Jubilee",
         "ability_name": "Sparkling Staff",
         "base_effect": "Gambit spins a firework-enhanced Bo Staff, healing nearby allies, damaging nearby enemies, and blocking most projectiles.",
-        "enhanced_effect": "With Jubilee, Bayou Bash and Big Easy Impact gain an additional Continuous Healing aura.",
-        "source_url": "https://www.marvelrivals.com/20251114/41360_1270998.html",
+        "enhanced_effect": "With Jubilee, Bayou Bash and Big Easy Impact gain Continuous Healing; Sparkling Staff lasts 2s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
@@ -312,16 +312,16 @@
         "partner": "Psylocke",
         "ability_name": "Senbonzakura Strike",
         "base_effect": "Blast Arrow becomes Psionic Arrow; Hawkeye can bank extra arrows while drawn and rapidly fire them on release.",
-        "enhanced_effect": "With Psylocke, arrow nocking is faster and arrows explode on impact.",
-        "source_url": "https://www.marvelrivals.com/20241124/41360_1195753.html",
+        "enhanced_effect": "With Psylocke, arrows nock faster and explode on impact; Psionic Arrow single-shot damage is 33.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
         "partner": "Cloak & Dagger",
         "ability_name": "Moonlit Slash",
         "base_effect": "Crescent Slash becomes Moonlit Slash, sending a radiant blade that heals allies, boosts healing, damages enemies, and applies Vulnerability.",
-        "enhanced_effect": "With Cloak & Dagger, Moonlit Slash chains into a three-hit light blade combo.",
-        "source_url": "https://www.marvelrivals.com/20241124/41360_1195753.html",
+        "enhanced_effect": "With Cloak & Dagger, Moonlit Slash chains into a three-hit light blade combo and heals Hawkeye for the healing dealt.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -356,8 +356,8 @@
         "partner": "Wolverine",
         "ability_name": "Gamma Fastball",
         "base_effect": "Hulk enters a Furious state with Speed Boost and Attack Speed, and gains Dances With Werewolves for Unstoppable at low Health.",
-        "enhanced_effect": "With Wolverine, Hulk unlocks Fastball Special and can throw Wolverine forward after mutual confirmation.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195678.html",
+        "enhanced_effect": "With Wolverine, Furious state grants 25% Attack Speed and 25% Movement Speed; Unstoppable triggers at 400 Health and has a 45s cooldown.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -402,8 +402,8 @@
         "partner": "The Thing",
         "ability_name": "Iron & Stone",
         "base_effect": "Iron Fist launches enemies upward with a powerful uppercut.",
-        "enhanced_effect": "With The Thing, the uppercut can chain into a sweeping leg follow-up.",
-        "source_url": "https://www.marvelrivals.com/20241201/41360_1197227.html",
+        "enhanced_effect": "With The Thing, the uppercut can chain into a sweeping leg follow-up; the enhanced second hit deals 50 damage.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
@@ -428,8 +428,8 @@
         "partner": "Thor",
         "ability_name": "Thunder Overdrive",
         "base_effect": "Unibeam is enhanced in and out of Armor Overdrive, forming lightning rings that deal bonus damage near the beam edge.",
-        "enhanced_effect": "With Thor, Armor Overdrive cooldown is greatly reduced.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195687.html",
+        "enhanced_effect": "With Thor, Thunder Overdrive outer-ring damage is 80/s and enhanced damage is 90/s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -455,9 +455,9 @@
       {
         "partner": "Blade",
         "ability_name": "Vampiric Kin",
-        "base_effect": "Jubilee deploys a Vampiric Field where allies gain Life Steal while attacking enemies.",
-        "enhanced_effect": "With Blade, allies inside the field also receive Continuous Healing.",
-        "source_url": "https://www.marvelrivals.com/20260707/41360_1306826.html",
+        "base_effect": "Jubilee deploys a Vampiric Field where allies gain Life Steal and receive 15/s Continuous Healing for 6s during Vampiric Kin.",
+        "enhanced_effect": "With Blade, the Vampiric Field provides 15/s Continuous Healing to surrounding allies for 6s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
@@ -518,8 +518,8 @@
         "partner": "The Hood",
         "ability_name": "Void Pentagram",
         "base_effect": "Stepping Discs inside a Hellish Magic Circle refund energy and summon a Limbo Demon on each use.",
-        "enhanced_effect": "With The Hood, summoned Limbo Demons gain much more Health and a wider attack range.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195682.html",
+        "enhanced_effect": "With The Hood, summoned Limbo Demons gain 25 additional Health and wider attack range; cooldown is 20s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -528,16 +528,16 @@
         "partner": "Scarlet Witch",
         "ability_name": "Metallic Chaos",
         "base_effect": "Magneto summons a Chaos Greatsword that damages enemies in front.",
-        "enhanced_effect": "With Scarlet Witch, Magnetic Cannon can be charged with passive energy to fire Chaos Greatswords.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195655.html",
+        "enhanced_effect": "With Scarlet Witch, Magnetic Cannon can be charged with passive energy to fire Chaos Greatswords; cooldown is 18s and enhanced projectiles deal 10 damage each.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
         "partner": "Emma Frost",
         "ability_name": "Magnetic Resonance",
         "base_effect": "Creates a magnetic projection that mirrors Magneto's movement and ability casts from the enemy perspective.",
-        "enhanced_effect": "With Emma Frost, the projection gains much more Health and persists until destroyed or recalled.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195655.html",
+        "enhanced_effect": "With Emma Frost, Magnetic Resonance deals 50% damage and its projection lasts up to 6s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -546,16 +546,16 @@
         "partner": "Adam Warlock",
         "ability_name": "Vitality Pact",
         "base_effect": "After defeat, Mantis can move as a soul, heal nearby allies, and reforge her body; Natural Anger also enhances Nature Favor self-healing.",
-        "enhanced_effect": "With Adam Warlock, Mantis soul state can create Soul Bond with nearby allies for Healing Over Time and shared damage.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195661.html",
+        "enhanced_effect": "With Adam Warlock, soul-form area healing is 30/s with an 8m field radius; Healing Flower healing is 12 + 3% of target Maximum Health per second.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
         "partner": "Star-Lord",
         "ability_name": "Star Blossom",
-        "base_effect": "Recasting Healing Flower on a teammate who already has it enhances and spreads the healing aura.",
-        "enhanced_effect": "With Star-Lord, Healing Flower on any teammate instantly triggers the enhanced spell field and healing effect.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195661.html",
+        "base_effect": "Recasting Healing Flower enhances and spreads the healing aura; base healing is 10 + 3% of target Maximum Health per second.",
+        "enhanced_effect": "With Star-Lord, Healing Flower instantly triggers the enhanced field; enhanced healing is 10 + 3.5% of target Maximum Health per second.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -600,16 +600,16 @@
         "partner": "Hulk",
         "ability_name": "Gamma Monstro",
         "base_effect": "Summons an extra Gamma Monstro that attacks nearby enemies and gains Attack Speed on critical hits; Wrath of the Seven Seas commands a beam attack.",
-        "enhanced_effect": "With Hulk, Blessing of the Deep creates a Gamma water barrier that speeds Gamma Monstro cooldown and gives it Damage Boost.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195686.html",
+        "enhanced_effect": "With Hulk, Gamma Monstro cooldown is 25s and its single-hit damage is 5.5.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
         "partner": "Luna Snow",
         "ability_name": "Chilling Charisma",
         "base_effect": "Namor summons Frost Tide forward, damaging, pushing back, and Slowing enemies hit.",
-        "enhanced_effect": "With Luna Snow, Frost Tide gains one charge and crashes at max range for area damage and Slow.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195686.html",
+        "enhanced_effect": "With Luna Snow, Frozen Spawn attacks apply a 15% Slow for 1s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -618,8 +618,8 @@
         "partner": "Black Panther",
         "ability_name": "Vibranium Mech",
         "base_effect": "Briefly grants Cyber-Web Cluster Attack Speed and Damage Boost.",
-        "enhanced_effect": "With Black Panther, activation deploys a frontal Vibranium Shield and lowers Cyber-Web Cluster Vibranium Energy cost.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195656.html",
+        "enhanced_effect": "With Black Panther, activation deploys a frontal Vibranium Shield and lowers Cyber-Web Cluster cost; cooldown is 15s and enhanced firing interval is 0.18s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
@@ -636,8 +636,8 @@
         "partner": "Hela",
         "ability_name": "Circle of Life",
         "base_effect": "Psionic Detonation becomes Phoenix Netherfire, creating staged explosions that Stun, apply Healing Reduction, and add Sparks.",
-        "enhanced_effect": "With Hela, every blast applies multiple Spark stacks.",
-        "source_url": "https://www.marvelrivals.com/20250710/41360_1246363.html",
+        "enhanced_effect": "With Hela, every blast applies multiple Spark stacks and ability cooldown is 10s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
@@ -716,8 +716,8 @@
         "partner": "Jubilee",
         "ability_name": "Hex Fireworks",
         "base_effect": "Dark Seal becomes a Plasmoid Seal with a secondary detonation that damages enemies and applies Vulnerability.",
-        "enhanced_effect": "With Jubilee, Scarlet Witch receives constant healing while using Mystic Projection.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195684.html",
+        "enhanced_effect": "With Jubilee, Scarlet Witch receives healing while using Mystic Projection; enhanced healing is 30/s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -734,8 +734,8 @@
         "partner": "Peni Parker",
         "ability_name": "Parker Power-Up",
         "base_effect": "Spider-Man receives a timed Sticky Spider-Bomb that damages nearby enemies and applies Spider-Tracer, or recharges Web-Cluster if it times out on him.",
-        "enhanced_effect": "With Peni Parker, Web-Cluster Spider-Tracers are upgraded and generate Bonus Health when detonated.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195680.html",
+        "enhanced_effect": "With Peni Parker, Web-Cluster Spider-Tracers are upgraded and generate Bonus Health when detonated; Parker Power-Up cooldown is 10s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -795,20 +795,20 @@
     ],
     "The Hood": [
       {
-        "partner": "Magik",
-        "ability_name": null,
-        "base_effect": null,
-        "enhanced_effect": null,
-        "source_url": null,
-        "verification_status": "needs_verification"
+        "partner": "Scarlet Witch",
+        "ability_name": "Chaos Collision",
+        "base_effect": "Gain a New Ability. Create an arcane zone that continuously damages enemies and applies stacking Damage and Healing Reduction. Reactivate to teleport to the zone's center.",
+        "enhanced_effect": "When teaming up with Scarlet Witch, after teleporting, unleash a magical shockwave, dealing one-time damage to nearby enemies while launching them towards The Hood.",
+        "source_url": "https://marvelrivals.gg/the-hood/",
+        "verification_status": "verified_secondary"
       },
       {
-        "partner": "Jubilee",
-        "ability_name": null,
-        "base_effect": null,
-        "enhanced_effect": null,
-        "source_url": null,
-        "verification_status": "needs_verification"
+        "partner": "Moon Knight",
+        "ability_name": "New Moon's Shadow",
+        "base_effect": "Enhances Abyssal Veil into a Lunar Barrier that blocks projectiles. Upon breaking, it detonates, damaging enemies and applying Damage and Healing Reduction. Enemies passing through take damage and are briefly Blinded.",
+        "enhanced_effect": "With Moon Knight, the Lunar Barrier has greater shield value and The Hood attacks passing through it bounce from enemies within 6m.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
+        "verification_status": "verified_secondary"
       }
     ],
     "The Punisher": [
@@ -834,16 +834,16 @@
         "partner": "Human Torch",
         "ability_name": "Two in One",
         "base_effect": "The Thing's fists ignite; Rocky Jab deals splash damage and Stone Haymaker explodes in a frontal cone.",
-        "enhanced_effect": "With Human Torch, Human Torch can lift and slam The Thing, damaging and Stunning enemies and putting The Thing into the flaming state.",
-        "source_url": "https://www.marvelrivals.com/20250220/41360_1213067.html",
+        "enhanced_effect": "With Human Torch, Human Torch can lift and slam The Thing; cooldown is 18s and duration is 8s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       },
       {
         "partner": "Invisible Woman",
         "ability_name": "Unbreakable Forces",
         "base_effect": "Generates Psionic Armor that grants Bonus Health based on missing Health.",
-        "enhanced_effect": "With Invisible Woman, Psionic Armor pulses area healing after The Thing takes enough damage and converts missing Health into more Bonus Health.",
-        "source_url": "https://www.marvelrivals.com/20250220/41360_1213067.html",
+        "enhanced_effect": "With Invisible Woman, Unbreakable Forces cooldown is 15s and healing triggers at 125 damage received.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -860,8 +860,8 @@
         "partner": "Angela",
         "ability_name": "Divine Armory",
         "base_effect": "Throws a Thunder Spear that restores Thorforce per enemy hit, then Thor can leap to its explosion point for a second damage wave.",
-        "enhanced_effect": "With Angela, leaping to the Thunder Spear grants Bonus Health.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195657.html",
+        "enhanced_effect": "With Angela, leaping to the Thunder Spear grants Bonus Health; Divine Armory cooldown is 15s.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -932,8 +932,8 @@
         "partner": "Elsa Bloodstone",
         "ability_name": "Expert Instinct",
         "base_effect": "KO participation grants Culling Instinct stacks that reduce other ability cooldowns; stacks are lost on defeat.",
-        "enhanced_effect": "With Elsa Bloodstone, Ceaseless Charge grants more Bonus Health.",
-        "source_url": "https://www.marvelrivals.com/20241123/41360_1195681.html",
+        "enhanced_effect": "With Elsa Bloodstone, Ceaseless Charge grants 55 Bonus Health.",
+        "source_url": "https://www.marvelrivals.com/20261006/41525_1315864.html",
         "verification_status": "verified_official"
       }
     ],
@@ -953,6 +953,24 @@
         "enhanced_effect": "With Gambit, Wolverine receives Continuous Healing for the ability duration.",
         "source_url": "https://www.marvelrivals.com/20241204/41360_1198101.html",
         "verification_status": "verified_official"
+      }
+    ],
+    "Gorr the God Butcher": [
+      {
+        "partner": "Hela",
+        "ability_name": "Ragnarok",
+        "base_effect": "Gain a new ability to morph the All-Black into a scythe and execute a sweeping strike, damaging and briefly Grounding nearby enemies.",
+        "enhanced_effect": "With Hela, the scythe attack range is expanded and each hit scatters symbiote fragments that grant Bonus Health to Gorr and nearby allies.",
+        "source_url": "https://rivalsdex.com/team-ups",
+        "verification_status": "verified_secondary"
+      },
+      {
+        "partner": "Venom",
+        "ability_name": "Hive Mind",
+        "base_effect": "Gain a new ability to fire a Symbiote Claw that deals piercing damage to enemies and launches caught enemies toward Gorr when it retracts.",
+        "enhanced_effect": "With Venom, Black Berserkers gain a slight Damage Boost and apply Slow to enemies they strike.",
+        "source_url": "https://rivalsdex.com/team-ups",
+        "verification_status": "verified_secondary"
       }
     ]
   }

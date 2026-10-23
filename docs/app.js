@@ -4,6 +4,7 @@ const SHARED_DATA_FILES = {
   maps: "data/maps.json",
   eventModes: "data/event_modes.json",
   updates: "data/updates.json",
+  gameUpdates: "data/game_updates.json",
 };
 
 function patchDataFiles(patch) {
@@ -121,6 +122,11 @@ const state = {
   updatesVersion: "",
   updatesUpdatedAt: "",
   updatesOpen: false,
+  gameUpdates: [],
+  gameUpdatesUpdatedAt: "",
+  gameUpdatesSource: "",
+  gameUpdatesSourceUrl: "",
+  gameUpdatesDisclaimer: "",
   summary: null,
   mapsData: null,
   heroesByName: new Map(),
@@ -224,6 +230,9 @@ const elements = {
   updatesClose: document.querySelector("#updates-close"),
   updatesVersion: document.querySelector("#updates-version"),
   updatesList: document.querySelector("#updates-list"),
+  gameUpdatesList: document.querySelector("#game-updates-list"),
+  gameUpdatesMeta: document.querySelector("#game-updates-meta"),
+  gameUpdatesSource: document.querySelector("#game-updates-source"),
   feedbackForm: document.querySelector("#feedback-form"),
   feedbackSubmit: document.querySelector("#feedback-submit"),
   feedbackStatus: document.querySelector("#feedback-status"),
@@ -525,7 +534,7 @@ function readUrlState() {
     state.patchId = patch;
   }
 
-  if (view === "builder" || view === "browser" || view === "maps" || view === "events") {
+  if (view === "builder" || view === "browser" || view === "maps" || view === "events" || view === "updates") {
     state.activeView = view;
   }
   if (mode) {
@@ -761,6 +770,77 @@ function formatUpdateVersion(update) {
     return "";
   }
   return version.startsWith("v") ? version : `v${version}`;
+}
+
+const GAME_UPDATE_CATEGORY_LABELS = {
+  patch: "Patch notes",
+  balance: "Balance",
+  dev: "Dev post",
+  news: "News",
+};
+
+function renderGameUpdates() {
+  if (!elements.gameUpdatesList) {
+    return;
+  }
+  elements.gameUpdatesList.replaceChildren();
+  const items = Array.isArray(state.gameUpdates) ? state.gameUpdates : [];
+
+  if (elements.gameUpdatesMeta) {
+    elements.gameUpdatesMeta.textContent = state.gameUpdatesUpdatedAt
+      ? `Last synced ${state.gameUpdatesUpdatedAt}. Headlines open the official post.`
+      : "Headlines open the official post.";
+  }
+
+  if (elements.gameUpdatesSource) {
+    elements.gameUpdatesSource.replaceChildren();
+    const disclaimer = state.gameUpdatesDisclaimer || "Unofficial fan project.";
+    elements.gameUpdatesSource.append(document.createTextNode(`${disclaimer} `));
+    if (state.gameUpdatesSourceUrl) {
+      const link = document.createElement("a");
+      link.href = state.gameUpdatesSourceUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = `Source: ${state.gameUpdatesSource || "official news"}`;
+      elements.gameUpdatesSource.append(link);
+    }
+  }
+
+  if (!items.length) {
+    const empty = document.createElement("p");
+    empty.textContent = "No updates loaded yet.";
+    elements.gameUpdatesList.append(empty);
+    return;
+  }
+
+  for (const item of items) {
+    const row = document.createElement("li");
+    row.className = "game-update-item";
+
+    const meta = document.createElement("div");
+    meta.className = "game-update-meta";
+
+    const badge = document.createElement("span");
+    badge.className = `game-update-badge ${item.category || "news"}`;
+    badge.textContent = GAME_UPDATE_CATEGORY_LABELS[item.category] || "News";
+    meta.append(badge);
+
+    const when = document.createElement("span");
+    when.className = "game-update-date";
+    when.textContent = item.date || "";
+    meta.append(when);
+
+    row.append(meta);
+
+    const link = document.createElement("a");
+    link.href = item.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = item.title || "Marvel Rivals update";
+    row.append(link);
+
+    elements.gameUpdatesList.append(row);
+  }
 }
 
 function setUpdatesOpen(isOpen) {
@@ -3261,6 +3341,7 @@ async function init() {
       mapsData,
       eventModesData,
       updatesData,
+      gameUpdatesData,
       ...teamPayloads
     ] = await Promise.all([
       loadJson(dataFiles.summary),
@@ -3271,6 +3352,7 @@ async function init() {
       loadJson(dataFiles.maps),
       loadJson(dataFiles.eventModes),
       loadJson(dataFiles.updates),
+      loadJson(dataFiles.gameUpdates),
       ...TEAM_MODE_KEYS.map((key) => loadJson(dataFiles[key])),
     ]);
     state.summary = summary;
@@ -3279,6 +3361,11 @@ async function init() {
     state.updates = Array.isArray(updatesData.updates) ? updatesData.updates : [];
     state.updatesVersion = String(updatesData.current_version || "");
     state.updatesUpdatedAt = String(updatesData.updated_at || "");
+    state.gameUpdates = Array.isArray(gameUpdatesData.items) ? gameUpdatesData.items : [];
+    state.gameUpdatesUpdatedAt = String(gameUpdatesData.updated_at || "");
+    state.gameUpdatesSource = String(gameUpdatesData.source || "");
+    state.gameUpdatesSourceUrl = String(gameUpdatesData.source_url || "");
+    state.gameUpdatesDisclaimer = String(gameUpdatesData.disclaimer || "");
     state.heroesByName = new Map(heroes.heroes.map((hero) => [hero.name, hero]));
     state.teamups = new Map(Object.entries(teamups.teamups));
     state.teamupEffects = new Map(
@@ -3306,6 +3393,7 @@ async function init() {
     normalizeSavedComps();
     renderSummary();
     renderUpdates();
+    renderGameUpdates();
     update();
   } catch (error) {
     elements.statusMessage.textContent = error.message;

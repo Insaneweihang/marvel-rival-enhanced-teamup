@@ -9,6 +9,7 @@ import type {
   MapsData,
   EventModesData,
   Update,
+  GameUpdates,
 } from "../types/data";
 
 function runtimeDataBase(): string {
@@ -35,7 +36,7 @@ function patchPath(patch: Patch, filename: string): string {
 export const staticDataProvider: DataProvider = {
   getManifest: () => getJson<PatchManifest>("patches.json"),
   async getPatchData(patch) {
-    const [summary, heroes, teamups, effects, heroDetails, all, balanced, oneThreeTwo, twoOneThree, oneTwoThree, threeOneTwo, maps, eventModes, updates] = await Promise.all([
+    const [summary, heroes, teamups, effects, heroDetails, all, balanced, oneThreeTwo, twoOneThree, oneTwoThree, threeOneTwo, maps, eventModes, updates, gameUpdates] = await Promise.all([
       getJson<PatchData["summary"]>(patchPath(patch, "summary.json")),
       getJson<{ heroes: Hero[] }>(patchPath(patch, "heroes.json")),
       getJson<{ teamups: Record<string, string[]> }>(patchPath(patch, "teamups.json")),
@@ -50,6 +51,7 @@ export const staticDataProvider: DataProvider = {
       getJson<MapsData>("maps.json"),
       getJson<EventModesData>("event_modes.json"),
       getJson<{ updates: Update[] }>("updates.json"),
+      getJson<GameUpdates>("game_updates.json"),
     ]);
     return {
       summary,
@@ -60,6 +62,7 @@ export const staticDataProvider: DataProvider = {
       maps,
       eventModes,
       updates: updates.updates || [],
+      gameUpdates,
       teams: {
         all: all.teams,
         "222": balanced.teams,
