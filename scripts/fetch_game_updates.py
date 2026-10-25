@@ -31,8 +31,10 @@ import html
 import json
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -47,6 +49,10 @@ YOUTUBE_URL = "https://www.youtube.com/@MarvelRivals"
 UA = "Mozilla/5.0 (compatible; marvel-rivals-updates/1.1; +https://insaneweihang.com)"
 TIMEOUT = 25
 MAX_ITEMS = 12
+# YouTube's Atom feed flaps hard (see fetch_resilient): 3 rounds x 8 parallel
+# probes puts the per-run failure probability around 0.85^24, under 3%.
+YOUTUBE_ROUNDS = 3
+YOUTUBE_BURST = 8
 # YouTube publishes esports VODs and streams alongside real update videos, and
 # it would otherwise crowd out articles. Skip match footage, and cap how many
 # videos can occupy the feed.
@@ -82,6 +88,32 @@ def fetch(url: str) -> str:
     request = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
         return response.read().decode("utf-8", errors="replace")
+
+
+def fetch_resilient(url: str, *, rounds: int = YOUTUBE_ROUNDS, burst: int = YOUTUBE_BURST) -> str:
+    """Fetch a flapping endpoint by firing a small concurrent burst per round.
+
+    YouTube's RSS edge started answering 404/500 on the large majority of
+    requests on 2026-10-23 (measured 11/60 successes, no correlation with
+    User-Agent, hostname — www/bare/m.youtube — or cache-busting query params).
+    A single request therefore fails ~85% of the time, which is what silently
+    dropped every youtube item from the committed feed.
+
+    Probes inside a round run in parallel, so the whole call still costs about
+    one request's latency per round. Non-flapping sources keep using fetch().
+    """
+    last: Exception | None = None
+    for _ in range(rounds):
+        with ThreadPoolExecutor(max_workers=burst) as pool:
+            futures = [pool.submit(fetch, url) for _ in range(burst)]
+            for future in as_completed(futures):
+                try:
+                    return future.result()
+                except (urllib.error.URLError, OSError, ValueError) as exc:
+                    last = exc
+        time.sleep(0.5)
+    assert last is not None
+    raise last
 
 
 def tag_text(block: str, tag: str) -> str:
@@ -172,7 +204,7 @@ def steam_items() -> list[dict[str, str]]:
 
 
 def youtube_items() -> list[dict[str, str]]:
-    xml = fetch(YOUTUBE_RSS)
+    xml = fetch_resilient(YOUTUBE_RSS)
     items: list[dict[str, str]] = []
     for block in re.findall(r"<entry>(.*?)</entry>", xml, re.S):
         video_id = tag_text(block, "yt:videoId")
@@ -225,7 +257,26 @@ def select(sorted_items: list[dict[str, str]], limit: int = MAX_ITEMS) -> list[d
     return chosen
 
 
-def build() -> dict[str, object]:
+def previous_items(output: Path) -> dict[str, list[dict[str, str]]]:
+    """Items from the feed file already on disk, grouped by source.
+
+    Used only when a source fails outright: keeping its last published rows
+    beats silently deleting them (the 2026-10-23 flap zeroed every youtube row
+    and the degraded file was one commit away from shipping).
+    """
+    try:
+        payload = json.loads(output.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for item in payload.get("items", []):
+        source = item.get("source", "")
+        if source:
+            grouped.setdefault(source, []).append(item)
+    return grouped
+
+
+def build(output: Path = OUTPUT) -> dict[str, object]:
     adapters = (
         ("official", official_items),
         ("steam", steam_items),
@@ -234,12 +285,18 @@ def build() -> dict[str, object]:
     groups: list[tuple[str, list[dict[str, str]]]] = []
     counts: dict[str, int] = {}
     errors: dict[str, str] = {}
+    carried: dict[str, int] = {}
+    previous = previous_items(output)
     for name, adapter in adapters:
         try:
             items = adapter()
         except (urllib.error.URLError, OSError, ValueError) as exc:
             counts[name] = 0
             errors[name] = f"{exc.__class__.__name__}: {exc}"
+            kept = previous.get(name, [])
+            if kept:
+                carried[name] = len(kept)
+                groups.append((name, kept))
             continue
         counts[name] = len(items)
         groups.append((name, items))
@@ -263,6 +320,8 @@ def build() -> dict[str, object]:
     }
     if errors:
         payload["source_errors"] = errors
+    if carried:
+        payload["carried_forward"] = carried
     return payload
 
 
@@ -273,7 +332,7 @@ def main() -> int:
     args = parser.parse_args()
 
     try:
-        payload = build()
+        payload = build(args.output)
     except (urllib.error.URLError, OSError, ValueError) as exc:
         print(f"Failed to build game updates: {exc.__class__.__name__}: {exc}", file=sys.stderr)
         return 1

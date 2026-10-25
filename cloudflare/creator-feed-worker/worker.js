@@ -1,4 +1,9 @@
 const CACHE_TTL_SECONDS = 900;
+// YouTube's Atom edge answers 404/500 on most requests (measured ~15% success
+// in Oct 2026), so one attempt is not enough. Fresh responses still get cached
+// for CACHE_TTL_SECONDS; this retry only runs on a cache miss.
+const FEED_ATTEMPTS = 5;
+const FEED_RETRY_DELAY_MS = 400;
 
 function decodeXml(value) {
   return value
@@ -57,9 +62,9 @@ export default {
 
     try {
       const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${encodeURIComponent(env.YOUTUBE_CHANNEL_ID)}`;
-      const feedResponse = await fetch(feedUrl, { headers: { Accept: "application/atom+xml, application/xml" } });
-      if (!feedResponse.ok) return response({ error: "Unable to load creator feed" }, 502);
-      const videos = parseFeed(await feedResponse.text());
+      const feedResponse = await fetchFeed(feedUrl);
+      if (!feedResponse) return response({ error: "Unable to load creator feed" }, 502);
+      const videos = parseFeed(feedResponse);
       const result = response({ videos });
       ctx.waitUntil(cache.put(cacheKey, result.clone()));
       return result;
@@ -68,3 +73,18 @@ export default {
     }
   },
 };
+
+async function fetchFeed(feedUrl) {
+  for (let attempt = 0; attempt < FEED_ATTEMPTS; attempt += 1) {
+    try {
+      const res = await fetch(feedUrl, { headers: { Accept: "application/atom+xml, application/xml" } });
+      if (res.ok) return await res.text();
+    } catch {
+      // network / TLS blip — fall through to the next attempt
+    }
+    if (attempt + 1 < FEED_ATTEMPTS) {
+      await new Promise((resolve) => setTimeout(resolve, FEED_RETRY_DELAY_MS * (attempt + 1)));
+    }
+  }
+  return null;
+}

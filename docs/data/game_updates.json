@@ -37,6 +37,15 @@
       "source_label": "YouTube"
     },
     {
+      "id": "official:40955_1317131",
+      "date": "2026-10-20",
+      "title": "Join Twitch Path to Doomsday Event & Go for 3,000 Gifted Subs!",
+      "category": "news",
+      "url": "https://www.marvelrivals.com/announcements/20261020/40955_1317131.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
       "id": "youtube:hFelg1evOg0",
       "date": "2026-10-20",
       "title": "Hunt the Creatures of the Dark! | New Elsa Bloodstone Costume Reveal | #MarvelRivals",
@@ -100,22 +109,13 @@
       "source_label": "Official site"
     },
     {
-      "id": "official:40954_1315872",
-      "date": "2026-10-07",
-      "title": "Season 10.5: New Modes and Halloween // Dev Vision Vol. 22 | Marvel Rivals",
-      "category": "dev",
-      "url": "https://www.marvelrivals.com/devdiaries/20261007/40954_1315872.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "official:41667_1315864",
-      "date": "2026-10-06",
+      "id": "steam:686393161428239261",
+      "date": "2026-10-08",
       "title": "Marvel Rivals Version 20261009 Balance Post",
       "category": "balance",
-      "url": "https://www.marvelrivals.com/balancepost/20261006/41667_1315864.html",
-      "source": "official",
-      "source_label": "Official site"
+      "url": "https://store.steampowered.com/news/app/2767030/view/686393161428239261",
+      "source": "steam",
+      "source_label": "Steam"
     }
   ]
 }
