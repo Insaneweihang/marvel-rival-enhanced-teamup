@@ -1,14 +1,50 @@
 {
-  "updated_at": "2026-10-23",
+  "updated_at": "2026-10-28",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 7
+    "youtube_items": 10
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
+    {
+      "id": "official:41548_1317925",
+      "date": "2026-10-28",
+      "title": "Marvel Rivals Version 20261029 Patch Notes",
+      "category": "patch",
+      "url": "https://www.marvelrivals.com/gameupdate/20261028/41548_1317925.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "youtube:lQkDqElefaA",
+      "date": "2026-10-28",
+      "title": "Blast off in style! | New Iron Man Costume Reveal | #MarvelRivals #MARVELTokon @MARVELTokon",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=lQkDqElefaA",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:DPW4XDQ9gVQ",
+      "date": "2026-10-27",
+      "title": "Take to the skies in style! | New Storm Costume Reveal | #MarvelRivals #MARVELTokon @MARVELTokon",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=DPW4XDQ9gVQ",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:MDbFU6wmrfk",
+      "date": "2026-10-26",
+      "title": "Unleash the Cosmic Power! | New Winter Soldier Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=MDbFU6wmrfk",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
     {
       "id": "official:40954_1317554",
       "date": "2026-10-23",
@@ -46,33 +82,6 @@
       "source_label": "Official site"
     },
     {
-      "id": "youtube:hFelg1evOg0",
-      "date": "2026-10-20",
-      "title": "Hunt the Creatures of the Dark! | New Elsa Bloodstone Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=hFelg1evOg0",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:RUEk4Bak3Xk",
-      "date": "2026-10-20",
-      "title": "Path to Doomsday - Avengers: Endgame | New PvE Mode Trailer | Marvel Rivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=RUEk4Bak3Xk",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:HuHs1Wh6_wI",
-      "date": "2026-10-20",
-      "title": "Assemble, participate, and reign! | New FREE Captain America Costume Reveal Trailer | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=HuHs1Wh6_wI",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
       "id": "official:40954_1316982",
       "date": "2026-10-19",
       "title": "Art Vision Vol. 06 // Behind The Scenes (Part 1): Dedication and Passion",
@@ -107,15 +116,6 @@
       "url": "https://www.marvelrivals.com/gameupdate/20261014/41548_1316588.html",
       "source": "official",
       "source_label": "Official site"
-    },
-    {
-      "id": "steam:686393161428239261",
-      "date": "2026-10-08",
-      "title": "Marvel Rivals Version 20261009 Balance Post",
-      "category": "balance",
-      "url": "https://store.steampowered.com/news/app/2767030/view/686393161428239261",
-      "source": "steam",
-      "source_label": "Steam"
     }
   ]
 }
