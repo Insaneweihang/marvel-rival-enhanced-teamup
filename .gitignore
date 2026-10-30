@@ -13,3 +13,4 @@ frontend/vite.config.d.ts
 published/
 cloudflare/*/.wrangler/
 cloudflare/creator-feed-worker/wrangler.toml
+*.egg-info/
