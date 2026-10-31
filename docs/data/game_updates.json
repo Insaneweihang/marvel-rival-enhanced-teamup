@@ -1,14 +1,23 @@
 {
-  "updated_at": "2026-10-28",
+  "updated_at": "2026-10-30",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 10
+    "youtube_items": 11
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
+    {
+      "id": "youtube:OL-EdGxZruw",
+      "date": "2026-10-30",
+      "title": "Art Vision Vol. 07 // Behind The Scenes (Part 3): Dedication and Passion | Marvel Rivals",
+      "category": "dev",
+      "url": "https://www.youtube.com/watch?v=OL-EdGxZruw",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
     {
       "id": "official:41548_1317925",
       "date": "2026-10-28",
@@ -62,15 +71,6 @@
       "url": "https://www.marvelrivals.com/gameupdate/20261021/41548_1317253.html",
       "source": "official",
       "source_label": "Official site"
-    },
-    {
-      "id": "youtube:XzW9t8tLP3Q",
-      "date": "2026-10-21",
-      "title": "The Cosmic Shark Snaps Back! | New Jeff the Landshark Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=XzW9t8tLP3Q",
-      "source": "youtube",
-      "source_label": "YouTube"
     },
     {
       "id": "official:40955_1317131",
