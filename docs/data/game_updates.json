@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-10-30",
+  "updated_at": "2026-11-02",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 11
+    "youtube_items": 0
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
     {
-      "id": "youtube:OL-EdGxZruw",
-      "date": "2026-10-30",
-      "title": "Art Vision Vol. 07 // Behind The Scenes (Part 3): Dedication and Passion | Marvel Rivals",
+      "id": "official:40954_1318421",
+      "date": "2026-11-02",
+      "title": "Art Vision Vol. 07 // Behind The Scenes (Part 3): Dedication and Passion",
       "category": "dev",
-      "url": "https://www.youtube.com/watch?v=OL-EdGxZruw",
-      "source": "youtube",
-      "source_label": "YouTube"
+      "url": "https://www.marvelrivals.com/devdiaries/20261102/40954_1318421.html",
+      "source": "official",
+      "source_label": "Official site"
     },
     {
       "id": "official:41548_1317925",
@@ -117,5 +117,11 @@
       "source": "official",
       "source_label": "Official site"
     }
-  ]
+  ],
+  "source_errors": {
+    "youtube": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "carried_forward": {
+    "youtube": 3
+  }
 }
