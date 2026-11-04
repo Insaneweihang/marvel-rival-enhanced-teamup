@@ -1,14 +1,23 @@
 {
-  "updated_at": "2026-11-02",
+  "updated_at": "2026-11-03",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 0
+    "youtube_items": 12
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
+    {
+      "id": "youtube:0qkuPLtkw4c",
+      "date": "2026-11-03",
+      "title": "Feel the webs of the worthy! | New Spider-Man Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=0qkuPLtkw4c",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
     {
       "id": "official:40954_1318421",
       "date": "2026-11-02",
@@ -107,21 +116,6 @@
       "url": "https://www.marvelrivals.com/announcements/20261015/40955_1316797.html",
       "source": "official",
       "source_label": "Official site"
-    },
-    {
-      "id": "official:41548_1316588",
-      "date": "2026-10-14",
-      "title": "Marvel Rivals Version 20261015 Patch Notes",
-      "category": "patch",
-      "url": "https://www.marvelrivals.com/gameupdate/20261014/41548_1316588.html",
-      "source": "official",
-      "source_label": "Official site"
     }
-  ],
-  "source_errors": {
-    "youtube": "HTTPError: HTTP Error 404: Not Found"
-  },
-  "carried_forward": {
-    "youtube": 3
-  }
+  ]
 }
