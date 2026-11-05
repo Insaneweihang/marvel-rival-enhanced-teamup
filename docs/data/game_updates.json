@@ -1,14 +1,32 @@
 {
-  "updated_at": "2026-11-03",
+  "updated_at": "2026-11-04",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 12
+    "youtube_items": 13
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
+    {
+      "id": "official:41548_1318632",
+      "date": "2026-11-04",
+      "title": "Marvel Rivals Version 20261105 Patch Notes",
+      "category": "patch",
+      "url": "https://www.marvelrivals.com/gameupdate/20261104/41548_1318632.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "youtube:S7gnkAdPKWk",
+      "date": "2026-11-04",
+      "title": "Get ready to feast on victory! | New The Thing Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=S7gnkAdPKWk",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
     {
       "id": "youtube:0qkuPLtkw4c",
       "date": "2026-11-03",
@@ -55,15 +73,6 @@
       "source_label": "YouTube"
     },
     {
-      "id": "youtube:MDbFU6wmrfk",
-      "date": "2026-10-26",
-      "title": "Unleash the Cosmic Power! | New Winter Soldier Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=MDbFU6wmrfk",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
       "id": "official:40954_1317554",
       "date": "2026-10-23",
       "title": "Art Vision Vol. 06 // Behind The Scenes (Part 2): Dedication and Passion | Marvel Rivals",
@@ -105,15 +114,6 @@
       "title": "Speech Moderation and Penalties",
       "category": "news",
       "url": "https://www.marvelrivals.com/announcements/20261016/40955_1316802.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "official:40955_1316797",
-      "date": "2026-10-15",
-      "title": "Use of Mods and Violation Management",
-      "category": "news",
-      "url": "https://www.marvelrivals.com/announcements/20261015/40955_1316797.html",
       "source": "official",
       "source_label": "Official site"
     }
