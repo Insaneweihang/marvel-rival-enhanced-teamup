@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04",
+  "updated_at": "2026-11-05",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
@@ -10,11 +10,29 @@
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
     {
+      "id": "steam:703283562262039667",
+      "date": "2026-11-05",
+      "title": "Marvel Rivals Teams Up with RESPAWN By Razer",
+      "category": "news",
+      "url": "https://store.steampowered.com/news/app/2767030/view/703283562262039667",
+      "source": "steam",
+      "source_label": "Steam"
+    },
+    {
       "id": "official:41548_1318632",
       "date": "2026-11-04",
       "title": "Marvel Rivals Version 20261105 Patch Notes",
       "category": "patch",
       "url": "https://www.marvelrivals.com/gameupdate/20261104/41548_1318632.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "official:40955_1318635",
+      "date": "2026-11-04",
+      "title": "Marvel Rivals Teams Up With RESPAWN By Razer For A Limited Edition Gum & Mints Collection",
+      "category": "news",
+      "url": "https://www.marvelrivals.com/announcements/20261104/40955_1318635.html",
       "source": "official",
       "source_label": "Official site"
     },
@@ -96,24 +114,6 @@
       "title": "Join Twitch Path to Doomsday Event & Go for 3,000 Gifted Subs!",
       "category": "news",
       "url": "https://www.marvelrivals.com/announcements/20261020/40955_1317131.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "official:40954_1316982",
-      "date": "2026-10-19",
-      "title": "Art Vision Vol. 06 // Behind The Scenes (Part 1): Dedication and Passion",
-      "category": "dev",
-      "url": "https://www.marvelrivals.com/devdiaries/20261019/40954_1316982.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "official:40955_1316802",
-      "date": "2026-10-16",
-      "title": "Speech Moderation and Penalties",
-      "category": "news",
-      "url": "https://www.marvelrivals.com/announcements/20261016/40955_1316802.html",
       "source": "official",
       "source_label": "Official site"
     }
