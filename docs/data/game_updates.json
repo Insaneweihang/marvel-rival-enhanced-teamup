@@ -1,14 +1,23 @@
 {
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 13
+    "youtube_items": 14
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
+    {
+      "id": "youtube:azD0VwsEwcI",
+      "date": "2026-11-06",
+      "title": "Art Vision Vol. 07 // Behind The Scenes (Part 4): Dedication and Passion | Marvel Rivals",
+      "category": "dev",
+      "url": "https://www.youtube.com/watch?v=azD0VwsEwcI",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
     {
       "id": "steam:703283562262039667",
       "date": "2026-11-05",
@@ -78,15 +87,6 @@
       "title": "Blast off in style! | New Iron Man Costume Reveal | #MarvelRivals #MARVELTokon @MARVELTokon",
       "category": "video",
       "url": "https://www.youtube.com/watch?v=lQkDqElefaA",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:DPW4XDQ9gVQ",
-      "date": "2026-10-27",
-      "title": "Take to the skies in style! | New Storm Costume Reveal | #MarvelRivals #MARVELTokon @MARVELTokon",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=DPW4XDQ9gVQ",
       "source": "youtube",
       "source_label": "YouTube"
     },
