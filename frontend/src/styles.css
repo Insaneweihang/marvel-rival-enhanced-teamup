@@ -228,3 +228,21 @@ footer span:last-child { display: flex; gap: 15px; } footer a { color: #b92035; 
 .game-update-covered { color: #2f7a4f; font-weight: 700; }
 .game-update-source { margin: 14px 0 0; color: #68736e; font-size: 12px; }
 .game-update-source a { color: #b92035; }
+
+/* Game Updates tab emphasis + "What's new" popup */
+.view-tabs .view-tab-lead { display: inline-flex; align-items: center; gap: 6px; }
+.view-tabs .view-tab-lead:not(.active) { border-color: #cfd6d0; background: #fff; color: #19201d; }
+.tab-badge { display: inline-flex; align-items: center; padding: 1px 6px; border-radius: 999px; background: #b92035; color: #fff; font-size: 10px; font-weight: 900; letter-spacing: .02em; text-transform: uppercase; white-space: nowrap; }
+.view-tabs .active .tab-badge { background: #fff; color: #b92035; }
+.whats-new-modal { position: fixed; z-index: 6; inset: 0; display: grid; place-items: center; padding: 16px; background: #19201d80; }
+.whats-new-card { width: min(620px, 100%); max-height: min(88vh, 760px); padding: 20px; overflow: auto; border: 1px solid #d8ddd7; background: #fff; box-shadow: 0 18px 45px #19201d40; }
+.whats-new-heading { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+.whats-new-heading h2 { margin: 4px 0 0; }
+.whats-new-subtitle { margin: 8px 0 0; color: #68736e; font-size: 13px; font-weight: 700; }
+.whats-new-list { display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
+.whats-new-list .game-update-item { border-color: #e9ece8; }
+.whats-new-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.whats-new-actions button { min-height: 38px; padding: 8px 16px; border: 1px solid #d8ddd7; border-radius: 6px; background: #fff; color: #19201d; font-weight: 850; cursor: pointer; }
+.whats-new-actions .primary-action { background: #b92035; border-color: #b92035; color: #fff; }
+.whats-new-foot { margin: 12px 0 0; color: #68736e; font-size: 11px; font-weight: 700; }
+@media (max-width: 640px) { .whats-new-card { padding: 14px; } .whats-new-actions button { flex: 1 1 auto; } }

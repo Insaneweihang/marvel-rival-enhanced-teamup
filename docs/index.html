@@ -12,7 +12,7 @@
       gtag("js", new Date());
       gtag("config", "G-LPFXF8XZSR");
     </script>
-    <link rel="stylesheet" href="styles.css?v=20261023-official-feeds" />
+    <link rel="stylesheet" href="styles.css?v=20261107-whats-new" />
   </head>
   <body>
     <header class="site-header">
@@ -21,12 +21,14 @@
         <h1>Marvel Rivals Team-Up Planner</h1>
         <div class="header-navigation-row">
           <nav class="view-tabs" aria-label="Application views">
+            <button id="updates-tab" class="view-tab view-tab-lead" type="button" data-view="updates">
+              Game Updates<span id="updates-tab-badge" class="tab-badge" hidden></span>
+            </button>
             <a class="view-tab nav-link-tab" href="react/">Creator Hub</a>
             <button class="view-tab active" type="button" data-view="browser">Team Browser</button>
             <button class="view-tab" type="button" data-view="builder">Team Planner</button>
             <button class="view-tab" type="button" data-view="maps">Maps</button>
             <button class="view-tab" type="button" data-view="events">Event Modes</button>
-            <button class="view-tab" type="button" data-view="updates">Game Updates</button>
             <a id="link-challenge-link" class="view-tab nav-link-tab" href="games/teamup-path/">Mini Games</a>
           </nav>
           <div class="mini-game-quick-launch" aria-label="Daily mini game">
@@ -494,7 +496,35 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20261023-official-feeds" defer></script>
+    <div
+      id="whats-new"
+      class="whats-new-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="whats-new-title"
+      aria-describedby="whats-new-subtitle"
+      hidden>
+      <div class="whats-new-card">
+        <div class="whats-new-heading">
+          <div>
+            <p class="eyebrow">What's new</p>
+            <h2 id="whats-new-title">Fresh Marvel Rivals updates</h2>
+            <p id="whats-new-subtitle" class="whats-new-subtitle"></p>
+          </div>
+          <button id="whats-new-close" class="icon-button" type="button" aria-label="Close what's new" title="Close">
+            x
+          </button>
+        </div>
+        <ul id="whats-new-list" class="whats-new-list"></ul>
+        <div class="whats-new-actions">
+          <button id="whats-new-see-all" class="primary-action" type="button">See all game updates</button>
+          <button id="whats-new-dismiss" class="secondary-action" type="button">Dismiss</button>
+        </div>
+        <p class="whats-new-foot">Official post dates. Unofficial fan project.</p>
+      </div>
+    </div>
+
+    <script src="app.js?v=20261107-whats-new" defer></script>
 
     <!-- Public Cloudflare Web Analytics site token; safe to expose in client HTML. -->
     <!-- Cloudflare Web Analytics -->

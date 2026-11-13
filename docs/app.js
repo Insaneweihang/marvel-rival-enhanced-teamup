@@ -34,6 +34,9 @@ const SAMPLE_DUO_POOLS = {
   player2: ["Luna Snow", "Ultron"],
 };
 const ROLE_ORDER = ["Vanguard", "Duelist", "Strategist"];
+const WHATS_NEW_STORAGE_KEY = "marvel-rivals:whats-new:v1";
+const WHATS_NEW_RECENT_DAYS = 2;
+const WHATS_NEW_PATCH_DAYS = 7;
 const TEAM_MODES = {
   all: {
     label: "All",
@@ -127,6 +130,8 @@ const state = {
   gameUpdatesSource: "",
   gameUpdatesSourceUrl: "",
   gameUpdatesDisclaimer: "",
+  whatsNewOpen: false,
+  whatsNewLastFocus: null,
   summary: null,
   mapsData: null,
   heroesByName: new Map(),
@@ -233,6 +238,13 @@ const elements = {
   gameUpdatesList: document.querySelector("#game-updates-list"),
   gameUpdatesMeta: document.querySelector("#game-updates-meta"),
   gameUpdatesSource: document.querySelector("#game-updates-source"),
+  updatesTabBadge: document.querySelector("#updates-tab-badge"),
+  whatsNewModal: document.querySelector("#whats-new"),
+  whatsNewSubtitle: document.querySelector("#whats-new-subtitle"),
+  whatsNewList: document.querySelector("#whats-new-list"),
+  whatsNewClose: document.querySelector("#whats-new-close"),
+  whatsNewDismiss: document.querySelector("#whats-new-dismiss"),
+  whatsNewSeeAll: document.querySelector("#whats-new-see-all"),
   feedbackForm: document.querySelector("#feedback-form"),
   feedbackSubmit: document.querySelector("#feedback-submit"),
   feedbackStatus: document.querySelector("#feedback-status"),
@@ -815,40 +827,176 @@ function renderGameUpdates() {
   }
 
   for (const item of items) {
-    const row = document.createElement("li");
-    row.className = "game-update-item";
-
-    const meta = document.createElement("div");
-    meta.className = "game-update-meta";
-
-    const badge = document.createElement("span");
-    badge.className = `game-update-badge ${item.category || "news"}`;
-    badge.textContent = GAME_UPDATE_CATEGORY_LABELS[item.category] || "News";
-    meta.append(badge);
-
-    if (item.source_label) {
-      const from = document.createElement("span");
-      from.className = `game-update-from ${item.source || "official"}`;
-      from.textContent = item.source_label;
-      meta.append(from);
-    }
-
-    const when = document.createElement("span");
-    when.className = "game-update-date";
-    when.textContent = item.date || "";
-    meta.append(when);
-
-    row.append(meta);
-
-    const link = document.createElement("a");
-    link.href = item.url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.textContent = item.title || "Marvel Rivals update";
-    row.append(link);
-
-    elements.gameUpdatesList.append(row);
+    elements.gameUpdatesList.append(buildGameUpdateRow(item));
   }
+}
+
+function buildGameUpdateRow(item) {
+  const row = document.createElement("li");
+  row.className = "game-update-item";
+
+  const meta = document.createElement("div");
+  meta.className = "game-update-meta";
+
+  const badge = document.createElement("span");
+  badge.className = `game-update-badge ${item.category || "news"}`;
+  badge.textContent = GAME_UPDATE_CATEGORY_LABELS[item.category] || "News";
+  meta.append(badge);
+
+  if (item.source_label) {
+    const from = document.createElement("span");
+    from.className = `game-update-from ${item.source || "official"}`;
+    from.textContent = item.source_label;
+    meta.append(from);
+  }
+
+  const when = document.createElement("span");
+  when.className = "game-update-date";
+  when.textContent = item.date || "";
+  meta.append(when);
+
+  row.append(meta);
+
+  const link = document.createElement("a");
+  link.href = item.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = item.title || "Marvel Rivals update";
+  row.append(link);
+
+  return row;
+}
+
+/* ---------- What's new popup ---------- */
+
+function updateAgeInDays(dateString) {
+  if (!dateString) {
+    return null;
+  }
+  const date = new Date(`${dateString}T00:00:00`);
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return Math.round((today.getTime() - date.getTime()) / 86400000);
+}
+
+// Posts from the last WHATS_NEW_RECENT_DAYS days, plus the newest patch/balance
+// post from the last WHATS_NEW_PATCH_DAYS when it falls outside that window -
+// patch notes are the announcement players actually care about.
+function whatsNewPosts(items) {
+  const recent = [];
+  let patchHighlight = null;
+  for (const item of Array.isArray(items) ? items : []) {
+    const age = updateAgeInDays(item.date);
+    if (age === null || age < 0) {
+      continue;
+    }
+    if (age <= WHATS_NEW_RECENT_DAYS) {
+      recent.push(item);
+      continue;
+    }
+    const isPatch = item.category === "patch" || item.category === "balance";
+    if (isPatch && age <= WHATS_NEW_PATCH_DAYS && !patchHighlight) {
+      patchHighlight = item;
+    }
+  }
+  const posts = patchHighlight ? [...recent, patchHighlight] : recent;
+  return posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+}
+
+function whatsNewSignature(posts) {
+  return posts.map((item) => `${item.date}|${item.id || item.title}`).join(";");
+}
+
+function readWhatsNewSeen() {
+  try {
+    return window.localStorage.getItem(WHATS_NEW_STORAGE_KEY) || "";
+  } catch (error) {
+    return "";
+  }
+}
+
+function writeWhatsNewSeen(signature) {
+  try {
+    window.localStorage.setItem(WHATS_NEW_STORAGE_KEY, signature);
+  } catch (error) {
+    // Private-mode storage failures are non-fatal; the popup just reappears.
+  }
+}
+
+function renderWhatsNewBadge() {
+  const posts = whatsNewPosts(state.gameUpdates);
+  const unseen = posts.length > 0 && whatsNewSignature(posts) !== readWhatsNewSeen();
+  if (elements.updatesTabBadge) {
+    elements.updatesTabBadge.hidden = !unseen;
+    elements.updatesTabBadge.textContent = unseen ? `${posts.length} new` : "";
+  }
+  return { posts, unseen };
+}
+
+function markWhatsNewSeen() {
+  const { posts } = renderWhatsNewBadge();
+  if (posts.length) {
+    writeWhatsNewSeen(whatsNewSignature(posts));
+  }
+  renderWhatsNewBadge();
+}
+
+function renderWhatsNewSubtitle(posts) {
+  if (!elements.whatsNewSubtitle) {
+    return;
+  }
+  const recent = posts.filter((item) => {
+    const age = updateAgeInDays(item.date);
+    return age !== null && age <= WHATS_NEW_RECENT_DAYS;
+  });
+  const patch = posts.find((item) => item.category === "patch" || item.category === "balance");
+  const parts = [];
+  if (recent.length) {
+    parts.push(
+      `${recent.length} post${recent.length === 1 ? "" : "s"} from the last ${WHATS_NEW_RECENT_DAYS} days`,
+    );
+  }
+  if (patch && !recent.includes(patch)) {
+    parts.push(`the newest patch notes (${patch.date})`);
+  }
+  elements.whatsNewSubtitle.textContent = parts.length
+    ? `Official posts: ${parts.join(" plus ")}.`
+    : "Newest official posts.";
+}
+
+function openWhatsNew() {
+  if (!elements.whatsNewModal || !elements.whatsNewList) {
+    return false;
+  }
+  const posts = whatsNewPosts(state.gameUpdates);
+  if (!posts.length) {
+    return false;
+  }
+  elements.whatsNewList.replaceChildren(...posts.map(buildGameUpdateRow));
+  renderWhatsNewSubtitle(posts);
+  state.whatsNewLastFocus = document.activeElement;
+  state.whatsNewOpen = true;
+  elements.whatsNewModal.hidden = false;
+  elements.whatsNewClose?.focus();
+  return true;
+}
+
+function closeWhatsNew(markSeen = true) {
+  if (!elements.whatsNewModal) {
+    return;
+  }
+  if (markSeen) {
+    markWhatsNewSeen();
+  }
+  elements.whatsNewModal.hidden = true;
+  state.whatsNewOpen = false;
+  if (state.whatsNewLastFocus && typeof state.whatsNewLastFocus.focus === "function") {
+    state.whatsNewLastFocus.focus();
+  }
+  state.whatsNewLastFocus = null;
 }
 
 function setUpdatesOpen(isOpen) {
@@ -3141,6 +3289,9 @@ function bindEvents() {
       }
       state.activeView = button.dataset.view;
       update();
+      if (state.activeView === "updates") {
+        markWhatsNewSeen();
+      }
     });
   }
   for (const link of elements.gameLauncherLinks) {
@@ -3293,6 +3444,18 @@ function bindEvents() {
   elements.resetPlayerPools.addEventListener("click", resetPlayerPools);
   elements.updatesToggle.addEventListener("click", () => setUpdatesOpen(!state.updatesOpen));
   elements.updatesClose.addEventListener("click", () => setUpdatesOpen(false));
+  elements.whatsNewClose?.addEventListener("click", () => closeWhatsNew());
+  elements.whatsNewDismiss?.addEventListener("click", () => closeWhatsNew());
+  elements.whatsNewSeeAll?.addEventListener("click", () => {
+    closeWhatsNew();
+    state.activeView = "updates";
+    update();
+  });
+  elements.whatsNewModal?.addEventListener("click", (event) => {
+    if (event.target === elements.whatsNewModal) {
+      closeWhatsNew();
+    }
+  });
   elements.shareCardClose.addEventListener("click", closeShareCard);
   elements.shareCardModal.addEventListener("click", (event) => {
     if (event.target === elements.shareCardModal) {
@@ -3303,6 +3466,10 @@ function bindEvents() {
   elements.copyShareCardImage.addEventListener("click", copyShareCardImage);
   elements.copyShareCardText.addEventListener("click", copyShareCardText);
   document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && state.whatsNewOpen) {
+      closeWhatsNew();
+      return;
+    }
     if (event.key === "Escape" && !elements.shareCardModal.hidden) {
       closeShareCard();
       return;
@@ -3402,6 +3569,13 @@ async function init() {
     renderSummary();
     renderUpdates();
     renderGameUpdates();
+    const whatsNew = renderWhatsNewBadge();
+    const deepLinked = ["builder", "view", "include", "exclude", "detail", "pool1", "pool2"].some(
+      (key) => params.has(key),
+    );
+    if (whatsNew.unseen && !deepLinked) {
+      openWhatsNew();
+    }
     update();
   } catch (error) {
     elements.statusMessage.textContent = error.message;
