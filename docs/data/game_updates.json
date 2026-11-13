@@ -1,22 +1,76 @@
 {
-  "updated_at": "2026-11-06",
+  "updated_at": "2026-11-12",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 14
+    "youtube_items": 15
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
     {
-      "id": "youtube:azD0VwsEwcI",
-      "date": "2026-11-06",
-      "title": "Art Vision Vol. 07 // Behind The Scenes (Part 4): Dedication and Passion | Marvel Rivals",
+      "id": "official:40954_1319403",
+      "date": "2026-11-12",
+      "title": "Season 11: Doomsday // Dev Vision Vol. 23 | Marvel Rivals",
       "category": "dev",
-      "url": "https://www.youtube.com/watch?v=azD0VwsEwcI",
+      "url": "https://www.marvelrivals.com/devdiaries/20261112/40954_1319403.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "youtube:pxdaaTsspEw",
+      "date": "2026-11-12",
+      "title": "Marvel Rivals Technically Speaking Vol. 02 | Marvel Rivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=pxdaaTsspEw",
       "source": "youtube",
       "source_label": "YouTube"
+    },
+    {
+      "id": "official:41548_1319332",
+      "date": "2026-11-11",
+      "title": "Marvel Rivals Version 20261113 Patch Notes - Season 11 Arrives",
+      "category": "patch",
+      "url": "https://www.marvelrivals.com/gameupdate/20261111/41548_1319332.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "youtube:pNJ7sZWACvo",
+      "date": "2026-11-11",
+      "title": "Season 11 Battle Pass: The Incursion | Official Trailer | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=pNJ7sZWACvo",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:Qyk5EqT4xBA",
+      "date": "2026-11-11",
+      "title": "Nurture your enemies to their doom. | New Mantis Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=Qyk5EqT4xBA",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:Ok8NGsAaRgo",
+      "date": "2026-11-11",
+      "title": "The Ice Queen Takes the Throne! | New Emma Frost Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=Ok8NGsAaRgo",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "official:41667_1319209",
+      "date": "2026-11-10",
+      "title": "Marvel Rivals Version 20261113 Balance Post",
+      "category": "balance",
+      "url": "https://www.marvelrivals.com/balancepost/20261110/41667_1319209.html",
+      "source": "official",
+      "source_label": "Official site"
     },
     {
       "id": "steam:703283562262039667",
@@ -46,24 +100,6 @@
       "source_label": "Official site"
     },
     {
-      "id": "youtube:S7gnkAdPKWk",
-      "date": "2026-11-04",
-      "title": "Get ready to feast on victory! | New The Thing Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=S7gnkAdPKWk",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:0qkuPLtkw4c",
-      "date": "2026-11-03",
-      "title": "Feel the webs of the worthy! | New Spider-Man Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=0qkuPLtkw4c",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
       "id": "official:40954_1318421",
       "date": "2026-11-02",
       "title": "Art Vision Vol. 07 // Behind The Scenes (Part 3): Dedication and Passion",
@@ -78,42 +114,6 @@
       "title": "Marvel Rivals Version 20261029 Patch Notes",
       "category": "patch",
       "url": "https://www.marvelrivals.com/gameupdate/20261028/41548_1317925.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "youtube:lQkDqElefaA",
-      "date": "2026-10-28",
-      "title": "Blast off in style! | New Iron Man Costume Reveal | #MarvelRivals #MARVELTokon @MARVELTokon",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=lQkDqElefaA",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "official:40954_1317554",
-      "date": "2026-10-23",
-      "title": "Art Vision Vol. 06 // Behind The Scenes (Part 2): Dedication and Passion | Marvel Rivals",
-      "category": "dev",
-      "url": "https://www.marvelrivals.com/devdiaries/20261023/40954_1317554.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "official:41548_1317253",
-      "date": "2026-10-21",
-      "title": "Marvel Rivals Version 20261022 Patch Notes",
-      "category": "patch",
-      "url": "https://www.marvelrivals.com/gameupdate/20261021/41548_1317253.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "official:40955_1317131",
-      "date": "2026-10-20",
-      "title": "Join Twitch Path to Doomsday Event & Go for 3,000 Gifted Subs!",
-      "category": "news",
-      "url": "https://www.marvelrivals.com/announcements/20261020/40955_1317131.html",
       "source": "official",
       "source_label": "Official site"
     }
