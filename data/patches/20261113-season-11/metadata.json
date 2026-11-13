@@ -1,0 +1,37 @@
+{
+  "game": "Marvel Rivals",
+  "patch_version": "20261113-season-11",
+  "patch_date": "2026-11-13",
+  "data_retrieved_at": "2026-11-13T12:50:55+08:00",
+  "sources": [
+    {
+      "name": "Marvel Rivals Version 20261113 Patch Notes - Season 11 Arrives",
+      "url": "https://www.marvelrivals.com/gameupdate/20261111/41548_1319332.html",
+      "purpose": "Official patch notes for the 2026-11-13 version update (Season 11: Doomsday)."
+    },
+    {
+      "name": "Marvel Rivals official Team-Up page",
+      "url": "https://www.marvelrivals.com/heroes/teamup.html",
+      "purpose": "Official directional Team-Up relationship cross-check."
+    },
+    {
+      "name": "Nightcrawler Team-Ups (Marvel Rivals Wiki)",
+      "url": "https://marvelrivals.fandom.com/wiki/Nightcrawler/Team-Ups",
+      "purpose": "Nightcrawler's two Season 11.0 Team-Ups, their partner heroes, and base/enhanced effect text."
+    },
+    {
+      "name": "Nightcrawler guide (marvelrivals.gg)",
+      "url": "https://marvelrivals.gg/nightcrawler",
+      "purpose": "Nightcrawler ability names, inputs and descriptions."
+    }
+  ],
+  "allowed_reciprocal_teamups": [],
+  "notes": [
+    "Season 11.0: Doomsday adds Nightcrawler (Strategist, 275 HP) as the game's 55th playable hero; Dracula is announced but not yet playable.",
+    "No hero removals, role changes or Team-Up re-routes: all 54 carried-over heroes keep the same two outgoing partners as 20261022-season-10-5-2.",
+    "Nightcrawler's Team-Ups are Demon Disciple (partner Magik) and Protective Siblings (partner Rogue). Both are directional Nightcrawler edges; neither Magik nor Rogue lists Nightcrawler among their own two loadouts, so no reciprocal pair is declared.",
+    "Official hero page for Nightcrawler was not published before the 2026-11-13 09:00 UTC launch, so ability text comes from marvelrivals.gg and the wiki and numeric stat blocks are left empty rather than guessed. Re-run scripts/fetch_hero_details.py after launch to replace them with official values.",
+    "Team-Up relationships are directional: each active hero has exactly two outgoing partners.",
+    "Generated combinations are derived from heroes.json and teamups.json."
+  ]
+}

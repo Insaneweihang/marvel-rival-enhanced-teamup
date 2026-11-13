@@ -16,27 +16,26 @@ The generator checks every six-hero combination, not permutations, and outputs u
 
 ## Active Dataset
 
-- Patch: `20261009-season-10-5`
-- Patch date: `2026-10-09`
-- Active heroes generated: `54`
-- Fully enhanced unrestricted combinations: `416`
-- Fully enhanced 2-2-2 combinations: `57`
-- Fully enhanced 1-3-2 combinations: `75`
-- Fully enhanced 2-1-3 combinations: `12`
-- Fully enhanced 1-2-3 combinations: `38`
-- Fully enhanced 3-1-2 combinations: `12`
-- Main official source: <https://www.marvelrivals.com/gameupdate/20261006/41548_1315865.html>
+- Patch: `20261113-season-11`
+- Patch date: `2026-11-13`
+- Active heroes generated: `55`
+- Fully enhanced unrestricted combinations: `429`
+- Fully enhanced 2-2-2 combinations: `59`
+- Fully enhanced 1-3-2 combinations: `81`
+- Fully enhanced 2-1-3 combinations: `13`
+- Fully enhanced 1-2-3 combinations: `41`
+- Fully enhanced 3-1-2 combinations: `13`
+- Main official source: <https://www.marvelrivals.com/gameupdate/20261111/41548_1319332.html>
 - Team-Up source: <https://www.marvelrivals.com/heroes/teamup.html>
-- Balance source: <https://www.marvelrivals.com/20261006/41525_1315864.html>
-- Cross-check: <https://rivalsdex.com/team-ups>.
+- Cross-check: <https://marvelrivals.fandom.com/wiki/Nightcrawler/Team-Ups> and <https://rivalsdex.com/team-ups>.
 
-The frontend supports multiple patch snapshots. Season 10.5 is now the default;
-Season 9, Season 9.5, and Season 10 remain available as archives. Season 10.5 is
-available with its Team-Up balance updates and Alchemax Headquarters map data.
-Season 10 adds Gorr the God Butcher as a Duelist with directional links to Hela
-and Venom.
+The frontend supports multiple patch snapshots. Season 11: Doomsday is now the default;
+Season 9, Season 9.5, Season 10, and Season 10.5 remain available as archives. Season 11
+adds Nightcrawler as a Strategist with directional links to Magik (Demon Disciple) and
+Rogue (Protective Siblings); no returning hero lost, gained, or swapped a Team-Up partner.
+The 2026-10-22 update was a metadata-only snapshot (limited mode, store bundles, fixes).
 
-Season 10 counts: `416` unrestricted, `57` 2-2-2, `75` 1-3-2,
+Season 10.5 counts: `416` unrestricted, `57` 2-2-2, `75` 1-3-2,
 `12` 2-1-3, `38` 1-2-3, and `12` 3-1-2.
 
 The Hood source: <https://marvelrivals.gg/the-hood/>.
@@ -82,7 +81,7 @@ relationships, and reproducibility of all committed generated outputs.
 Expected success format:
 
 ```text
-Patch validation passed: 20260710-season-9, 20260807-season-9-5, 20260911-season-10, 20261009-season-10-5
+Patch validation passed: 20260710-season-9, 20260807-season-9-5, 20260911-season-10, 20261009-season-10-5, 20261022-season-10-5-2, 20261113-season-11
 ```
 
 ## Generate
