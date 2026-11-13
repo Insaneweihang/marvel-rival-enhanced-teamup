@@ -1,7 +1,23 @@
 {
-  "current_version": "v0.3.9",
-  "updated_at": "2026-10-23",
+  "current_version": "v0.4.0",
+  "updated_at": "2026-11-13",
   "updates": [
+    {
+      "version": "v0.4.0",
+      "date": "2026-11-13",
+      "type": "data",
+      "title": "Season 11: Doomsday",
+      "summary": "Added the Season 11 snapshot and made it the default patch for the Team Browser and Planner. Nightcrawler joins as a Strategist with two directional Team-Ups: Demon Disciple with Magik and Protective Siblings with Rogue. No returning hero changed Team-Up partners, so only the extra hero and his two links entered the graph.",
+      "note": "429 fully enhanced unrestricted teams and 59 2-2-2 teams, up from 416 and 57. Official per-hero stat blocks for Nightcrawler land after the 09:00 UTC launch; ability text is sourced from the wiki and marvelrivals.gg in the meantime."
+    },
+    {
+      "version": "v0.3.10",
+      "date": "2026-11-13",
+      "type": "feature",
+      "title": "What's new popup and a promoted Game Updates tab",
+      "summary": "The site now announces new official posts in a dismissible popup: everything from the last two days plus the newest patch or balance post from the past week. Game Updates moved to the front of the nav and carries an unread count, and the popup stays quiet when you arrive through a shared team link.",
+      "note": "Seen-state is stored per browser, so the popup only reappears when the feed actually changes."
+    },
     {
       "version": "v0.3.9",
       "date": "2026-10-23",
