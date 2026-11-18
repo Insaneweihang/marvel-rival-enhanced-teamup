@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12",
+  "updated_at": "2026-11-17",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
@@ -10,6 +10,42 @@
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
     {
+      "id": "youtube:dXHSPs5bblQ",
+      "date": "2026-11-17",
+      "title": "2nd Anniversary Celebration Trailer | Two Years of Marvel Rivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=dXHSPs5bblQ",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:4yjgBaZtnIk",
+      "date": "2026-11-17",
+      "title": "Blast your rivals back to the lobby! | New Rocket Raccoon Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=4yjgBaZtnIk",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:0zX6cL6GBVc",
+      "date": "2026-11-17",
+      "title": "2nd Anniversary Celebration Trailer | Two Years of Rivals | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=0zX6cL6GBVc",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:0vk7A8E99C8",
+      "date": "2026-11-17",
+      "title": "One up the competition! | New Jeff the Landshark Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=0vk7A8E99C8",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
       "id": "official:40954_1319403",
       "date": "2026-11-12",
       "title": "Season 11: Doomsday // Dev Vision Vol. 23 | Marvel Rivals",
@@ -19,15 +55,6 @@
       "source_label": "Official site"
     },
     {
-      "id": "youtube:pxdaaTsspEw",
-      "date": "2026-11-12",
-      "title": "Marvel Rivals Technically Speaking Vol. 02 | Marvel Rivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=pxdaaTsspEw",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
       "id": "official:41548_1319332",
       "date": "2026-11-11",
       "title": "Marvel Rivals Version 20261113 Patch Notes - Season 11 Arrives",
@@ -35,33 +62,6 @@
       "url": "https://www.marvelrivals.com/gameupdate/20261111/41548_1319332.html",
       "source": "official",
       "source_label": "Official site"
-    },
-    {
-      "id": "youtube:pNJ7sZWACvo",
-      "date": "2026-11-11",
-      "title": "Season 11 Battle Pass: The Incursion | Official Trailer | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=pNJ7sZWACvo",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:Qyk5EqT4xBA",
-      "date": "2026-11-11",
-      "title": "Nurture your enemies to their doom. | New Mantis Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=Qyk5EqT4xBA",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:Ok8NGsAaRgo",
-      "date": "2026-11-11",
-      "title": "The Ice Queen Takes the Throne! | New Emma Frost Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=Ok8NGsAaRgo",
-      "source": "youtube",
-      "source_label": "YouTube"
     },
     {
       "id": "official:41667_1319209",
