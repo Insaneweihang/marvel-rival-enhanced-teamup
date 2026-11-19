@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-18",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
@@ -9,6 +9,24 @@
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
+    {
+      "id": "official:41548_1319867",
+      "date": "2026-11-18",
+      "title": "Marvel Rivals Version 20261119 Patch Notes",
+      "category": "patch",
+      "url": "https://www.marvelrivals.com/gameupdate/20261118/41548_1319867.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "youtube:oudb49V7dWs",
+      "date": "2026-11-18",
+      "title": "Shine brighter than the rest. | New White Fox Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=oudb49V7dWs",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
     {
       "id": "youtube:dXHSPs5bblQ",
       "date": "2026-11-17",
@@ -33,15 +51,6 @@
       "title": "2nd Anniversary Celebration Trailer | Two Years of Rivals | #MarvelRivals",
       "category": "video",
       "url": "https://www.youtube.com/watch?v=0zX6cL6GBVc",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:0vk7A8E99C8",
-      "date": "2026-11-17",
-      "title": "One up the competition! | New Jeff the Landshark Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=0vk7A8E99C8",
       "source": "youtube",
       "source_label": "YouTube"
     },
@@ -105,15 +114,6 @@
       "title": "Art Vision Vol. 07 // Behind The Scenes (Part 3): Dedication and Passion",
       "category": "dev",
       "url": "https://www.marvelrivals.com/devdiaries/20261102/40954_1318421.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "official:41548_1317925",
-      "date": "2026-10-28",
-      "title": "Marvel Rivals Version 20261029 Patch Notes",
-      "category": "patch",
-      "url": "https://www.marvelrivals.com/gameupdate/20261028/41548_1317925.html",
       "source": "official",
       "source_label": "Official site"
     }
