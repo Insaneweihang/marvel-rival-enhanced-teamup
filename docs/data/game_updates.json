@@ -1,14 +1,32 @@
 {
-  "updated_at": "2026-11-18",
+  "updated_at": "2026-11-23",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 13
+    "youtube_items": 11
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
+    {
+      "id": "youtube:EkEp8uJWwgw",
+      "date": "2026-11-23",
+      "title": "Rewrite the rules of every fight! | New Scarlet Witch Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=EkEp8uJWwgw",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:DT6Yp6tdXQE",
+      "date": "2026-11-23",
+      "title": "Leave your rivals green with envy! | New Loki Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=DT6Yp6tdXQE",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
     {
       "id": "official:41548_1319867",
       "date": "2026-11-18",
@@ -33,24 +51,6 @@
       "title": "2nd Anniversary Celebration Trailer | Two Years of Marvel Rivals",
       "category": "video",
       "url": "https://www.youtube.com/watch?v=dXHSPs5bblQ",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:4yjgBaZtnIk",
-      "date": "2026-11-17",
-      "title": "Blast your rivals back to the lobby! | New Rocket Raccoon Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=4yjgBaZtnIk",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:0zX6cL6GBVc",
-      "date": "2026-11-17",
-      "title": "2nd Anniversary Celebration Trailer | Two Years of Rivals | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=0zX6cL6GBVc",
       "source": "youtube",
       "source_label": "YouTube"
     },
