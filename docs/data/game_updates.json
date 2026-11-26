@@ -1,14 +1,41 @@
 {
-  "updated_at": "2026-11-24",
+  "updated_at": "2026-11-25",
   "source": "Marvel Rivals official news, Steam and YouTube",
   "source_url": "https://www.marvelrivals.com/news/",
   "sources_checked": {
     "official_news_cards": 9,
     "steam_rss_items": 10,
-    "youtube_items": 11
+    "youtube_items": 9
   },
   "disclaimer": "Unofficial fan project. Headlines link to the official posts.",
   "items": [
+    {
+      "id": "official:41548_1320745",
+      "date": "2026-11-25",
+      "title": "Marvel Rivals Version 20261126 Patch Notes",
+      "category": "patch",
+      "url": "https://www.marvelrivals.com/gameupdate/20261125/41548_1320745.html",
+      "source": "official",
+      "source_label": "Official site"
+    },
+    {
+      "id": "youtube:ULGv1EhffQQ",
+      "date": "2026-11-25",
+      "title": "We Kept These Deals Under Wraps Until Now! | Black Friday Sale | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=ULGv1EhffQQ",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
+    {
+      "id": "youtube:1QqZ9MlgaeE",
+      "date": "2026-11-25",
+      "title": "Break every record in the lobby! | New Moon Knight Costume Reveal | #MarvelRivals",
+      "category": "video",
+      "url": "https://www.youtube.com/watch?v=1QqZ9MlgaeE",
+      "source": "youtube",
+      "source_label": "YouTube"
+    },
     {
       "id": "youtube:QJ6c-6szRU4",
       "date": "2026-11-24",
@@ -24,24 +51,6 @@
       "title": "A New Kind of Fun Is Opening in Times Square | Ghostworks Arcade Reveal | Marvel Rivals",
       "category": "video",
       "url": "https://www.youtube.com/watch?v=8VK6tmpKer4",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:0oOipRDIynI",
-      "date": "2026-11-24",
-      "title": "Incursion Point | Map Reveal Trailer | Marvel Rivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=0oOipRDIynI",
-      "source": "youtube",
-      "source_label": "YouTube"
-    },
-    {
-      "id": "youtube:EkEp8uJWwgw",
-      "date": "2026-11-23",
-      "title": "Rewrite the rules of every fight! | New Scarlet Witch Costume Reveal | #MarvelRivals",
-      "category": "video",
-      "url": "https://www.youtube.com/watch?v=EkEp8uJWwgw",
       "source": "youtube",
       "source_label": "YouTube"
     },
@@ -105,15 +114,6 @@
       "title": "Marvel Rivals Teams Up With RESPAWN By Razer For A Limited Edition Gum & Mints Collection",
       "category": "news",
       "url": "https://www.marvelrivals.com/announcements/20261104/40955_1318635.html",
-      "source": "official",
-      "source_label": "Official site"
-    },
-    {
-      "id": "official:40954_1318421",
-      "date": "2026-11-02",
-      "title": "Art Vision Vol. 07 // Behind The Scenes (Part 3): Dedication and Passion",
-      "category": "dev",
-      "url": "https://www.marvelrivals.com/devdiaries/20261102/40954_1318421.html",
       "source": "official",
       "source_label": "Official site"
     }
